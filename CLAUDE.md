@@ -40,6 +40,7 @@
 | `neuroscience-ai/` | 신경과학×AI (뇌 커넥톰 기반 시뮬레이션·모델 등) |
 | `news-media/` | 뉴스/미디어 API 및 속보 소스 |
 | `observability/` | 로그/메트릭/트레이스 관측성 도구 (Fluentd, OTel Collector 등) |
+| `reinforcement-learning/` | 강화학습(RL)으로 신경망에 게임을 학습시키는 방법, 알고리즘(DQN/PPO 등), 실습 도구, 학습용 하드웨어 사양 |
 | `os-fundamentals/` | 리눅스/OS 기초 (cgroup, 프로세스, 터미널 입력) |
 | `os-fundamentals/systemd/` | systemd 서비스 유닛 작성/운영 |
 | `security-crypto/` | 보안/암호 일반 |
