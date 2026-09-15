@@ -27,6 +27,7 @@
 | `aws-cloud/` | AWS/클라우드 서비스 (KMS 등) |
 | `claude-tools/` | Claude Code 등 클로드 관련 도구의 내부 동작 방식 |
 | `database/` | DB 이론/실무 일반 (트리거 등) |
+| `database/clickhouse/` | ClickHouse 아키텍처(컬럼 지향, MergeTree, 샤딩/복제), append-only 로그 활용, ClickStack(관측성 스택) |
 | `database/mysql-postgresql/` | MySQL·PostgreSQL 락(gap/next-key lock), MVCC, 격리 수준 비교 |
 | `dev-tools/` | 개발 유틸리티/스크립트/CLI 도구 (bash, vim, no-op 등) |
 | `dev-tools/github-trending/` | GitHub 트렌딩/스타 추적 관련 |
