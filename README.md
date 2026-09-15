@@ -15,6 +15,7 @@ Claude와 나눈 질문/답변을 주제별 `.md` 파일로 아카이빙하는 �
 | `aws-cloud/` | AWS 관련 |
 | `claude-tools/` | Claude Code 자체 기능(웹서치 등) |
 | `dev-tools/` | 개발 도구, GitHub 트렌딩/스타 수집(`github-trending/`) |
+| `distributed-systems/` | 분산 시스템 일반, "The Log" 에세이 분석(`the-log/`) |
 | `google-api/` | Google API |
 | `kafka/` | Kafka |
 | `kubernetes/` | Kubernetes |

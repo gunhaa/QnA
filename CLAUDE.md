@@ -31,6 +31,8 @@
 | `database/mysql-postgresql/` | MySQL·PostgreSQL 락(gap/next-key lock), MVCC, 격리 수준 비교 |
 | `dev-tools/` | 개발 유틸리티/스크립트/CLI 도구 (bash, vim, no-op 등) |
 | `dev-tools/github-trending/` | GitHub 트렌딩/스타 추적 관련 |
+| `distributed-systems/` | 분산 시스템 일반 (복제, 합의, 로그 추상화, 데이터 통합 아키텍처) |
+| `distributed-systems/the-log/` | Jay Kreps "The Log"(2013) 에세이 챕터별 상세 분석 + 2026년 관점 비판 |
 | `docker/` | Docker/컨테이너 내부 동작 (커널 공유 등) |
 | `file-formats/` | 파일 포맷 구조/역사 (전자책 포맷 등) |
 | `google-api/` | Google API 종류/활용 |
