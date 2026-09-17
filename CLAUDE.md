@@ -38,7 +38,7 @@
 | `google-api/` | Google API 종류/활용 |
 | `kafka/` | Kafka 메시징 (컨슈머 동작, 타 메시지 큐 비교) |
 | `kotlin/` | Kotlin 언어/코루틴, 타 언어(Go) 비교 학습 경로 |
-| `kubernetes/` | Kubernetes 아키텍처/개요/Pod 동작 |
+| `kubernetes/` | Kubernetes 아키텍처/개요/Pod 동작/오토스케일링(HPA·VPA·Cluster Autoscaler·Karpenter) |
 | `llm-services/` | LLM 제공 서비스 (OpenRouter 등 API 서비스) |
 | `neuroscience-ai/` | 신경과학×AI (뇌 커넥톰 기반 시뮬레이션·모델 등) |
 | `news-media/` | 뉴스/미디어 API 및 속보 소스 |
