@@ -49,6 +49,7 @@
 | `os-fundamentals/systemd/` | systemd 서비스 유닛 작성/운영 |
 | `security-crypto/` | 보안/암호 일반 |
 | `security-crypto/api-key-verification/` | API 키 검증 방식 (해시, HMAC, Vault 연동) |
+| `software-architecture/` | 소프트웨어 아키텍처 패턴 (DDD, 헥사고날/포트-어댑터, 클린 아키텍처 등) |
 | `software-testing/` | 소프트웨어 테스트 기법/도구 (부하 테스트 등) |
 | `web-infra/` | 웹 인프라 일반 (SNI, HTTP/2 멀티플렉싱과 HTTP/1.1 공존 등) |
 | `web-infra/nginx/` | Nginx/OpenResty 내부 동작, Lua/njs, LuaJIT |
