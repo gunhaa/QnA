@@ -26,6 +26,8 @@
 | `algorithms/` | 범용 알고리즘 (유전 알고리즘 등) |
 | `aws-cloud/` | AWS/클라우드 서비스 (KMS 등) |
 | `claude-tools/` | Claude Code 등 클로드 관련 도구의 내부 동작 방식 |
+| `convention/` | 사내 코딩 컨벤션 (언어별 하위 폴더로 구성) |
+| `convention/java/` | Java 코딩 컨벤션 챕터 정리 + 예제 코드 (포맷팅, 네이밍, 예외/로깅, Effective Java 관용구 등). `examples/`는 컨벤션 예시용 실제 소스 파일이므로 질문 응답 규칙(쉬운 설명/일반 설명 md 포맷) 대상에서 제외 |
 | `cs-fundamentals/` | 컴퓨터공학 일반 개념·용어 (일급 객체/first-class 등) |
 | `database/` | DB 이론/실무 일반 (트리거 등) |
 | `database/clickhouse/` | ClickHouse 아키텍처(컬럼 지향, MergeTree, 샤딩/복제), append-only 로그 활용, ClickStack(관측성 스택) |
