@@ -38,6 +38,9 @@
 | `distributed-systems/the-log/` | Jay Kreps "The Log"(2013) 에세이 챕터별 상세 분석 + 2026년 관점 비판 |
 | `docker/` | Docker/컨테이너 내부 동작 (커널 공유 등) |
 | `file-formats/` | 파일 포맷 구조/역사 (전자책 포맷 등) |
+| `game-ai/` | 게임 AI/게임플레이 에이전트 (FSM·Behavior Tree·GOAP·Utility AI와 LLM 하이브리드 아키텍처, NPC 에이전트 오픈소스, 게임 API/비전 기반 에이전트) |
+| `game-ai/starcraft/` | 스타크래프트(브루드워/SC2) 봇 — BWAPI 대회 생태계, 상위 봇 아키텍처, 프로와의 기력 차이, LLM 오케스트레이터·전략 재조립 설계 |
+| `game-ai/human-ai-coop/` | 인간-AI 협동 플레이 — SIMA 2/Duty Support 등 공식 지원, Hanabi/Overcooked 협응 벤치마크, 레이드 AI 동료 설계, 애드온 배포 가능성(게임별 API 정책) |
 | `google-api/` | Google API 종류/활용 |
 | `kafka/` | Kafka 메시징 (컨슈머 동작, 타 메시지 큐 비교) |
 | `kotlin/` | Kotlin 언어/코루틴, 타 언어(Go) 비교 학습 경로 |
@@ -46,7 +49,9 @@
 | `neuroscience-ai/` | 신경과학×AI (뇌 커넥톰 기반 시뮬레이션·모델 등) |
 | `news-media/` | 뉴스/미디어 API 및 속보 소스 |
 | `observability/` | 로그/메트릭/트레이스 관측성 도구 (Fluentd, OTel Collector 등) |
-| `reinforcement-learning/` | 강화학습(RL)으로 신경망에 게임을 학습시키는 방법, 알고리즘(DQN/PPO 등), 실습 도구, 학습용 하드웨어 사양 |
+| `open-source/` | 오픈소스 프로젝트 실무 (저작권/라이선스 표기, LICENSE 파일, SPDX 헤더 등) |
+| `reinforcement-learning/` | 강화학습(RL)으로 신경망에 게임을 학습시키는 방법, 알고리즘(DQN/PPO 등)과 보상 설계, 실습 도구, 학습용 하드웨어 사양 |
+| `reinforcement-learning/starcraft/` | 스타크래프트 RL 특화 — 봇 학습 난이도/비용, 마이크로 시나리오 자가대국(self-play), 로컬 하드웨어(RTX 4060 등) 학습 가능성 |
 | `os-fundamentals/` | 리눅스/OS 기초 (cgroup, 프로세스, 터미널 입력) |
 | `os-fundamentals/systemd/` | systemd 서비스 유닛 작성/운영 |
 | `security-crypto/` | 보안/암호 일반 |
