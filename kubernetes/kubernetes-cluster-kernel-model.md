@@ -1,4 +1,4 @@
-# 쿠버네티스 클러스터는 커널을 어떻게 쓰는가? (VM 1개? 클러스터 커널? 호스트 공유?)
+# 쿠버네티스 클러스터는 커널을 어떻게 쓰는가? (VM 1개? 클러스터 커널? 호스트 공유? Pod = VM?)
 
 셋 다 아니에요. 정답은 **"섬(Node)마다 자기 커널이 따로 있고, 그 섬들을 다리(네트워크)로 이어서 하나처럼 보이게 만든 것"**이에요. 섬 안에서는 도커처럼 커널을 같이 쓰지만, 섬과 섬 사이에는 커널 공유가 전혀 없어요 — 그냥 배(네트워크 패킷)로 오갈 뿐이에요.
 
@@ -98,12 +98,64 @@ Linux 커널은 하드웨어(또는 그 하드웨어를 흉내 낸 가상 머신
 
 즉 Kubernetes가 만드는 "하나의 시스템처럼 보이는 착시"는 **네트워크 계층 + 컨트롤 플레인의 상태 통합**으로 만들어지는 것이지, 실제 커널이나 하이퍼바이저를 클러스터 단위로 새로 만든 게 절대 아니다. Kubernetes 자체는 커널 코드를 한 줄도 갖고 있지 않은 순수 사용자 공간(userspace) 오케스트레이션 소프트웨어다.
 
-### 예외: 정말로 "가짜 커널"을 하나 더 두는 경우
+### 그럼 Pod은 VM에서 실행되는 것과 같은가?
 
-강한 격리가 필요한 멀티테넌시 환경에서는 Kata Containers나 gVisor처럼 **Pod 하나마다 경량 마이크로 VM(별도 커널)을 진짜로 새로 띄우는** 런타임을 쓰기도 한다. 이 경우는 "Node 안에서도 Pod마다 커널을 분리"하는 특수 사례이며, 기본 containerd/runc 조합의 표준 동작은 아니다. 이 부분은 [[pod-host-kernel-sharing]]에서 다룬 User Namespace(v1.36 GA) 한계와도 이어진다.
+아니다. 기본(runc) Pod은 **격리된 프로세스**일 뿐 VM이 아니다. Pod 안에서 `uname -r`을 치면 Node의 커널 버전이 그대로 나오는 것이 커널 공유의 직접 증거다.
+
+| 항목 | 기본 Pod (runc) | VM |
+|---|---|---|
+| 커널 | Node host 커널 공유 | 게스트마다 독립 커널 |
+| 격리 수단 | namespace, cgroup, seccomp, LSM | 하이퍼바이저 + 하드웨어 가상화(VT-x/AMD-V) |
+| 시작 시간 | 수십~수백 ms (프로세스 생성 수준) | 수 초~수십 초 (부팅) |
+| 메모리 오버헤드 | 거의 없음 | 게스트 OS 몫 수백 MB~ |
+| 커널 버전/모듈 | Node 것을 그대로 사용 (Pod별로 못 바꿈) | 게스트별로 자유 |
+| 보안 경계 | 커널 취약점 1개로 탈출 가능(container escape) | 하이퍼바이저를 뚫어야 함 |
+
+### 예외: Node 안에서도 Pod마다 커널을 분리하는 경우 (RuntimeClass)
+
+강한 격리가 필요한 멀티테넌시 환경에서는 `RuntimeClass`로 기본 runc 대신 샌드박스 런타임을 지정한다.
+
+```yaml
+apiVersion: node.k8s.io/v1
+kind: RuntimeClass
+metadata:
+  name: kata
+handler: kata        # containerd에 설정된 런타임 핸들러 이름
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: isolated
+spec:
+  runtimeClassName: kata
+  containers:
+    - name: app
+      image: nginx
+```
+
+다만 두 대표 런타임의 방식은 다르다.
+
+| 런타임 | 방식 | Pod별 커널? | 비용 |
+|---|---|---|---|
+| **Kata Containers** | Pod마다 경량 마이크로 VM을 띄우고 **진짜 게스트 리눅스 커널을 부팅** (KVM + QEMU/Cloud Hypervisor/Firecracker) | **예** | 시작 ~100ms+, Pod당 ~128MB 메모리, Node에 `/dev/kvm` 필요 |
+| **gVisor (runsc)** | VM 아님. 유저 공간 프로세스 **Sentry("application kernel", Go로 작성)**가 syscall을 가로채 대신 처리하는 "가짜 커널". KVM 플랫폼 모드도 주소 공간 격리용일 뿐 게스트 OS를 부팅하지 않음 | **아니요** (host 커널은 하나, 노출 면적만 축소) | syscall 많은 워크로드는 2~3배 느려질 수 있음 |
+| **runc (기본)** | namespace + cgroup | 아니요 | 거의 없음 |
+
+즉 **Kata를 쓸 때만 "Pod = 작은 VM"**이 성립한다. User Namespace(v1.36 GA)로도 공유 커널 문제가 남는 이유는 [[pod-host-kernel-sharing]] 참고.
+
+### 클라우드 매니지드의 경우
+
+- EKS/GKE의 일반 Node는 그 자체가 **클라우드 VM**이다. 즉 "VM(Node) 하나 안에서 여러 Pod이 커널을 공유"하는 구조.
+- AWS Fargate처럼 Pod마다 Firecracker microVM을 띄우는 서비스는 사실상 Pod별 커널이다. GKE Sandbox는 gVisor 기반이다.
 
 Sources:
 - [Pods | Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/)
 - [cgroups and Namespaces — The Linux Kernel's Building Blocks Behind Containers | DEV Community](https://dev.to/kobbyprincee/cgroups-and-namespaces-the-fundamental-building-blocks-of-linux-containers-and-orchestration-53e3)
 - [Why Kubernetes Namespace Isolation Fails | vCluster](https://www.vcluster.com/blog/kubernetes-namespace-isolation-failures)
 - [Kubernetes User Namespaces Don't Fix the Shared Kernel | Edera](https://edera.dev/stories/kubernetes-finally-has-user-namespace-support-the-shared-kernel-problem-remains)
+- [Introduction to gVisor security | gVisor](https://gvisor.dev/docs/architecture_guide/intro/)
+- [MicroVM vs gVisor | Northflank](https://northflank.com/blog/microvm-vs-gvisor)
+- [Kata Containers vs gVisor | Northflank](https://northflank.com/blog/kata-containers-vs-gvisor)
+- [Kata Containers vs gVisor: A RuntimeClass Decision Framework (2026-07)](https://bex.co/blog/2026/07/09/kata-containers-vs-gvisor-runtimeclass-selection)
+- [Kata Containers Isolation – Kubernetes agent-sandbox SIG](https://agent-sandbox.sigs.k8s.io/docs/use-cases/kata-containers-isolation/)
+- [How to Create Kubernetes RuntimeClass – OneUptime (2026-01)](https://oneuptime.com/blog/post/2026-01-30-kubernetes-runtimeclass/view)
