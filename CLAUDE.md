@@ -29,7 +29,7 @@
 | `convention/` | 사내 코딩 컨벤션 (언어별 하위 폴더로 구성) |
 | `convention/java/` | Java 코딩 컨벤션 챕터 정리 + 예제 코드 (포맷팅, 네이밍, 예외/로깅, Effective Java 관용구 등). `examples/`는 컨벤션 예시용 실제 소스 파일이므로 질문 응답 규칙(쉬운 설명/일반 설명 md 포맷) 대상에서 제외 |
 | `cs-fundamentals/` | 컴퓨터공학 일반 개념·용어 (일급 객체/first-class 등) |
-| `database/` | DB 이론/실무 일반 (트리거 등) |
+| `database/` | DB 이론/실무 일반 (트리거, pg_bigm 등 Postgres 검색 확장) |
 | `database/clickhouse/` | ClickHouse 아키텍처(컬럼 지향, MergeTree, 샤딩/복제), append-only 로그 활용, ClickStack(관측성 스택) |
 | `database/mysql-postgresql/` | MySQL·PostgreSQL 락(gap/next-key lock), MVCC, 격리 수준 비교 |
 | `dev-tools/` | 개발 유틸리티/스크립트/CLI 도구 (bash, vim, no-op 등) |
@@ -44,12 +44,13 @@
 | `google-api/` | Google API 종류/활용 |
 | `kafka/` | Kafka 메시징 (컨슈머 동작, 타 메시지 큐 비교) |
 | `kotlin/` | Kotlin 언어/코루틴, 타 언어(Go) 비교 학습 경로 |
-| `kubernetes/` | Kubernetes 아키텍처/개요/Pod 동작/오토스케일링(HPA·VPA·Cluster Autoscaler·Karpenter) |
+| `kubernetes/` | Kubernetes 아키텍처/개요/Pod 동작(커널 공유·RuntimeClass 격리)/오토스케일링(HPA·VPA·Cluster Autoscaler·Karpenter) |
 | `llm-services/` | LLM 제공 서비스 (OpenRouter 등 API 서비스) |
 | `neuroscience-ai/` | 신경과학×AI (뇌 커넥톰 기반 시뮬레이션·모델 등) |
 | `news-media/` | 뉴스/미디어 API 및 속보 소스 |
 | `observability/` | 로그/메트릭/트레이스 관측성 도구 (Fluentd, OTel Collector 등) |
 | `open-source/` | 오픈소스 프로젝트 실무 (저작권/라이선스 표기, LICENSE 파일, SPDX 헤더 등) |
+| `rag-implementation/` | RAG 실제 구현 설계 (Spring AI·JPA·pgvector, 문서 파서/인제스트 엔드포인트, 하이브리드 검색, 한국어 FTS) |
 | `reinforcement-learning/` | 강화학습(RL)으로 신경망에 게임을 학습시키는 방법, 알고리즘(DQN/PPO 등)과 보상 설계, 실습 도구, 학습용 하드웨어 사양 |
 | `reinforcement-learning/starcraft/` | 스타크래프트 RL 특화 — 봇 학습 난이도/비용, 마이크로 시나리오 자가대국(self-play), 로컬 하드웨어(RTX 4060 등) 학습 가능성 |
 | `os-fundamentals/` | 리눅스/OS 기초 (cgroup, 프로세스, 터미널 입력) |
