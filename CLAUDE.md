@@ -42,6 +42,7 @@
 | `game-ai/starcraft/` | 스타크래프트(브루드워/SC2) 봇 — BWAPI 대회 생태계, 상위 봇 아키텍처, 프로와의 기력 차이, LLM 오케스트레이터·전략 재조립 설계 |
 | `game-ai/human-ai-coop/` | 인간-AI 협동 플레이 — SIMA 2/Duty Support 등 공식 지원, Hanabi/Overcooked 협응 벤치마크, 레이드 AI 동료 설계, 애드온 배포 가능성(게임별 API 정책) |
 | `google-api/` | Google API 종류/활용 |
+| `java/` | Java 언어·JDK 라이브러리 (동시성: AQS, LockSupport 등) |
 | `kafka/` | Kafka 메시징 (컨슈머 동작, 타 메시지 큐 비교) |
 | `kotlin/` | Kotlin 언어/코루틴, 타 언어(Go) 비교 학습 경로 |
 | `kubernetes/` | Kubernetes 아키텍처/개요/Pod 동작(커널 공유·RuntimeClass 격리)/오토스케일링(HPA·VPA·Cluster Autoscaler·Karpenter)/EKS 책임 범위·필요 지식/서비스 메시(Istio) |

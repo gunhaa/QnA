@@ -25,6 +25,7 @@ Claude와 나눈 질문/답변을 주제별 `.md` 파일로 아카이빙하는 �
 | `file-formats/` | 파일 포맷 구조/역사 (전자책 등) |
 | `game-ai/` | 게임 AI·게임플레이 에이전트, 스타크래프트 봇(`starcraft/`), 인간-AI 협동 플레이(`human-ai-coop/`) |
 | `google-api/` | Google API |
+| `java/` | Java 언어·JDK 라이브러리 (AQS·LockSupport 등 동시성) |
 | `kafka/` | Kafka 메시징 |
 | `kotlin/` | Kotlin 언어/코루틴 |
 | `kubernetes/` | Kubernetes 아키텍처, Pod, 오토스케일링, EKS, Istio |
