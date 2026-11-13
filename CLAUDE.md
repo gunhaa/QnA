@@ -32,7 +32,7 @@
 | `database/` | DB 이론/실무 일반 (트리거, pg_bigm 등 Postgres 검색 확장, pgvector vs 전용 Vector DB 비교) |
 | `database/clickhouse/` | ClickHouse 아키텍처(컬럼 지향, MergeTree, 샤딩/복제), append-only 로그 활용, ClickStack(관측성 스택) |
 | `database/mysql-postgresql/` | MySQL·PostgreSQL 락(gap/next-key lock), MVCC, 격리 수준 비교 |
-| `dev-tools/` | 개발 유틸리티/스크립트/CLI 도구 (bash, vim, no-op, git 설정, GitHub CODEOWNERS 등) |
+| `dev-tools/` | 개발 유틸리티/스크립트/CLI 도구 (bash, vim, grep 성능·원리, no-op, git 설정, GitHub CODEOWNERS 등) |
 | `dev-tools/github-trending/` | GitHub 트렌딩/스타 추적 관련 |
 | `distributed-systems/` | 분산 시스템 일반 (복제, 합의, 로그 추상화, 데이터 통합 아키텍처) |
 | `distributed-systems/the-log/` | Jay Kreps "The Log"(2013) 에세이 챕터별 상세 분석 + 2026년 관점 비판 |
