@@ -28,7 +28,7 @@
 | `claude-tools/` | Claude Code 등 클로드 관련 도구의 내부 동작 방식 |
 | `collaboration-tools/` | 협업 도구 API/연동 (Microsoft Teams Graph API, 회의 녹음/트랜스크립트 수집·요약 파이프라인 등) |
 | `collaboration-tools/slack/` | Slack API 개요, Socket Mode vs HTTP(인바운드/아웃바운드), 사내망 이벤트 수신 방법 |
-| `cs-fundamentals/` | 컴퓨터공학 일반 개념·용어 (일급 객체/first-class 등) |
+| `cs-fundamentals/` | 컴퓨터공학 일반 개념·용어 (일급 객체/first-class, IEEE 754 부동소수점 등) |
 | `database/` | DB 이론/실무 일반 (트리거, pg_bigm 등 Postgres 검색 확장, pgvector vs 전용 Vector DB 비교) |
 | `database/clickhouse/` | ClickHouse 아키텍처(컬럼 지향, MergeTree, 샤딩/복제), append-only 로그 활용, ClickStack(관측성 스택) |
 | `database/mysql-postgresql/` | MySQL·PostgreSQL 락(gap/next-key lock), MVCC, 격리 수준 비교 |
