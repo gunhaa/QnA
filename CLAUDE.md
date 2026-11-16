@@ -37,7 +37,7 @@
 | `distributed-systems/` | 분산 시스템 일반 (복제, 합의, 로그 추상화, 데이터 통합 아키텍처) |
 | `distributed-systems/the-log/` | Jay Kreps "The Log"(2013) 에세이 챕터별 상세 분석 + 2026년 관점 비판 |
 | `docker/` | Docker/컨테이너 내부 동작 (커널 공유 등) |
-| `file-formats/` | 파일 포맷 구조/역사 (전자책 포맷 등) |
+| `file-formats/` | 파일 포맷 구조/역사 (전자책 포맷, Markdown 역사·CommonMark/GFM 규격·렌더러별 차이 등) |
 | `game-ai/` | 게임 AI/게임플레이 에이전트 (FSM·Behavior Tree·GOAP·Utility AI와 LLM 하이브리드 아키텍처, NPC 에이전트 오픈소스, 게임 API/비전 기반 에이전트) |
 | `game-ai/starcraft/` | 스타크래프트(브루드워/SC2) 봇 — BWAPI 대회 생태계, 상위 봇 아키텍처, 프로와의 기력 차이, LLM 오케스트레이터·전략 재조립 설계 |
 | `game-ai/human-ai-coop/` | 인간-AI 협동 플레이 — SIMA 2/Duty Support 등 공식 지원, Hanabi/Overcooked 협응 벤치마크, 레이드 AI 동료 설계, 애드온 배포 가능성(게임별 API 정책) |
