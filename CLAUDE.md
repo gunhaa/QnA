@@ -19,7 +19,7 @@
 
 | 폴더 | 다루는 관심사 |
 |---|---|
-| `ai-llm-basics/` | LLM/AI 기초 개념 전반 (파운데이션 모델, 파라미터, VRAM, RAG, 벡터 임베딩, LLM Wiki 패턴, GitBook LLM 지원 기능) |
+| `ai-llm-basics/` | LLM/AI 기초 개념 전반 (파운데이션 모델, 파라미터, VRAM, 양자화(FP8/FP4·GPTQ·AWQ·QAT), RAG, 벡터 임베딩, LLM Wiki 패턴, GitBook LLM 지원 기능) |
 | `ai-llm-basics/llm-architecture/` | LLM 아키텍처를 단계별로 (토크나이저 → 임베딩 → 포지셔널 인코딩 → 어텐션 → FFN/MoE → 정규화 → 출력 샘플링), 하위 `reasoning/`은 추론(CoT, 에이전틱 툴콜) 관련 |
 | `ai-llm-basics/kv-cache/` | KV 캐시 개념·연산·메모리 스케일링 |
 | `ai-llm-basics/structured-output/` | function calling, structured output(JSON) 관련 |
