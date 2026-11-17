@@ -35,6 +35,7 @@ Claude와 나눈 질문/답변을 주제별 `.md` 파일로 아카이빙하는 �
 | `news-media/` | 뉴스/미디어 API |
 | `observability/` | 로깅·모니터링·OTel |
 | `open-source/` | 오픈소스 실무 (라이선스 표기, SPDX 등) |
+| `philosophy/` | 철학 (인식론 — "안다"의 정의, 행동과 앎의 관계) |
 | `os-fundamentals/` | 리눅스/OS 기초, systemd(`systemd/`) |
 | `rag-implementation/` | RAG 구현 설계 (Spring AI·pgvector, 파서, 하이브리드 검색, 임베딩 모델), RAG 평가(`evaluation/`) |
 | `reinforcement-learning/` | 강화학습으로 게임 학습시키기, 스타크래프트 RL(`starcraft/`) |

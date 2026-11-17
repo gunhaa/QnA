@@ -56,6 +56,7 @@
 | `news-media/` | 뉴스/미디어 API 및 속보 소스 |
 | `observability/` | 로그/메트릭/트레이스 관측성 도구 (Fluentd, OTel Collector 등) |
 | `open-source/` | 오픈소스 프로젝트 실무 (저작권/라이선스 표기, LICENSE 파일, SPDX 헤더 등) |
+| `philosophy/` | 철학 일반 (인식론 — "안다"의 정의, JTB·게티어 문제, 인식 논리·분산 시스템·AI에서의 지식 정의, 행동·능력과 앎의 관계(Ryle·중국어 방·이해의 인식론), 1인칭 "내가 안다"의 기준) |
 | `rag-implementation/` | RAG 실제 구현 설계 (Spring AI·JPA·pgvector, 문서 파서/인제스트 엔드포인트, 하이브리드 검색, 한국어 FTS, 오디오/회의 녹음 트랜스크립트 적재, 사내 RAG 데이터 타입별 파서 선택, PDF→Markdown 변환 도구/Java 생태계, 한국어 임베딩 모델 KURE vs 상용 API 비교) |
 | `rag-implementation/evaluation/` | RAG 평가 — 평가 지표·예외 케이스 벤치마크·Ragas/DeepEval 등 도구, 한국어 RAG 벤치마크 데이터셋·목표 점수, LLM 없이 Retrieve만 평가하는 자동화 설계(Allganize 데이터셋 기반 정답셋 구축) |
 | `reinforcement-learning/` | 강화학습(RL)으로 신경망에 게임을 학습시키는 방법, 알고리즘(DQN/PPO 등)과 보상 설계, 실습 도구, 학습용 하드웨어 사양 |
