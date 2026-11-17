@@ -66,6 +66,7 @@
 | `security-crypto/` | 보안/암호 일반 (HMAC 개요, 2FA 검증 아키텍처 등) |
 | `security-crypto/api-key-verification/` | API 키 검증 방식 (해시, HMAC, Vault 연동) |
 | `seo-geo/` | 검색 최적화 (SEO, GEO/AEO — 생성형 AI 검색 인용 최적화) |
+| `tech-careers/` | IT 직무·커리어 (CSE vs FDE 등 고객 대면 엔지니어 직무 비교, 직무의 역사) |
 | `study-methods/` | 학습·스터디 운영 방법 (개발/CS 스터디 진행 방식, 세션 시나리오, 회고) |
 | `software-architecture/` | 소프트웨어 아키텍처 패턴 (DDD 구성요소·핵심 규칙, Kafka 포트-어댑터/Outbox 배치, 헥사고날/포트-어댑터, 클린 아키텍처 등) |
 | `software-testing/` | 소프트웨어 테스트 기법/도구 (부하 테스트 등) |
