@@ -73,6 +73,7 @@
 | `software-testing/` | 소프트웨어 테스트 기법/도구 (부하 테스트 등) |
 | `web-infra/` | 웹 인프라 일반 (SNI, HTTP/2 멀티플렉싱과 HTTP/1.1 공존 등) |
 | `web-infra/nginx/` | Nginx/OpenResty 내부 동작, Lua/njs, LuaJIT |
+| `web-infra/kong/` | Kong API Gateway (역사, Kong vs OpenResty, Consumer 엔티티, gRPC·gRPC-Web·JSON-RPC/MCP 등 RPC 지원, WebSocket·gRPC 스트리밍·SSE·TCP 스트림 등 장시간 연결) |
 
 # 커밋 규칙
 

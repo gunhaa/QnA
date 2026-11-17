@@ -1,6 +1,8 @@
 # Kong의 Consumer 같은 엔티티는 상태머신의 "상태(state)"인가?
 
-> 배경: [`cs-fundamentals/entity-concept.md`](../cs-fundamentals/entity-concept.md)에서 다룬 "Entity(식별자 기반 동일성을 갖는 개체)" 개념을, Kong API Gateway의 `Consumer` 엔티티에 적용해도 되는지 — 그리고 이걸 "상태머신의 상태 정의"로 봐도 되는지에 대한 질문.
+관련 글: [Kong의 역사](history.md) · [Kong의 RPC 지원](kong-rpc-support.md)
+
+> 배경: [`cs-fundamentals/entity-concept.md`](../../cs-fundamentals/entity-concept.md)에서 다룬 "Entity(식별자 기반 동일성을 갖는 개체)" 개념을, Kong API Gateway의 `Consumer` 엔티티에 적용해도 되는지 — 그리고 이걸 "상태머신의 상태 정의"로 봐도 되는지에 대한 질문.
 
 ## 쉬운 설명
 
@@ -24,7 +26,7 @@ Kong Gateway는 `Service`, `Route`, `Consumer`, `Plugin`을 **코어 엔티티(c
 - **DAO(Data Access Object) 계층**을 통해 Postgres·Cassandra 또는 DB-less(선언적 config)에 저장
 - 각각 **UUID 형태의 고유 `id`**를 갖고, `kong.db.consumers`처럼 이름으로 접근
 
-즉 Kong의 "엔티티"는 [지난 문서](../cs-fundamentals/entity-concept.md)에서 다룬 **ORM Entity 관점**과 정확히 같은 결의 개념입니다 — DB 테이블에 매핑되고, 고유 식별자로 CRUD 되는 리소스.
+즉 Kong의 "엔티티"는 [지난 문서](../../cs-fundamentals/entity-concept.md)에서 다룬 **ORM Entity 관점**과 정확히 같은 결의 개념입니다 — DB 테이블에 매핑되고, 고유 식별자로 CRUD 되는 리소스.
 
 ### 2. Consumer 스키마의 실제 필드
 
@@ -53,7 +55,7 @@ Entity와 State는 애초에 답하는 질문이 다릅니다.
 | 생명주기 | 생성 → 여러 속성 변경 → 삭제 (연속적 정체성 유지) | 전이 규칙(transition)에 따라 유한한 값 사이를 이동 |
 | 비유 | 학생증, 계좌, 사용자 | 신호등 색, 주문의 `PENDING/SHIPPED/DELIVERED` |
 
-Kong의 `Consumer`는 왼쪽 열에 정확히 들어맞습니다. **`username`이나 `custom_id`가 바뀌어도 `id`가 같으면 여전히 "같은 Consumer"** 이고, 여기에 API 키·OAuth 토큰·ACL 그룹·rate-limit 설정 같은 것들이 계속 연결되어 있습니다. 이건 상태값의 동작 방식이 아니라 **[지난 문서](../cs-fundamentals/entity-concept.md)에서 정의한 DDD/ORM Entity** 그 자체입니다.
+Kong의 `Consumer`는 왼쪽 열에 정확히 들어맞습니다. **`username`이나 `custom_id`가 바뀌어도 `id`가 같으면 여전히 "같은 Consumer"** 이고, 여기에 API 키·OAuth 토큰·ACL 그룹·rate-limit 설정 같은 것들이 계속 연결되어 있습니다. 이건 상태값의 동작 방식이 아니라 **[지난 문서](../../cs-fundamentals/entity-concept.md)에서 정의한 DDD/ORM Entity** 그 자체입니다.
 
 ### 4. 그럼 "상태"는 Kong에서 어디에 위치하는가
 
@@ -95,7 +97,7 @@ Kong이 `Consumer` 코어 스키마에 `status`를 넣지 않은 것도 같은 �
 
 ## 한 줄 결론
 
-> **Kong의 `Consumer`는 상태머신의 "상태 정의"가 아니라, [지난 문서](../cs-fundamentals/entity-concept.md)에서 다룬 의미 그대로 "식별자(`id`)로 동일성이 유지되는 도메인 Entity"입니다.** 실제 Kong 코어 스키마에도 `status` 필드가 없습니다. 상태머신 개념을 대응시키고 싶다면 Consumer 자체가 아니라, **Consumer(혹은 Kong Enterprise의 Developer)가 가질 수 있는 `status` 같은 개별 속성**에 대응시켜야 정확합니다 — Entity는 "무엇이 존재하는가"에 답하고, State는 "그것이 지금 어느 국면인가"에 답합니다.
+> **Kong의 `Consumer`는 상태머신의 "상태 정의"가 아니라, [지난 문서](../../cs-fundamentals/entity-concept.md)에서 다룬 의미 그대로 "식별자(`id`)로 동일성이 유지되는 도메인 Entity"입니다.** 실제 Kong 코어 스키마에도 `status` 필드가 없습니다. 상태머신 개념을 대응시키고 싶다면 Consumer 자체가 아니라, **Consumer(혹은 Kong Enterprise의 Developer)가 가질 수 있는 `status` 같은 개별 속성**에 대응시켜야 정확합니다 — Entity는 "무엇이 존재하는가"에 답하고, State는 "그것이 지금 어느 국면인가"에 답합니다.
 
 ---
 
@@ -112,4 +114,4 @@ Kong이 `Consumer` 코어 스키마에 `status`를 넣지 않은 것도 같은 �
 
 ## 관련 문서
 
-- [`cs-fundamentals/entity-concept.md`](../cs-fundamentals/entity-concept.md) — Entity 개념의 정의와 Value Object/DTO와의 구분
+- [`cs-fundamentals/entity-concept.md`](../../cs-fundamentals/entity-concept.md) — Entity 개념의 정의와 Value Object/DTO와의 구분
