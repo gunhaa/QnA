@@ -155,6 +155,11 @@ spec:
 - EKS/GKE의 일반 Node는 그 자체가 **클라우드 VM**이다. 즉 "VM(Node) 하나 안에서 여러 Pod이 커널을 공유"하는 구조.
 - AWS Fargate처럼 Pod마다 Firecracker microVM을 띄우는 서비스는 사실상 Pod별 커널이다. GKE Sandbox는 gVisor 기반이다.
 
+## 관련 문서
+
+- [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
+- [Kubernetes 트레이드오프와 선택 기준](../../knowledge/infra/0001-kubernetes/03-tradeoffs.md)
+
 Sources:
 - [Pods | Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/)
 - [cgroups and Namespaces — The Linux Kernel's Building Blocks Behind Containers | DEV Community](https://dev.to/kobbyprincee/cgroups-and-namespaces-the-fundamental-building-blocks-of-linux-containers-and-orchestration-53e3)

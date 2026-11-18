@@ -73,6 +73,10 @@ k8s는 Pod를 띄우고 Service로 묶어 주지만, **서비스 간 통신의 "
 - **과한 경우**: 서비스 몇 개 수준, 팀에 운영 역량 부족 → Ingress + 앱 라이브러리로 충분
 - **대안**: Linkerd(가볍고 단순, Rust 프록시), Cilium Service Mesh(eBPF 기반), AWS는 App Mesh가 단종되어 EKS에선 Istio/VPC Lattice 등을 사용
 
+## 관련 문서
+
+- [Kubernetes 트레이드오프와 선택 기준](../../knowledge/infra/0001-kubernetes/03-tradeoffs.md)
+
 **출처**
 - [Istio 1.29.x Releases | istio.io](https://istio.io/latest/news/releases/1.29.x/)
 - [Support for Istio 1.29 ends on Oct 12, 2026 | istio.io](https://istio.io/latest/news/support/announcing-1.29-eol)

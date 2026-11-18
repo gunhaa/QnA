@@ -87,3 +87,4 @@ model: claude-sonnet-5
 
 - [`inquiry/infra/0020-kubernetes-ingress-load-balancing.md`](./0020-kubernetes-ingress-load-balancing.md) — 반대 방향인 인바운드(ingress) 트래픽 처리 방식
 - [`inquiry/infra/0021-kubernetes-service-loadbalancer-gslb.md`](./0021-kubernetes-service-loadbalancer-gslb.md) — Service/LoadBalancer 타입의 외부 노출 방식
+- [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)

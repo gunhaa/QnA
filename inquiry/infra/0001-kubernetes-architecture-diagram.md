@@ -187,6 +187,11 @@ Kubernetes 클러스터는 **Control Plane**과 **Node(Data Plane)**로 나뉜�
 - **CoreDNS**는 `<service>.<namespace>.svc.cluster.local` 형태의 이름을 Service의 ClusterIP로 변환해주는 클러스터 내부 DNS 서버로, 대부분의 배포판에서 기본 애드온으로 설치된다.
 - **Ingress Controller**(nginx-ingress, Traefik 등)는 클러스터 외부에서 들어오는 HTTP(S) 트래픽을 도메인/경로 규칙에 따라 여러 Service로 라우팅하는 L7 계층의 단일 진입점 역할을 한다. 트래픽이 많아지고 서비스 간 통신에 대한 세밀한 제어(재시도, mTLS, 서킷브레이커)가 필요해지면 Istio, Linkerd 같은 **서비스 메시(Service Mesh)** 를 사이드카 형태로 추가하기도 한다.
 
+## 관련 문서
+
+- [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
+- [Kubernetes 장애 유형과 복구](../../knowledge/infra/0001-kubernetes/05-failures.md)
+
 Sources:
 - [Cluster Architecture | Kubernetes](https://kubernetes.io/docs/concepts/architecture/)
 - [Communication between Nodes and the Control Plane | Kubernetes](https://kubernetes.io/docs/concepts/architecture/control-plane-node-communication/)

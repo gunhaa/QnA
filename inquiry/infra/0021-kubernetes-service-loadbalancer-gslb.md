@@ -76,6 +76,11 @@ Pod
 
 참고로 최근에는 kube-proxy 자체를 iptables/IPVS 대신 **Cilium 같은 eBPF 기반 kube-proxy replacement**로 대체해 노드 내 L4 분배 성능을 높이는 추세이며, 클러스터 간 트래픽 공유/페일오버는 Istio의 locality-aware load balancing이나 Kubernetes Multi-Cluster Services(MCS) API로 처리하는 경우도 늘고 있습니다. 다만 이들도 "최초 진입점 선택"이라는 GSLB의 역할을 대체하는 것은 아니며, 보통 GSLB/Anycast와 함께 조합해서 사용합니다.
 
+## 관련 문서
+
+- [Kubernetes 트레이드오프와 선택 기준](../../knowledge/infra/0001-kubernetes/03-tradeoffs.md)
+- [Kubernetes 장애 유형과 복구](../../knowledge/infra/0001-kubernetes/05-failures.md)
+
 ---
 
 **Sources:**

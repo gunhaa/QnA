@@ -148,6 +148,11 @@ flowchart LR
 
 apiserver가 watch를 포함한 여러 요청을 TCP 연결 1개 위에서 어떻게 동시에 처리하는지(Stream ID, 프레임 인터리빙, 이벤트 기반 디먹서 구조)는 Kubernetes에 국한된 내용이 아니라 HTTP/2 자체의 일반 동작 원리라서 [[http2-multiplexing-and-http1-coexistence|별도 문서]]로 분리했다. 거기서 브라우저가 아직도 HTTP/1.1을 지원하는 이유까지 함께 다룬다.
 
+## 관련 문서
+
+- [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
+- [Kubernetes 장애 유형과 복구](../../knowledge/infra/0001-kubernetes/05-failures.md)
+
 Sources:
 - [Leases | Kubernetes](https://kubernetes.io/docs/concepts/architecture/leases/)
 - [How to Use the Kubernetes Watch API with HTTP Streaming](https://oneuptime.com/blog/post/2026-02-09-kubernetes-watch-api-http-streaming/view)

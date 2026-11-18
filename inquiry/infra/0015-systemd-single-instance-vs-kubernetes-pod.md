@@ -70,6 +70,11 @@ model: claude-sonnet-5
 
 **한 문장 요약**: systemd 단일 유닛은 "한 대의 서버 안에서 프로세스를 감독하는 것"이고, 쿠버네티스 Pod은 "격리된 컨테이너 + 여러 대의 서버에 걸친 자동 복구·확장까지 포함하는 것"이라, Pod이 systemd의 상위 호환이 아니라 **아예 다른 층(계층)에서 동작하는 개념**이에요.
 
+## 관련 문서
+
+- [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
+- [Kubernetes 트레이드오프와 선택 기준](../../knowledge/infra/0001-kubernetes/03-tradeoffs.md)
+
 ## Sources
 - [Spin Infrastructure Adventures: Containers, Systemd, and CGroups - Shopify](https://shopify.engineering/spin-infrastructure-adventures-containers-systemd-cgroups)
 - [8 cgroups and systemd slices: Coevolved process management · Core Kubernetes](https://livebook.manning.com/book/core-kubernetes/chapter-8/v-2)

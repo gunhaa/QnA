@@ -153,6 +153,11 @@ Ingress Controller가 단일 병목이 되지 않는 이유는 (1) 앞단에 클
 - **레플리카(아래 칸)**: 실제로 인증/라우팅/TLS 종료를 수행하는 일꾼. 몇 명을 둘지는 LB가 아니라 `Deployment.spec.replicas`(또는 HPA)로 정해진다.
 - 두 층은 독립적으로 존재해야 의미가 있다. LB만 있고 레플리카가 1개면 "분배"라는 행위 자체가 무의미해지고, 레플리카가 여러 개여도 LB가 없으면 트래픽을 그 여러 개에 나눠 보낼 방법이 없다.
 
+## 관련 문서
+
+- [Kubernetes 트레이드오프와 선택 기준](../../knowledge/infra/0001-kubernetes/03-tradeoffs.md)
+- [Kubernetes 운영 시 자주 겪는 문제](../../knowledge/infra/0001-kubernetes/04-pitfalls.md)
+
 ---
 
 Sources:

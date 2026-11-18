@@ -39,6 +39,11 @@ model: unknown
 ## 한 줄 정리
 Kubernetes = "컨테이너들을 어디에, 몇 개나, 얼마나 튼튼하게 돌릴지"를 사람 대신 자동으로 관리해주는 **컨테이너 오케스트레이션(Container Orchestration)** 플랫폼.
 
+## 관련 문서
+
+- [Kubernetes의 역사](../../knowledge/infra/0001-kubernetes/01-history.md)
+- [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
+
 **출처**
 - [쿠버네티스 아키텍처 완전 정복 | CNCF Korea Community](https://www.cncf.co.kr/cloud-native/k8s-architecture/)
 - [쿠버네티스란 무엇인가요? | IBM](https://www.ibm.com/kr-ko/topics/kubernetes)

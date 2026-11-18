@@ -53,6 +53,11 @@ YAML 적용까지 자동화하고 싶다면 EKS 외에 별도 도구를 쓴다.
 - **EKS** = 그 엔진(컨트롤 플레인)을 AWS가 대신 운영해 주는 관리형 서비스 (+ Auto Mode면 노드·애드온까지)
 - **YAML 작성·apply** = 여전히 사용자 몫 (자동화하려면 GitOps/CI/CD)
 
+## 관련 문서
+
+- [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
+- [Kubernetes 트레이드오프와 선택 기준](../../knowledge/infra/0001-kubernetes/03-tradeoffs.md)
+
 **출처**
 - [What is Amazon EKS? | AWS 문서](https://docs.aws.eu/eks/latest/userguide/what-is-eks.html)
 - [Automate cluster infrastructure with EKS Auto Mode | AWS 문서](https://docs.aws.amazon.com/eks/latest/userguide/automode.html)

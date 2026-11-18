@@ -81,6 +81,10 @@ EKS는 **자동차 엔진룸(컨트롤 플레인)을 정비소(AWS)가 관리해
 - 학습 순서 추천: K8s 기본 오브젝트·디버깅 → EKS의 IAM/VPC CNI/LB Controller → (Standard라면) Karpenter·애드온 업그레이드.
 - 컨트롤 플레인 내부 구조(etcd, scheduler 동작)는 운영할 필요는 없어도 **장애 원인을 이해하려면 개념 수준으로는 알아 두는 것**이 좋다.
 
+## 관련 문서
+
+- [Kubernetes 트레이드오프와 선택 기준](../../knowledge/infra/0001-kubernetes/03-tradeoffs.md)
+
 ## 출처
 
 - [Automate cluster infrastructure with EKS Auto Mode (AWS Docs)](https://docs.aws.eu/eks/latest/userguide/automode.html)

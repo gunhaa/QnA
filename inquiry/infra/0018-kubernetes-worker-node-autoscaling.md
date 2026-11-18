@@ -68,6 +68,11 @@ sequenceDiagram
 | 속도 | 노드 하나 뜨는 데 보통 3~4분 | 45~90초 수준으로 빠름 |
 | 축소(Consolidation) | 저활용 노드 제거 위주 | 저활용 노드를 적극적으로 재배치·통합해 활용률 최적화 |
 
+## 관련 문서
+
+- [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
+- [Kubernetes 운영 시 자주 겪는 문제](../../knowledge/infra/0001-kubernetes/04-pitfalls.md)
+
 Sources:
 - [Kubernetes Cluster Autoscaler vs Karpenter: When to Use Each (2026) | DEV Community](https://dev.to/alexandrev/kubernetes-cluster-autoscaler-vs-karpenter-when-to-use-each-2026-1dgc)
 - [Karpenter vs. Cluster Autoscaler | Spacelift](https://spacelift.io/blog/karpenter-vs-cluster-autoscaler)

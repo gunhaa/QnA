@@ -59,6 +59,11 @@ User Namespace가 GA가 됐어도, **"커널을 공유한다"는 사실 자체�
 | 2026 신규 옵션 | - | `hostUsers: false`로 User Namespace 격리 강화 (v1.36 GA) |
 | 근본 한계 | host 커널 취약점에 영향받음 | 동일 (User Namespace로도 커널 취약점 자체는 못 막음) |
 
+## 관련 문서
+
+- [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
+- [Kubernetes 트레이드오프와 선택 기준](../../knowledge/infra/0001-kubernetes/03-tradeoffs.md)
+
 ## Sources
 - [Pods | Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/)
 - [Kubernetes v1.36: User Namespaces in Kubernetes are finally GA | Kubernetes](https://kubernetes.io/blog/2026/04/23/kubernetes-v1-36-userns-ga/)

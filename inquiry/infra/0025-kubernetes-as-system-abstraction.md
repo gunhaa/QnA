@@ -49,6 +49,11 @@ model: claude-opus-5-5
 - ❌ "k8s는 시스템의 추상화다." → 모호, 감점 소지
 - ✅ "k8s는 여러 노드의 인프라를 Pod·Service 같은 **선언적 API 객체로 추상화**하고, **컨트롤러의 조정 루프**로 원하는 상태를 지속 유지하는 **컨테이너 오케스트레이션 플랫폼**이다."
 
+## 관련 문서
+
+- [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
+- [Kubernetes 트레이드오프와 선택 기준](../../knowledge/infra/0001-kubernetes/03-tradeoffs.md)
+
 **출처**
 - [Overview | Kubernetes 공식 문서](https://kubernetes.io/docs/concepts/overview/)
 - [Kubernetes-Native Abstractions Explained | Gravitee](https://www.gravitee.io/k8s-abstractions.html)
