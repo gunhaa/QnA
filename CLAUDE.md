@@ -2,93 +2,125 @@
 
 - 사용자의 질문에는 반드시 웹 검색으로 최신 정보를 확인한 뒤 답변한다.
 - 말투는 간결하게 작성한다.
-- 답변 문서는 두 섹션으로 구성한다.
-  1. **쉬운 설명**: 문서 맨 앞에 5살 아이에게 설명하듯 쉬운 비유로 핵심만 짧게 요약하는 섹션을 하나 둔다. 이 섹션은 권장 사항이며 분량을 최대한 채우라는 뜻이 아니다 — 비유로 핵심이 전달되면 한두 문장으로 끝내도 된다.
-  2. **일반 설명**: 그 다음 이어지는 본문에서 관련 전문 용어를 포함해 기술적으로 자세히 설명한다.
-- **새 폴더(주제 폴더 또는 하위 폴더)를 만들 때**는 질문 답변 파일과 별도로 그 폴더에 **`history.md`** 를 만들어 해당 분야·기술의 역사(등장 배경 → 주요 변천 → 현재 상태)를 정리한다. 왜 생겼고 어떤 문제를 풀려 했는지를 알면 이후 세부 개념과 현재의 차이(표준·변형·관행)가 훨씬 쉽게 이해되기 때문이다.
-  - 적용 시점: ① 새 주제 폴더를 만드는 첫 질문 (예: `kafka/history.md`), ② 같은 기술명 문서가 3개 이상 쌓여 하위 폴더로 묶을 때 (예: `web-infra/nginx/history.md`).
-  - 파일명은 폴더와 상관없이 항상 `history.md`로 고정한다. 구성은 다른 답변과 같이 쉬운 설명 → 일반 설명을 따른다.
-  - 같은 폴더의 답변 문서는 `history.md`를 관련 문서로 링크한다.
-  - 기존 폴더에는 소급 적용하지 않는다.
-- **솔루션(특정 기술·제품 — 예: Redis, MySQL, Kafka, Nginx) 자체를 전반적으로 물어보면** 그 솔루션 이름의 하위 폴더(예: `database/redis/`)에 아래 **4개 문서로 나누어** 작성한다. 이 경우 "3개 이상 쌓이면 하위 폴더" 규칙을 기다리지 않고 바로 폴더를 만든다.
-  1. `history.md` — 등장 배경과 풀려던 문제 → 주요 버전·변천 → 현재 상태(최신 버전, 라이선스, 포크·경쟁 제품)
-  2. `<솔루션>-overview-and-basic-usage.md` — 무엇을 해결하는지, 아키텍처 핵심, 기본 사용법(설치·예제 코드), 언제 쓰지 말아야 하는지
-  3. `<솔루션>-common-problems-and-solutions.md` — 개발·운영 중 자주 겪는 문제(성능, 설정 함정, 보안 등)와 진단·해결 방법
-  4. `<솔루션>-failure-and-high-availability.md` — 장애 유형(노드·네트워크 분리·데이터 유실·스플릿 브레인·운영 실수)과 복구, 복제·자동 장애 조치·백업/DR 등 고가용성 구성
-  - 네 문서 모두 쉬운 설명 → 일반 설명 구성을 따르고, 서로를 관련 문서로 링크한다. 같은 내용은 한 문서에서만 자세히 쓰고 나머지는 링크한다.
-  - 솔루션 안의 큰 하위 주제(예: Java의 락 → `java/lock/`)도 같은 4문서 구성을 적용할 수 있다. 하위 주제에서는 4번 문서를 그 주제에 맞게 해석한다 (예: 락 → 데드락 탐지·복구와 다중 인스턴스 환경의 분산 락).
-  - 솔루션의 특정 세부 질문(예: "MySQL gap lock은 언제 걸리나")은 기존처럼 단일 답변 파일로 작성한다.
-  - 기존 솔루션 폴더에는 사용자가 요청할 때만 적용한다.
 - 모든 답변은 `.md` 파일로 생성한다.
-- 답변은 **관심사(주제)별 폴더**에 저장한다. 저장소 루트에 주제 폴더(예: `ai-llm-basics/`, `web-infra/`, `kubernetes/`, `claude-tools/`, `llm-services/`)를 두고, 질문 주제와 일치하는 폴더가 있으면 그 안에, 없으면 새 주제 폴더를 만들어 저장한다.
-- 파일명은 질문 내용을 요약한 kebab-case로 짓는다 (예: `kubernetes/kubernetes-overview.md`).
-- 같은 주제 폴더 안에서 **세부적으로 동일하거나 유사한 질문(같은 소주제)이 3개 이상** 쌓이면, 해당 소주제를 위한 하위 폴더를 새로 만들고 관련 파일들을 그 안으로 옮긴다 (예: `kubernetes/pod/`, `kubernetes/service/`). 이후 같은 소주제의 새 답변도 그 하위 폴더에 저장한다.
-  - 판단 기준은 **동일한 기술/제품명(예: nginx, kafka, kubernetes)을 핵심 주제로 다루는지**로 잡는다 — 굳이 질문이 연속되거나 서로 참조할 필요는 없고, 같은 기술명이 제목/핵심 내용에 등장하는 답변이 3개 이상이면 그 기술명으로 하위 폴더를 만들어 묶는다 (예: `web-infra/nginx/`).
-  - 단, 하위 폴더 이름이 상위 주제 폴더보다 더 넓거나 거의 같아져서 구분 의미가 없어지는 경우는 만들지 않는다 (예: `web-infra/web/`처럼 지나치게 포괄적인 이름은 지양). 애매하면 파일 제목에 실제로 반복 등장하는 기술명을 폴더명으로 쓴다.
-- 새 주제 폴더(또는 하위 폴더)를 만들거나 기존 폴더의 성격이 바뀌면, 아래 **폴더 맵**에도 한 줄로 반영해서 최신 상태로 유지한다.
 
-# 폴더 맵 (관심사별 분류)
+# 문서 유형
 
-> 새 질문의 주제를 어느 폴더에 저장할지 판단할 때 참고한다. `nginx/`는 문서 폴더가 아니라 로컬 nginx 설정 파일(`nginx.conf` 등)이 있는 별도 디렉터리이므로 답변 저장 대상에서 제외한다.
+모든 답변 문서는 네 유형 중 하나이고, 같은 이름의 루트 폴더에 둔다. 파일명은 그 폴더 안에서 하나뿐인 4자리 ID를 앞에 붙여 `<ID>-<이름>.md`로 짓는다 (구조·번호 규칙은 [ARCHITECTURE.md](./ARCHITECTURE.md)). 아래 순서로 판정한다.
 
-| 폴더 | 다루는 관심사 |
+1. 저작물(논문·에세이·책·발표) 자체를 장 구조로 분석하는가? → **source**
+2. 대상의 5문서 세트(`01-history` ~ `05-failures`)의 하나인가? → **knowledge**
+3. 목록·수치·가격·현황·개별 사실이 중심인가? → **factual**
+4. 그 외 — 개념 설명, 비교·판단, 원인 분석, 오해 교정, 설계 검토, 방법 → **inquiry**
+
+질문 형식이 아니라 **본문의 중심**으로 판정한다. knowledge는 내용이 아니라 **구조**로 판정한다 — 개념 하나를 독립적으로 설명한 문서도 5문서 세트가 아니면 inquiry다.
+
+| | inquiry | factual | knowledge | source |
+|---|---|---|---|---|
+| 정의 | 질문 단위 문서 (개념 설명·비교·판단·분석) | 목록·수치·버전·가격·현황·개별 사실 | 대상 하나의 5문서 세트 | 저작물 자체의 정독·분석 |
+| 예 | "MVCC란", "Kafka vs RabbitMQ", "MySQL gap lock은 언제 걸리나" | 속보 뉴스 API 목록, NGINX Plus 비용 | Redis, Java 락 | Jay Kreps "The Log" |
+| 수명 | 중간 | 짧다 (바뀌면 틀린 정보가 된다) | 길다 | 길다 |
+| 관리 | 쌓기만 한다 | 주기적으로 재확인한다 | 세트를 완성·갱신한다 | 원전 목록과 함께 갱신한다 |
+| 구성 | **쉬운 설명** → **일반 설명** | **한 줄 결론** → 표·목록 → 출처 | 5문서, 각 문서는 **쉬운 설명** → **일반 설명** | `01-overview` → 장별 분석 → 비판 |
+
+- 모든 문서는 맨 앞에 짧은 요약 섹션을 둔다. 목적은 같다 — 독자가 첫 10초 안에 이 문서에서 무엇을 얻는지 알게 하는 것.
+  - **`## 쉬운 설명`** (inquiry·knowledge·source): 5살 아이에게 설명하듯 쉬운 비유로 핵심을 1~3문장으로 요약한다. **그 문서가 답하는 질문 하나에만** 집중한다. 이어서 `## 일반 설명`에서 전문 용어를 포함해 기술적으로 자세히 설명한다.
+  - **`## 한 줄 결론`** (factual): 질문에 대한 답 자체를 1~3줄로 먼저 준다. 비유는 쓰지 않는다. 이어서 표·목록 중심 본문, 마지막에 출처.
+- 한 질문에 여러 유형이 섞이면 주된 목적으로 유형을 정하고, 다른 쪽은 별도 문서로 나눠 링크한다. 한 문서에 섞지 않는다.
+- inquiry에서 관련 knowledge 세트가 있으면 링크한다.
+
+## frontmatter
+
+문서 맨 위에 YAML frontmatter를 둔다.
+
+```yaml
+---
+type: inquiry            # inquiry | factual | knowledge | source (루트 폴더와 같다)
+created: 2026-11-18      # 처음 만든 날짜. 기존 문서는 그 파일이 처음 커밋된 날짜
+author: agent            # agent | human
+model: claude-opus-5-5   # author: agent일 때만. 모르면 unknown
+---
+```
+
+- `author`: 문서를 처음 작성한 주체. 에이전트가 쓰면 `agent`, 사람이 직접 쓰면 `human`.
+- `model`: 처음 작성한 모델의 API 모델 ID (예: `claude-opus-5-5`, `claude-sonnet-5`). 컨텍스트 창 옵션("1M context")은 넣지 않는다. 나중에 다른 모델이 고쳐도 바꾸지 않는다. 기존 문서는 첫 커밋의 `Co-Authored-By` 트레일러로 정하고, 트레일러가 없으면 `unknown`.
+- `source` 문서는 아래 [원전 분석](#원전-분석-source)의 `source`, `linked` 필드를 더한다.
+
+## 승격 규칙 (inquiry → knowledge)
+
+- 같은 개념·솔루션을 핵심으로 다루는 inquiry가 **3개 이상** 쌓이면 그 대상의 5문서 세트를 만들 시점이다.
+- 승격은 작업량이 크므로 **조건이 충족됐음을 사용자에게 알리고 확인을 받은 뒤** 작성한다.
+- 승격 후 기존 inquiry는 옮기지 않고, 각 inquiry에서 새 knowledge 세트를 관련 문서로 링크한다.
+
+# knowledge 5문서 구성
+
+솔루션(기술·제품)이나 큰 개념(방법, 이론, 제도) **자체를 전반적으로** 물어보면 `knowledge/<대주제>/<ID>-<대상>/`에 아래 **5개 문서를 모두** 작성한다. 하나라도 빠지면 knowledge가 아니다. 순서는 역사 → 개요 → 트레이드오프 → 실패 학습 구조를 따른다 (근거: `inquiry/study-and-career/`의 "역사 → 개요 → 트레이드오프 → 실패 학습 구조의 근거 방법론" 문서).
+
+1. `01-history.md` — 등장 배경과 풀려던 문제 → 주요 버전·변천 → 현재 상태(최신 버전, 라이선스, 포크·경쟁 대상)
+2. `02-overview.md` — 무엇을 해결하나, 어떻게 동작하나(구조), 기본 사용법·대표 예
+3. `03-tradeoffs.md` — 핵심 설계 선택에서 얻은 것과 포기한 것, 대안 비교, 주요 선택지(설정·구성, 고가용성 구성 등), 쓰지 말아야 할 때, 선택 체크리스트
+4. `04-pitfalls.md` — **사람이 잘못 쓰는 것**(원인이 사용자): 흔한 실수(성능, 설정 함정, 보안, 오해 등)와 진단·해결
+5. `05-failures.md` — **대상이 깨지는 것**(원인이 대상): 시스템이면 장애 유형(노드·네트워크 분리·데이터 유실·스플릿 브레인·운영 실수)과 복구·고가용성 동작·백업/DR, 이론이면 반례와 한계
+- 파일명은 위 이름으로 고정한다. 대상 이름은 폴더가 말해 주므로 파일명에 넣지 않는다.
+- 해당 없는 단계도 **파일은 만들고** "해당 없음 — 이유" 한 줄을 남긴다.
+- 문서 경계: 개요는 **"어떻게 동작하나"**, 트레이드오프는 **"왜 그렇게 만들었고 대가는 무엇인가, 언제 고르나"**(고르기 전에 읽는 문서), 4·5번은 **"고른 뒤 무엇이 깨지고 어떻게 대응하나"**(운영 중에 읽는 문서)를 다룬다. 트레이드오프는 일반론 대신 수치·사례로 쓴다.
+- 각 문서의 쉬운 설명은 그 단계의 질문에만 답한다 — history: 왜 생겼나 / overview: 어떻게 동작하나 / tradeoffs: 무엇을 포기했나 / pitfalls: 사람들이 어떻게 잘못 쓰나 / failures: 어디서 깨지나. 같은 비유를 다섯 번 반복하지 않는다.
+- 다섯 문서는 서로를 관련 문서로 링크한다. 같은 내용은 한 문서에서만 자세히 쓰고 나머지는 링크한다.
+- 평가 단계(스스로 확인 질문)는 문서에 넣지 않는다. 사용자가 직접 만든다.
+- 대상 안의 큰 하위 주제는 별도 대상으로 세트를 만든다 (예: `knowledge/languages/<ID>-java-lock/`).
+- 대상의 세부 질문(예: "MySQL gap lock은 언제 걸리나")은 `inquiry/<대주제>/<ID>-<이름>.md` 단일 문서로 작성하고, 세트를 링크한다.
+
+# 원전 분석 (`source/`)
+
+특정 저작물(논문·에세이·책·발표) **자체**를 정독·분석하는 문서는 `source/<대주제>/<ID>-<제목>-<저자성>-<연도>/`에 둔다 (예: `source/distributed-systems/0001-the-log-kreps-2013/`).
+
+- 판정: 문서의 대상이 저작물 자체(장 구조를 따라 읽기, 주장 평가)이면 source. 답변 중에 논문을 인용만 하는 문서는 inquiry다.
+- 구성: `01-overview.md`(원전 정보·쓰인 맥락·읽는 법) → `02-`부터 장·절 순서의 분석 → 마지막에 비판·현재 관점.
+- frontmatter에 두 필드를 더한다. 이 두 필드는 source 문서에만 쓴다.
+  ```yaml
+  ---
+  type: source
+  created: 2026-09-15
+  author: agent
+  model: claude-opus-5
+  source: "Jay Kreps, The Log: What every software engineer should know about real-time data's unifying abstraction (2013)"
+  linked:            # 저장소 루트 기준 경로 (번호는 예시)
+    - inquiry/distributed-systems/0010-kafka-overview.md
+    - inquiry/distributed-systems/0011-high-availability-replication-vs-cluster-and-patterns.md
+  ---
+  ```
+  - `source`: 원전의 서지 정보(저자, 제목, 연도).
+  - `linked`: 저장소 안의 연관 문서. **관계는 원전 쪽에만 기록한다** — 다른 문서는 원전을 링크하지 않는다. 저작물 전체의 `linked`는 `01-overview.md`에 두고, 장별 문서는 특정 장과 강하게 연결될 때만 자체 `linked`를 둔다.
+  - GitHub에서 frontmatter 경로는 클릭되지 않으므로, `01-overview.md` 본문 끝 `## 관련 문서`에 같은 목록을 링크로 옮겨 적는다 (frontmatter가 기준).
+- 원전 목록: 루트 `README.md`의 `## 원전 목록`에 "원전 → 위치 → linked 문서" 표를 둔다. 원전을 추가하거나 `linked`를 바꾸면 함께 갱신한다.
+
+# 폴더 규칙
+
+폴더 구조와 나누는 기준(유형 폴더 → 대주제, 묶음 폴더, 4자리 ID와 2자리 순서 번호)은 [`ARCHITECTURE.md`](./ARCHITECTURE.md)가 원문이다. 아래 줄로 불러온다.
+
+@ARCHITECTURE.md
+
+# 대주제 맵
+
+> 새 문서를 어느 대주제에 둘지 판단할 때 참고한다. 네 유형 폴더 모두 같은 대주제 이름을 쓴다. 루트의 `nginx/`는 로컬 nginx 설정 파일 디렉터리이므로 답변 저장 대상에서 제외한다.
+
+| 대주제 | 다루는 관심사 |
 |---|---|
-| `ai-llm-basics/` | LLM/AI 기초 개념 전반 (파운데이션 모델, 파라미터, VRAM, 양자화(FP8/FP4·GPTQ·AWQ·QAT), RAG, 벡터 임베딩, LLM Wiki 패턴, GitBook LLM 지원 기능) |
-| `ai-llm-basics/llm-architecture/` | LLM 아키텍처를 단계별로 (토크나이저 → 임베딩 → 포지셔널 인코딩 → 어텐션 → FFN/MoE → 정규화 → 출력 샘플링), 하위 `reasoning/`은 추론(CoT, 에이전틱 툴콜) 관련 |
-| `ai-llm-basics/kv-cache/` | KV 캐시 개념·연산·메모리 스케일링 |
-| `ai-llm-basics/structured-output/` | function calling, structured output(JSON) 관련 |
-| `algorithms/` | 범용 알고리즘 (유전 알고리즘 등) |
-| `aws-cloud/` | AWS/클라우드 서비스 (KMS 등) |
-| `claude-tools/` | Claude Code 등 클로드 관련 도구의 내부 동작 방식 |
-| `collaboration-tools/` | 협업 도구 API/연동 (Microsoft Teams Graph API, 회의 녹음/트랜스크립트 수집·요약 파이프라인 등) |
-| `collaboration-tools/slack/` | Slack API 개요, Socket Mode vs HTTP(인바운드/아웃바운드), 사내망 이벤트 수신 방법 |
-| `cs-fundamentals/` | 컴퓨터공학 일반 개념·용어 (일급 객체/first-class, IEEE 754 부동소수점 등) |
-| `database/` | DB 이론/실무 일반 (트리거, pg_bigm 등 Postgres 검색 확장, pgvector vs 전용 Vector DB 비교) |
-| `database/clickhouse/` | ClickHouse 아키텍처(컬럼 지향, MergeTree, 샤딩/복제), append-only 로그 활용, ClickStack(관측성 스택) |
-| `database/mysql/` | MySQL 솔루션 4문서 (역사, 개요·기본 사용법, 자주 겪는 문제와 해결, 장애·고가용성 — 복제·InnoDB Cluster·백업/PITR) |
-| `database/mysql-postgresql/` | MySQL·PostgreSQL 락(gap/next-key lock), MVCC, 격리 수준 비교 |
-| `database/redis/` | Redis 솔루션 4문서 (역사·라이선스 변경·Valkey 포크, 개요·기본 사용법, 캐시 장애 패턴 등 자주 겪는 문제, 장애·고가용성 — 복제·Sentinel·Cluster) |
-| `dev-tools/` | 개발 유틸리티/스크립트/CLI 도구 (bash, vim, grep 성능·원리, no-op, git 설정, GitHub CODEOWNERS·Pages 등) |
-| `dev-tools/github-trending/` | GitHub 트렌딩/스타 추적 관련 |
-| `distributed-systems/` | 분산 시스템 일반 (복제, 합의, 로그 추상화, 데이터 통합 아키텍처, 고가용성 구성 방식 — replica vs cluster·공유 스토리지·쿼럼·DR 전략) |
-| `distributed-systems/the-log/` | Jay Kreps "The Log"(2013) 에세이 챕터별 상세 분석 + 2026년 관점 비판 |
-| `docker/` | Docker/컨테이너 내부 동작 (커널 공유 등) |
-| `file-formats/` | 파일 포맷 구조/역사 (전자책 포맷, Markdown 역사·CommonMark/GFM 규격·렌더러별 차이 등) |
-| `game-ai/` | 게임 AI/게임플레이 에이전트 (FSM·Behavior Tree·GOAP·Utility AI와 LLM 하이브리드 아키텍처, NPC 에이전트 오픈소스, 게임 API/비전 기반 에이전트) |
-| `game-ai/starcraft/` | 스타크래프트(브루드워/SC2) 봇 — BWAPI 대회 생태계, 상위 봇 아키텍처, 프로와의 기력 차이, LLM 오케스트레이터·전략 재조립 설계 |
-| `game-ai/human-ai-coop/` | 인간-AI 협동 플레이 — SIMA 2/Duty Support 등 공식 지원, Hanabi/Overcooked 협응 벤치마크, 레이드 AI 동료 설계, 애드온 배포 가능성(게임별 API 정책) |
-| `google-api/` | Google API 종류/활용 |
-| `java/` | Java 솔루션 4문서 (역사, 개요·기본 사용법, 자주 겪는 문제와 해결, 장애·고가용성 — OOM·덤프·헬스 체크·graceful shutdown), Lombok 등 Java 생태계 도구 |
-| `java/lock/` | Java 락 4문서 (역사 — 모니터·JSR-166·biased/lightweight locking·JEP 491, 개요·기본 사용법, 자주 겪는 문제, 장애·다중 인스턴스 — 데드락 탐지·분산 락) + AQS·LockSupport 세부 |
-| `kafka/` | Kafka 메시징 (컨슈머 동작, 타 메시지 큐 비교) |
-| `kotlin/` | Kotlin 언어/코루틴, 타 언어(Go) 비교 학습 경로 |
-| `kubernetes/` | Kubernetes 아키텍처/개요/Pod 동작(커널 공유·RuntimeClass 격리)/오토스케일링(HPA·VPA·Cluster Autoscaler·Karpenter)/EKS 책임 범위·필요 지식/서비스 메시(Istio) |
-| `llm-services/` | LLM 제공 서비스 (OpenRouter 등 API 서비스) |
-| `neuroscience-ai/` | 신경과학×AI (뇌 커넥톰 기반 시뮬레이션·모델 등) |
-| `news-media/` | 뉴스/미디어 API 및 속보 소스 |
-| `observability/` | 로그/메트릭/트레이스 관측성 도구 (Fluentd, OTel Collector 등) |
-| `open-source/` | 오픈소스 프로젝트 실무 (저작권/라이선스 표기, LICENSE 파일, SPDX 헤더 등) |
-| `philosophy/` | 철학 일반 (인식론 — "안다"의 정의, JTB·게티어 문제, 인식 논리·분산 시스템·AI에서의 지식 정의, 행동·능력과 앎의 관계(Ryle·중국어 방·이해의 인식론), 1인칭 "내가 안다"의 기준) |
-| `rag-implementation/` | RAG 실제 구현 설계 (Spring AI·JPA·pgvector, 문서 파서/인제스트 엔드포인트, 하이브리드 검색, 한국어 FTS, 오디오/회의 녹음 트랜스크립트 적재, 사내 RAG 데이터 타입별 파서 선택, PDF→Markdown 변환 도구/Java 생태계, 한국어 임베딩 모델 KURE vs 상용 API 비교) |
-| `rag-implementation/evaluation/` | RAG 평가 — 평가 지표·예외 케이스 벤치마크·Ragas/DeepEval 등 도구, 한국어 RAG 벤치마크 데이터셋·목표 점수, LLM 없이 Retrieve만 평가하는 자동화 설계(Allganize 데이터셋 기반 정답셋 구축) |
-| `reinforcement-learning/` | 강화학습(RL)으로 신경망에 게임을 학습시키는 방법, 알고리즘(DQN/PPO 등)과 보상 설계, 실습 도구, 학습용 하드웨어 사양 |
-| `reinforcement-learning/starcraft/` | 스타크래프트 RL 특화 — 봇 학습 난이도/비용, 마이크로 시나리오 자가대국(self-play), 로컬 하드웨어(RTX 4060 등) 학습 가능성 |
-| `os-fundamentals/` | 리눅스/OS 기초 (cgroup, 프로세스, 터미널 입력) |
-| `os-fundamentals/systemd/` | systemd 서비스 유닛 작성/운영 |
-| `speech-ai/` | 음성 AI (STT 방식·오픈소스/클라우드 솔루션, 화자 분리, 한국어 STT 등) |
-| `security-crypto/` | 보안/암호 일반 (HMAC 개요, 2FA 검증 아키텍처 등) |
-| `security-crypto/api-key-verification/` | API 키 검증 방식 (해시, HMAC, Vault 연동) |
-| `seo-geo/` | 검색 최적화 (SEO, GEO/AEO — 생성형 AI 검색 인용 최적화) |
-| `tech-careers/` | IT 직무·커리어 (CSE vs FDE 등 고객 대면 엔지니어 직무 비교, 직무의 역사) |
-| `technical-writing/` | 기술 문서화 방법론·역사 (Information Mapping·Minimalism·DITA·Docs as Code, Diátaxis 4유형 — Tutorial·How-to·Reference·Explanation) |
-| `study-methods/` | 학습·스터디 운영 방법 (개발/CS 스터디 진행 방식, 세션 시나리오, 회고, 공부 후 자기 평가 프레임워크 — 인출 연습·Bloom/SOLO·메타인지 보정, 역사→개요→트레이드오프→실패→평가 학습 구조의 근거 방법론 — 유전적 방법·패턴 형식·실패 주도 학습) |
-| `software-architecture/` | 소프트웨어 아키텍처 패턴 (DDD 구성요소·핵심 규칙, Kafka 포트-어댑터/Outbox 배치, 헥사고날/포트-어댑터, 클린 아키텍처 등) |
-| `software-testing/` | 소프트웨어 테스트 기법/도구 (부하 테스트 등) |
-| `web-infra/` | 웹 인프라 일반 (SNI, HTTP/2 멀티플렉싱과 HTTP/1.1 공존 등) |
-| `web-infra/nginx/` | Nginx/OpenResty 내부 동작, Lua/njs, LuaJIT |
-| `web-infra/kong/` | Kong API Gateway (역사, Kong vs OpenResty, Consumer 엔티티, gRPC·gRPC-Web·JSON-RPC/MCP 등 RPC 지원, WebSocket·gRPC 스트리밍·SSE·TCP 스트림 등 장시간 연결) |
+| `ai/` | LLM 기초(파운데이션 모델, 파라미터, VRAM, 양자화, 임베딩, 모델 평가), LLM 아키텍처 연재·추론(CoT, 에이전틱 툴콜), KV 캐시, function calling·structured output, LLM API 서비스, RAG 설계·평가, 강화학습, 음성 AI(STT·화자 분리), 신경과학×AI |
+| `game-ai/` | 게임 AI·게임플레이 에이전트(FSM·BT·GOAP·LLM 하이브리드), 스타크래프트 봇·RL, 인간-AI 협동 플레이 |
+| `database/` | DB 이론·실무(트리거, MVCC, 락, 격리 수준), MySQL, PostgreSQL(pg_bigm, pgvector), Redis, ClickHouse |
+| `distributed-systems/` | 복제, 합의, 로그 추상화, 데이터 통합, 고가용성 구성, Kafka·메시지 큐 |
+| `web/` | HTTP·TLS·CORS 등 웹 프로토콜, Nginx/OpenResty, Kong, SEO·GEO |
+| `infra/` | Kubernetes, Docker, AWS, 관측성(로그·메트릭·트레이스), systemd |
+| `cs/` | 컴퓨터공학 기초 개념(일급 객체, IEEE 754), 리눅스/OS(cgroup, 프로세스, 터미널), 알고리즘 |
+| `languages/` | Java(락·AQS, Lombok 등 생태계), Kotlin·코루틴, 언어 비교 |
+| `software-engineering/` | 아키텍처 패턴(DDD, 헥사고날, 클린 아키텍처, Outbox), 테스트, 기술 문서화(Diátaxis 등), 오픈소스 라이선스 실무 |
+| `dev-tools/` | git·GitHub(CODEOWNERS, Pages, 트렌딩), bash·vim·grep 등 CLI, Claude Code 등 클로드 도구, 파일 포맷(전자책, Markdown) |
+| `security/` | 암호·인증 일반(HMAC, 2FA), API 키 검증 |
+| `external-apis/` | Microsoft Teams, Slack, Google, 뉴스·미디어 API |
+| `study-and-career/` | 학습·스터디 방법, IT 직무·커리어, 철학(인식론) |
 
 # 커밋 규칙
 
-- 커밋/푸시 시점에 아직 커밋되지 않은 변경(신규/수정 파일)이 여러 개 쌓여 있고, 그 변경들이 서로 다른 주제 폴더(관심사)에 걸쳐 있다면, 하나의 커밋으로 묶지 말고 **주제(폴더)별로 나누어 각각 커밋**한다.
-- 같은 주제 폴더 내 변경이라도 성격이 다르면(예: 새 답변 추가 vs 기존 답변 폴더 재구성) 별도 커밋으로 분리하는 것을 우선 고려한다.
+- 커밋/푸시 시점에 아직 커밋되지 않은 변경이 여러 대주제에 걸쳐 있다면, 하나의 커밋으로 묶지 말고 **대주제별로 나누어 각각 커밋**한다.
+- 같은 대주제 내 변경이라도 성격이 다르면(예: 새 답변 추가 vs 기존 답변 폴더 재구성) 별도 커밋으로 분리하는 것을 우선 고려한다.
