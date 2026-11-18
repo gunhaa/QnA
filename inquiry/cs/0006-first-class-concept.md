@@ -7,7 +7,7 @@ model: claude-sonnet-5
 
 # "1급(first-class)"이란 무엇인가 — 일급 객체에서 "1급 개념"까지
 
-> 배경: [The Log 분석 문서](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md)들에서 "상태는 1급 개념이 아니다", "RAFT는 복제 로그를 1급 개념으로 놓았다", "중간 결과가 1급 시민" 같은 표현이 반복됩니다. 이 "1급"이 정확히 무슨 뜻인가.
+> 배경: The Log 분석 문서들에서 "상태는 1급 개념이 아니다", "RAFT는 복제 로그를 1급 개념으로 놓았다", "중간 결과가 1급 시민" 같은 표현이 반복됩니다. 이 "1급"이 정확히 무슨 뜻인가.
 
 ## 쉬운 설명
 
@@ -190,7 +190,7 @@ Strachey의 구분을 확장해 세 등급으로 나누기도 합니다.
 
 질문의 출발점이었던 세 용례를 해설하면:
 
-#### ① "상태(state)는 1급 개념이 아니다" — [The Log 개요](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md)
+#### ① "상태(state)는 1급 개념이 아니다" — The Log 개요
 
 ```
   통념:  상태(테이블)가 진짜이고, 로그는 크래시 복구용 보조 장치
@@ -203,7 +203,7 @@ Strachey의 구분을 확장해 세 등급으로 나누기도 합니다.
 
 이 주장의 실무적 함의: **파생물은 버리고 다시 만들 수 있고, 여러 개 만들어도 되며, 나중에 새로운 종류를 추가할 수 있습니다.** 백업해야 할 건 로그뿐입니다.
 
-#### ② "RAFT는 복제 로그를 1급 개념으로 놓고 설계했다" — [Part 1 분석](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md)
+#### ② "RAFT는 복제 로그를 1급 개념으로 놓고 설계했다" — Part 1 분석
 
 ```
   Paxos:  기본 단위 = "단일 값에 대한 합의"(single-decree)
@@ -217,7 +217,7 @@ Strachey의 구분을 확장해 세 등급으로 나누기도 합니다.
 
 그 결과가 RAFT 논문 제목("In Search of an **Understandable** Consensus Algorithm")에 드러납니다 — **1급으로 승격하면 그것에 대해 직접 추론하고 이야기할 수 있게 됩니다.** 이것이 "1급으로 만들자"는 설계 주장의 가장 큰 이득입니다.
 
-#### ③ "중간 결과가 1급 시민" — [Part 3 분석](../../source/distributed-systems/0001-the-log-kreps-2013/04-part3-stream-processing.md)
+#### ③ "중간 결과가 1급 시민" — Part 3 분석
 
 ```
   Unix 파이프  a | b | c :
@@ -322,7 +322,4 @@ Strachey의 구분을 확장해 세 등급으로 나누기도 합니다.
 
 ## 관련 문서
 
-- [`source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md) — "상태는 1급 개념이 아니다"의 원 맥락
-- [`source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md`](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md) — RAFT가 로그를 1급으로 모델링한 이야기
-- [`source/distributed-systems/0001-the-log-kreps-2013/04-part3-stream-processing.md`](../../source/distributed-systems/0001-the-log-kreps-2013/04-part3-stream-processing.md) — 중간 결과가 1급 시민이 되는 구조
 - [`inquiry/languages/`](../languages/) — 코틀린의 일급 함수·고차 함수
