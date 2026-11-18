@@ -2,12 +2,9 @@
 
 > 기준일: 2026-10-15 · 공식 문서: <https://docs.slack.dev>
 
-## 쉬운 설명
+## 한 줄 결론
 
-Slack은 큰 회사 건물이고, API는 그 건물에 드나드는 **출입문 여러 개**다.
-- **Web API** = 안내 데스크에 "이 방에 쪽지 붙여줘" 하고 부탁하는 문
-- **Events API** = 건물에서 무슨 일이 생기면 나한테 전화 걸어주는 문
-- **Webhook** = 우편함 하나에 쪽지만 넣을 수 있는 가장 간단한 문
+Slack API는 Web API(앱 → Slack, 280개 이상 메서드), Events API·Socket Mode(이벤트 수신), Interactivity(버튼·모달·슬래시 커맨드), Incoming Webhooks(채널 알림 전용), Block Kit(메시지 UI)으로 나뉜다. 거의 모든 작업의 기본은 Web API다.
 
 ---
 

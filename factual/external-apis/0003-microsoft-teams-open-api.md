@@ -1,11 +1,8 @@
 # Microsoft Teams 오픈 API
 
-## 쉬운 설명
+## 한 줄 결론
 
-Teams는 큰 건물이고, 외부 개발자에게 문을 여러 개 열어 둔다.
-- **정문(Microsoft Graph)**: 건물 안 방(팀·채널·채팅)을 만들고 둘러보는 공식 출입구.
-- **우체통(Workflows 웹훅)**: 편지를 넣으면 채널에 글이 올라간다.
-- **안내 로봇(봇/Teams SDK)**: 사람과 대화하고 심부름하는 직원.
+공개 API가 있다. 용도별로 Microsoft Graph API(팀·채널·채팅·메시지 CRUD), Change notifications(변경 이벤트 수신), Workflows 웹훅(채널·채팅에 알림 게시), 봇·Teams SDK(대화형 앱·UI 확장) 4갈래다.
 
 ## 일반 설명
 
