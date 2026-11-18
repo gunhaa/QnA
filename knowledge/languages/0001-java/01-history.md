@@ -46,7 +46,7 @@ model: claude-opus-5-5
 | 22~24 | 2024~2025 | FFM API(JNI 대체) 정식, `synchronized` 가상 스레드 고정 해소(JEP 491), AOT 클래스 캐시(Leyden 첫 결과) | 네이티브 연동, 시작 시간 |
 | **25 LTS** | 2025.09 | Scoped Values 정식, `void main()` 간결한 소스 파일, 유연한 생성자 본문, **Compact Object Headers**, 32비트 x86 제거 | 입문 장벽, 메모리 사용량 |
 | 26 | 2026.03 | HTTP/3 클라이언트, Applet API 제거, final 필드 변경 경고, 모든 GC에서 AOT 객체 캐시 | — |
-| 27 | 2026.09 | TLS 1.3 포스트 양자 하이브리드 키 교환, PEM 인코딩, 모든 환경에서 G1 기본, Structured Concurrency 7차 프리뷰 | 양자 내성 암호 |
+| 27 | 2026.09 | TLS 1.3 포스트 양자 하이브리드 키 교환, PEM 인코딩, 모든 환경에서 G1 기본(JEP 523), Compact Object Headers 기본(JEP 534), Structured Concurrency 7차 프리뷰 | 양자 내성 암호, 메모리 사용량 |
 
 ### 3. 큰 흐름
 
@@ -59,14 +59,15 @@ model: claude-opus-5-5
 
 ### 4. 현재 상태 (2026년 11월)
 
-- **LTS**: 17, 21, **25**(최신). 다음 LTS는 29(2027년 9월 예정). 비LTS 최신은 27.
-- **배포판**: Oracle JDK(17부터 NFTC 조건으로 운영 무료 — 다음 LTS 출시 후 1년까지), Eclipse **Temurin**, Amazon **Corretto**, Azul Zulu, Microsoft Build of OpenJDK, Red Hat, **GraalVM**(네이티브 이미지).
+- **LTS**: 17, 21, **25**(최신). 다음 LTS는 29(2027년 9월 예정). 비LTS 최신은 27. Valhalla 값 클래스(JEP 401)는 JDK 28(2027년 3월 예정)에 프리뷰로 통합됐다.
+- **배포판**: Oracle JDK(17부터 NFTC로 운영 무료지만 다음 LTS 출시 후 1년까지만 — Oracle JDK 21은 2026년 10월 CPU부터 OTN 유료 라이선스), Eclipse **Temurin**, Amazon **Corretto**, Azul Zulu, Microsoft Build of OpenJDK, Red Hat, **GraalVM**(네이티브 이미지). 버전별 지원 기간과 배포판 고르는 기준은 [트레이드오프 §3.1](./03-tradeoffs.md#31-jdk-배포판과-lts).
 - 실무는 Spring Boot 3.x/4.x(최소 Java 17) 중심으로 **17 → 21 → 25** 이동 중. 8·11은 레거시.
 - Kotlin이 Android와 서버 일부를 가져갔지만, JVM 생태계와 대규모 백엔드에서 Java는 여전히 주류다.
 
 ## 관련 문서
 
 - [Java 개요와 기본 사용법](./02-overview.md)
+- [Java 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 개발·운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
 - [Java 애플리케이션 장애 대응과 고가용성](./05-failures.md)
 - [Java 락의 역사](../0002-java-lock/01-history.md)
@@ -83,3 +84,5 @@ model: claude-opus-5-5
 - [Java 26 features — HappyCoders](https://www.happycoders.eu/java/java-26-features/)
 - [Oracle Releases Java 27 — Oracle](https://www.oracle.com/news/announcement/oracle-releases-java-27-and-strengthens-post-quantum-cryptography-support-2026-09-15/)
 - [Java 27 so far — InfoQ](https://infoq.com/news/2026/08/java-27-so-far)
+- [JDK 21 approaches end of permissive license — Oracle Java Blog](https://blogs.oracle.com/java/post/jdk-21-approaches-end-of-permissive-license)
+- [JEP 401: Value Objects (Preview) integrated into JDK 28 — InfoQ](https://infoq.com/news/2026/08/jep401-value-objects-preview)

@@ -22,9 +22,9 @@ JVM이 한 번 크게 탈이 나면(메모리 바닥, 스레드 다 막힘) **�
 | `OutOfMemoryError: Metaspace` | 클래스 로딩 실패 | 동적 프록시·클래스 생성 누수, 재배포 반복 |
 | `OutOfMemoryError: Direct buffer memory` | Netty 등 I/O 실패 | 다이렉트 버퍼 해제 지연·누수 |
 | `OutOfMemoryError: unable to create native thread` | 새 스레드 생성 실패 | 스레드 무한 생성, OS 프로세스 한도 |
-| 컨테이너 **OOMKilled (exit 137)** | 로그 없이 사라짐 | 힙 + 비힙 > 컨테이너 limit |
+| 컨테이너 **OOMKilled (exit 137)** | 로그 없이 사라짐 | 힙 + 비힙 > 컨테이너 limit → 설정은 [자주 겪는 문제 §3](./04-pitfalls.md#3-컨테이너에서의-메모리-설정) |
 | `StackOverflowError` | 해당 요청 실패 | 무한 재귀, 순환 참조 직렬화(toString/JSON) |
-| 긴 GC 정지 | 타임아웃·헬스체크 실패 | 큰 힙 + 부적절한 GC, 높은 할당률 |
+| 긴 GC 정지 | 타임아웃·헬스체크 실패 | 큰 힙 + 부적절한 GC, 높은 할당률 → 진단은 [자주 겪는 문제 §2](./04-pitfalls.md#2-메모리-누수와-gc-문제) |
 | 스레드 고갈·교착 | 프로세스는 살아 있는데 응답 없음 | 느린 외부 호출, 풀 크기 부족, 데드락 → [락 장애 문서](../0002-java-lock/05-failures.md) |
 | JVM 네이티브 크래시 | `hs_err_pid*.log` 남기고 종료 | JNI·네이티브 라이브러리 버그, JVM 버그 |
 | 파일 디스크립터 고갈 | `Too many open files` | 소켓·파일 close 누락 |
@@ -153,6 +153,7 @@ Micrometer + Prometheus/Grafana, OpenTelemetry로 수집하고, JFR은 장애 �
 
 - [Java의 역사](./01-history.md)
 - [Java 개요와 기본 사용법](./02-overview.md)
+- [Java 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 개발·운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](../0002-java-lock/05-failures.md)
 

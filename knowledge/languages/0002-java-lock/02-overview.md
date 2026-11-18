@@ -149,16 +149,7 @@ record Snapshot(List<String> items) {}                   // 불변 객체는 공
 
 ### 4. 선택 가이드
 
-| 상황 | 추천 |
-|---|---|
-| 단순 상호 배제 | `synchronized` |
-| 타임아웃·인터럽트·`tryLock`·여러 조건 필요 | `ReentrantLock` |
-| 읽기 ≫ 쓰기, 임계 구역이 김 | `ReentrantReadWriteLock` |
-| 읽기 ≫ 쓰기, 임계 구역 짧고 성능 극한 | `StampedLock` (재진입·Condition 없음 주의) |
-| 카운터·시퀀스 | `AtomicLong`, 고경합이면 `LongAdder` |
-| 맵·큐 공유 | `ConcurrentHashMap`, `BlockingQueue` |
-| 동시 호출 수 제한 (외부 API, 가상 스레드) | `Semaphore` |
-| **여러 서버(JVM) 사이** | JVM 락으로는 불가 → [다중 인스턴스 환경](./05-failures.md) |
+기본은 `synchronized`, 타임아웃·인터럽트·공정성·여러 조건이 필요하면 `ReentrantLock`이다. 상황별 대안 비교·수치·체크리스트는 [트레이드오프 — 대안 비교](./03-tradeoffs.md#3-대안-비교)와 [선택 체크리스트](./03-tradeoffs.md#6-선택-체크리스트)에 있다. **여러 서버(JVM) 사이**는 JVM 락으로 불가 → [다중 인스턴스 환경](./05-failures.md#5-다중-인스턴스-jvm-락의-한계).
 
 ### 5. `synchronized` vs `ReentrantLock`
 
@@ -169,9 +160,10 @@ record Snapshot(List<String> items) {}                   // 불변 객체는 공
 | 대기 중 인터럽트 | ✗ | ✓ `lockInterruptibly()` |
 | 공정성 | ✗ (비공정) | 선택 가능 |
 | 조건 변수 | 객체당 1개(`wait/notify`) | 여러 개 `Condition` |
-| 가상 스레드 | JDK 21~23 고정 문제, **24+ 해결** | 처음부터 문제 없음 |
-| 성능 | 비슷 (JVM 최적화) | 비슷 |
+| 가상 스레드 | JDK 21~23 고정 문제, **24+ 해결** ([남은 사례](./04-pitfalls.md#8-가상-스레드와-락)) | 처음부터 문제 없음 |
 | 진단 | 스레드 덤프에 `locked <monitor>` | `parking to wait for <...ReentrantLock$NonfairSync>` |
+
+성능은 Java 6 이후 비슷하므로 고르는 기준은 기능이다. 각 설계에서 얻은 것과 포기한 것은 [트레이드오프 §1](./03-tradeoffs.md#1-핵심-설계-선택-얻은-것과-포기한-것)에서 다룬다.
 
 ### 6. JVM 내부 (간단히)
 
@@ -182,6 +174,7 @@ record Snapshot(List<String> items) {}                   // 불변 객체는 공
 ## 관련 문서
 
 - [Java 락의 역사](./01-history.md)
+- [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](./05-failures.md)
 - [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)

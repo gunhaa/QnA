@@ -13,7 +13,7 @@ Java는 청소부(GC)가 있어 편하지만, ① 청소부가 못 치우게 물
 
 ## 일반 설명
 
-> 락·동시성 문제는 [Java 락: 자주 겪는 문제와 해결](../0002-java-lock/04-pitfalls.md), 프로세스가 죽거나 멈추는 장애와 다중 인스턴스 운영은 [장애 대응과 고가용성](./05-failures.md)에서 다룬다.
+> 락·동시성 문제는 [Java 락: 자주 겪는 문제와 해결 방법](../0002-java-lock/04-pitfalls.md), 프로세스가 죽거나 멈추는 장애와 다중 인스턴스 운영은 [장애 대응과 고가용성](./05-failures.md)에서 다룬다.
 
 ### 1. 코드 수준의 흔한 버그
 
@@ -44,26 +44,28 @@ GC 언어에서 누수는 "**도달 가능하지만 다시 쓰지 않는 객체*
 **GC 정지가 길 때**
 1. GC 로그로 사실 확인: `-Xlog:gc*:file=gc.log:time,uptime:filecount=5,filesize=20m`
 2. 할당률이 높은 코드부터 줄인다 (JFR `jdk.ObjectAllocationSample`).
-3. 지연이 중요하면 **ZGC**(`-XX:+UseZGC`)로 교체를 검토.
+3. 지연이 중요하면 **ZGC**(`-XX:+UseZGC`)로 교체를 검토 (GC별 대가는 [트레이드오프 §3.2](./03-tradeoffs.md#32-gc-선택)).
 4. 힙을 무작정 키우는 건 마지막 수단.
 
 ### 3. 컨테이너에서의 메모리 설정
 
 | 문제 | 원인 | 해결 |
 |---|---|---|
+| 힙 옵션 없이 실행해 메모리를 놀림 | JVM 기본 최대 힙은 컨테이너 메모리의 **25%**(`MaxRAMPercentage=25`) | `-XX:MaxRAMPercentage`를 명시. 70~75%로 시작해 NMT로 비힙 사용량 확인 |
 | 파드가 **OOMKilled(137)** 로 죽는데 Java OOM 로그가 없음 | 힙 외 메모리(메타스페이스, 스레드 스택, 다이렉트 버퍼, 코드 캐시, GC 자료구조)까지 합쳐 컨테이너 limit 초과 | `-XX:MaxRAMPercentage=70~75`로 힙을 limit의 일부로, 나머지는 비힙 몫. `-Xmx`를 limit과 같게 두지 말 것 |
 | CPU limit이 작아 GC·JIT 스레드가 굶음 | JVM이 CPU 수로 스레드 수 결정 | CPU limit 최소 1~2 코어, 필요하면 `-XX:ActiveProcessorCount` |
 | 네이티브 메모리 추적 필요 | — | `-XX:NativeMemoryTracking=summary` + `jcmd <pid> VM.native_memory summary` |
 
 ### 4. 느린 시작과 워밍업
 
-| 해법 | 효과 | 비용 |
+| 실수 | 증상 | 해결 |
 |---|---|---|
-| CDS / **AOT 캐시**(JDK 24+ `-XX:AOTCache`, 26에서 모든 GC 지원) | 클래스 로딩·링킹 결과 재사용, 시작 시간 단축 | 학습 실행(training run) 필요 |
-| Spring Boot 지연 초기화, 불필요 자동 설정 제거 | 시작 시간 단축 | 첫 요청 지연 |
-| **GraalVM Native Image** | 수십 ms 시작, 적은 메모리 | 빌드 시간·리플렉션 설정, 최고 처리량은 JIT보다 낮을 수 있음 |
-| CRaC | 워밍업된 상태를 체크포인트로 저장 후 복원 | 리눅스 전용, 지원 JDK 필요 |
-| readiness를 워밍업 후 열기 | 첫 사용자 요청이 느린 코드 경로를 밟지 않음 | 배포 시간 증가 |
+| 기동 직후 바로 트래픽을 받음 | 배포·스케일아웃 직후 지연·타임아웃 급증 (JIT 워밍업 전) | readiness를 워밍업 후 열기. 배포 시간은 늘어난다 |
+| 느린 시작을 liveness로만 감시 | 기동 중에 재시작이 반복됨 | startup 프로브 사용 ([장애 대응 §5](./05-failures.md#5-헬스-체크-kubernetes--spring-boot-actuator)) |
+| 쓰지 않는 자동 설정·빈을 모두 로딩 | 시작 시간 증가 | 불필요 자동 설정 제거, Spring Boot 지연 초기화 (대신 첫 요청이 느려짐) |
+| AOT 캐시를 만들 때와 다른 JDK·클래스패스로 실행 | 캐시가 무시되어 단축 효과가 없음 | 같은 JDK·같은 jar로 학습 실행(training run)과 운영 실행 |
+
+AOT 캐시(JDK 24+ `-XX:AOTCache`, 26에서 모든 GC 지원)·GraalVM Native Image·CRaC 중 무엇을 고를지는 [트레이드오프 §3.3](./03-tradeoffs.md#33-시작-시간-jit-vs-aot).
 
 ### 5. 의존성과 업그레이드
 
@@ -97,8 +99,9 @@ GC 언어에서 누수는 "**도달 가능하지만 다시 쓰지 않는 객체*
 
 - [Java의 역사](./01-history.md)
 - [Java 개요와 기본 사용법](./02-overview.md)
+- [Java 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 애플리케이션 장애 대응과 고가용성](./05-failures.md)
-- [Java 락: 자주 겪는 문제와 해결](../0002-java-lock/04-pitfalls.md)
+- [Java 락: 자주 겪는 문제와 해결 방법](../0002-java-lock/04-pitfalls.md)
 
 ## 참고 자료
 

@@ -23,7 +23,7 @@ model: claude-opus-5-5
 | **락 보유자 정지** | 락을 쥔 스레드가 느린 I/O·무한 대기 → 대기자 누적 | 락 안에서 타임아웃 없는 네트워크 호출 |
 | 락 경합 붕괴(lock convoy) | 부하가 늘수록 처리량이 오히려 떨어짐 | 전역 락 하나에 수백 스레드 몰림 |
 | **스레드 풀 기아 데드락** | 락은 없는데 멈춤 | 고정 크기 풀의 작업이 **같은 풀에 제출한 하위 작업**을 기다림 |
-| 가상 스레드 캐리어 고갈 | 앱 전체 정지 | JDK 21~23의 `synchronized` 고정, 네이티브 호출 중 블로킹 |
+| 가상 스레드 캐리어 고갈 | 앱 전체 정지 | JDK 21~23의 `synchronized` 고정, 네이티브 호출 중 블로킹 → [원인과 버전별 차이](./04-pitfalls.md#8-가상-스레드와-락), [Netflix 사례](../0001-java/03-tradeoffs.md#1-핵심-설계-선택-얻은-것과-포기한-것) |
 | 연쇄 대기 | 스레드 풀 전체 고갈 → 헬스체크까지 실패 | 위 장애들이 요청 스레드를 하나씩 잠식 |
 
 ### 2. 탐지
@@ -105,16 +105,18 @@ void transfer(Account a, Account b, long amount) {
 
 JVM 락의 범위는 **한 프로세스**다. 서버를 2대 이상 띄우는 순간(가용성을 위해 거의 항상) 다른 수단이 필요하다.
 
-| 방법 | 구현 | 장점 | 주의 |
-|---|---|---|---|
-| **원자적 UPDATE / 유니크 제약** | `UPDATE ... SET qty = qty - 1 WHERE qty > 0`, UNIQUE 키 | 가장 단순·정확 | 표현 가능한 경우에 한정 |
-| **비관적 락** | `SELECT ... FOR UPDATE` (`@Lock(PESSIMISTIC_WRITE)`) | DB가 정합성 보장 | 트랜잭션 길면 대기·데드락 → [MySQL 락 문제](../../database/0001-mysql/04-pitfalls.md) |
-| **낙관적 락** | `@Version` 컬럼 + 충돌 시 재시도 | 경합 적을 때 빠름 | 경합 많으면 재시도 폭증 |
-| DB 이름 락 | MySQL `GET_LOCK()`, PostgreSQL advisory lock | 행이 없는 자원도 보호 | 커넥션에 묶임, 풀과 함께 쓸 때 주의 |
-| **Redis 분산 락** | Redisson `RLock`(watchdog 자동 연장), `SET NX PX` + 토큰 | 빠름, 구현 쉬움 | 장애 조치 시 락 유실 가능 → [Redis 분산 락 함정](../../database/0002-redis/04-pitfalls.md) |
-| ZooKeeper / etcd | Curator `InterProcessMutex`, etcd lease | 합의 기반, 세션 만료로 자동 해제 | 별도 클러스터 운영 |
-| 스케줄러 중복 실행 방지 | **ShedLock** (`@SchedulerLock`, DB/Redis 백엔드) | `@Scheduled`가 모든 인스턴스에서 도는 문제 해결 | 작업 시간 > `lockAtMostFor`면 중복 |
-| 리더 선출 | Spring Integration Leader, k8s Lease | 한 인스턴스만 특정 역할 | — |
+방법별 강점·대가와 고르는 순서(DB 우선 → 효율용 Redis → 정확성용 ZooKeeper/etcd)는 [트레이드오프 — 대안 비교](./03-tradeoffs.md#3-대안-비교)와 [주요 선택지](./03-tradeoffs.md#4-주요-선택지)에서 다룬다. 여기서는 구현과 운영 중 주의점만 정리한다.
+
+| 방법 | 구현 | 주의 |
+|---|---|---|
+| **원자적 UPDATE / 유니크 제약** | `UPDATE ... SET qty = qty - 1 WHERE qty > 0`, UNIQUE 키 | 표현 가능한 경우에 한정 |
+| **비관적 락** | `SELECT ... FOR UPDATE` (`@Lock(PESSIMISTIC_WRITE)`) | 트랜잭션 길면 대기·데드락 → [MySQL 락 문제](../../database/0001-mysql/04-pitfalls.md) |
+| **낙관적 락** | `@Version` 컬럼 + 충돌 시 재시도 | 경합 많으면 재시도 폭증 |
+| DB 이름 락 (행이 없는 자원 보호) | MySQL `GET_LOCK()`, PostgreSQL advisory lock | 커넥션에 묶임, 풀과 함께 쓸 때 주의 |
+| **Redis 분산 락** | Redisson `RLock`(watchdog 자동 연장), `SET NX PX` + 토큰 | 장애 조치 시 락 유실 가능 → [Redis 분산 락 함정](../../database/0002-redis/04-pitfalls.md) |
+| ZooKeeper / etcd | Curator `InterProcessMutex`, etcd lease | 별도 클러스터 운영 |
+| 스케줄러 중복 실행 방지 (`@Scheduled`가 모든 인스턴스에서 도는 문제) | **ShedLock** (`@SchedulerLock`, DB/Redis 백엔드) | 작업 시간 > `lockAtMostFor`면 중복 |
+| 리더 선출 (한 인스턴스만 특정 역할) | Spring Integration Leader, k8s Lease | — |
 
 ### 6. 분산 락의 장애 시나리오
 
@@ -156,6 +158,7 @@ public void handle(PaymentEvent e) {
 
 - [Java 락의 역사](./01-history.md)
 - [Java 락 개요와 기본 사용법](./02-overview.md)
+- [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
 - [Java 애플리케이션 장애 대응과 고가용성](../0001-java/05-failures.md)
 - [Redis 운영 시 자주 겪는 문제 — 분산 락의 함정](../../database/0002-redis/04-pitfalls.md)

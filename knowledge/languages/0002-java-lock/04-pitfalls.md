@@ -78,9 +78,9 @@ private volatile boolean stop;
 | 락 안에서 DB·HTTP 호출 | 락 보유 시간 = 네트워크 지연 | **락 밖에서 I/O**, 락 안에서는 메모리 연산만 |
 | 고경합 카운터 | `AtomicLong` CAS 실패 반복 | `LongAdder` |
 | `Collections.synchronizedMap` 전체 락 | 모든 연산 직렬화 | `ConcurrentHashMap` |
-| 공정 락(`new ReentrantLock(true)`) | 컨텍스트 스위치 증가로 처리량 크게 감소 | 기아가 실제 문제일 때만 |
+| 공정 락(`new ReentrantLock(true)`) | 컨텍스트 스위치 증가로 처리량 크게 감소([수치](./03-tradeoffs.md#2-수치로-보는-비용)) | 기아가 실제 문제일 때만 |
 
-진단: JFR 이벤트 `jdk.JavaMonitorEnter`(synchronized 대기), `jdk.ThreadPark`(j.u.c 락 대기), async-profiler `-e lock` 플레임 그래프.
+진단: JFR 이벤트 `jdk.JavaMonitorEnter`(synchronized 대기), `jdk.ThreadPark`(j.u.c 락 대기), async-profiler `-e lock` 플레임 그래프. 덤프 비교 등 탐지 방법은 [장애 대응 — 탐지](./05-failures.md#2-탐지).
 
 ### 6. Spring·JPA와 섞일 때
 
@@ -95,11 +95,7 @@ public synchronized void decrease(Long id) {   // ✗
     //   → 다음 스레드가 커밋 전 옛 값을 읽어 재고가 덜 줄어듦
 ```
 
-- 해결: 락을 트랜잭션 **바깥**에서 잡거나, 애초에 **DB 수준 동시성 제어**를 쓴다.
-  - 원자적 UPDATE: `UPDATE stock SET qty = qty - 1 WHERE id = ? AND qty > 0`
-  - 비관적 락: `@Lock(PESSIMISTIC_WRITE)` → `SELECT ... FOR UPDATE`
-  - 낙관적 락: `@Version` + 충돌 시 재시도
-- 서버가 2대 이상이면 JVM 락은 어차피 무의미하다 → [다중 인스턴스 환경](./05-failures.md).
+- 해결: 락을 트랜잭션 **바깥**에서 잡거나, 애초에 **DB 수준 동시성 제어**(원자적 UPDATE, `FOR UPDATE`, `@Version`)를 쓴다. 서버가 2대 이상이면 JVM 락은 어차피 무의미하므로 DB 쪽이 기본이다 → [다중 인스턴스 환경의 방법별 구현·주의점](./05-failures.md#5-다중-인스턴스-jvm-락의-한계).
 
 ### 7. 동시성 컬렉션의 함정
 
@@ -116,7 +112,7 @@ public synchronized void decrease(Long id) {   // ✗
 | 항목 | 내용 |
 |---|---|
 | JDK 21~23의 `synchronized` | 블로킹하면 캐리어 스레드 **고정(pinning)** → 캐리어(기본 CPU 코어 수)가 모두 고정되면 전체 정지 가능. `ReentrantLock`으로 교체가 권장됐다 |
-| **JDK 24+** | JEP 491로 해결. 단, 네이티브 프레임(JNI) 안이나 클래스 초기화 중 블로킹은 여전히 고정 |
+| **JDK 24+** | JEP 491로 해결. 단, 네이티브 코드(JNI·FFM)가 스택에 있는 동안의 블로킹과 클래스 초기화 관련 블로킹은 여전히 고정. 다른 스레드의 클래스 초기화를 기다리는 흔한 경로는 JDK 26에서 고정되지 않게 개선됐다(JDK-8369238) |
 | 진단 | JFR `jdk.VirtualThreadPinned` 이벤트 |
 | `ThreadLocal` | 가상 스레드 수십만 개 × 큰 값 = 메모리 폭증 → Scoped Values(JDK 25 정식) |
 | 자원 보호 | 스레드 수가 사실상 무제한이므로 DB 커넥션·외부 API 동시 호출은 **`Semaphore`로 제한** |
@@ -134,6 +130,7 @@ public synchronized void decrease(Long id) {   // ✗
 
 - [Java 락의 역사](./01-history.md)
 - [Java 락 개요와 기본 사용법](./02-overview.md)
+- [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](./05-failures.md)
 - [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
 - [MySQL 운영 시 자주 겪는 문제 — 락 대기와 데드락](../../database/0001-mysql/04-pitfalls.md)
@@ -144,6 +141,7 @@ public synchronized void decrease(Long id) {   // ✗
 - [The "Double-Checked Locking is Broken" Declaration](https://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html)
 - [ConcurrentHashMap — Java SE 25 API](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/ConcurrentHashMap.html)
 - [JEP 491: Synchronize Virtual Threads without Pinning](https://openjdk.org/jeps/491)
+- [JDK 26 EA builds: changes to avoid pinning while waiting for class initialization — loom-dev](https://mail.openjdk.org/pipermail/loom-dev/2025-November/008027.html)
 - [JEP 506: Scoped Values](https://openjdk.org/jeps/506)
 - [jcstress — OpenJDK](https://github.com/openjdk/jcstress)
 - [Spring Framework — Transaction Management](https://docs.spring.io/spring-framework/reference/data-access/transaction.html)
