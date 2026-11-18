@@ -81,6 +81,11 @@ RR에서 next-key lock은 **"기본값"** 이고, 질문은 사실 **"언제 안
 - gap lock으로 축소: 등치 조회의 오른쪽 경계, 또는 찾는 값이 없을 때
 - 그 외(범위 조건, 비유니크 인덱스, 인덱스 미사용, 유니크 보조키 중복 INSERT/REPLACE/ODKU, INSERT...SELECT의 원본) → **next-key lock**
 
+## 관련 문서
+
+- [MySQL 개요와 기본 사용법 — 트랜잭션과 격리 수준](../../knowledge/database/0001-mysql/02-overview.md#4-트랜잭션과-격리-수준)
+- [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](../../knowledge/database/0001-mysql/03-tradeoffs.md)
+
 ## 참고
 
 - [MySQL 8.0 Reference Manual — Locks Set by Different SQL Statements in InnoDB](https://dev.mysql.com/doc/refman/8.0/en/innodb-locks-set.html)

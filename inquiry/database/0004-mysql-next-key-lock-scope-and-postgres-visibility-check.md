@@ -55,6 +55,11 @@ model: claude-sonnet-5
 - 같은 행을 두 트랜잭션이 동시에 `UPDATE`하려는 "first updater wins" 상황도, 결국 내가 고치려는 행의 최신 버전의 `xmax`(혹은 잠금 상태)를 보고 "어, 이 행 이미 남이 손대고 있네/손댔네"를 판별하는 것 — 같은 가시성 계산의 연장선이다.
 - 반면 `SERIALIZABLE`의 SIREAD 락(이전 답변 참고)은 이 가시성 계산과는 **별개의 추가 장치**다. 가시성 계산만으론 "존재하지 않던 행이 새로 생겨서 논리적으로 문제가 되는 경우"(write skew)까지는 못 잡기 때문에, 별도로 "나는 이런 조건으로 읽었다"는 기록을 남겨서 커밋 시점에 추가로 검사하는 것이다.
 
+## 관련 문서
+
+- [MySQL 개요와 기본 사용법 — 트랜잭션과 격리 수준](../../knowledge/database/0001-mysql/02-overview.md#4-트랜잭션과-격리-수준)
+- [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](../../knowledge/database/0001-mysql/03-tradeoffs.md)
+
 ---
 ### Sources
 - [MySQL 8.0 Reference Manual: 17.7.1 InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)

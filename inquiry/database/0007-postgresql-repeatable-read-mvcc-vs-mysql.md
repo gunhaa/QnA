@@ -49,6 +49,11 @@ model: claude-sonnet-5
 
 한 줄 요약: **PostgreSQL은 RR로 올려도 MVCC 메커니즘 자체는 READ COMMITTED와 완전히 같고, "스냅샷을 얼마나 오래 들고 있느냐"만 바뀐다. MySQL은 RR이 되는 순간 MVCC 스냅샷 읽기 위에 실제 범위 잠금(gap/next-key lock)이 추가로 켜지므로, 이름은 같아도 내부 동작 방식 자체가 다르다.**
 
+## 관련 문서
+
+- [MySQL 개요와 기본 사용법 — 트랜잭션과 격리 수준](../../knowledge/database/0001-mysql/02-overview.md#4-트랜잭션과-격리-수준)
+- [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](../../knowledge/database/0001-mysql/03-tradeoffs.md)
+
 ---
 ### Sources
 - [PostgreSQL Documentation: 13.2. Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)

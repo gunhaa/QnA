@@ -375,7 +375,7 @@ UPDATE users SET last_login = NOW() WHERE id = 12345;
 - **`ALTER TABLE ... UPDATE`는 뮤테이션(mutation)** — 해당 파트 전체를 다시 쓰는 무거운 비동기 작업. ClickHouse는 이를 "일반 UPDATE라고 생각하지 말라"고 문서에 명시합니다
 - **삭제 표식(delete marker) / tombstone** — 실제 삭제는 나중에 병합 시 반영
 
-> **핵심:** 컬럼 지향은 **"대량 append + 거의 수정 없음"** 을 전제로 설계되었습니다. 이 저장소의 [`inquiry/database/0008-clickhouse-append-only-log-reason.md`](./0008-clickhouse-append-only-log-reason.md)가 다루는 "왜 ClickHouse가 append-only 로그에 적합한가"의 근본 이유가 이것입니다. 그리고 이 성질은 [`source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md)에서 분석한 로그 추상화와 정확히 같은 철학입니다 — **불변 + append-only + 순차 I/O**.
+> **핵심:** 컬럼 지향은 **"대량 append + 거의 수정 없음"** 을 전제로 설계되었습니다. 이 저장소의 [`inquiry/database/0008-clickhouse-append-only-log-reason.md`](./0008-clickhouse-append-only-log-reason.md)가 다루는 "왜 ClickHouse가 append-only 로그에 적합한가"의 근본 이유가 이것입니다. 그리고 이 성질은 The Log(Jay Kreps, 2013)에서 분석한 로그 추상화와 정확히 같은 철학입니다 — **불변 + append-only + 순차 I/O**.
 
 #### (c) 트랜잭션·동시성 제어
 
@@ -458,7 +458,7 @@ SELECT * FROM access_log WHERE request_id = 'abc-123';
 | **SingleStore** | 로우스토어(메모리) + 컬럼스토어(디스크) 테이블 타입 선택 |
 | **PostgreSQL 확장** | Citus Columnar, `pg_mooncake`, Hydra 등 |
 
-> **TiDB가 구조적으로 흥미롭습니다.** TiFlash(컬럼 복제본)는 TiKV의 **RAFT 로그를 구독해서** 컬럼 형태로 물질화합니다. 이는 [`source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md)에서 분석한 **"테이블/인덱스는 로그의 투영"** 원리의 교과서적 구현입니다 — 컬럼 스토어가 로그의 또 하나의 projection인 셈입니다.
+> **TiDB가 구조적으로 흥미롭습니다.** TiFlash(컬럼 복제본)는 TiKV의 **RAFT 로그를 구독해서** 컬럼 형태로 물질화합니다. 이는 The Log(Jay Kreps, 2013)에서 분석한 **"테이블/인덱스는 로그의 투영"** 원리의 교과서적 구현입니다 — 컬럼 스토어가 로그의 또 하나의 projection인 셈입니다.
 
 #### (c) 2026년의 지배적 실무 패턴
 
@@ -579,4 +579,3 @@ SELECT * FROM access_log WHERE request_id = 'abc-123';
 - [`inquiry/database/0008-clickhouse-append-only-log-reason.md`](./0008-clickhouse-append-only-log-reason.md) — 왜 컬럼 DB가 append-only 로그에 적합한가
 - [`inquiry/database/0011-clickhouse-vs-timeseries-and-log-db.md`](./0011-clickhouse-vs-timeseries-and-log-db.md) — 시계열/로그 특화 DB와의 비교
 - [`inquiry/database/`](./) — 로우 지향 DB의 락·MVCC·격리 수준
-- [`source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md) — "테이블/인덱스는 로그의 투영" 원리. 컬럼 스토어를 로그의 projection으로 보는 관점

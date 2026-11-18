@@ -37,17 +37,18 @@ model: claude-sonnet-5
 
 ## Isolation level 이름은 같은데 동작이 다른 이유
 
-SQL 표준상 이름(`READ COMMITTED`, `REPEATABLE READ`, `SERIALIZABLE`)은 같아도, **그 이름을 구현하는 내부 메커니즘이 다르므로 실제 동작(막는 범위, 막는 방식)이 다르다.**
-
-- MySQL의 `REPEATABLE READ`는 **next-key locking**(락 기반)으로 팬텀 읽기를 막는다. 즉 "이 범위에 새로 끼워 넣지 마" 하고 실제로 잠근다.
-- PostgreSQL의 `REPEATABLE READ`는 **스냅샷 격리(Snapshot Isolation)** 기반이라, 트랜잭션 시작 시점의 스냅샷만 보게 해서 자연스럽게 팬텀 읽기를 막는다. 범위를 잠그지 않고도 막히기 때문에 SQL 표준이 요구하는 것보다 더 강한 보장을 준다고 알려져 있다.
-- 그래서 같은 `REPEATABLE READ`라도, MySQL은 "락 충돌로 대기/데드락"이 날 수 있고, PostgreSQL은 "락 충돌 없이 진행되다가 커밋 시점에 serialization failure 에러"가 날 수 있다 — **막는 시점과 막는 방식 자체가 다르다.**
+이름(`READ COMMITTED`, `REPEATABLE READ`)이 같아도 구현이 달라 동작이 다르다. MySQL RR은 next-key lock으로 범위를 **잠가서** 팬텀을 막고(블로킹·데드락), PostgreSQL RR은 **스냅샷 고정**으로 막는다(충돌 시 serialization failure). 비교표는 [PostgreSQL RR의 MVCC vs MySQL](./0007-postgresql-repeatable-read-mvcc-vs-mysql.md#그래서-같은-이름-다른-느낌) 참고.
 
 ## 요약
 
 - MySQL: 락(잠금) 중심, 한 버전 + undo log로 과거 복원, gap/next-key lock으로 범위까지 막음 → 예측 가능하지만 범위 잠금 때문에 블로킹/데드락 위험.
 - PostgreSQL: 버전(복사본) 중심, 스냅샷으로 가시성 판단, 읽기/쓰기 상호 비차단 → 동시성은 좋지만 VACUUM 관리와 serialization 에러 재시도 로직이 필요.
 - 같은 이름의 isolation level이라도 "락으로 막느냐 vs 스냅샷으로 막느냐"가 달라서 실제 체감 동작(블로킹 여부, 에러 발생 시점)은 다르다.
+
+## 관련 문서
+
+- [MySQL 개요와 기본 사용법 — 트랜잭션과 격리 수준](../../knowledge/database/0001-mysql/02-overview.md#4-트랜잭션과-격리-수준)
+- [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](../../knowledge/database/0001-mysql/03-tradeoffs.md)
 
 ---
 ### Sources

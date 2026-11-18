@@ -24,15 +24,7 @@ model: claude-sonnet-5
 
 ## 언제 걸리는가 (정확한 조건)
 
-InnoDB는 아무 SELECT에나 gap lock을 걸지 않는다.
-
-- **일반(비잠금) `SELECT`**: MVCC 스냅샷만 보고 끝. **record lock도, gap lock도 전혀 안 건다.** (PostgreSQL의 순수 조회와 동일하게 안 막힘)
-- **잠금이 필요한 statement**: `SELECT ... FOR UPDATE`, `SELECT ... FOR SHARE`, `UPDATE`, `DELETE`, 그리고 `INSERT` — 이런 것들만 락을 건다.
-
-이런 statement가 실행되면, InnoDB는 인덱스(B+Tree)를 위에서부터 스캔하면서 **실제로 훑고 지나간 인덱스 레코드마다** 락을 건다. 중요한 건: **InnoDB는 WHERE 조건 자체를 기억하지 않고, "어느 인덱스 범위를 스캔했는지"만 기억한다.** 그래서 조건에 안 맞아서 걸러진(filter out) 행이라도, 스캔 과정에서 지나쳤다면 락이 걸린다.
-
-- **유니크 인덱스 + 유니크 조건(예: `WHERE id = 5`)**: 정확히 그 레코드 하나에만 record lock. gap lock은 안 걸린다 (그 자리는 유일하니 "사이"라는 개념이 없음).
-- **범위 조건이거나 비유니크 인덱스(예: `WHERE age > 20`, 또는 유니크하지 않은 컬럼)**: 스캔한 범위 전체에 **next-key lock**이 걸린다.
+일반(비잠금) `SELECT`는 MVCC 스냅샷만 보고 락을 걸지 않는다. 락은 `SELECT ... FOR UPDATE/FOR SHARE`, `UPDATE`, `DELETE`, `INSERT` 같은 잠금 statement가 **실제로 스캔한 인덱스 범위**에 걸린다. 쿼리 유형별로 어떤 락이 걸리는지(유니크 등치, 범위, 비유니크, 인덱스 없음)는 [RR next-key lock 케이스 정리](./0016-mysql-rr-next-key-lock-cases.md#케이스별-정리)에 표로 정리했다.
 
 ## 용어 정리
 
@@ -44,6 +36,11 @@ InnoDB는 아무 SELECT에나 gap lock을 걸지 않는다.
 ## 정리 한 줄
 
 gap lock/next-key lock은 "스냅샷을 찍을 때" 미리 정해지는 게 아니라, **잠금이 필요한 SQL(SELECT FOR UPDATE/UPDATE/DELETE/INSERT)이 실행되는 그 순간, 엔진이 인덱스를 실제로 훑으면서 지나간 범위에 즉석으로 거는 것**이다. 스냅샷(무엇이 "보이는가")과 gap lock(무엇을 "못 넣게 막는가")은 RR 안에서 같이 동작하지만 서로 다른 층위의 별개 메커니즘이다.
+
+## 관련 문서
+
+- [MySQL 개요와 기본 사용법 — 트랜잭션과 격리 수준](../../knowledge/database/0001-mysql/02-overview.md#4-트랜잭션과-격리-수준)
+- [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](../../knowledge/database/0001-mysql/03-tradeoffs.md)
 
 ---
 ### Sources
