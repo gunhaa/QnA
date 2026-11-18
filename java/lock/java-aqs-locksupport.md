@@ -157,6 +157,13 @@ while (queue.peek() != current || !locked.compareAndSet(false, true)) {
 | AQS | state 해석과 대기 큐 관리 | 커스텀 동기화 장치를 만들 때 |
 | `LockSupport` | 스레드 하나를 재우고 깨우는 원시 연산 | 프레임워크·라이브러리 수준에서 드물게 |
 
+## 관련 문서
+
+- [Java 락의 역사](./history.md)
+- [Java 락 개요와 기본 사용법](./java-lock-overview-and-basic-usage.md)
+- [Java 락: 자주 겪는 문제와 해결 방법](./java-lock-common-problems-and-solutions.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](./java-lock-failure-and-high-availability.md)
+
 ## Sources
 
 - [AbstractQueuedSynchronizer — OpenJDK 25 API (w3cub mirror)](https://docs.w3cub.com/openjdk~25/java.base/java/util/concurrent/locks/abstractqueuedsynchronizer)
