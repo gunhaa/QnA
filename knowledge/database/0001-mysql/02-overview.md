@@ -17,7 +17,7 @@ MySQL은 **칸이 딱 정해진 큰 장부(표)** 를 관리하는 사서다. �
 
 - 1995년 공개된 **오픈소스 관계형 DB(RDBMS)**. 현재 Oracle 소유. Community Edition은 **GPLv2**, 상용 Enterprise Edition 별도. 역사는 [history.md](./01-history.md) 참고.
 - AWS RDS/Aurora MySQL, Google Cloud SQL, Azure Database for MySQL 등 매니지드 서비스로 가장 널리 쓰이는 OLTP DB 중 하나.
-- **지금 쓸 버전**: 신규는 **8.4 LTS 또는 9.7 LTS**. 8.0은 2026년 4월 EOL이므로 업그레이드 대상.
+- **지금 쓸 버전**: 신규는 **8.4 LTS 또는 9.7 LTS**. 8.0은 2026년 4월 EOL이므로 업그레이드 대상. LTS·Innovation 트랙 선택은 [트레이드오프 — 주요 선택지](./03-tradeoffs.md#3-주요-선택지).
   - 8.4부터 `mysql_native_password`가 기본 비활성 → 구형 드라이버 접속 실패 주의.
   - 복제 용어가 master/slave → **source/replica**로 바뀜(`SHOW REPLICA STATUS`).
 
@@ -184,17 +184,12 @@ spring:
 
 ### 10. 언제 다른 걸 고려하나
 
-| 상황 | 대안 |
-|---|---|
-| 복잡한 분석 쿼리·대용량 집계 | ClickHouse 등 컬럼형 DB, 데이터 웨어하우스 |
-| 고급 SQL·확장(지리정보, 벡터, 커스텀 타입)이 중요 | PostgreSQL (PostGIS, pgvector) |
-| 단일 노드를 넘는 쓰기 확장 | Vitess, TiDB, 애플리케이션 샤딩 |
-| 스키마가 자주 바뀌는 문서형 데이터 위주 | MongoDB 등 (단, MySQL JSON으로도 상당 부분 가능) |
-| 서브 밀리초 조회·카운터 | Redis를 앞단 캐시로 |
+대용량 집계, PostGIS·벡터 같은 확장, 단일 primary를 넘는 쓰기 확장이 핵심이면 MySQL이 맞지 않을 수 있다. 상황별 대안과 선택 기준은 [트레이드오프 — 대안 비교](./03-tradeoffs.md#2-대안-비교), [쓰지 말아야 할 때](./03-tradeoffs.md#4-쓰지-말아야-할-때)에서 다룬다.
 
 ## 관련 문서
 
 - [MySQL의 역사](./01-history.md)
+- [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](./03-tradeoffs.md)
 - [MySQL 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
 - [MySQL 장애 대응과 고가용성](./05-failures.md)
 - [PostgreSQL RR의 MVCC vs MySQL](../../../inquiry/database/0007-postgresql-repeatable-read-mvcc-vs-mysql.md)

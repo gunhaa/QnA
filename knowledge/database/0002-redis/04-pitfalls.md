@@ -45,13 +45,9 @@ model: claude-opus-5-5
 ### 4. 메모리 부족과 Eviction
 
 - `maxmemory`를 반드시 설정한다. 미설정이면 OS 메모리를 다 쓰고 OOM Killer에 죽을 수 있다.
-- `maxmemory-policy` 선택:
-
-| 정책 | 용도 |
-|---|---|
-| `noeviction` (기본) | 메모리 차면 **쓰기 에러**. 데이터 저장소로 쓸 때 |
-| `allkeys-lru` / `allkeys-lfu` | **순수 캐시** 용도 권장 |
-| `volatile-lru` / `volatile-ttl` | TTL 있는 키만 축출. 캐시와 영구 데이터 혼용 시 |
+- 캐시로 쓰면서 `maxmemory-policy`를 기본값 `noeviction`으로 둠 → 메모리가 차는 순간 `OOM command not allowed` **쓰기 에러**. 캐시라면 `allkeys-lru`/`allkeys-lfu`로 바꾼다.
+- `volatile-*`인데 대부분의 키에 TTL이 없음 → 축출할 키가 없어 `noeviction`처럼 쓰기 에러가 난다.
+- 정책별 차이와 고르는 기준은 [트레이드오프 — 축출 정책](./03-tradeoffs.md#32-축출-정책--데이터의-성격으로-고른다)에 있다.
 
 - **fork 메모리 함정**: RDB 저장·AOF 재작성 때 `fork()` + Copy-on-Write로 쓰기가 많으면 메모리가 최대 2배 가까이 필요해진다. → `maxmemory`를 물리 메모리의 60~70% 정도로 두고, Linux `vm.overcommit_memory=1`, Transparent Huge Pages 비활성화.
 - **메모리 단편화**: `INFO memory`의 `mem_fragmentation_ratio`가 1.5 이상이면 `activedefrag yes`.
@@ -79,7 +75,7 @@ model: claude-opus-5-5
 | 남의 락을 지움(내 작업이 TTL보다 오래 걸림) | 랜덤 토큰 비교 후 삭제, 락 연장(watchdog — Redisson) |
 | GC 정지·장애 조치로 두 클라이언트가 동시에 락 보유 | Redis 락은 **효율용(중복 작업 방지)** 으로만. 정합성이 중요하면 **fencing token**을 DB에서 검사하거나 DB 락/ZooKeeper/etcd 사용. (Redlock의 안전성은 Martin Kleppmann vs antirez 논쟁으로 유명) |
 
-Java에서는 Redisson의 `RLock`이 토큰·연장·재진입을 처리해 준다.
+Java에서는 Redisson의 `RLock`이 토큰·연장·재진입을 처리해 준다. GC 정지·네트워크 분리·락 저장소 장애 같은 분산 락 장애 시나리오와 fencing token 설계는 [Java 락 — 분산 락의 장애 시나리오](../../languages/0002-java-lock/05-failures.md#6-분산-락의-장애-시나리오)에서 자세히 다룬다.
 
 ### 8. Cluster 특유의 문제
 
@@ -93,7 +89,7 @@ Java에서는 Redisson의 `RLock`이 토큰·연장·재진입을 처리해 준�
 ### 9. 연결·클라이언트 문제
 
 - 요청마다 연결 생성 → 커넥션 풀(Lettuce는 기본 단일 연결 멀티플렉싱, Jedis는 풀 필수).
-- 타임아웃 미설정 → Redis가 느려지면 앱 스레드가 전부 묶임. 명령 타임아웃을 짧게(수십~수백 ms) 두고 실패 시 DB 폴백.
+- 타임아웃 미설정 → Redis가 느려지면 앱 스레드가 전부 묶임. 타임아웃·서킷 브레이커·DB 폴백 설정은 [장애 대응 — 클라이언트 측 장애 대응](./05-failures.md#7-클라이언트-측-장애-대응)에 있다.
 - 왕복이 많음 → **파이프라이닝**, `MGET`/`MSET`으로 묶기.
 - `maxclients` 초과, `client-output-buffer-limit`(Pub/Sub 느린 구독자) 끊김 → `INFO clients`, `CLIENT LIST` 모니터링.
 
@@ -121,7 +117,9 @@ Java에서는 Redisson의 `RLock`이 토큰·연장·재진입을 처리해 준�
 
 - [Redis의 역사](./01-history.md)
 - [Redis 개요와 기본 사용법](./02-overview.md)
+- [Redis 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Redis 장애 대응과 고가용성](./05-failures.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경 (분산 락)](../../languages/0002-java-lock/05-failures.md)
 - [Vault로 API 키 verify 이관 검토 (Redis 캐시 계층 비교)](../../../inquiry/security/0003-vault-apikey-split-verify-review.md)
 
 ## 참고 자료

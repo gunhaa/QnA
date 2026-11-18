@@ -119,6 +119,7 @@ gap/next-key lock이 언제 걸리는지는 [RR에서 next-key lock이 걸리는
 
 - [MySQL의 역사](./01-history.md)
 - [MySQL 개요와 기본 사용법](./02-overview.md)
+- [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](./03-tradeoffs.md)
 - [MySQL 장애 대응과 고가용성](./05-failures.md)
 - [MySQL/PostgreSQL 락 처리 차이](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)
 

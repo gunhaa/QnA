@@ -52,6 +52,8 @@ model: claude-opus-5-5
 | **Vitess / PlanetScale** | 샤딩 미들웨어 | YouTube에서 시작, MySQL 수평 확장 |
 | **TiDB** | MySQL 프로토콜 호환 분산 DB | NewSQL |
 
+각 대안을 언제 고르나는 [트레이드오프 — 대안 비교](./03-tradeoffs.md#2-대안-비교)에서 다룬다.
+
 ### 4. 현재 상태 (2026년 11월)
 
 - 지원 버전: **8.4 LTS**(~2032.04), **9.7 LTS**(~2034.04), 26.x Innovation. 8.0은 2026년 4월 EOL.
@@ -61,6 +63,7 @@ model: claude-opus-5-5
 ## 관련 문서
 
 - [MySQL 개요와 기본 사용법](./02-overview.md)
+- [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](./03-tradeoffs.md)
 - [MySQL 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
 - [MySQL 장애 대응과 고가용성](./05-failures.md)
 - [MySQL과 PostgreSQL의 락 처리 차이](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)

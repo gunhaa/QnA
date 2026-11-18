@@ -59,18 +59,19 @@ model: claude-opus-5-5
 | 2024~ | AWS ElastiCache·MemoryDB, Google Memorystore 등이 Valkey 지원. 다수 리눅스 배포판이 Valkey로 전환 |
 | **2025.05** | Redis 8.0부터 **AGPLv3**를 선택지로 추가 → OSI 승인 오픈소스로 복귀 (RSALv2 / SSPLv1 / AGPLv3 중 택1) |
 
-라이선스 변경 후 1년 동안 외부 기여자 대부분이 Valkey 쪽으로 옮겨 갔다는 분석이 있다. Redis가 AGPL로 돌아왔지만 AGPL은 네트워크 서비스에도 소스 공개 의무가 있어, BSD를 원하는 기업은 여전히 Valkey를 고른다.
+라이선스 변경 후 1년 동안 외부 기여자 대부분이 Valkey 쪽으로 옮겨 갔다는 분석이 있다. Redis가 AGPL로 돌아온 뒤에도 BSD를 원하는 곳은 Valkey를 고른다. 라이선스로 엔진을 고르는 기준은 [트레이드오프 — 엔진과 매니지드 서비스](./03-tradeoffs.md#34-엔진과-매니지드-서비스--라이선스와-비용으로-고른다)에 있다.
 
 ### 5. 현재 상태 (2026년 11월)
 
 - **Redis**: 8.x 계열(8.6이 최신 메이저 기능 릴리스). "캐시"를 넘어 JSON 문서, 전문 검색, 벡터 검색, 시계열까지 포함한 **멀티 모델 인메모리 DB**로 포지셔닝. 라이선스는 RSALv2/SSPLv1/AGPLv3.
 - **Valkey**: 9.0(2025.10, 클러스터 모드 멀티 DB, 원자적 슬롯 이동, Hash 필드 TTL), 9.1. BSD-3. 클라우드 매니지드 서비스의 기본 선택지로 자리잡는 중.
 - 둘 다 **RESP 프로토콜과 핵심 명령이 호환**되므로 기존 클라이언트(Jedis, Lettuce, redis-py 등)는 대부분 그대로 쓴다. 다만 8.x 이후 추가된 기능(Vector Sets, 통합 Search 등)과 Valkey 9 고유 기능은 서로 갈라지고 있다.
-- 호환 대체 구현으로 **Dragonfly**(멀티스레드), **KeyDB**(멀티스레드 포크), **Garnet**(Microsoft, .NET) 등도 있다.
+- 호환 대체 구현으로 **Dragonfly**(멀티스레드), **KeyDB**(멀티스레드 포크), **Garnet**(Microsoft, .NET) 등도 있다. 각각과의 비교는 [트레이드오프 — 대안 비교](./03-tradeoffs.md#2-대안-비교)에 있다.
 
 ## 관련 문서
 
 - [Redis 개요와 기본 사용법](./02-overview.md)
+- [Redis 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Redis 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
 - [Redis 장애 대응과 고가용성](./05-failures.md)
 

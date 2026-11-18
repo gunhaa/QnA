@@ -46,7 +46,7 @@ model: claude-opus-5-5
 | 방식 | 커밋 응답 시점 | 장애 조치 시 유실 |
 |---|---|---|
 | **비동기** (기본) | source 커밋 즉시 | 아직 전송 안 된 트랜잭션 유실 가능 |
-| **반동기(semi-sync)** | 최소 N개 replica가 **relay log에 받았다고 ACK** 한 뒤 | `rpl_semi_sync_source_wait_point=AFTER_SYNC`(기본, "lossless")면 ACK 받은 것만 클라이언트에 보이므로 유실 거의 없음. 단, ACK 타임아웃 시 **비동기로 자동 강등** |
+| **반동기(semi-sync)** | 최소 N개 replica가 **relay log에 받았다고 ACK** 한 뒤 | `rpl_semi_sync_source_wait_point=AFTER_SYNC`(기본, "lossless")면 ACK 받은 것만 클라이언트에 보이므로 유실 거의 없음. 단, ACK 타임아웃(`rpl_semi_sync_source_timeout`, 기본 10초) 시 **비동기로 자동 강등** |
 | **Group Replication** | 그룹 **과반수가 합의(Paxos 계열)** 한 뒤 | 과반이 살아 있으면 유실 없음 |
 
 공통 필수 설정:
@@ -65,6 +65,8 @@ model: claude-opus-5-5
 | 불일치 의심 | 과거 skip, replica 직접 쓰기 | `pt-table-checksum` / `pt-table-sync`로 검증 |
 
 ### 5. 고가용성 구성 선택지
+
+구성별 커밋 지연 비용·제약과 언제 고르나는 [트레이드오프 — 주요 선택지](./03-tradeoffs.md#3-주요-선택지)에서 다룬다. 여기서는 장애 조치 동작만 정리한다.
 
 | 구성 | 장애 조치 | 유실 | 특징 |
 |---|---|---|---|
@@ -168,7 +170,9 @@ mysqlbinlog --start-position=<백업 시점 위치> \
 
 - [MySQL의 역사](./01-history.md)
 - [MySQL 개요와 기본 사용법](./02-overview.md)
+- [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](./03-tradeoffs.md)
 - [MySQL 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [고가용성: Replica와 Cluster는 무엇을 정의하나, 그리고 다른 방법들](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 
 ## 참고 자료
 
