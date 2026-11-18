@@ -40,7 +40,7 @@ Kafka는 **"들어온 순서대로 번호표를 붙여서 한 줄로 쌓아두�
 
 ### 1. 먼저 — Kafka는 이미 DB의 상당 부분을 갖고 있다
 
-"Kafka는 메시지 큐일 뿐"이라는 인식은 틀렸습니다. [이전에 분석한 The Log](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md)의 논지대로, Kafka는 처음부터 **"DB의 WAL을 밖으로 꺼낸 물건"** 으로 설계됐습니다.
+"Kafka는 메시지 큐일 뿐"이라는 인식은 틀렸습니다. 이전에 분석한 The Log의 논지대로, Kafka는 처음부터 **"DB의 WAL을 밖으로 꺼낸 물건"** 으로 설계됐습니다.
 
 | DB 속성 | Kafka의 제공 여부 |
 |---|---|
@@ -312,7 +312,7 @@ Kafka가 빠른 이유는 **거의 모든 읽기가 "tail read"(최근 데이터
   단건조회   캐시      검색            분석
 ```
 
-**이것이 [The Log의 핵심 주장](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md) 그 자체입니다** — "테이블/인덱스는 로그의 투영(projection)". Kafka를 DB로 쓰려 하지 말고, **Kafka를 진실의 원본으로 두고 조회용 투영을 따로 만드는 것**이 저자가 설계한 의도입니다.
+**이것이 The Log의 핵심 주장 그 자체입니다** — "테이블/인덱스는 로그의 투영(projection)". Kafka를 DB로 쓰려 하지 말고, **Kafka를 진실의 원본으로 두고 조회용 투영을 따로 만드는 것**이 저자가 설계한 의도입니다.
 
 #### 패턴 B — Kafka 안에서 조회 가능하게 만들기
 
@@ -342,7 +342,7 @@ Kafka가 빠른 이유는 **거의 모든 읽기가 "tail read"(최근 데이터
 
 #### 패턴 D — 2026년의 답: 토픽을 테이블로 물질화
 
-[The Log 분석 05번 문서](../../source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md)에서 다룬 흐름입니다.
+The Log 분석의 비판·2026년 관점 장에서 다룬 흐름입니다.
 
 | 제품 | 동작 |
 |---|---|
@@ -359,7 +359,7 @@ Kafka가 빠른 이유는 **거의 모든 읽기가 "tail read"(최근 데이터
    Trino / Spark / DuckDB / Snowflake
 ```
 
-**이것이 "Kafka를 DB처럼 쓰고 싶다"에 대한 2026년의 정식 답변입니다.** Kafka를 억지로 DB로 만드는 게 아니라, **같은 데이터를 로그 표현과 테이블 표현으로 동시에 물질화**하는 것. [Part 1의 로그/테이블 이중성](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md)이 제품으로 구현된 형태입니다.
+**이것이 "Kafka를 DB처럼 쓰고 싶다"에 대한 2026년의 정식 답변입니다.** Kafka를 억지로 DB로 만드는 게 아니라, **같은 데이터를 로그 표현과 테이블 표현으로 동시에 물질화**하는 것. Part 1의 로그/테이블 이중성이 제품으로 구현된 형태입니다.
 
 ---
 
@@ -429,9 +429,6 @@ Kafka가 빠른 이유는 **거의 모든 읽기가 "tail read"(최근 데이터
 
 ## 관련 문서
 
-- [`source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md) — "테이블은 로그의 투영" 원리. 이 질문의 사상적 배경
-- [`source/distributed-systems/0001-the-log-kreps-2013/04-part3-stream-processing.md`](../../source/distributed-systems/0001-the-log-kreps-2013/04-part3-stream-processing.md) — log compaction, 로컬 상태 + changelog
-- [`source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md`](../../source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md) — Tableflow/Fluss 등 토픽-테이블 물질화
 - [`inquiry/distributed-systems/0003-kafka-vs-rabbitmq.md`](./0003-kafka-vs-rabbitmq.md) — "큐 vs 로그"의 차이
 - [`inquiry/distributed-systems/0005-spring-kafka-consumer-vs-outbox.md`](./0005-spring-kafka-consumer-vs-outbox.md) — Outbox 패턴
 - [`inquiry/database/0013-columnar-vs-row-oriented-db.md`](../database/0013-columnar-vs-row-oriented-db.md) — 접근 패턴에 따른 저장 구조 최적화의 일반 원리

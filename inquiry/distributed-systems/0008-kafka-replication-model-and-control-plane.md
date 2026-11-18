@@ -124,7 +124,7 @@ model: claude-sonnet-5
 
 **replication.factor=3이면 클러스터 전체 디스크 쓰기는 3배입니다.** 팔로워는 소비자가 아니라 **또 하나의 라이터**입니다.
 
-이것이 클라우드에서 Kafka 비용이 큰 이유이기도 합니다 — 3중 복제는 **디스크 3배 + 크로스 AZ 네트워크 트래픽 2배**를 발생시키고, 후자가 클라우드 Kafka TCO의 최대 80%를 차지합니다. [diskless Kafka(KIP-1150)](../../source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md)가 등장한 이유가 정확히 이 지점입니다.
+이것이 클라우드에서 Kafka 비용이 큰 이유이기도 합니다 — 3중 복제는 **디스크 3배 + 크로스 AZ 네트워크 트래픽 2배**를 발생시키고, 후자가 클라우드 Kafka TCO의 최대 80%를 차지합니다. diskless Kafka(KIP-1150)가 등장한 이유가 정확히 이 지점입니다.
 
 ### (b) 복제는 push가 아니라 pull입니다
 
@@ -225,7 +225,7 @@ broker.rack=ap-northeast-2a
 
 ### (f) The Log 관점에서의 정리
 
-[The Log Part 1 분석](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md)의 분류에 대입하면:
+The Log Part 1 분석의 분류에 대입하면:
 
 | 축 | Kafka의 선택 |
 |---|---|
@@ -287,7 +287,7 @@ broker.rack=ap-northeast-2a
 
 > "KRaft stores metadata as an append-only log, which means every metadata change — topic creation, partition reassignment, ACL update — is a record appended to `__cluster_metadata`."
 
-**이것이 [The Log의 논증을 Kafka가 자기 자신에게 적용한 사례](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md)입니다.**
+**이것이 The Log의 논증을 Kafka가 자기 자신에게 적용한 사례입니다.**
 
 - 데이터 평면: 사용자 데이터를 로그로 관리
 - 제어 평면: **클러스터 메타데이터도 로그로 관리**
@@ -460,5 +460,3 @@ CAP은 "파티션이 발생했을 때"만 다루므로 불충분합니다. Danie
 - [`inquiry/distributed-systems/0006-kafka-as-a-database-offset-lookup.md`](./0006-kafka-as-a-database-offset-lookup.md) — 세그먼트·sparse index·offset 조회
 - [`inquiry/distributed-systems/0001-kafka-consumer-mechanism.md`](./0001-kafka-consumer-mechanism.md) — 컨슈머 그룹·리밸런싱
 - [`inquiry/distributed-systems/0002-kafka-overview.md`](./0002-kafka-overview.md) — Kafka 기본 구조
-- [`source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md`](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md) — physical/logical logging × primary-backup/active-active 2축 분류, 합의와 로그
-- [`source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md`](../../source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md) — 크로스 AZ 복제 비용과 diskless Kafka
