@@ -82,22 +82,58 @@ void transfer() throws InterruptedException {
 **`Condition` — 생산자/소비자 (조건별 대기열 분리)**
 
 ```java
-private final ReentrantLock lock = new ReentrantLock();
-private final Condition notEmpty = lock.newCondition();
-private final Condition notFull  = lock.newCondition();
-private final Deque<Item> items = new ArrayDeque<>();
+class BoundedBuffer<E> {
+    private final ReentrantLock lock = new ReentrantLock();
+    private final Condition notEmpty = lock.newCondition();  // "비어 있지 않음"을 기다리는 줄 (소비자)
+    private final Condition notFull  = lock.newCondition();  // "가득 차지 않음"을 기다리는 줄 (생산자)
+    private final Deque<E> items = new ArrayDeque<>();
+    private final int capacity;
 
-void put(Item item) throws InterruptedException {
-    lock.lock();
-    try {
-        while (items.size() == CAPACITY) notFull.await();   // while: 가짜 깨어남 대비
-        items.addLast(item);
-        notEmpty.signal();
-    } finally { lock.unlock(); }
+    BoundedBuffer(int capacity) { this.capacity = capacity; }
+
+    void put(E item) throws InterruptedException {
+        lock.lock();
+        try {
+            while (items.size() == capacity) notFull.await();  // 가득 참 → 락을 놓고 잠든다
+            items.addLast(item);
+            notEmpty.signal();                                 // 잠든 소비자 하나를 깨운다
+        } finally { lock.unlock(); }
+    }
+
+    E take() throws InterruptedException {
+        lock.lock();
+        try {
+            while (items.isEmpty()) notEmpty.await();          // 비어 있음 → 락을 놓고 잠든다
+            E item = items.removeFirst();
+            notFull.signal();                                  // 잠든 생산자 하나를 깨운다
+            return item;
+        } finally { lock.unlock(); }
+    }
 }
 ```
 
-실무에서는 직접 만들기보다 `ArrayBlockingQueue`/`LinkedBlockingQueue`를 쓴다.
+- `await()`는 락을 **놓고** 잠들었다가, 깨어나면 락을 **다시 잡은 뒤** 돌아온다. 그래서 잠든 동안 다른 스레드가 `put`/`take`를 할 수 있다.
+- `if`가 아니라 `while`로 조건을 다시 확인한다. 깨어났을 때 다른 스레드가 먼저 값을 가져갔을 수 있고, 가짜 깨어남(spurious wakeup)도 있기 때문이다.
+- 대기 줄을 둘로 나눴으므로 `put`은 소비자만, `take`는 생산자만 깨운다. 조건이 하나뿐인 `wait/notifyAll`은 양쪽을 모두 깨운다.
+
+실무에서는 이 클래스를 직접 만들지 않는다. `ArrayBlockingQueue`가 **내부에 위 코드와 같은 구조**(락 1개 + `notEmpty`·`notFull`)를 갖고 있어서, `put`/`take`만 부르면 대기와 깨우기가 자동으로 일어난다.
+
+```java
+BlockingQueue<Order> queue = new ArrayBlockingQueue<>(100);   // 용량 100
+
+// 생산자 스레드
+queue.put(order);                       // 가득 차면 빈자리가 날 때까지 블록
+
+// 소비자 스레드
+Order next = queue.take();              // 비어 있으면 들어올 때까지 블록
+
+// 블록하지 않는 변형
+boolean ok = queue.offer(order);                              // 가득 차면 즉시 false
+Order o1  = queue.poll();                                     // 비어 있으면 즉시 null
+Order o2  = queue.poll(500, TimeUnit.MILLISECONDS);           // 최대 500ms 기다리고 null
+```
+
+`LinkedBlockingQueue`는 같은 방식으로 동작하지만, 락을 `put`용과 `take`용 둘로 나눠 넣기와 꺼내기가 동시에 진행된다. 실행 결과와 JDK 소스 비교는 [inquiry — ArrayBlockingQueue와 Condition 생산자/소비자](../../../inquiry/languages/0005-java-arrayblockingqueue-condition-producer-consumer.md)에 있다.
 
 **`ReadWriteLock` — 읽기 많은 캐시**
 
