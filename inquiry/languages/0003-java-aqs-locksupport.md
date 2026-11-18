@@ -36,8 +36,10 @@ Doug Lea가 만든 동기화 장치 골격이다. **`volatile int state` 하나 
 |---|---|
 | `Semaphore` | 남은 permit 수 |
 | `CountDownLatch` | 남은 카운트 (0이 되면 공유 모드 대기자 전원 통과) |
-| `ReentrantReadWriteLock` | 상위 16비트는 읽기 보유 수, 하위 16비트는 쓰기 재진입 수 |
+| `ReentrantReadWriteLock` | 읽기 보유 수와 쓰기 재진입 수를 비트로 나눠 담는다 (아래 주의 참고) |
 | `ThreadPoolExecutor.Worker` | 작업자가 실행 중인지를 나타내는 배타 플래그 (일부러 재진입 불가) |
+
+> **주의 — JDK 버전에 따라 다르다.** `ReentrantReadWriteLock`은 JDK 24까지 `int` state를 상위 16비트(읽기)·하위 16비트(쓰기)로 나눠 최대 보유 수가 65,535였다. JDK 25부터는 `AbstractQueuedLongSynchronizer` 기반 `long` state를 32비트씩 나눠 쓰고, 최대 보유 수는 `Integer.MAX_VALUE`다 ([JDK-8352971](https://bugs.openjdk.org/browse/JDK-8352971)).
 
 **하위 클래스가 구현하는 메서드 (protected)**
 
@@ -168,6 +170,7 @@ while (queue.peek() != current || !locked.compareAndSet(false, true)) {
 
 - [Java 락의 역사](../../knowledge/languages/0002-java-lock/01-history.md)
 - [Java 락 개요와 기본 사용법](../../knowledge/languages/0002-java-lock/02-overview.md)
+- [Java 락 트레이드오프와 선택 기준](../../knowledge/languages/0002-java-lock/03-tradeoffs.md)
 - [Java 락: 자주 겪는 문제와 해결 방법](../../knowledge/languages/0002-java-lock/04-pitfalls.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](../../knowledge/languages/0002-java-lock/05-failures.md)
 
