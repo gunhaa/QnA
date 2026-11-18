@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 짧은 시나리오 단위 RL(마이크로 컨트롤)은 얼마나 할 만한가 — 스타크래프트 기준
 
-> 조사 기준일: 2026-09-21. 풀게임 학습 비용은 [RTS RL 학습 비용·난이도](./starcraft-rl-bot-training-cost-and-difficulty.md) 참고.
+> 조사 기준일: 2026-09-21. 풀게임 학습 비용은 [RTS RL 학습 비용·난이도](./0012-starcraft-rl-bot-training-cost-and-difficulty.md) 참고.
 
 ## 쉬운 설명
 
@@ -99,4 +106,4 @@
 - [TorchCraftAI — Micromanagement Scenarios Tutorial](https://torchcraft.github.io/TorchCraftAI/docs/microtut-intro.html)
 - [StarCraft Micromanagement with RL and Curriculum Transfer Learning (arXiv)](https://arxiv.org/pdf/1804.00810)
 - [Episodic Exploration for Deep Deterministic Policies: StarCraft Micromanagement (arXiv)](https://arxiv.org/pdf/1609.02993)
-- 관련 문서: [RL이란 무엇인가](./what-is-reinforcement-learning.md), [RTS RL 학습 비용·난이도](./starcraft-rl-bot-training-cost-and-difficulty.md), [Pluto 정리](../game-ai/starcraft/pluto-rl-bot-ladder-incident.md)
+- 관련 문서: [RL이란 무엇인가](../ai/0038-what-is-reinforcement-learning.md), [RTS RL 학습 비용·난이도](./0012-starcraft-rl-bot-training-cost-and-difficulty.md), [Pluto 정리](../../factual/game-ai/0005-pluto-rl-bot-ladder-incident.md)

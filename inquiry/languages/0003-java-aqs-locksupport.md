@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-12
+author: agent
+model: claude-opus-5-5
+---
+
 # Java AQS와 LockSupport 정리
 
 ## 쉬운 설명
@@ -159,10 +166,10 @@ while (queue.peek() != current || !locked.compareAndSet(false, true)) {
 
 ## 관련 문서
 
-- [Java 락의 역사](./history.md)
-- [Java 락 개요와 기본 사용법](./java-lock-overview-and-basic-usage.md)
-- [Java 락: 자주 겪는 문제와 해결 방법](./java-lock-common-problems-and-solutions.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](./java-lock-failure-and-high-availability.md)
+- [Java 락의 역사](../../knowledge/languages/0002-java-lock/01-history.md)
+- [Java 락 개요와 기본 사용법](../../knowledge/languages/0002-java-lock/02-overview.md)
+- [Java 락: 자주 겪는 문제와 해결 방법](../../knowledge/languages/0002-java-lock/04-pitfalls.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](../../knowledge/languages/0002-java-lock/05-failures.md)
 
 ## Sources
 

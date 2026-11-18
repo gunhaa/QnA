@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # `ps -ef` 결과의 각 컬럼은 무슨 뜻인가요?
 
 질문에 주신 예시로 설명할게요.

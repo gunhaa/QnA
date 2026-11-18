@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # LLM 파라미터가 개당 2byte면 14B는 2byte*14B만 메모리에 올리면 계산되나? 입력값은 얼마 안 먹어서 그런가?
 
 ## 결론부터
@@ -86,4 +93,4 @@ Sources:
 - [What is GPU Memory and Why it Matters for LLM Inference — BentoML](https://www.bentoml.com/blog/what-is-gpu-memory-and-why-it-matters-for-llm-inference)
 - [Qwen3-14B: Specifications and GPU VRAM Requirements — apxml.com](https://apxml.com/models/qwen3-14b)
 - [VRAM Calculator 2026: 7B/13B/70B LLM GPU Requirements — PromptQuorum](https://www.promptquorum.com/local-llms/vram-calculator-local-llm)
-- 이 저장소 내 관련 답변: [`model-parameters.md`](./model-parameters.md) (파라미터/하이퍼파라미터/생성 파라미터 구분)
+- 이 저장소 내 관련 답변: [`inquiry/ai/0005-model-parameters.md`](./0005-model-parameters.md) (파라미터/하이퍼파라미터/생성 파라미터 구분)

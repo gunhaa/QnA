@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # nginx 워커는 정말 각자 독립된 이벤트 루프를 가질까?
 
 ## 결론부터

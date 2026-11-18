@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-14
+author: agent
+model: unknown
+---
+
 # 비트세이버 초파리 뇌 데모도 DOOMFLY와 같은 "패턴 매핑"일 뿐인가
 
 ## 쉬운 설명

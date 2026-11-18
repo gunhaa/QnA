@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-18
+author: agent
+model: claude-sonnet-5
+---
+
 # 개발에서 "Entity(엔티티)"란 무엇인가 — DB, DDD, ORM, 아키텍처를 관통하는 공통 개념
 
 ## 쉬운 설명
@@ -175,4 +182,4 @@ Clean Arch.    : "프레임워크에 의존하지 않는 핵심 업무 규칙"�
 
 ## 관련 문서
 
-- [`cs-fundamentals/first-class-concept.md`](./first-class-concept.md) — "1급 개념"과 "reification(구체화)" — Entity로 승격시킨다는 것의 이론적 배경
+- [`inquiry/cs/0006-first-class-concept.md`](./0006-first-class-concept.md) — "1급 개념"과 "reification(구체화)" — Entity로 승격시킨다는 것의 이론적 배경

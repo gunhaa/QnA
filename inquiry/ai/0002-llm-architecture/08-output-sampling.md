@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # 7단계 자세히 보기: 출력층과 샘플링 — 다음 조각을 진짜로 골라내기
 
 ## 비유

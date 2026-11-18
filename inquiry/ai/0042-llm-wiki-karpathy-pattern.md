@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # LLM Wiki (Karpathy 패턴): RAG 대신 LLM이 직접 가꾸는 위키
 
 ## 쉬운 설명

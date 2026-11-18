@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-15
+author: agent
+model: claude-opus-5-5
+---
+
 # Slack Socket Mode는 왜 외부 포트 없이 되나? (Socket Mode vs HTTP 연결 방식)
 
 > 기준일: 2026-10-15

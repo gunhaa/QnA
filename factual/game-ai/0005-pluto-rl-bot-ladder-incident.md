@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # Pluto — 스타크래프트 브루드워 자가대국 RL 봇과 래더 무단 배포 사건
 
 > 조사 기준일: 2026-09-21

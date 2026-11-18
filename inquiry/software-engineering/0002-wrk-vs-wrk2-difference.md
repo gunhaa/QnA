@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-10
+author: agent
+model: claude-sonnet-5
+---
+
 # wrk와 wrk2, 뭐가 다를까? — "빨리 많이 쏘기" vs "거짓말 안 하고 재기"
 
 ## 결론부터

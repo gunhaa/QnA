@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # FSM(전투·생산) + LLM 오케스트레이터(전략) 구조는 왜 스타1 봇에 없는가
 
 ## 쉬운 설명

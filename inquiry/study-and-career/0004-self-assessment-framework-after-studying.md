@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-11-17
+author: agent
+model: claude-opus-5-5
+---
+
 # 공부한 뒤 "내가 아는지" 평가하는 프레임워크 — 1~6단계를 어떻게 돌릴까
 
-관련 글: [맞는 대답·행동을 하면 "아는" 걸까?](../philosophy/does-right-answer-mean-knowing.md) · [컴퓨터 스터디 진행 시나리오](cs-study-group-scenario.md)
+관련 글: [맞는 대답·행동을 하면 "아는" 걸까?](./0002-does-right-answer-mean-knowing.md) · [컴퓨터 스터디 진행 시나리오](./0001-cs-study-group-scenario.md)
 
 ## 쉬운 설명
 

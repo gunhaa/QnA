@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-16
+author: agent
+model: claude-opus-5-5
+---
+
 # Markdown: 역사, 유용한 기능, 렌더러별 규격 차이
 
 ## 쉬운 설명
@@ -288,8 +295,8 @@ console.log(1)
 
 ## 관련 문서
 
-- [전자책 포맷의 역사·구조와 표준화의 현실](ebook-formats-history-structure-and-standardization-reality.md): "명세는 있지만 구현마다 다르다"는 같은 문제를 EPUB에서 다룸
-- [GitBook LLM-ready 문서 vs LLM Wiki](../ai-llm-basics/gitbook-llm-ready-docs-vs-llm-wiki.md): Markdown이 LLM용 문서 포맷으로 쓰이는 사례
+- [전자책 포맷의 역사·구조와 표준화의 현실](./0011-ebook-formats-history-structure-and-standardization-reality.md): "명세는 있지만 구현마다 다르다"는 같은 문제를 EPUB에서 다룸
+- [GitBook LLM-ready 문서 vs LLM Wiki](../ai/0041-gitbook-llm-ready-docs-vs-llm-wiki.md): Markdown이 LLM용 문서 포맷으로 쓰이는 사례
 
 ## 참고 자료
 

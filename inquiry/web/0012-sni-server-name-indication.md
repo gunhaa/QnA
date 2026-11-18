@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # SNI (Server Name Indication)란?
 
 ## 한 줄 비유

@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # 구글이 주는 "오픈 API"는 어떤 종류가 있을까?
 
 구글의 오픈 API(Open API)는 마치 **레고 블록 세트**와 같아요. 구글이 만들어 놓은 기능(지도, 이메일, 번역, 유튜브 등)을 내가 직접 안 만들어도, "블록"처럼 가져다가 내 앱에 끼워 넣을 수 있게 해주는 거예요. 이 블록을 가져다 쓰는 방법을 정해놓은 설명서가 바로 **API(Application Programming Interface, 응용 프로그램 프로그래밍 인터페이스)**입니다.

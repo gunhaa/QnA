@@ -1,8 +1,15 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # KV 캐시가 현대적 LLM의 연산 과정에서 실제로 어떻게 계산되는지 mermaid로 flow를 보여줘
 
 ## 결론부터
 
-요즘(Llama/Qwen 계열) LLM 한 레이어 안에서 KV 캐시가 만들어지는 순서는 **"정규화 → Q/K/V 투영(이때 K/V는 GQA로 Q보다 적은 개수만 생성) → Q/K에 RoPE로 위치 회전 적용 → 방금 만든 K,V를 캐시에 저장 → 캐시에 쌓인 전체 K,V로 어텐션 계산"**이에요. 핵심은 **"이번 토큰의 K,V를 계산 → 캐시에 넣기 → 캐시 전체를 가지고 어텐션"**이라는 순서가 모든 레이어마다, 모든 토큰마다 반복된다는 점이고, 이게 [이전 답변](./kv-cache-attention-explained.md)에서 설명한 "카드를 서랍에 넣고 다음번엔 서랍 전체를 훑어본다"는 비유의 실제 연산 버전이에요.
+요즘(Llama/Qwen 계열) LLM 한 레이어 안에서 KV 캐시가 만들어지는 순서는 **"정규화 → Q/K/V 투영(이때 K/V는 GQA로 Q보다 적은 개수만 생성) → Q/K에 RoPE로 위치 회전 적용 → 방금 만든 K,V를 캐시에 저장 → 캐시에 쌓인 전체 K,V로 어텐션 계산"**이에요. 핵심은 **"이번 토큰의 K,V를 계산 → 캐시에 넣기 → 캐시 전체를 가지고 어텐션"**이라는 순서가 모든 레이어마다, 모든 토큰마다 반복된다는 점이고, 이게 [이전 답변](./0007-kv-cache-attention-explained.md)에서 설명한 "카드를 서랍에 넣고 다음번엔 서랍 전체를 훑어본다"는 비유의 실제 연산 버전이에요.
 
 ## 다섯 살에게 설명하듯
 
@@ -68,7 +75,7 @@ flowchart TD
 
 - **Q는 캐시에 안 들어간다**: 그림에서 `ROPE` 다음 화살표가 두 갈래로 갈라지는데, Q는 곧장 `ATTN`으로 가고 K,V만 `WRITE`(캐시 저장)로 가요. Q는 "이번 순간에만 필요한 질문"이라 저장할 이유가 없어요.
 - **RoPE는 저장되기 전에 적용된다**: 그림처럼 캐시에 넣는 K는 이미 회전(위치 정보 주입)이 끝난 상태예요. 이렇게 저장해두면 나중에 다시 회전시킬 필요 없이 바로 어텐션에 쓸 수 있어서 대부분의 기본 구현이 이 방식(post-RoPE 캐싱)을 써요. (다만 캐시를 양자화(quantization)해서 더 압축하려는 최신 기법들은 일부러 **회전 전(pre-RoPE) K를 저장**해뒀다가 필요할 때 즉석에서 회전시키기도 해요 — 회전 전 값이 채널별 분포가 더 고르게 유지돼서 압축이 잘 되기 때문이에요.)
-- **GQA는 `PROJ` 단계에서 이미 반영된다**: K,V 헤드 수를 Q보다 줄이는 GQA는 그림의 `PROJ`(선형 투영) 단계에서 애초에 더 적은 개수로 만들어버리는 거예요. 그러니 캐시(`WRITE`)에 저장되는 양도 자동으로 줄어들어요 — 이게 [지난 답변](./kv-cache-vs-weight-size-quadratic-linear-scaling.md)에서 말한 "GQA가 캐시를 줄인다"의 실제 위치예요.
+- **GQA는 `PROJ` 단계에서 이미 반영된다**: K,V 헤드 수를 Q보다 줄이는 GQA는 그림의 `PROJ`(선형 투영) 단계에서 애초에 더 적은 개수로 만들어버리는 거예요. 그러니 캐시(`WRITE`)에 저장되는 양도 자동으로 줄어들어요 — 이게 [지난 답변](./0009-kv-cache-vs-weight-size-quadratic-linear-scaling.md)에서 말한 "GQA가 캐시를 줄인다"의 실제 위치예요.
 
 ## 요약
 
@@ -81,4 +88,4 @@ Sources:
 - [How Large Language Models Work: The Complete Technical Guide (2026) — starmorph.com](https://blog.starmorph.com/blog/how-llms-work-complete-technical-guide)
 - [EliteKV: Scalable KV Cache Compression via RoPE Frequency Selection and Joint Low-Rank Projection (arXiv)](https://arxiv.org/abs/2503.01586)
 - [A²ATS: Retrieval-Based KV Cache Reduction via Windowed Rotary Position Embedding (arXiv)](https://arxiv.org/pdf/2502.12665)
-- 이 저장소 내 관련 답변: [`kv-cache-attention-explained.md`](./kv-cache-attention-explained.md), [`kv-cache-vs-weight-size-quadratic-linear-scaling.md`](./kv-cache-vs-weight-size-quadratic-linear-scaling.md), [`04-self-attention.md`](../llm-architecture/04-self-attention.md), [`03-positional-encoding.md`](../llm-architecture/03-positional-encoding.md)
+- 이 저장소 내 관련 답변: [`inquiry/ai/0007-kv-cache-attention-explained.md`](./0007-kv-cache-attention-explained.md), [`inquiry/ai/0009-kv-cache-vs-weight-size-quadratic-linear-scaling.md`](./0009-kv-cache-vs-weight-size-quadratic-linear-scaling.md), [`inquiry/ai/0002-llm-architecture/05-self-attention.md`](./0002-llm-architecture/05-self-attention.md), [`inquiry/ai/0002-llm-architecture/04-positional-encoding.md`](./0002-llm-architecture/04-positional-encoding.md)

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # TCP에서의 connect, send, read도 (OpenResty cosocket과) 같은 구조임?
 
 ## 결론부터
@@ -86,4 +93,4 @@ Sources:
 - [socket(7) — Linux manual page](https://man7.org/linux/man-pages/man7/socket.7.html)
 - [Sending and Receiving Timeouts with SO_RCVTIMEO and SO_SNDTIMEO — nanovms.com](https://nanovms.com/changelog/sending-receiving-timeouts-so_rcvtimeo-so_sndtimeo)
 - [tcp_user_timeout — Kernel-enforced socket deadlines on Linux via TCP_USER_TIMEOUT (GitHub)](https://github.com/rubymonolith/tcp_user_timeout)
-- 이 저장소 내 관련 답변: [`vault-tcp-cosocket-connect-send-read-timeout-layers.md`](./vault-tcp-cosocket-connect-send-read-timeout-layers.md) (OpenResty cosocket의 connect/send/read 3-레이어 원본 설명)
+- 이 저장소 내 관련 답변: [`inquiry/web/0014-vault-tcp-cosocket-connect-send-read-timeout-layers.md`](./0014-vault-tcp-cosocket-connect-send-read-timeout-layers.md) (OpenResty cosocket의 connect/send/read 3-레이어 원본 설명)

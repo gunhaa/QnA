@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # GPU 병렬 계산을 해도 AI 학습이 오래 걸리는 이유 — 스타크래프트 RL 학습에 비유
 
 ## 쉬운 설명
@@ -25,7 +32,7 @@ GPU 병렬화가 못 해주는 일: **스텝 t+1의 계산은 스텝 t가 끝난
 
 ### 3. 스타크래프트 RL 학습에 비유하면 (이전 대화 연결)
 
-지난번 다룬 [Pluto급 RTS 에이전트 학습 난이도](../reinforcement-learning/starcraft/rl-bot-training-cost-and-difficulty.md)와 [PPO 보상 설계](../reinforcement-learning/ppo-algorithm-reward-design-alphastar.md) 내용을 그대로 대응시키면 구조가 똑같습니다.
+지난번 다룬 [Pluto급 RTS 에이전트 학습 난이도](../game-ai/0012-starcraft-rl-bot-training-cost-and-difficulty.md)와 [PPO 보상 설계](./0033-ppo-algorithm-reward-design-alphastar.md) 내용을 그대로 대응시키면 구조가 똑같습니다.
 
 | LLM/신경망 학습 | 스타크래프트 RL 학습 |
 |---|---|
@@ -98,4 +105,4 @@ flowchart TB
 - [Small Batch Size Training for Language Models (arXiv)](https://arxiv.org/html/2507.07101v1)
 - [Hardware Scaling Trends and Diminishing Returns in Large-Scale Distributed Training (arXiv)](https://arxiv.org/html/2411.13055v1)
 - [Training extremely large neural networks across thousands of GPUs](https://www.jeremyjordan.me/distributed-training/)
-- 관련 문서: [Pluto급 RTS 에이전트 RL 학습 난이도](../reinforcement-learning/starcraft/rl-bot-training-cost-and-difficulty.md), [PPO 보상 설계(AlphaStar)](../reinforcement-learning/ppo-algorithm-reward-design-alphastar.md)
+- 관련 문서: [Pluto급 RTS 에이전트 RL 학습 난이도](../game-ai/0012-starcraft-rl-bot-training-cost-and-difficulty.md), [PPO 보상 설계(AlphaStar)](./0033-ppo-algorithm-reward-design-alphastar.md)

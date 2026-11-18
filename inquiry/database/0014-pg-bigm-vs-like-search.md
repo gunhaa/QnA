@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-12
+author: agent
+model: claude-sonnet-5-5
+---
+
 # pg_bigm이란? 일반 LIKE 검색과의 차이
 
 ## 쉬운 설명
@@ -88,7 +95,7 @@ SELECT id, content FROM document_chunk WHERE content LIKE likequery(:keyword);
 
 - pg_bigm은 **정확한 키워드/조항번호/고유명사 매칭 후보를 싸게 뽑는 장치**로 적합하다. 예: "제12조", "연차휴가", 약어.
 - 단, 랭킹이 없고 자연어 질의에 약해서 **단독 FTS로는 BM25급 품질이 나오지 않는다.** 하이브리드에서는 dense 벡터 검색이 의미를 담당하고 pg_bigm이 키워드 보강을 맡는 구성이 현실적이다.
-- 품질이 더 필요하면 형태소 분석(앱단 Nori/Kiwi로 `tsvector` 생성)을 추가하거나 교체한다. 앞선 [설계 문서](../rag-implementation/rag-internal-policy-xlsx-ingestion-design.md) 7장과 [임베딩 선택 문서](../rag-implementation/korean-rag-embedding-model-selection-vs-bpe.md) 참고.
+- 품질이 더 필요하면 형태소 분석(앱단 Nori/Kiwi로 `tsvector` 생성)을 추가하거나 교체한다. 앞선 [설계 문서](../ai/0040-rag-internal-policy-xlsx-ingestion-design.md) 7장과 [임베딩 선택 문서](../ai/0039-korean-rag-embedding-model-selection-vs-bpe.md) 참고.
 - 도입 판단 순서: ① 운영 DB가 pg_bigm을 허용하는지 확인 → ② 시범 데이터로 `EXPLAIN`·recall 측정 → ③ 키워드 추출 방식(질의 전처리) 결정.
 
 Sources:

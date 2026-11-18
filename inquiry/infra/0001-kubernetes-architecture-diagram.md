@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # Kubernetes 전체 아키텍처, 그림으로 보기
 
 학교로 비유하면 **컨트롤 플레인(Control Plane)**은 "교장실"이고, **워커 노드(Worker Node)**는 "교실"이에요. 교장실에서 "이 학생(Pod) 3명을 반에 앉혀라"라고 지시하면, 교실 담임(kubelet)이 실제로 자리를 만들어 앉히고, 학교 안내 데스크(Service/DNS)는 학생이 바뀌어도 항상 같은 전화번호로 연결해줘요.

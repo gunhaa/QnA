@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # NGINX Plus 라이선스 비용, 얼마나 예상하면 될까?
 
 ## 먼저 알아둘 것: "정가표"가 없어요

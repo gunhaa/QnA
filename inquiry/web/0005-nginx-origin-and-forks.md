@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # nginx는 어떻게 태어났고, 어떤 자식들이 있을까?
 
 ## 태어난 이유 (생성 원리)

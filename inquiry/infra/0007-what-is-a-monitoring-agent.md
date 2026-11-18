@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # 에이전트(Agent)란 어떤 프로그램인가? — 하드웨어마다 심는 "꼬마 관리인"
 
 ## 결론부터: 질문하신 이해가 거의 맞아요

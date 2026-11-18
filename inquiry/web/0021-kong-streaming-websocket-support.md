@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-11-17
+author: agent
+model: claude-opus-5-5
+---
+
 # Kong은 양방향 스트리밍·WebSocket을 지원하나? — WebSocket, gRPC 스트리밍, SSE, TCP/TLS 스트림
 
-관련 글: [Kong의 역사](history.md) · [Kong의 RPC 지원](kong-rpc-support.md)
+관련 글: [Kong의 역사](./0019-kong-history.md) · [Kong의 RPC 지원](./0020-kong-rpc-support.md)
 
 ## 쉬운 설명
 

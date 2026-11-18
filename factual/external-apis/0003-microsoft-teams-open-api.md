@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # Microsoft Teams 오픈 API
 
 ## 한 줄 결론

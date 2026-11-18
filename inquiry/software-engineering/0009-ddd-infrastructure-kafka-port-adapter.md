@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # DDD에서 Kafka는 어디에 구현하나: Infrastructure는 config만이 아니다
 
 ## 쉬운 설명
@@ -113,4 +120,4 @@ class KafkaOrderEventPublisher implements OrderEventPublisher {
 - [Implementing The Outbox-Pattern With Kafka – Part 1 (juplo)](https://juplo.de/implementing-the-outbox-pattern-with-kafka-part-1-the-outbox-table/)
 - [spring-boot-event-driven-patterns](https://skillselion.com/skills/giuseppe-trisciuoglio/developer-kit-claude-code/spring-boot-event-driven-patterns)
 - [DDD 4-layer, DIP & Hexagonal](https://www.besthub.dev/articles/how-to-layer-code-with-ddd-four-layer-architecture-dip-hexagonal-25f3958c8973)
-- 관련 문서: [DDD 구성요소와 핵심 규칙](ddd-components-and-core-rules.md), [DDD/헥사고날 이름 컨벤션](ddd-hexagonal-naming-convention.md)
+- 관련 문서: [DDD 구성요소와 핵심 규칙](./0008-ddd-components-and-core-rules.md), [DDD/헥사고날 이름 컨벤션](./0003-ddd-hexagonal-naming-convention.md)

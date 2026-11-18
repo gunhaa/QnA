@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: claude-sonnet-5
+---
+
 # LLM은 어떻게 JSON/YAML 같은 "정해진 형식"으로만 답할 수 있을까?
 
 ## 5살한테 설명하듯

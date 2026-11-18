@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-12
+author: agent
+model: claude-opus-5-5
+---
+
 # LLM 없이 Retrieve만 평가하는 자동화 설계 (Allganize RAG-Evaluation-Dataset-KO 기반)
 
 > 전제: 평가 시점에 LLM API(Claude 등)를 쓸 수 없다. 생성(Generation)은 평가하지 않고 **검색(Retrieve) 결과만** 자동으로 채점한다.

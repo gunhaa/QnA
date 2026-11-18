@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # MySQL 운영 시 자주 겪는 문제와 해결 방법
 
 ## 쉬운 설명
@@ -6,7 +13,7 @@
 
 ## 일반 설명
 
-> 서버·복제 장애, 데이터 유실, 백업/복구는 [MySQL 장애 대응과 고가용성](./mysql-failure-and-high-availability.md)에서 다룬다.
+> 서버·복제 장애, 데이터 유실, 백업/복구는 [MySQL 장애 대응과 고가용성](./05-failures.md)에서 다룬다.
 
 ### 1. 느린 쿼리
 
@@ -40,7 +47,7 @@
 
 진단: `SHOW ENGINE INNODB STATUS\G`의 `LATEST DETECTED DEADLOCK`, `performance_schema.data_locks` / `data_lock_waits`, `sys.innodb_lock_waits`. 모든 데드락을 로그로 남기려면 `innodb_print_all_deadlocks=ON`.
 
-gap/next-key lock이 언제 걸리는지는 [RR에서 next-key lock이 걸리는 경우](../mysql-postgresql/mysql-rr-next-key-lock-cases.md)에 쿼리 유형별로 정리돼 있다.
+gap/next-key lock이 언제 걸리는지는 [RR에서 next-key lock이 걸리는 경우](../../../inquiry/database/0016-mysql-rr-next-key-lock-cases.md)에 쿼리 유형별로 정리돼 있다.
 
 ### 3. 긴 트랜잭션과 History List
 
@@ -104,16 +111,16 @@ gap/next-key lock이 언제 걸리는지는 [RR에서 next-key lock이 걸리는
 | 락 | `Innodb_row_lock_waits`, `Innodb_row_lock_time`, 데드락 로그 |
 | Buffer Pool | 적중률, `Innodb_buffer_pool_pages_dirty` |
 | undo | `History list length` |
-| 복제 | → [장애 대응과 고가용성](./mysql-failure-and-high-availability.md) |
+| 복제 | → [장애 대응과 고가용성](./05-failures.md) |
 
 수집은 `mysqld_exporter` + Prometheus/Grafana, Percona Monitoring and Management(PMM), 클라우드라면 RDS Performance Insights / CloudWatch Database Insights 등.
 
 ## 관련 문서
 
-- [MySQL의 역사](./history.md)
-- [MySQL 개요와 기본 사용법](./mysql-overview-and-basic-usage.md)
-- [MySQL 장애 대응과 고가용성](./mysql-failure-and-high-availability.md)
-- [MySQL/PostgreSQL 락 처리 차이](../mysql-postgresql/mysql-postgresql-lock-handling-differences.md)
+- [MySQL의 역사](./01-history.md)
+- [MySQL 개요와 기본 사용법](./02-overview.md)
+- [MySQL 장애 대응과 고가용성](./05-failures.md)
+- [MySQL/PostgreSQL 락 처리 차이](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)
 
 ## 참고 자료
 

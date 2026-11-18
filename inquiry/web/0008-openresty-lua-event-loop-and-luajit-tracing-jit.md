@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # OpenResty의 Lua는 nginx 워커의 이벤트루프를 "같이" 쓸까? / LuaJIT은 JVM처럼 단계별로 컴파일될까?
 
 ## 질문 1: OpenResty의 Lua 코드는 nginx 워커 이벤트루프를 공유해서 씀?

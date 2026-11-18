@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 게임플레이 에이전트: FSM vs LLM 비중, 성능 비교, 일반적 구현 방식
 
 ## 쉬운 설명

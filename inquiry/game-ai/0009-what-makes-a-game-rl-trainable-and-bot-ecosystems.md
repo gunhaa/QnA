@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 게임에 RL이 가능하려면 — API가 조건인가, 그리고 봇 생태계가 있는 게임 / 없는 게임
 
-> 조사 기준일: 2026-09-21. API가 열린 게임의 **목록**은 [게임 API 개방 현황과 비전 기반 접근](./game-apis-and-vision-based-agents.md)에 이미 정리되어 있으므로, 여기서는 **"왜 어떤 게임에만 봇 생태계가 생기는가"**라는 구조적 조건에 집중한다.
+> 조사 기준일: 2026-09-21. API가 열린 게임의 **목록**은 [게임 API 개방 현황과 비전 기반 접근](../../factual/game-ai/0001-game-apis-and-vision-based-agents.md)에 이미 정리되어 있으므로, 여기서는 **"왜 어떤 게임에만 봇 생태계가 생기는가"**라는 구조적 조건에 집중한다.
 
 ## 쉬운 설명
 
@@ -109,4 +116,4 @@ RL 학습이 성립하려면 API 말고도 아래 조건이 **동시에** 필요
 - [libmelee (Smash Melee)](https://github.com/altf4/libmelee) · [Mineflayer](https://github.com/PrismarineJS/mineflayer) · [Factorio Lua API](https://lua-api.factorio.com/latest/) · [Screeps](https://docs.screeps.com/)
 - [Riot Vanguard — Wikipedia](https://en.wikipedia.org/wiki/Riot_Vanguard) · [커널 레벨 안티치트 개요](https://en.wikipedia.org/wiki/Kernel-level_anti-cheat) · [Vanguard vs Ricochet 2026](https://gamemodifier.com/blog/kernel-anticheat-explained-vanguard-ricochet)
 - [OSRS 봇 클라이언트 셧다운 (2026)](https://bottinghub.com/osrs-bot-crackdown-2026/)
-- 관련 문서: [게임 API 개방 현황·비전 기반 접근](./game-apis-and-vision-based-agents.md), [연구가 많은 게임 환경 정리](./most-researched-game-ai-agent-environments.md), [Pluto 래더 사건](./starcraft/pluto-rl-bot-ladder-incident.md), [RTS RL 학습 비용·난이도](../reinforcement-learning/starcraft-rl-bot-training-cost-and-difficulty.md)
+- 관련 문서: [게임 API 개방 현황·비전 기반 접근](../../factual/game-ai/0001-game-apis-and-vision-based-agents.md), [연구가 많은 게임 환경 정리](../../factual/game-ai/0004-most-researched-game-ai-agent-environments.md), [Pluto 래더 사건](../../factual/game-ai/0005-pluto-rl-bot-ladder-incident.md), [RTS RL 학습 비용·난이도](./0012-starcraft-rl-bot-training-cost-and-difficulty.md)

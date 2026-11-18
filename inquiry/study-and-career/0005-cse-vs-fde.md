@@ -1,7 +1,14 @@
+---
+type: inquiry
+created: 2026-11-17
+author: agent
+model: claude-opus-5-5
+---
+
 # CSE와 FDE의 차이
 
 > 여기서 CSE는 **Customer Success Engineer**, FDE는 **Forward Deployed Engineer**. (Microsoft의 옛 조직 "Commercial Software Engineering"도 CSE로 줄여 쓰지만 다른 뜻이다.)
-> 직무의 등장 배경은 [고객 대면 엔지니어 직무의 역사](./history.md) 참고.
+> 직무의 등장 배경은 [고객 대면 엔지니어 직무의 역사](./0006-tech-careers-history.md) 참고.
 
 ## 쉬운 설명
 
@@ -52,7 +59,7 @@ FDE가 "거기까지 가게" 만들고, CSE가 "거기서 계속 잘 돌게" 만
 
 ## 관련 문서
 
-- [고객 대면 엔지니어 직무의 역사](./history.md)
+- [고객 대면 엔지니어 직무의 역사](./0006-tech-careers-history.md)
 
 ## 참고 자료
 

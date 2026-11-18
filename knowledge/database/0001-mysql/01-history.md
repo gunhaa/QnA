@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # MySQL의 역사
 
 ## 쉬운 설명
@@ -53,10 +60,10 @@
 
 ## 관련 문서
 
-- [MySQL 개요와 기본 사용법](./mysql-overview-and-basic-usage.md)
-- [MySQL 운영 시 자주 겪는 문제와 해결 방법](./mysql-common-problems-and-solutions.md)
-- [MySQL 장애 대응과 고가용성](./mysql-failure-and-high-availability.md)
-- [MySQL과 PostgreSQL의 락 처리 차이](../mysql-postgresql/mysql-postgresql-lock-handling-differences.md)
+- [MySQL 개요와 기본 사용법](./02-overview.md)
+- [MySQL 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [MySQL 장애 대응과 고가용성](./05-failures.md)
+- [MySQL과 PostgreSQL의 락 처리 차이](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)
 
 ## 참고 자료
 

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # Fluentd랑 OTel(OpenTelemetry Collector), 뭐가 다를까?
 
 둘 다 "데이터를 모아서 정리한 다음 다른 곳으로 보내주는 우체국 분류 센터" 역할을 해요. 그런데 **한 곳(Fluentd)은 원래 "편지(로그)"만 전문으로 다루던 오래된 센터**고, **다른 한 곳(OTel Collector)은 "편지+소포+엽서(로그+지표+추적)"까지 다 다루는 최신 통합 센터**예요.

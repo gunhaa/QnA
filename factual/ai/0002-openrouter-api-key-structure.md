@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # OpenRouter의 API 키 구조, 무료/유료는 정확히 어떻게 다를까?
 
 결론부터: **절반은 맞고 절반은 달라요.** 무료도 "OpenRouter 자체 API 키"는 필요해요. 다만 유료 제공사(OpenAI 등)에 낼 키는 필요 없다는 뜻이에요.

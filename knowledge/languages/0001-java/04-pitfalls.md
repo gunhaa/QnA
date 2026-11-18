@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # Java 개발·운영 시 자주 겪는 문제와 해결 방법
 
 ## 쉬운 설명
@@ -6,7 +13,7 @@ Java는 청소부(GC)가 있어 편하지만, ① 청소부가 못 치우게 물
 
 ## 일반 설명
 
-> 락·동시성 문제는 [Java 락: 자주 겪는 문제와 해결](./lock/java-lock-common-problems-and-solutions.md), 프로세스가 죽거나 멈추는 장애와 다중 인스턴스 운영은 [장애 대응과 고가용성](./java-failure-and-high-availability.md)에서 다룬다.
+> 락·동시성 문제는 [Java 락: 자주 겪는 문제와 해결](../0002-java-lock/04-pitfalls.md), 프로세스가 죽거나 멈추는 장애와 다중 인스턴스 운영은 [장애 대응과 고가용성](./05-failures.md)에서 다룬다.
 
 ### 1. 코드 수준의 흔한 버그
 
@@ -88,10 +95,10 @@ GC 언어에서 누수는 "**도달 가능하지만 다시 쓰지 않는 객체*
 
 ## 관련 문서
 
-- [Java의 역사](./history.md)
-- [Java 개요와 기본 사용법](./java-overview-and-basic-usage.md)
-- [Java 애플리케이션 장애 대응과 고가용성](./java-failure-and-high-availability.md)
-- [Java 락: 자주 겪는 문제와 해결](./lock/java-lock-common-problems-and-solutions.md)
+- [Java의 역사](./01-history.md)
+- [Java 개요와 기본 사용법](./02-overview.md)
+- [Java 애플리케이션 장애 대응과 고가용성](./05-failures.md)
+- [Java 락: 자주 겪는 문제와 해결](../0002-java-lock/04-pitfalls.md)
 
 ## 참고 자료
 

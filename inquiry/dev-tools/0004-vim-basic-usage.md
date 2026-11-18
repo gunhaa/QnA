@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # vim이 뭐고, 가장 기본적으로 어떻게 쓸까?
 
 ## 한 줄 비유

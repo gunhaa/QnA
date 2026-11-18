@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 게임 AI 라이브러리의 언어 선택 — C++/C#이 주류인 이유와 JS/TS·Java/Kotlin 선택지
 
-> 관련 문서: [게임플레이 에이전트: FSM vs LLM 비중, 성능 비교, 일반적 구현 방식](./game-agent-fsm-vs-llm-architecture.md)
+> 관련 문서: [게임플레이 에이전트: FSM vs LLM 비중, 성능 비교, 일반적 구현 방식](./0001-game-agent-fsm-vs-llm-architecture.md)
 
 ## 쉬운 설명
 

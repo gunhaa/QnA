@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 연구자들이 가장 많이 연구하는 게임 플레이 AI 에이전트 환경 (2026년 9월 기준)
 
 ## 한 줄 결론

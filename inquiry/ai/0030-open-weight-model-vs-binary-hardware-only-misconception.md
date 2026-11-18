@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # AI 가중치 공개 = 바이너리 공개? 하드웨어만 있으면 바로 쓸 수 있나?
 
 ## 쉬운 설명
@@ -22,7 +29,7 @@
 - **토크나이저(tokenizer)**: 사람이 입력한 텍스트를 모델이 이해하는 토큰 ID로 바꿔주는 부분. 가중치와 별도 파일로 같이 배포되는 게 보통이다.
 - **아키텍처/설정 정보(config)**: 레이어 수, 히든 차원, 어텐션 헤드 수 같은 구조 정보. 이게 있어야 런타임이 가중치를 어떤 모양으로 배치할지 알 수 있다.
 
-다행인 점은, 이 세 가지(런타임·토크나이저·설정)는 대부분 **가중치와 함께 무료로 같이 배포되거나, 오픈소스 런타임으로 이미 존재**하기 때문에 실질적으로는 "다운로드 한 번 + 오픈소스 도구 설치"로 해결된다. 그래서 결론적으로 **"하드웨어(그리고 그 하드웨어를 충분히 돌릴 VRAM/메모리) + 무료로 구할 수 있는 소프트웨어 몇 가지"만 있으면 실행 자체는 가능**하다는 질문의 요지는 맞다. (필요한 VRAM 규모는 [이전에 다룬 문서](./llm-inference-vram-weights-vs-input-memory.md) 참고.)
+다행인 점은, 이 세 가지(런타임·토크나이저·설정)는 대부분 **가중치와 함께 무료로 같이 배포되거나, 오픈소스 런타임으로 이미 존재**하기 때문에 실질적으로는 "다운로드 한 번 + 오픈소스 도구 설치"로 해결된다. 그래서 결론적으로 **"하드웨어(그리고 그 하드웨어를 충분히 돌릴 VRAM/메모리) + 무료로 구할 수 있는 소프트웨어 몇 가지"만 있으면 실행 자체는 가능**하다는 질문의 요지는 맞다. (필요한 VRAM 규모는 [이전에 다룬 문서](./0010-llm-inference-vram-weights-vs-input-memory.md) 참고.)
 
 ### 3. 진짜 함정 — 라이선스 제약
 
@@ -54,4 +61,4 @@
 - [Open Weights vs Open Source: The Real Difference (2026)](https://geotoolbox.ai/blog/open-weights-vs-open-source)
 - [Navigating the AI Licensing Labyrinth: Truly Open vs. Restricted "Open-Weight" Models (Medium)](https://medium.com/ai-simplified-in-plain-english/navigating-the-ai-licensing-labyrinth-truly-open-vs-restricted-open-weight-models-89de5c2e649d)
 - [Openness in language models: open source, open weights & restricted weights (ITLawCo)](https://itlawco.com/openness-in-language-models-open-source-open-weights-restricted-weights/)
-- 관련 문서: [LLM 추론 VRAM — 가중치 vs 입력 메모리](./llm-inference-vram-weights-vs-input-memory.md)
+- 관련 문서: [LLM 추론 VRAM — 가중치 vs 입력 메모리](./0010-llm-inference-vram-weights-vs-input-memory.md)

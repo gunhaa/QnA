@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: claude-sonnet-5
+---
+
 # .py 파일을 인자와 함께 systemd 유닛으로 실행하려면?
 
 ## 한 줄 비유

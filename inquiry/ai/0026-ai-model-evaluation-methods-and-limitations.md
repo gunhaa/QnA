@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # AI 모델 평가 방법: 현재 가장 많이 쓰는 방식과 한계
 
 ## 쉬운 설명

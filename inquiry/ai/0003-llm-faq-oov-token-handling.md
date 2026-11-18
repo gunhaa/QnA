@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # Q&A: 어휘집(Vocabulary)에 없는 단어는 어떻게 토큰으로 바꾸나요?
 
 ## 질문 요약
@@ -69,8 +76,8 @@ BERT처럼 예전 모델(WordPiece 방식)들은 아무리 쪼개도 어휘집�
 
 ## 관련 문서
 
-- [1단계: 토크나이저](./01-tokenizer.md)
-- [Q&A: 어휘집과 임베딩 테이블의 차이](./faq-tokenizer-vs-embedding-table.md)
+- [1단계: 토크나이저](./0002-llm-architecture/02-tokenizer.md)
+- [Q&A: 어휘집과 임베딩 테이블의 차이](./0004-llm-faq-tokenizer-vs-embedding-table.md)
 
 ## 참고 자료 (Sources)
 

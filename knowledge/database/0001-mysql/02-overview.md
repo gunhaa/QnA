@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # MySQL 개요와 기본 사용법
 
 ## 쉬운 설명
@@ -8,7 +15,7 @@ MySQL은 **칸이 딱 정해진 큰 장부(표)** 를 관리하는 사서다. �
 
 ### 1. MySQL이란
 
-- 1995년 공개된 **오픈소스 관계형 DB(RDBMS)**. 현재 Oracle 소유. Community Edition은 **GPLv2**, 상용 Enterprise Edition 별도. 역사는 [history.md](./history.md) 참고.
+- 1995년 공개된 **오픈소스 관계형 DB(RDBMS)**. 현재 Oracle 소유. Community Edition은 **GPLv2**, 상용 Enterprise Edition 별도. 역사는 [history.md](./01-history.md) 참고.
 - AWS RDS/Aurora MySQL, Google Cloud SQL, Azure Database for MySQL 등 매니지드 서비스로 가장 널리 쓰이는 OLTP DB 중 하나.
 - **지금 쓸 버전**: 신규는 **8.4 LTS 또는 9.7 LTS**. 8.0은 2026년 4월 EOL이므로 업그레이드 대상.
   - 8.4부터 `mysql_native_password`가 기본 비활성 → 구형 드라이버 접속 실패 주의.
@@ -22,7 +29,7 @@ MySQL은 **칸이 딱 정해진 큰 장부(표)** 를 관리하는 사서다. �
 | 여러 사용자가 동시에 수정 | **트랜잭션(ACID)**, MVCC, 행 단위 락 |
 | 대량 데이터에서 빠른 검색 | **B+Tree 인덱스** |
 | 서버가 죽어도 커밋한 데이터 보존 | redo log(WAL)·doublewrite buffer로 크래시 복구 |
-| 읽기 부하 분산, 장애 대비 | binlog 기반 복제 → [장애 대응과 고가용성](./mysql-failure-and-high-availability.md) |
+| 읽기 부하 분산, 장애 대비 | binlog 기반 복제 → [장애 대응과 고가용성](./05-failures.md) |
 
 ### 3. 아키텍처 핵심
 
@@ -54,7 +61,7 @@ MySQL은 **칸이 딱 정해진 큰 장부(표)** 를 관리하는 사서다. �
 | SERIALIZABLE | ✗ | ✗ | ✗ | 일반 SELECT도 공유 락 |
 
 - 일반 `SELECT`는 락 없는 **MVCC 스냅샷 읽기**, `SELECT ... FOR UPDATE`·`UPDATE`·`DELETE`는 **현재 값 읽기 + 락**. 같은 트랜잭션 안에서도 두 읽기의 결과가 다를 수 있다.
-- 락 세부 동작: [gap/next-key lock 정리](../mysql-postgresql/mysql-gap-lock-next-key-lock-mechanism-and-terms.md), [RR에서 next-key lock이 걸리는 경우](../mysql-postgresql/mysql-rr-next-key-lock-cases.md), [PostgreSQL과 락 처리 차이](../mysql-postgresql/mysql-postgresql-lock-handling-differences.md)
+- 락 세부 동작: [gap/next-key lock 정리](../../../inquiry/database/0003-mysql-gap-lock-next-key-lock-mechanism-and-terms.md), [RR에서 next-key lock이 걸리는 경우](../../../inquiry/database/0016-mysql-rr-next-key-lock-cases.md), [PostgreSQL과 락 처리 차이](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)
 
 ### 5. 바로 써 보기
 
@@ -187,10 +194,10 @@ spring:
 
 ## 관련 문서
 
-- [MySQL의 역사](./history.md)
-- [MySQL 운영 시 자주 겪는 문제와 해결 방법](./mysql-common-problems-and-solutions.md)
-- [MySQL 장애 대응과 고가용성](./mysql-failure-and-high-availability.md)
-- [PostgreSQL RR의 MVCC vs MySQL](../mysql-postgresql/postgresql-repeatable-read-mvcc-vs-mysql.md)
+- [MySQL의 역사](./01-history.md)
+- [MySQL 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [MySQL 장애 대응과 고가용성](./05-failures.md)
+- [PostgreSQL RR의 MVCC vs MySQL](../../../inquiry/database/0007-postgresql-repeatable-read-mvcc-vs-mysql.md)
 
 ## 참고 자료
 

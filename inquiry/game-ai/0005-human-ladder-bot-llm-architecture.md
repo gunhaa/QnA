@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 봇+LLM으로 사람과 직접 래더를 두는 구조 — 무대 선택부터 아키텍처까지
 
 ## 쉬운 설명

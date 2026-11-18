@@ -54,7 +54,7 @@ model: claude-opus-5-5   # author: agent일 때만. 모르면 unknown
 
 # knowledge 5문서 구성
 
-솔루션(기술·제품)이나 큰 개념(방법, 이론, 제도) **자체를 전반적으로** 물어보면 `knowledge/<대주제>/<ID>-<대상>/`에 아래 **5개 문서를 모두** 작성한다. 하나라도 빠지면 knowledge가 아니다. 순서는 역사 → 개요 → 트레이드오프 → 실패 학습 구조를 따른다 (근거: `inquiry/study-and-career/`의 "역사 → 개요 → 트레이드오프 → 실패 학습 구조의 근거 방법론" 문서).
+솔루션(기술·제품)이나 큰 개념(방법, 이론, 제도) **자체를 전반적으로** 물어보면 `knowledge/<대주제>/<ID>-<대상>/`에 아래 **5개 문서를 모두** 작성한다. 하나라도 빠지면 knowledge가 아니다. 순서는 역사 → 개요 → 트레이드오프 → 실패 학습 구조를 따른다 (근거: [`inquiry/study-and-career/0007-history-overview-tradeoff-failure-learning-frameworks.md`](./inquiry/study-and-career/0007-history-overview-tradeoff-failure-learning-frameworks.md)).
 
 1. `01-history.md` — 등장 배경과 풀려던 문제 → 주요 버전·변천 → 현재 상태(최신 버전, 라이선스, 포크·경쟁 대상)
 2. `02-overview.md` — 무엇을 해결하나, 어떻게 동작하나(구조), 기본 사용법·대표 예
@@ -84,9 +84,9 @@ model: claude-opus-5-5   # author: agent일 때만. 모르면 unknown
   author: agent
   model: claude-opus-5
   source: "Jay Kreps, The Log: What every software engineer should know about real-time data's unifying abstraction (2013)"
-  linked:            # 저장소 루트 기준 경로 (번호는 예시)
-    - inquiry/distributed-systems/0010-kafka-overview.md
-    - inquiry/distributed-systems/0011-high-availability-replication-vs-cluster-and-patterns.md
+  linked:            # 저장소 루트 기준 경로
+    - inquiry/distributed-systems/0002-kafka-overview.md
+    - inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md
   ---
   ```
   - `source`: 원전의 서지 정보(저자, 제목, 연도).

@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: unknown
+---
+
 # DB 함수(FUNCTION)·트리거(TRIGGER), 요즘 왜 잘 안 쓸까?
 
-관련 글: [MySQL 함수와 PostgreSQL 트리거 비교](mysql-postgresql/mysql-function-vs-postgresql-trigger.md)
+관련 글: [MySQL 함수와 PostgreSQL 트리거 비교](./0001-mysql-function-vs-postgresql-trigger.md)
 
 ## 5살 아이에게 설명하면
 

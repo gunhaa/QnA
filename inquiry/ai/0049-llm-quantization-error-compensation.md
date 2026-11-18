@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-16
+author: agent
+model: claude-opus-5-5
+---
+
 # LLM 양자화와 정보 손실 보완법
 
 ## 쉬운 설명
@@ -10,7 +17,7 @@
 
 ### 1. 딥러닝에서 쓰는 수치 포맷
 
-> 부동소수점의 구조(부호/지수/가수, bias, 비정규 수, NaN, 반올림 모드, ULP)는 [부동소수점 (IEEE 754)](../cs-fundamentals/ieee754-floating-point.md)에 따로 정리했다. 여기서는 양자화에 필요한 성질만 짚는다.
+> 부동소수점의 구조(부호/지수/가수, bias, 비정규 수, NaN, 반올림 모드, ULP)는 [부동소수점 (IEEE 754)](../cs/0011-ieee754-floating-point.md)에 따로 정리했다. 여기서는 양자화에 필요한 성질만 짚는다.
 
 부동소수점은 값의 간격이 **지수에 비례해 벌어진다**. 0 근처는 촘촘하고, 큰 수일수록 간격이 넓다(상대 오차가 일정). 정수(INT)는 간격이 균일하다. 이 차이가 양자화 포맷 선택에 직접 영향을 준다.
 
@@ -162,16 +169,16 @@ min/max 대신 MSE·KL divergence·퍼센타일(99.99%)로 최적 클리핑 지�
 
 ### 5. 정리
 
-- 부동소수점은 지수(범위)와 가수(정밀도)의 비트 배분 문제다 ([IEEE 754 상세](../cs-fundamentals/ieee754-floating-point.md)).
+- 부동소수점은 지수(범위)와 가수(정밀도)의 비트 배분 문제다 ([IEEE 754 상세](../cs/0011-ieee754-floating-point.md)).
 - 양자화 손실은 **반올림 오차 + 클리핑 오차**이고, LLM에서는 **아웃라이어**가 이를 폭증시킨다.
 - 보완은 ① 스케일을 잘게(per-group, MX/NVFP4) ② 아웃라이어를 분리·이전·회전(LLM.int8, SmoothQuant, QuaRot) ③ 오차를 이웃에게 보상(GPTQ)하거나 중요한 값을 보호(AWQ) ④ 학습으로 적응(QAT, QLoRA) ⑤ 분포에 맞는 포맷과 혼합 정밀도.
 - 이 기법들은 서로 조합된다. 예: 회전 → SmoothQuant 스케일 → GPTQ 보정 → per-group 스케일.
 
 ## 관련 문서
 
-- [부동소수점 (IEEE 754)](../cs-fundamentals/ieee754-floating-point.md)
-- [LLM 추론 VRAM: 가중치 vs 입력 메모리](llm-inference-vram-weights-vs-input-memory.md)
-- [KV 캐시 개념](kv-cache/kv-cache-attention-explained.md)
+- [부동소수점 (IEEE 754)](../cs/0011-ieee754-floating-point.md)
+- [LLM 추론 VRAM: 가중치 vs 입력 메모리](./0010-llm-inference-vram-weights-vs-input-memory.md)
+- [KV 캐시 개념](./0007-kv-cache-attention-explained.md)
 
 ## 참고 자료
 

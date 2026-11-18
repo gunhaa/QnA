@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # LLM(거대 언어 모델) 아키텍처, 레고 블록처럼 이해하기
 
 ## 한 줄 비유

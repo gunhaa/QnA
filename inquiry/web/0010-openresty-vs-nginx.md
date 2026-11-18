@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # OpenResty와 nginx, 뭐가 다를까?
 
 ## 한 문장 비유

@@ -1,6 +1,13 @@
+---
+type: source
+created: 2026-09-15
+author: agent
+model: claude-opus-5
+---
+
 # Part One: What Is a Log? — 상세 분석
 
-> [← 개요로](./00-overview.md) | [다음: Part Two →](./02-part2-data-integration.md)
+> [← 개요로](./01-overview.md) | [다음: Part Two →](./03-part2-data-integration.md)
 
 원문 해당 절: *What Is a Log? / Logs in databases / Logs in distributed systems / Changelog 101: Tables and Events are Dual / What's next*
 
@@ -64,7 +71,7 @@ offset:   0      1      2      3      4      5   →  (append here)
 
 저자는 애플리케이션 로그를 "퇴화형(degenerative form)"이라고 부릅니다. 같은 뿌리에서 나왔지만 "기계가 다시 읽고 상태를 재구성한다"는 핵심 기능을 잃어버린 형태라는 뜻입니다.
 
-> 이 저장소 내 관련 문서: 애플리케이션 로그 쪽 관심사는 [`observability/`](../../observability/) 폴더(Fluentd, OTel Collector 등)에 있습니다. 이 글의 "로그"와는 다른 대상입니다.
+> 이 저장소 내 관련 문서: 애플리케이션 로그 쪽 관심사는 [`inquiry/infra/`](../../../inquiry/infra/) 폴더(Fluentd, OTel Collector 등)에 있습니다. 이 글의 "로그"와는 다른 대상입니다.
 
 ### 3. Logs in Databases — 로그의 역사적 기원
 
@@ -198,7 +205,7 @@ Paxos, ZAB(ZooKeeper Atomic Broadcast), RAFT, Viewstamped Replication — 이 �
 
 즉 **"합의 알고리즘은 구현 디테일이 되고, 로그라는 인터페이스만 남을 것"** 이라는 예측입니다. Part 4의 unbundling 논증을 여기서 미리 깔아두는 셈입니다.
 
-> **2026년 시점 평가:** 이 예측은 상당히 적중했습니다. 오늘날 애플리케이션 개발자가 Paxos/RAFT를 직접 구현하는 일은 거의 없습니다. etcd(RAFT), ZooKeeper(ZAB), Kafka KRaft(RAFT 변형), Consul(RAFT) 같은 "로그/조정 서비스"를 가져다 쓸 뿐입니다. 특히 Kafka는 2022년 KRaft 모드로 **ZooKeeper 의존을 제거하고 자체 RAFT 기반 메타데이터 로그**로 대체했는데, 이는 "메타데이터조차 로그다"라는 이 글의 논리를 Kafka 자신에게 적용한 사례입니다. 자세한 건 [05번 문서](./05-critique-and-2026-update.md) 참고.
+> **2026년 시점 평가:** 이 예측은 상당히 적중했습니다. 오늘날 애플리케이션 개발자가 Paxos/RAFT를 직접 구현하는 일은 거의 없습니다. etcd(RAFT), ZooKeeper(ZAB), Kafka KRaft(RAFT 변형), Consul(RAFT) 같은 "로그/조정 서비스"를 가져다 쓸 뿐입니다. 특히 Kafka는 2022년 KRaft 모드로 **ZooKeeper 의존을 제거하고 자체 RAFT 기반 메타데이터 로그**로 대체했는데, 이는 "메타데이터조차 로그다"라는 이 글의 논리를 Kafka 자신에게 적용한 사례입니다. 자세한 건 [05번 문서](./06-critique-and-2026-update.md) 참고.
 
 ### 7. Changelog 101 — 테이블과 이벤트의 이중성
 
@@ -300,4 +307,4 @@ Part 1의 모든 마법은 "전순서"에서 나옵니다. 그런데 **전순서
 
 ---
 
-> [← 개요로](./00-overview.md) | [다음: Part Two — Data Integration →](./02-part2-data-integration.md)
+> [← 개요로](./01-overview.md) | [다음: Part Two — Data Integration →](./03-part2-data-integration.md)

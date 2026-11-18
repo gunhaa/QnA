@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-11
+author: agent
+model: claude-sonnet-5
+---
+
 # PostgreSQL을 REPEATABLE READ로 올리면 MVCC를 MySQL이랑 "똑같이" 쓰는 걸까?
 
-관련 글: [MySQL과 PostgreSQL의 락 처리 방식 차이](mysql-postgresql-lock-handling-differences.md)
+관련 글: [MySQL과 PostgreSQL의 락 처리 방식 차이](./0005-mysql-postgresql-lock-handling-differences.md)
 
 ## 결론부터
 

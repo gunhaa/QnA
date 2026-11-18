@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-14
+author: agent
+model: unknown
+---
+
 # DOOMFLY는 결국 초파리의 타고난 반사 동작을 게임 조작에 매핑한 것인가
 
 ## 쉬운 설명

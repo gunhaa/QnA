@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-11-17
+author: agent
+model: claude-opus-5-5
+---
+
 # MySQL RR에서 next-key lock은 어떤 경우에 걸리나 — 쿼리 유형별 정리
 
-관련 글: [gap/next-key lock이 걸리는 시점과 용어](mysql-gap-lock-next-key-lock-mechanism-and-terms.md) · [next-key lock은 RR에서만?](mysql-next-key-lock-scope-and-postgres-visibility-check.md) · [MySQL/PostgreSQL 락 처리 차이](mysql-postgresql-lock-handling-differences.md)
+관련 글: [gap/next-key lock이 걸리는 시점과 용어](./0003-mysql-gap-lock-next-key-lock-mechanism-and-terms.md) · [next-key lock은 RR에서만?](./0004-mysql-next-key-lock-scope-and-postgres-visibility-check.md) · [MySQL/PostgreSQL 락 처리 차이](./0005-mysql-postgresql-lock-handling-differences.md)
 
 ## 쉬운 설명
 

@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 싱글플레이 TAS 봇도 지금까지 얘기한 RL 방식인가
 
-> 관련 문서: [작은 전장 자가대국 + 판단 RL](./starcraft-micro-scenario-self-play-judgment-rl.md) · [마이크로 시나리오 RL 난이도](./starcraft-scenario-micro-rl-feasibility.md) · [RL이란 무엇인가](./what-is-reinforcement-learning.md)
+> 관련 문서: [작은 전장 자가대국 + 판단 RL](../game-ai/0011-starcraft-micro-scenario-self-play-judgment-rl.md) · [마이크로 시나리오 RL 난이도](../game-ai/0014-starcraft-scenario-micro-rl-feasibility.md) · [RL이란 무엇인가](./0038-what-is-reinforcement-learning.md)
 
 ## 쉬운 설명
 
@@ -31,7 +38,7 @@
 
 ### 3. 이게 지난 답변과 정확히 연결되는 지점
 
-[마이크로 시나리오 RL 문서](./starcraft-scenario-micro-rl-feasibility.md) §4에서 이미 이 문제를 다른 말로 경고했습니다.
+[마이크로 시나리오 RL 문서](../game-ai/0014-starcraft-scenario-micro-rl-feasibility.md) §4에서 이미 이 문제를 다른 말로 경고했습니다.
 
 > "초기 상태(유닛 위치·수·체력)를 매 에피소드 랜덤화하지 않으면, 에이전트가 관측이 아니라 **타임스텝만 보고 정답 시퀀스를 외우는 개방루프(open-loop) 정책**을 학습한다."
 
@@ -49,7 +56,7 @@
 
 ### 5. "레트로 게임을 RL로 학습시키기"는 TAS가 아니라 진짜 이 계열이다
 
-싱글플레이 레트로 게임에 지금까지 논의해온 방식(신경망 정책 + PPO 등)을 적용하고 싶다면, 그건 TAS가 아니라 [게임 API 개방 현황 문서](../game-ai/game-apis-and-vision-based-agents.md) §4.2에서 이미 소개한 **[Stable-Retro](https://github.com/Farama-Foundation/stable-retro)**(gym-retro 포크, SNES/Genesis 등 지원)나 **[Arcade Learning Environment(ALE)](https://github.com/Farama-Foundation/Arcade-Learning-Environment)**(Atari) 같은 환경입니다. 이쪽은 에뮬레이터를 **Gymnasium 표준 인터페이스**로 감싸서, 매 에피소드 환경을 리셋하고(필요시 초기 상태를 다양화하고) 신경망 정책이 관측→행동을 반복하며 학습하는, **지금까지 다뤄온 것과 완전히 동일한 RL 파이프라인**입니다.
+싱글플레이 레트로 게임에 지금까지 논의해온 방식(신경망 정책 + PPO 등)을 적용하고 싶다면, 그건 TAS가 아니라 [게임 API 개방 현황 문서](../../factual/game-ai/0001-game-apis-and-vision-based-agents.md) §4.2에서 이미 소개한 **[Stable-Retro](https://github.com/Farama-Foundation/stable-retro)**(gym-retro 포크, SNES/Genesis 등 지원)나 **[Arcade Learning Environment(ALE)](https://github.com/Farama-Foundation/Arcade-Learning-Environment)**(Atari) 같은 환경입니다. 이쪽은 에뮬레이터를 **Gymnasium 표준 인터페이스**로 감싸서, 매 에피소드 환경을 리셋하고(필요시 초기 상태를 다양화하고) 신경망 정책이 관측→행동을 반복하며 학습하는, **지금까지 다뤄온 것과 완전히 동일한 RL 파이프라인**입니다.
 
 ### 6. 정리
 
@@ -69,4 +76,4 @@
 - [Tom Murphy VII — Wikipedia](https://en.wikipedia.org/wiki/Tom_Murphy_VII)
 - [Stable-Retro (Farama Foundation)](https://github.com/Farama-Foundation/stable-retro)
 - [Arcade Learning Environment](https://github.com/Farama-Foundation/Arcade-Learning-Environment)
-- 관련 문서: [마이크로 시나리오 RL 난이도](./starcraft-scenario-micro-rl-feasibility.md) §4(초기 상태 랜덤화), [작은 전장 자가대국 + 판단 RL](./starcraft-micro-scenario-self-play-judgment-rl.md), [게임 API 개방 현황](../game-ai/game-apis-and-vision-based-agents.md)
+- 관련 문서: [마이크로 시나리오 RL 난이도](../game-ai/0014-starcraft-scenario-micro-rl-feasibility.md) §4(초기 상태 랜덤화), [작은 전장 자가대국 + 판단 RL](../game-ai/0011-starcraft-micro-scenario-self-play-judgment-rl.md), [게임 API 개방 현황](../../factual/game-ai/0001-game-apis-and-vision-based-agents.md)

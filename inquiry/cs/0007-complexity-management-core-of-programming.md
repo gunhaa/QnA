@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-18
+author: agent
+model: claude-sonnet-5
+---
+
 # "프로그래머의 핵심은 복잡도를 관리하는 것이다"란 무엇인가
 
 ## 쉬운 설명
@@ -120,7 +127,7 @@ Brooks의 유명한 결론은 "은탄환은 없다" — 즉 필수적 복잡도�
 |---|---|---|
 | **Node** | 실제 물리/가상 서버의 자원(CPU·메모리·디스크) 관리, kubelet의 컨테이너 런타임 제어 | "스케줄링 가능한 자원 풀 하나" |
 | **Pod** | 컨테이너 그룹의 네트워크 네임스페이스 공유, cgroup 격리 | "같이 뜨고 같이 죽는 배포 단위 하나" |
-| **Service / kube-proxy** | 파드가 재시작될 때마다 IP가 바뀌는 문제, egress 시의 SNAT 처리([`kubernetes/pod-outbound-egress-traffic-configuration.md`](../kubernetes/pod-outbound-egress-traffic-configuration.md) 참고) | "고정된 가상 IP/DNS 이름 하나" |
+| **Service / kube-proxy** | 파드가 재시작될 때마다 IP가 바뀌는 문제, egress 시의 SNAT 처리([`inquiry/infra/0022-pod-outbound-egress-traffic-configuration.md`](../infra/0022-pod-outbound-egress-traffic-configuration.md) 참고) | "고정된 가상 IP/DNS 이름 하나" |
 | **Ingress / Controller** | L7 라우팅 규칙, TLS 종료, 로드밸런서 프로비저닝 | "호스트/경로별 라우팅 규칙 선언 하나" |
 | **kube-scheduler / etcd** | 어느 파드를 어느 노드에 배치할지 결정하는 제약 충족 문제, 클러스터 상태의 분산 합의(Raft) | "선언한 desired state가 알아서 유지됨" |
 
@@ -154,5 +161,5 @@ Brooks의 유명한 결론은 "은탄환은 없다" — 즉 필수적 복잡도�
 
 ## 관련 문서
 
-- [`cs-fundamentals/entity-concept.md`](./entity-concept.md) — 식별자·경계를 통해 도메인 복잡도를 다루는 방법(Entity/Value Object)
-- [`software-architecture/`](../software-architecture/) — 복잡도를 다루기 위한 구체적 아키텍처 패턴(DDD, 헥사고날, 클린 아키텍처)
+- [`inquiry/cs/0008-entity-concept.md`](./0008-entity-concept.md) — 식별자·경계를 통해 도메인 복잡도를 다루는 방법(Entity/Value Object)
+- [`inquiry/software-engineering/`](../software-engineering/) — 복잡도를 다루기 위한 구체적 아키텍처 패턴(DDD, 헥사고날, 클린 아키텍처)

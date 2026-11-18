@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # nginx의 요청 처리 단계(phase)는 뭐고, OpenResty(Lua)·njs는 거기에 어떻게 끼어드는 걸까?
 
 ## 결론부터

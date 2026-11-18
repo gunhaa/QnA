@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-15
+author: agent
+model: claude-opus-5
+---
+
 # ClickHouse는 시계열 DB와 뭐가 다르고, 로그 전용 DB보다 뭐가 나은가
 
 ## 쉬운 설명

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-18
+author: agent
+model: claude-sonnet-5
+---
+
 # DDD/헥사고날 아키텍처의 기본 이름 컨벤션
 
 ## 쉬운 설명

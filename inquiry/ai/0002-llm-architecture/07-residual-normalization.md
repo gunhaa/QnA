@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # 6단계 자세히 보기: 잔차 연결(Residual Connection)과 정규화(Normalization) — 블록을 아무리 쌓아도 안 무너지게 하기
 
 ## 비유
@@ -59,7 +66,7 @@
 다음 층으로 전달 → 이 전체 과정을 N번 반복
 ```
 
-이 반복을 다 마치면, 마지막으로 진짜 "다음 단어가 뭘까"를 확률로 뽑아내는 [출력층과 샘플링](./07-output-sampling.md) 단계로 넘어갑니다.
+이 반복을 다 마치면, 마지막으로 진짜 "다음 단어가 뭘까"를 확률로 뽑아내는 [출력층과 샘플링](./08-output-sampling.md) 단계로 넘어갑니다.
 
 ## 참고 자료 (Sources)
 

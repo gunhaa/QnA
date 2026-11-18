@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # Kafka(카프카)가 뭐예요?
 
 우체국 중앙 물류창고를 떠올려보세요. 전국 각지에서 편지(데이터)가 쏟아져 들어오고, 여러 대의 트럭(소비자)이 각자 필요한 편지만 골라 가져가요. **Kafka는 이 "물류창고" 역할을 하는, 대용량 실시간 메시지 시스템**이에요.
@@ -27,8 +34,8 @@
 - **여러 소비자가 각자 속도대로**: 지난번 다룬 것처럼, 소비자가 `poll()`로 직접 당겨가는(Pull) 구조라 소비자가 자기 페이스대로 처리할 수 있어요.
 
 ## 이번 세션에서 다룬 관련 내용
-- [OTel Collector와 Kafka 연동 시 Push/Pull](./otel-collector-kafka-push-pull.md)
-- [Kafka 소비자가 메시지를 받는 실제 방식(롱 폴링)](./kafka-consumer-mechanism.md)
+- [OTel Collector와 Kafka 연동 시 Push/Pull](./0004-otel-collector-kafka-push-pull.md)
+- [Kafka 소비자가 메시지를 받는 실제 방식(롱 폴링)](./0001-kafka-consumer-mechanism.md)
 
 ## 한 줄 정리
 Kafka는 **토픽을 파티션으로 쪼개 여러 서버(브로커)에 분산 저장하고, 여러 소비자가 각자 속도대로 당겨가며 처리하게 해주는, 대용량·고성능 분산 메시징 시스템**이에요. LinkedIn의 내부 문제 해결용으로 태어나 지금은 사실상 실시간 데이터 파이프라인의 표준이 됐어요.

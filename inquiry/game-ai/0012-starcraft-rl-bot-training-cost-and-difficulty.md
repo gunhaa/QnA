@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # Pluto급 RTS 에이전트를 RL로 학습시키기 — 구현 난이도·하드웨어·소요 시간
 
 > 조사 기준일: 2026-09-21. Pluto 자체의 학습 스케일은 **미공개**이므로, 공개된 유사 프로젝트 수치로 역산한 추정치를 명시해 구분한다.
@@ -159,4 +166,4 @@ CPU가 GPU보다 중요한 구간이 길다는 점이 RTS RL의 특징이다. �
 - [TorchCraftAI (CherryPi 팀: Gant, Synnaeve, **Mella**, Gehring, Lin)](https://github.com/TorchCraft/TorchCraftAI)
 - [Brood War API — The Comprehensive Guide](https://makingcomputerdothings.com/brood-war-api-the-comprehensive-guide-of-time-and-space/)
 - [tscmoo/pluto](https://github.com/tscmoo/pluto)
-- 관련 문서: [RL이란 무엇인가](./what-is-reinforcement-learning.md), [Pluto 래더 사건 정리](../game-ai/starcraft/pluto-rl-bot-ladder-incident.md)
+- 관련 문서: [RL이란 무엇인가](../ai/0038-what-is-reinforcement-learning.md), [Pluto 래더 사건 정리](../../factual/game-ai/0005-pluto-rl-bot-ladder-incident.md)

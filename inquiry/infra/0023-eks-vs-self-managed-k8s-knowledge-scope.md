@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # EKS를 쓰면 K8s를 덜 알아도 되나? — 필요한 지식 범위
 
 ## 쉬운 설명

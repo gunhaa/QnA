@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # Java 개요와 기본 사용법
 
 ## 쉬운 설명
@@ -121,7 +128,7 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 }
 ```
 
-동시성·락은 [Java 락 개요와 기본 사용법](./lock/java-lock-overview-and-basic-usage.md)에서 따로 다룬다.
+동시성·락은 [Java 락 개요와 기본 사용법](../0002-java-lock/02-overview.md)에서 따로 다룬다.
 
 ### 6. 주요 생태계
 
@@ -132,7 +139,7 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 | 테스트 | JUnit 5, AssertJ, Mockito, Testcontainers |
 | 빌드 | Gradle, Maven |
 | 관측 | Micrometer, OpenTelemetry Java agent, JFR |
-| 코드 생성·보조 | Lombok, MapStruct ([Lombok 정리](./lombok-history-and-features.md)) |
+| 코드 생성·보조 | Lombok, MapStruct ([Lombok 정리](../../../inquiry/languages/0004-lombok-history-and-features.md)) |
 
 ### 7. 언제 다른 걸 고려하나
 
@@ -145,10 +152,10 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 
 ## 관련 문서
 
-- [Java의 역사](./history.md)
-- [Java 개발·운영 시 자주 겪는 문제와 해결 방법](./java-common-problems-and-solutions.md)
-- [Java 애플리케이션 장애 대응과 고가용성](./java-failure-and-high-availability.md)
-- [Java 락 개요와 기본 사용법](./lock/java-lock-overview-and-basic-usage.md)
+- [Java의 역사](./01-history.md)
+- [Java 개발·운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Java 애플리케이션 장애 대응과 고가용성](./05-failures.md)
+- [Java 락 개요와 기본 사용법](../0002-java-lock/02-overview.md)
 
 ## 참고 자료
 

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-18
+author: agent
+model: claude-sonnet-5
+---
+
 # 인터페이스의 유일한 구현체 이름 짓는 컨벤션 (Simple, Default, Impl 등)
 
 ## 쉬운 설명

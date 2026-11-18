@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # 리눅스(Linux)란? 기본 구성요소
 
 ## 한 줄 비유

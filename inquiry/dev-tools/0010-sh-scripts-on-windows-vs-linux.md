@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-10
+author: agent
+model: claude-sonnet-5
+---
+
 # `.sh` 파일이 리눅스랑 윈도우에서 둘 다 돌아가는 이유 — 사실은 "같은 인터페이스"가 아니라 "번역기가 따로 하나씩" 있는 거예요
 
 ## 결론부터
@@ -45,7 +52,7 @@
 - 리눅스 서버에서는 되는데 Git Bash에서는 특정 유닉스 전용 명령어(예: 심볼릭 링크 관련, 프로세스 시그널 관련)가 없어서 에러가 나거나,
 - 윈도우에서 편집만 하고 실행은 리눅스에서 했더니 줄바꿈 문제로 셔뱅이 깨지는 경우가 생겨요.
 
-즉 `.sh` 파일 자체는 "이식 가능한 텍스트"일 뿐이고, **그 텍스트를 실제로 실행 가능하게 만들어주는 "통역 환경"이 플랫폼마다 별도로 존재하며, 그 통역 환경들이 서로 100% 동일하지 않다**는 게 핵심이에요. [`bash-script-vs-shell-and-common-confusions.md`](bash-script-vs-shell-and-common-confusions.md)에서 다룬 "`#!/bin/bash` vs `#!/bin/sh`"처럼 리눅스 배포판끼리도 셔뱅 해석이 다른데, 윈도우까지 끼면 그 편차가 한 단계 더 커지는 셈이에요.
+즉 `.sh` 파일 자체는 "이식 가능한 텍스트"일 뿐이고, **그 텍스트를 실제로 실행 가능하게 만들어주는 "통역 환경"이 플랫폼마다 별도로 존재하며, 그 통역 환경들이 서로 100% 동일하지 않다**는 게 핵심이에요. [`inquiry/dev-tools/0008-bash-script-vs-shell-and-common-confusions.md`](./0008-bash-script-vs-shell-and-common-confusions.md)에서 다룬 "`#!/bin/bash` vs `#!/bin/sh`"처럼 리눅스 배포판끼리도 셔뱅 해석이 다른데, 윈도우까지 끼면 그 편차가 한 단계 더 커지는 셈이에요.
 
 ## 요약
 

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 스타크래프트 AI 대회 상위 봇은 정말 LLM 없이 만들어졌나, 그리고 프로와의 기력 차이
 
 ## 쉬운 설명

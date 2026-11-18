@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # 트레이스(Trace) 시스템에서 "자식 스팬(Child Span)"이란?
 
 ## 다섯 살에게 설명하듯

@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 게임 플레이 에이전트: 어떤 게임을 고를까 (StarCraft vs Minecraft), 그리고 이 구조에서 FSM의 역할
 
-> 관련 문서: [FSM vs LLM 비중·성능·구현](./game-agent-fsm-vs-llm-architecture.md) · [라이브러리 언어 선택](./game-ai-library-language-choice.md)
+> 관련 문서: [FSM vs LLM 비중·성능·구현](./0001-game-agent-fsm-vs-llm-architecture.md) · [라이브러리 언어 선택](./0002-game-ai-library-language-choice.md)
 
 ## 쉬운 설명
 

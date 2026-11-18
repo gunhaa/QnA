@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 테스트의 "오라클(Oracle)"이란?
 
 ## 쉬운 설명
@@ -14,7 +21,7 @@
 
 - **명세 기반 오라클(Specified Oracle)**: 요구사항 문서, 공식 명세(formal specification), 인수 조건(acceptance criteria)에서 직접 유도한 기대값. 가장 신뢰도가 높지만 명세가 애매하거나 없으면 쓸 수 없다.
 - **파생 오라클(Derived Oracle)**: 별도의 독립적인 구현이나 과거 실행 결과에서 기대값을 뽑아내는 방식.
-- **의사 오라클(Pseudo Oracle)**: "정답"이 아니라 **비교 대상**을 기준으로 삼는 방식. 이전에 다룬 [골든 테스트/골든 마스터 테스트](./golden-test-golden-master-testing.md)가 대표적 예 — "예전 출력과 같은가"만 확인할 뿐, 그 출력 자체가 옳다는 보장은 없다. 리팩터링 전후 동작이 같은지 확인할 때 특히 유용하다.
+- **의사 오라클(Pseudo Oracle)**: "정답"이 아니라 **비교 대상**을 기준으로 삼는 방식. 이전에 다룬 [골든 테스트/골든 마스터 테스트](./0006-golden-test-golden-master-testing.md)가 대표적 예 — "예전 출력과 같은가"만 확인할 뿐, 그 출력 자체가 옳다는 보장은 없다. 리팩터링 전후 동작이 같은지 확인할 때 특히 유용하다.
 - **인간 오라클(Human Oracle)**: QA·도메인 전문가가 "이 결과가 그럴듯한가"를 판단. 자동화하기 어려운 애매한 케이스에서 최후 수단으로 쓰인다.
 - **부분 오라클/무오라클(Partial/No Oracle)**: 완전한 정답은 모르지만, 최소한 "크래시 안 남", "일정한 불변식(invariant)은 지킴" 정도만 확인하는 방식.
 
@@ -24,7 +31,7 @@
 
 - 복잡한 알고리즘이라 사람이 손으로 정답을 계산하기 어려운 경우
 - 부동소수점 연산, 이미지/오디오 처리처럼 "완전히 동일"이 아니라 "충분히 비슷함"만 정의 가능한 경우
-- **머신러닝/LLM 출력**처럼 애초에 "유일한 정답"이 존재하지 않는 경우 — 지난번 다룬 [AI 평가 방법의 한계](../ai-llm-basics/ai-model-evaluation-methods-and-limitations.md), [인간 평가자 불일치 문제](../ai-llm-basics/human-evaluator-inconsistency-ground-truth-limitation.md)와 본질적으로 같은 문제다. AI 평가에서 "정답이 하나가 아니다"라고 했던 것이, 테스팅 관점에서는 곧 "오라클을 정의할 수 없다"는 뜻이다.
+- **머신러닝/LLM 출력**처럼 애초에 "유일한 정답"이 존재하지 않는 경우 — 지난번 다룬 [AI 평가 방법의 한계](../ai/0026-ai-model-evaluation-methods-and-limitations.md), [인간 평가자 불일치 문제](../ai/0029-human-evaluator-inconsistency-ground-truth-limitation.md)와 본질적으로 같은 문제다. AI 평가에서 "정답이 하나가 아니다"라고 했던 것이, 테스팅 관점에서는 곧 "오라클을 정의할 수 없다"는 뜻이다.
 
 ### 오라클 문제를 완화하는 대표 기법
 

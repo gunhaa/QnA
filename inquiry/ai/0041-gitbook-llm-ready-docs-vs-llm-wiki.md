@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # GitBook의 LLM 지원 기능과 LLM Wiki 패턴
 
 ## 쉬운 설명
@@ -8,7 +15,7 @@ GitBook에는 "LLM Wiki"라는 이름의 기능이 없다. 대신 **사람이 �
 
 ### 0. 용어 정리
 
-- **LLM Wiki**: Karpathy가 2026년 4월 gist로 공개한 **패턴**(제품 아님). raw(불변 원본) → wiki(LLM이 정리한 마크다운) → schema(규칙) 3계층 구조이며, Ingest/Query/Lint를 LLM이 수행한다. → [llm-wiki-karpathy-pattern.md](llm-wiki-karpathy-pattern.md)
+- **LLM Wiki**: Karpathy가 2026년 4월 gist로 공개한 **패턴**(제품 아님). raw(불변 원본) → wiki(LLM이 정리한 마크다운) → schema(규칙) 3계층 구조이며, Ingest/Query/Lint를 LLM이 수행한다. → [llm-wiki-karpathy-pattern.md](./0042-llm-wiki-karpathy-pattern.md)
 - **GitBook**: 문서 작성·호스팅 플랫폼. 2026년 10월 기준 공식 문서에 "LLM Wiki"라는 기능명은 없고, 관련 기능은 **LLM-ready docs**, **MCP**, **GitBook Assistant**, **GitBook Agent**로 나뉜다.
 
 ### 1. LLM-ready docs (읽기: AI가 문서를 소비)

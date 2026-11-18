@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # Java 락 개요와 기본 사용법
 
 ## 쉬운 설명
@@ -34,7 +41,7 @@ Java 메모리 모델(JMM)은 이를 **happens-before** 관계로 정의한다. 
 | `CountDownLatch` / `CyclicBarrier` / `Phaser` | — | ✓ | 스레드 간 대기·합류 |
 | `ConcurrentHashMap`, `BlockingQueue` 등 | ✓ (연산 단위) | ✓ | 동기화된 자료구조 — 직접 락보다 우선 고려 |
 
-`ReentrantLock`·`Semaphore` 등은 내부적으로 **AQS + LockSupport** 위에 만들어져 있다 → [AQS와 LockSupport 정리](./java-aqs-locksupport.md)
+`ReentrantLock`·`Semaphore` 등은 내부적으로 **AQS + LockSupport** 위에 만들어져 있다 → [AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
 
 ### 3. 기본 사용법
 
@@ -151,7 +158,7 @@ record Snapshot(List<String> items) {}                   // 불변 객체는 공
 | 카운터·시퀀스 | `AtomicLong`, 고경합이면 `LongAdder` |
 | 맵·큐 공유 | `ConcurrentHashMap`, `BlockingQueue` |
 | 동시 호출 수 제한 (외부 API, 가상 스레드) | `Semaphore` |
-| **여러 서버(JVM) 사이** | JVM 락으로는 불가 → [다중 인스턴스 환경](./java-lock-failure-and-high-availability.md) |
+| **여러 서버(JVM) 사이** | JVM 락으로는 불가 → [다중 인스턴스 환경](./05-failures.md) |
 
 ### 5. `synchronized` vs `ReentrantLock`
 
@@ -174,11 +181,11 @@ record Snapshot(List<String> items) {}                   // 불변 객체는 공
 
 ## 관련 문서
 
-- [Java 락의 역사](./history.md)
-- [Java 락: 자주 겪는 문제와 해결 방법](./java-lock-common-problems-and-solutions.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](./java-lock-failure-and-high-availability.md)
-- [Java AQS와 LockSupport 정리](./java-aqs-locksupport.md)
-- [Java 개요와 기본 사용법](../java-overview-and-basic-usage.md)
+- [Java 락의 역사](./01-history.md)
+- [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](./05-failures.md)
+- [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
+- [Java 개요와 기본 사용법](../0001-java/02-overview.md)
 
 ## 참고 자료
 

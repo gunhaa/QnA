@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 인간이 AI 에이전트와 **함께** 게임하는 분야 — 공식 지원과 연구 현황 (2026년 9월)
 
 ## 한 줄 결론

@@ -1,6 +1,13 @@
+---
+type: source
+created: 2026-09-15
+author: agent
+model: claude-opus-5
+---
+
 # Part Three: Logs & Real-time Stream Processing — 상세 분석
 
-> [← Part Two](./02-part2-data-integration.md) | [다음: Part Four →](./04-part4-system-building.md)
+> [← Part Two](./03-part2-data-integration.md) | [다음: Part Four →](./05-part4-system-building.md)
 
 원문 해당 절: *Logs & Real-time Stream Processing / Data flow graphs / Stateful Real-Time Processing / Log Compaction*
 
@@ -72,7 +79,7 @@ Part 3에서 가장 자주 인용되는 주장:
 
 > **2026년 평가 — 절반만 맞았다:**
 > - **맞은 부분:** Flink 같은 현대 엔진은 실제로 배치를 "유한한 스트림"의 특수 사례로 취급합니다(Flink의 통합 배치/스트림 실행). Spark도 Structured Streaming에서 같은 방향으로 갔습니다. 개념적 통합은 저자의 예측대로 일어났습니다.
-> - **덜 맞은 부분:** 운영 현실에서 배치는 사라지지 않았습니다. 대규모 과거 데이터 재처리, 복잡한 다중 조인, 비용 최적화(스팟 인스턴스로 야간 대량 처리)에서는 배치가 여전히 압도적으로 저렴하고 단순합니다. 자세한 건 [05번 문서](./05-critique-and-2026-update.md)의 Lambda/Kappa 논쟁 참고.
+> - **덜 맞은 부분:** 운영 현실에서 배치는 사라지지 않았습니다. 대규모 과거 데이터 재처리, 복잡한 다중 조인, 비용 최적화(스팟 인스턴스로 야간 대량 처리)에서는 배치가 여전히 압도적으로 저렴하고 단순합니다. 자세한 건 [05번 문서](./06-critique-and-2026-update.md)의 Lambda/Kappa 논쟁 참고.
 
 ### 3. Data Flow Graphs — 로그로 연결된 처리 그래프
 
@@ -184,7 +191,7 @@ Part 3에서 가장 자주 인용되는 주장:
 
 Part 1에서 "테이블은 로그의 투영이고, 로그로부터 언제든 테이블을 복원할 수 있다"고 했습니다. 여기서 그 원리가 **장애 복구 메커니즘으로 직접 구현**됩니다. 로컬 상태는 테이블이고, changelog는 그 로그이고, 복구는 replay입니다. 새로운 메커니즘을 하나도 도입하지 않고 Part 1의 원리만으로 fault tolerance를 얻었습니다.
 
-> **실제 구현:** Kafka Streams가 정확히 이 구조입니다. 각 상태 저장소(state store)마다 `<app-id>-<store-name>-changelog` 라는 내부 토픽이 자동 생성되고, log compaction이 적용됩니다. 태스크가 다른 노드로 옮겨가면 그 노드가 changelog를 읽어 RocksDB를 재구축합니다. Flink는 조금 다른 길(주기적 분산 스냅샷 = Chandy-Lamport 기반 체크포인트를 객체 스토리지에 저장)을 택했는데, 두 접근의 차이는 [05번 문서](./05-critique-and-2026-update.md)에서 다룹니다.
+> **실제 구현:** Kafka Streams가 정확히 이 구조입니다. 각 상태 저장소(state store)마다 `<app-id>-<store-name>-changelog` 라는 내부 토픽이 자동 생성되고, log compaction이 적용됩니다. 태스크가 다른 노드로 옮겨가면 그 노드가 changelog를 읽어 RocksDB를 재구축합니다. Flink는 조금 다른 길(주기적 분산 스냅샷 = Chandy-Lamport 기반 체크포인트를 객체 스토리지에 저장)을 택했는데, 두 접근의 차이는 [05번 문서](./06-critique-and-2026-update.md)에서 다룹니다.
 
 #### 스트림-테이블 조인 — 이중성의 실전 활용
 
@@ -326,7 +333,7 @@ Kafka Streams의 standby replica, Flink의 증분 체크포인트/RocksDB state 
 - **완전한 이력 보존** (이벤트 소싱, 감사, 시점 복원) → 압축 불가, 비용 무한 증가
 - **효율적인 현재 상태 복원** (부트스트랩, 상태 복구) → 압축 필요, 이력 소실
 
-실무에서는 보통 둘 다 운영합니다 — 압축 토픽(현재 상태용) + 장기 보존 아카이브(S3/데이터 레이크). 즉 **"로그 하나면 된다"는 이 글의 미학적 주장은 현실에서 "로그 + 레이크" 두 계층으로 분화**했습니다. 이 분화가 2020년대의 lakehouse / streaming lakehouse 논의로 이어집니다([05번 문서](./05-critique-and-2026-update.md)).
+실무에서는 보통 둘 다 운영합니다 — 압축 토픽(현재 상태용) + 장기 보존 아카이브(S3/데이터 레이크). 즉 **"로그 하나면 된다"는 이 글의 미학적 주장은 현실에서 "로그 + 레이크" 두 계층으로 분화**했습니다. 이 분화가 2020년대의 lakehouse / streaming lakehouse 논의로 이어집니다([05번 문서](./06-critique-and-2026-update.md)).
 
 ---
 
@@ -344,4 +351,4 @@ Kafka Streams의 standby replica, Flink의 증분 체크포인트/RocksDB state 
 
 ---
 
-> [← Part Two](./02-part2-data-integration.md) | [다음: Part Four — System Building →](./04-part4-system-building.md)
+> [← Part Two](./03-part2-data-integration.md) | [다음: Part Four — System Building →](./05-part4-system-building.md)

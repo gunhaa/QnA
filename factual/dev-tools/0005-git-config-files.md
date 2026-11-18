@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-18
+author: agent
+model: claude-sonnet-5
+---
+
 # Git이 인식하는 설정 파일 목록
 
 ## 한 줄 결론

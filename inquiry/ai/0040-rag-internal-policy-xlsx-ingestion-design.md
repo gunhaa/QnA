@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-12
+author: agent
+model: claude-sonnet-5-5
+---
+
 # 사내 규정 RAG 시범 구축 설계 (Spring AI + JPA + pgvector + xlsx 파서)
 
 ## 쉬운 설명

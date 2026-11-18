@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-11-17
+author: agent
+model: claude-opus-5-5
+---
+
 # Kong은 RPC를 지원하나? — gRPC·gRPC-Web·JSON-RPC(MCP)·내부 클러스터 RPC
 
-관련 글: [Kong의 역사](history.md) · [Kong vs OpenResty](kong-vs-openresty.md) · [Kong의 스트리밍·WebSocket 지원](kong-streaming-websocket-support.md)
+관련 글: [Kong의 역사](./0019-kong-history.md) · [Kong vs OpenResty](./0001-kong-vs-openresty.md) · [Kong의 스트리밍·WebSocket 지원](./0021-kong-streaming-websocket-support.md)
 
 ## 쉬운 설명
 

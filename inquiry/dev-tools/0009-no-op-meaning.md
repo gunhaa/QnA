@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-10
+author: agent
+model: claude-sonnet-5
+---
+
 # no-op이 뭐예요?
 
 ## 5살에게 설명하듯

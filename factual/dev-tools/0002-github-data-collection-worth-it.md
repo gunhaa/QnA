@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # 직접 GitHub 자료를 모으는 것, 의미가 있을까? (API 직접 테스트해봄)
 
 말씀하신 추측이 **API 테스트로 확인해보니 정확했어요.** 다만 "그래서 의미가 없다"는 아니고, 조건이 좀 달라요.

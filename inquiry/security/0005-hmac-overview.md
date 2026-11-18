@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-15
+author: agent
+model: claude-opus-5-5
+---
+
 # HMAC(Hash-based Message Authentication Code)이란?
 
 ## 쉬운 설명
@@ -78,7 +85,7 @@ HMAC(K, m) = H( (K' ⊕ opad) ‖ H( (K' ⊕ ipad) ‖ m ) )
 - **JWT `HS256`**: 토큰 서명에 HMAC-SHA256을 사용합니다.
 - **OTP**: HOTP(RFC 4226)와 TOTP(RFC 6238)는 HMAC-SHA1 결과를 잘라서 6자리 코드를 만듭니다.
 - **키 유도**: HKDF(RFC 5869)는 HMAC 위에 만들어졌고, TLS 1.3에서 사용합니다.
-- **API 키 저장 및 조회**: API 키를 HMAC으로 해시해서 DB에서 조회합니다. 자세한 내용은 [api-key-verification/](./api-key-verification/) 참고.
+- **API 키 저장 및 조회**: API 키를 HMAC으로 해시해서 DB에서 조회합니다. 자세한 내용은 [API 키 HMAC 해시 조회 리뷰](./0002-nginx-api-key-hmac-hash-lookup-review.md) 참고.
 
 ### 7. Java 예시
 

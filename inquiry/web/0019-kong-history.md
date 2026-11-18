@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-11-17
+author: agent
+model: claude-opus-5-5
+---
+
 # Kong의 역사 — API 마켓플레이스의 부품에서 AI·MCP 게이트웨이까지
 
-관련 글: [Kong의 RPC 지원](kong-rpc-support.md) · [Kong vs OpenResty](kong-vs-openresty.md) · [Kong Consumer는 Entity인가 상태인가](kong-consumer-entity-vs-state-machine.md) · [Kong의 스트리밍·WebSocket 지원](kong-streaming-websocket-support.md)
+관련 글: [Kong의 RPC 지원](./0020-kong-rpc-support.md) · [Kong vs OpenResty](./0001-kong-vs-openresty.md) · [Kong Consumer는 Entity인가 상태인가](./0017-kong-consumer-entity-vs-state-machine.md) · [Kong의 스트리밍·WebSocket 지원](./0021-kong-streaming-websocket-support.md)
 
 ## 쉬운 설명
 

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-12
+author: agent
+model: claude-sonnet-5-5
+---
+
 # 한국어 RAG: 임베딩 방식 선택, BPE와의 관계, 다중 임베딩 여부
 
 ## 쉬운 설명
@@ -17,7 +24,7 @@ BPE는 문장을 **레고 조각으로 자르는 가위**고, 임베딩 모델�
 - 따라서 "BPE로 임베딩할까, 다른 방법으로 할까"는 성립하지 않고, 실제 선택지는 두 갈래다.
   1. **밀집 임베딩(dense) 모델 선택** — 의미 검색용
   2. **전문 검색(lexical)용 토큰화 방식 선택** — 키워드 검색용 (여기서 BPE vs 형태소 vs n-gram 비교가 의미를 가짐)
-- 토크나이저와 임베딩 테이블의 관계는 기존 정리 [faq-tokenizer-vs-embedding-table.md](../ai-llm-basics/llm-architecture/faq-tokenizer-vs-embedding-table.md) 참고.
+- 토크나이저와 임베딩 테이블의 관계는 기존 정리 [faq-tokenizer-vs-embedding-table.md](./0004-llm-faq-tokenizer-vs-embedding-table.md) 참고.
 
 ### 2. 전문 검색(tsvector)용 토큰화: BPE vs 형태소 vs n-gram
 
@@ -77,7 +84,7 @@ BPE는 문장을 **레고 조각으로 자르는 가위**고, 임베딩 모델�
 
 - 질의와 문서는 **반드시 같은 모델**로 임베딩 (모델별 접두어 규칙 준수).
 - `embedding_model` 컬럼을 두고 모델 교체 시 전체 재임베딩할 수 있게 원문을 보관.
-- 형태소 분석기 선택은 Postgres 운영 형태(관리형/셀프)에 따라 달라진다 → [설계 문서](./rag-internal-policy-xlsx-ingestion-design.md)의 7장 참고.
+- 형태소 분석기 선택은 Postgres 운영 형태(관리형/셀프)에 따라 달라진다 → [설계 문서](./0040-rag-internal-policy-xlsx-ingestion-design.md)의 7장 참고.
 - 성능이 부족하면 순서대로: ① 청킹/계층 경로 개선 → ② 사내 용어 사전 등록 → ③ RRF 가중치 조정 → ④ 리랭커 추가 → ⑤ 모델 교체. 다중 임베딩은 마지막 수단.
 
 Sources:

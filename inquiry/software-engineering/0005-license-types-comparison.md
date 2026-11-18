@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 오픈소스 라이선스 종류 비교
 
 ## 쉬운 설명

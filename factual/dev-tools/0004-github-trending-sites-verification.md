@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # 추천했던 트렌딩 사이트들, 직접 열어보니 어땠나
 
 지적이 정확했어요. **어떤 기준으로 골랐는지부터 솔직히 말씀드릴게요.**
@@ -22,7 +29,7 @@
 
 ## 왜 이런 일이 생기나 (일반화하면)
 
-지난 답변([`github-star-tracking-diy.md`](../dev-tools/github-star-tracking-diy.md))에서 다룬 문제의 연장선이에요:
+지난 답변([`inquiry/dev-tools/0002-github-star-tracking-diy.md`](../../inquiry/dev-tools/0002-github-star-tracking-diy.md))에서 다룬 문제의 연장선이에요:
 - 이런 트렌딩 사이트들은 전부 **GitHub의 비공식/준공식 데이터 파이프라인**에 의존해요.
 - GitHub이 API 응답 방식(페이지네이션 등)을 조용히 바꾸면, 그걸 감지 못한 수집기는 **에러 없이 "조용히" 잘못된/오래된 데이터를 계속 보여줘요.** (다운되는 게 아니라 "썩은 채로" 살아있는 게 더 무서운 경우)
 - 그래서 이런 서비스는 **"떠 있냐"가 아니라 "데이터가 최신이냐"를 따로 확인**해야 해요.

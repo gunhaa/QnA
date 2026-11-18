@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: claude-sonnet-5
+---
+
 # function calling(도구 호출)이랑 구조화된 출력(Structured Output), 뭐가 다를까?
 
 ## 5살한테 설명하듯

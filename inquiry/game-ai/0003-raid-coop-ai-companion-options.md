@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 레이드 협동 AI 동료 만들기 — 게임 선택지와 "직접 만들기" 판단
 
 ## 쉬운 설명

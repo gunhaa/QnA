@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: claude-sonnet-5
+---
+
 # Java 같은 프로그램도 기본적으로 systemctl로 실행함? Unit이 곧 프로그램인가?
 
 ## 결론부터

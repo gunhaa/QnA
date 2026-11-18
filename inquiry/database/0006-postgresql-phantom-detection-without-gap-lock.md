@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-11
+author: agent
+model: claude-sonnet-5
+---
+
 # PostgreSQL에는 gap lock이 없는데, "사이에 새 행이 끼어드는" 걸 어떻게 감지할까?
 
-관련 글: [PostgreSQL RR에서도 MVCC는 MySQL과 다르다](postgresql-repeatable-read-mvcc-vs-mysql.md) · [MySQL/PostgreSQL 락 처리 차이](mysql-postgresql-lock-handling-differences.md)
+관련 글: [PostgreSQL RR에서도 MVCC는 MySQL과 다르다](./0007-postgresql-repeatable-read-mvcc-vs-mysql.md) · [MySQL/PostgreSQL 락 처리 차이](./0005-mysql-postgresql-lock-handling-differences.md)
 
 ## 먼저, 질문자의 이해를 정리하면
 

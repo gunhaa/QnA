@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 딥러닝(머신러닝) 학습 종류 — 지도/비지도/자기지도/강화학습
 
 ## 쉬운 설명

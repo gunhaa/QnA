@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: unknown
+---
+
 # Chain-of-Thought(CoT)도 강화학습으로 학습되는 거야?
 
-관련 글: [LLM의 추론은 추가 쿼리인가 새 레이어인가](faq-reasoning-mechanism.md) · [Agent의 tool call도 추론이라 부르는 이유](faq-agentic-reasoning-tool-call.md)
+관련 글: [LLM의 추론은 추가 쿼리인가 새 레이어인가](./0014-llm-faq-reasoning-mechanism.md) · [Agent의 tool call도 추론이라 부르는 이유](./0012-llm-faq-agentic-reasoning-tool-call.md)
 
 ## 결론부터
 

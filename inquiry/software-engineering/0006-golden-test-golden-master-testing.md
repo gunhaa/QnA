@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 골든 테스트(Golden Test)란?
 
 ## 쉬운 설명

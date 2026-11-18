@@ -1,6 +1,13 @@
+---
+type: source
+created: 2026-09-15
+author: agent
+model: claude-opus-5
+---
+
 # 비판적 종합과 2026년 관점 — 13년 뒤 채점표
 
-> [← Part Four](./04-part4-system-building.md) | [개요로 돌아가기](./00-overview.md)
+> [← Part Four](./05-part4-system-building.md) | [개요로 돌아가기](./01-overview.md)
 
 이 문서는 원문에 없는 내용입니다. 2013년 글의 주장을 2026년 9월 현재 시점에서 검증하고, 원문의 논증 구조 자체를 비판적으로 검토합니다.
 
@@ -170,7 +177,7 @@
 
 **이것이 이 글에 대해 갖는 의미가 큽니다.**
 
-Part 1은 **로그와 테이블이 이중적(dual)** 이라고 말했습니다. Part 3의 압축은 그 이중성을 실용화하려 했지만 이력을 잃는 대가가 있었습니다([03번 문서](./03-part3-stream-processing.md) 6-(e) 참고).
+Part 1은 **로그와 테이블이 이중적(dual)** 이라고 말했습니다. Part 3의 압축은 그 이중성을 실용화하려 했지만 이력을 잃는 대가가 있었습니다([03번 문서](./04-part3-stream-processing.md) 6-(e) 참고).
 
 2026년의 답은 **"둘 다 저장한다"** 입니다:
 
@@ -190,7 +197,7 @@ Part 1은 **로그와 테이블이 이중적(dual)** 이라고 말했습니다. 
 
 ### 스트림 처리 쪽: Flink 2.0의 분리형 상태
 
-[Part 3에서 지적한](./03-part3-stream-processing.md) 로컬 상태의 운영 비용 문제에 대한 2026년의 답:
+[Part 3에서 지적한](./04-part3-stream-processing.md) 로컬 상태의 운영 비용 문제에 대한 2026년의 답:
 
 **Apache Flink 2.0 (2025-03 릴리스)** 은 **연산과 상태 관리를 분리**했습니다.
 - 주 상태 저장소를 원격 분산 파일시스템(DFS)으로 이동, 로컬 디스크는 2차 캐시
@@ -360,4 +367,4 @@ Part 3에서 지적했듯, 글은 "시간 개념을 포함한 처리"라고만 �
 
 ---
 
-> [← Part Four](./04-part4-system-building.md) | [개요로 돌아가기](./00-overview.md)
+> [← Part Four](./05-part4-system-building.md) | [개요로 돌아가기](./01-overview.md)

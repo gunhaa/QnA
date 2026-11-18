@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-17
+author: agent
+model: claude-sonnet-5
+---
+
 # 2FA 검증 아키텍처
 
 ## 쉬운 설명

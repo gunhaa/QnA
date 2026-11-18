@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # 파운데이션 모델 vs LLM, 뭐가 달라요?
 
 파운데이션 모델(Foundation Model)은 "큰 장난감 상자"예요. 그 안에는 글자를 다루는 장난감(LLM), 그림을 보는 장난감(VLM, Vision-Language Model), 소리를 듣는 장난감(Audio FM)이 다 들어있어요.

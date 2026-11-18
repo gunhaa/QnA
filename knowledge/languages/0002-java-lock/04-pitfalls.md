@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # Java 락: 자주 겪는 문제와 해결 방법
 
 ## 쉬운 설명
@@ -6,7 +13,7 @@
 
 ## 일반 설명
 
-> 데드락·스레드 고갈 같은 **장애 상황과 탐지·복구**, 그리고 **여러 서버 사이의 락**은 [장애 대응과 다중 인스턴스 환경](./java-lock-failure-and-high-availability.md)에서 다룬다.
+> 데드락·스레드 고갈 같은 **장애 상황과 탐지·복구**, 그리고 **여러 서버 사이의 락**은 [장애 대응과 다중 인스턴스 환경](./05-failures.md)에서 다룬다.
 
 ### 1. 경쟁 조건 (Race Condition)
 
@@ -92,7 +99,7 @@ public synchronized void decrease(Long id) {   // ✗
   - 원자적 UPDATE: `UPDATE stock SET qty = qty - 1 WHERE id = ? AND qty > 0`
   - 비관적 락: `@Lock(PESSIMISTIC_WRITE)` → `SELECT ... FOR UPDATE`
   - 낙관적 락: `@Version` + 충돌 시 재시도
-- 서버가 2대 이상이면 JVM 락은 어차피 무의미하다 → [다중 인스턴스 환경](./java-lock-failure-and-high-availability.md).
+- 서버가 2대 이상이면 JVM 락은 어차피 무의미하다 → [다중 인스턴스 환경](./05-failures.md).
 
 ### 7. 동시성 컬렉션의 함정
 
@@ -125,11 +132,11 @@ public synchronized void decrease(Long id) {   // ✗
 
 ## 관련 문서
 
-- [Java 락의 역사](./history.md)
-- [Java 락 개요와 기본 사용법](./java-lock-overview-and-basic-usage.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](./java-lock-failure-and-high-availability.md)
-- [Java AQS와 LockSupport 정리](./java-aqs-locksupport.md)
-- [MySQL 운영 시 자주 겪는 문제 — 락 대기와 데드락](../../database/mysql/mysql-common-problems-and-solutions.md)
+- [Java 락의 역사](./01-history.md)
+- [Java 락 개요와 기본 사용법](./02-overview.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](./05-failures.md)
+- [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
+- [MySQL 운영 시 자주 겪는 문제 — 락 대기와 데드락](../../database/0001-mysql/04-pitfalls.md)
 
 ## 참고 자료
 

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # LuaJIT이 "잘 컴파일됐는지" 확인하는 방법
 
 ## 다섯 살에게 설명하듯

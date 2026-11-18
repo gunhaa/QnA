@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # EKS는 "kubectl + YAML로 Pod 만드는 과정"을 자동화한 것인가?
 
 > **결론**: **아니다.** YAML 작성과 `kubectl apply`는 EKS에서도 **사용자가 그대로** 한다. 그리고 "YAML → Pod 생성"을 자동으로 처리하는 건 EKS가 아니라 **k8s 자체(컨트롤 플레인의 컨트롤러·스케줄러)**다. EKS가 대신해 주는 건 **그 컨트롤 플레인을 설치·운영하는 일**이다.

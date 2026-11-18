@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # GitHub 트렌딩, 왜 제대로 된 사이트/API가 없을까?
 
 정확해요, 그렇게 느끼신 게 맞아요. **GitHub은 트렌딩(`github.com/trending`)을 위한 공식 API를 아예 제공하지 않아요.** REST API도, GraphQL API도 없어요.

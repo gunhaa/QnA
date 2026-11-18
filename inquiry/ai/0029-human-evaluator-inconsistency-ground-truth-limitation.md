@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 사람 평가자도 기준이 일관되지 않는다 — AI 평가의 근본적 한계
 
 ## 쉬운 설명

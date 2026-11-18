@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 정책은 무엇으로 학습시키고, 무엇으로 작동·피드백시키는가 — 프레임워크 vs 직접 구현
 
-> 관련 문서: [RL 정책 = 입력→출력 함수](./rl-trained-policy-as-input-output-function.md) · [작은 전장 자가대국 + 판단 RL](./starcraft-micro-scenario-self-play-judgment-rl.md) · [RTX 4060·8코어·32GB 하드웨어 검토](./rtx4060-8core-32gb-starcraft-micro-rl-feasibility.md) · [게임 AI 라이브러리 언어 선택](../game-ai/game-ai-library-language-choice.md)
+> 관련 문서: [RL 정책 = 입력→출력 함수](./0035-rl-trained-policy-as-input-output-function.md) · [작은 전장 자가대국 + 판단 RL](../game-ai/0011-starcraft-micro-scenario-self-play-judgment-rl.md) · [RTX 4060·8코어·32GB 하드웨어 검토](../game-ai/0013-rtx4060-8core-32gb-starcraft-micro-rl-feasibility.md) · [게임 AI 라이브러리 언어 선택](../game-ai/0002-game-ai-library-language-choice.md)
 
 ## 쉬운 설명
 
@@ -39,7 +46,7 @@
 5. 1로 돌아가 반복
 ```
 
-이게 [작은 전장 자가대국 문서](./starcraft-micro-scenario-self-play-judgment-rl.md)에서 다룬 "체크포인트 저장소에서 상대를 뽑아 대전시키는" 구조와 맞물리는 지점입니다 — Actor가 게임을 돌릴 때 상대 쪽 정책을 저장소에서 하나 불러와 끼워 넣으면 됩니다. **이 actor-learner 분리 자체를 프레임워크가 대신 해주느냐, 직접 짜느냐**가 아래 선택의 핵심 갈림길입니다.
+이게 [작은 전장 자가대국 문서](../game-ai/0011-starcraft-micro-scenario-self-play-judgment-rl.md)에서 다룬 "체크포인트 저장소에서 상대를 뽑아 대전시키는" 구조와 맞물리는 지점입니다 — Actor가 게임을 돌릴 때 상대 쪽 정책을 저장소에서 하나 불러와 끼워 넣으면 됩니다. **이 actor-learner 분리 자체를 프레임워크가 대신 해주느냐, 직접 짜느냐**가 아래 선택의 핵심 갈림길입니다.
 
 ### 3. 프레임워크 선택지
 
@@ -59,7 +66,7 @@ PPO 자체는 생각보다 코드량이 적습니다 — CleanRL의 단일 파�
 
 1. 정책망 + 가치망 (PyTorch `nn.Module`, 수십 줄)
 2. 롤아웃 수집 루프 (환경에서 경험 모으기)
-3. GAE(Generalized Advantage Estimation) 계산 (어드밴티지 추정, [RL 개론 문서](./what-is-reinforcement-learning.md) §3 참조)
+3. GAE(Generalized Advantage Estimation) 계산 (어드밴티지 추정, [RL 개론 문서](./0038-what-is-reinforcement-learning.md) §3 참조)
 4. PPO 클리핑 손실 + 옵티마이저 스텝
 5. 로깅(TensorBoard/[Weights & Biases](https://wandb.ai/) 등으로 보상 곡선 확인)
 
@@ -67,30 +74,30 @@ PPO 자체는 생각보다 코드량이 적습니다 — CleanRL의 단일 파�
 
 ### 5. StarCraft(BWAPI/Java)와 연결하기 — 언어 경계를 넘는 지점
 
-여기서 실무적으로 중요한 문제가 생깁니다. **학습 프레임워크(CleanRL/SB3/RLlib)는 전부 Python/PyTorch 생태계**이고, [앞서 정한 게임 클라이언트(JBWAPI/Atlantis)는 Java](../game-ai/java-backend-dev-game-agent-companion-direction.md)입니다. [게임 AI 라이브러리 언어 선택 문서](../game-ai/game-ai-library-language-choice.md) §4의 "사이드카 패턴"이 여기 그대로 적용됩니다.
+여기서 실무적으로 중요한 문제가 생깁니다. **학습 프레임워크(CleanRL/SB3/RLlib)는 전부 Python/PyTorch 생태계**이고, [앞서 정한 게임 클라이언트(JBWAPI/Atlantis)는 Java](../game-ai/0004-java-backend-dev-game-agent-companion-direction.md)입니다. [게임 AI 라이브러리 언어 선택 문서](../game-ai/0002-game-ai-library-language-choice.md) §4의 "사이드카 패턴"이 여기 그대로 적용됩니다.
 
 **학습 단계 (Java 클라이언트 ↔ Python 트레이너)**
 ```
 Java(JBWAPI 봇) ── 소켓/gRPC(JSON 또는 protobuf) ──► Python(CleanRL 학습 루프)
   매 스텝: 관측을 직렬화해 전송 → 행동을 응답받아 게임에 적용
 ```
-- 이 구조는 [Cairn](../game-ai/game-agent-fsm-vs-llm-architecture.md)이나 [OpenGameAgent](../game-ai/game-agent-fsm-vs-llm-architecture.md)에서 이미 본 "게임 프로세스 ↔ 별도 에이전트 프로세스" IPC 패턴과 동일합니다.
-- 다만 RL 학습은 **매 스텝(초당 수십~수백 회) IPC 왕복**이 필요해 LLM 사이드카보다 지연에 훨씬 민감합니다 — 로컬 소켓(TCP loopback)이면 왕복이 수백 μs~1ms 수준이라 감당 가능하지만, [하드웨어 검토 문서](./rtx4060-8core-32gb-starcraft-micro-rl-feasibility.md)에서 잡은 동시 4~6인스턴스 처리량을 IPC 오버헤드가 깎아먹을 수 있으니 **실측 후 병목이면 공유 메모리(mmap)로 전환**하는 게 다음 단계입니다.
+- 이 구조는 [Cairn](../game-ai/0001-game-agent-fsm-vs-llm-architecture.md)이나 [OpenGameAgent](../game-ai/0001-game-agent-fsm-vs-llm-architecture.md)에서 이미 본 "게임 프로세스 ↔ 별도 에이전트 프로세스" IPC 패턴과 동일합니다.
+- 다만 RL 학습은 **매 스텝(초당 수십~수백 회) IPC 왕복**이 필요해 LLM 사이드카보다 지연에 훨씬 민감합니다 — 로컬 소켓(TCP loopback)이면 왕복이 수백 μs~1ms 수준이라 감당 가능하지만, [하드웨어 검토 문서](../game-ai/0013-rtx4060-8core-32gb-starcraft-micro-rl-feasibility.md)에서 잡은 동시 4~6인스턴스 처리량을 IPC 오버헤드가 깎아먹을 수 있으니 **실측 후 병목이면 공유 메모리(mmap)로 전환**하는 게 다음 단계입니다.
 - DJL(AWS의 JVM 딥러닝 라이브러리)은 현재 **추론(inference) 중심**이고 RL 학습 루프 자체를 JVM에서 대체할 만큼 성숙하지 않습니다 — 즉 **학습은 Python이 현실적**입니다.
 
 **배포 단계 (학습이 끝난 뒤, Python → 다시 Java로)**
 ```
 PyTorch 정책 → TorchScript/ONNX로 export → DJL(Java)이 로드 → JBWAPI 봇 안에서 직접 추론
 ```
-[직전 문서](./rl-trained-policy-as-input-output-function.md)에서 정리한 "최종 산출물은 작은 가중치 파일"이라는 점 덕분에, **학습은 Python/PyTorch, 실전 배포는 다시 Java(DJL)로 되돌아오는 구조**가 가능합니다. DJL은 TorchScript로 직렬화된 PyTorch 모델을 네이티브 Java 객체처럼 로드해 추론하는 것을 정확히 지원하도록 만들어진 라이브러리입니다. 이러면 **학습만 Python을 빌리고, 실제 게임 안에서 도는 최종 프로그램은 순수 Java**로 남길 수 있습니다 — Java 배경에 가장 마찰이 적은 형태입니다.
+[직전 문서](./0035-rl-trained-policy-as-input-output-function.md)에서 정리한 "최종 산출물은 작은 가중치 파일"이라는 점 덕분에, **학습은 Python/PyTorch, 실전 배포는 다시 Java(DJL)로 되돌아오는 구조**가 가능합니다. DJL은 TorchScript로 직렬화된 PyTorch 모델을 네이티브 Java 객체처럼 로드해 추론하는 것을 정확히 지원하도록 만들어진 라이브러리입니다. 이러면 **학습만 Python을 빌리고, 실제 게임 안에서 도는 최종 프로그램은 순수 Java**로 남길 수 있습니다 — Java 배경에 가장 마찰이 적은 형태입니다.
 
 ### 6. 권장 착수 순서
 
 | 단계 | 내용 |
 |---|---|
-| 1 | CleanRL의 PPO 단일 파일을 Gymnasium 환경(SMAC 또는 MicroRTS)에 연결해 **파이프라인부터 검증** ([마이크로 시나리오 문서](./starcraft-scenario-micro-rl-feasibility.md) §3 권장 순서와 동일) |
+| 1 | CleanRL의 PPO 단일 파일을 Gymnasium 환경(SMAC 또는 MicroRTS)에 연결해 **파이프라인부터 검증** ([마이크로 시나리오 문서](../game-ai/0014-starcraft-scenario-micro-rl-feasibility.md) §3 권장 순서와 동일) |
 | 2 | JBWAPI Java 봇 ↔ Python(CleanRL) 사이에 **로컬 소켓 IPC**로 관측/행동을 주고받는 얇은 환경 래퍼 작성 — 이게 Gymnasium의 `step()`/`reset()` 구현체가 됨 |
-| 3 | 스크립트 상대로 먼저 학습 → [자가대국 + 체크포인트 저장소](./starcraft-micro-scenario-self-play-judgment-rl.md)로 전환 (CleanRL 코드에 상대 정책 로딩 로직 추가) |
+| 3 | 스크립트 상대로 먼저 학습 → [자가대국 + 체크포인트 저장소](../game-ai/0011-starcraft-micro-scenario-self-play-judgment-rl.md)로 전환 (CleanRL 코드에 상대 정책 로딩 로직 추가) |
 | 4 | 학습된 정책을 **TorchScript/ONNX로 export** |
 | 5 | **DJL로 Java 봇에 흡수** — 실전 매치(SSCAIT 등)에서는 Python 의존성 없이 순수 JVM으로 구동 |
 
@@ -115,4 +122,4 @@ PyTorch 정책 → TorchScript/ONNX로 export → DJL(Java)이 로드 → JBWAPI
 - [TorchRL (PyTorch 공식)](https://pytorch.org/rl/)
 - [Deep Java Library (DJL) — GitHub](https://github.com/deepjavalibrary/djl) / [PyTorch 엔진 문서](https://docs.djl.ai/master/engines/pytorch/index.html)
 - [AI and Machine Learning in Java: TensorFlow, DJL, and Enterprise AI (2026)](https://www.javacodegeeks.com/2026/01/ai-and-machine-learning-in-java-tensorflow-djl-and-enterprise-ai.html)
-- 관련 문서: [RL 정책 = 입력→출력 함수](./rl-trained-policy-as-input-output-function.md), [작은 전장 자가대국 + 판단 RL](./starcraft-micro-scenario-self-play-judgment-rl.md), [마이크로 시나리오 RL 난이도](./starcraft-scenario-micro-rl-feasibility.md), [게임 AI 라이브러리 언어 선택](../game-ai/game-ai-library-language-choice.md)
+- 관련 문서: [RL 정책 = 입력→출력 함수](./0035-rl-trained-policy-as-input-output-function.md), [작은 전장 자가대국 + 판단 RL](../game-ai/0011-starcraft-micro-scenario-self-play-judgment-rl.md), [마이크로 시나리오 RL 난이도](../game-ai/0014-starcraft-scenario-micro-rl-feasibility.md), [게임 AI 라이브러리 언어 선택](../game-ai/0002-game-ai-library-language-choice.md)

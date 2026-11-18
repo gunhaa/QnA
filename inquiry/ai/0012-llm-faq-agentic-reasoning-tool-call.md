@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: unknown
+---
+
 # Agent가 tool call을 여러 번 하는 것도 왜 "추론(reasoning)"이라고 부를까?
 
-관련 글: [LLM의 추론은 추가 쿼리인가 새 레이어인가](faq-reasoning-mechanism.md) · [Chain-of-Thought도 강화학습으로 학습되나](faq-cot-reinforcement-learning.md)
+관련 글: [LLM의 추론은 추가 쿼리인가 새 레이어인가](./0014-llm-faq-reasoning-mechanism.md) · [Chain-of-Thought도 강화학습으로 학습되나](./0013-llm-faq-cot-reinforcement-learning.md)
 
 ## 결론부터
 

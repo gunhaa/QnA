@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-11
+author: agent
+model: claude-sonnet-5
+---
+
 # MySQL InnoDB의 gap lock, "스냅샷 만들 때" 거는 거 아니에요 — 용어 정리 포함
 
-관련 글: [PostgreSQL은 gap lock 없이 어떻게 감지할까](postgresql-phantom-detection-without-gap-lock.md) · [MySQL/PostgreSQL 락 처리 차이](mysql-postgresql-lock-handling-differences.md)
+관련 글: [PostgreSQL은 gap lock 없이 어떻게 감지할까](./0006-postgresql-phantom-detection-without-gap-lock.md) · [MySQL/PostgreSQL 락 처리 차이](./0005-mysql-postgresql-lock-handling-differences.md)
 
 ## 결론부터
 

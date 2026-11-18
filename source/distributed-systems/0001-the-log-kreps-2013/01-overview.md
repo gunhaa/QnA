@@ -1,3 +1,21 @@
+---
+type: source
+created: 2026-09-15
+author: agent
+model: claude-opus-5
+source: "Jay Kreps, The Log: What every software engineer should know about real-time data's unifying abstraction (2013)"
+linked:
+  - inquiry/cs/0006-first-class-concept.md
+  - inquiry/database/0009-clickhouse-overview.md
+  - inquiry/database/0013-columnar-vs-row-oriented-db.md
+  - inquiry/distributed-systems/0003-kafka-vs-rabbitmq.md
+  - inquiry/distributed-systems/0005-spring-kafka-consumer-vs-outbox.md
+  - inquiry/distributed-systems/0006-kafka-as-a-database-offset-lookup.md
+  - inquiry/distributed-systems/0007-kafka-partition-disk-and-parallelism.md
+  - inquiry/distributed-systems/0008-kafka-replication-model-and-control-plane.md
+  - inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md
+---
+
 # The Log (Jay Kreps, 2013) 챕터별 상세 분석 — 개요와 읽는 법
 
 > 원문: [The Log: What every software engineer should know about real-time data's unifying abstraction](https://www.linkedin.com/blog/engineering/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying) — Jay Kreps, LinkedIn Engineering, 2013-12-16
@@ -22,11 +40,11 @@
 
 | 파일 | 대응 원문 | 다루는 층위 | 핵심 질문 |
 |---|---|---|---|
-| [`01-part1-what-is-a-log.md`](./01-part1-what-is-a-log.md) | Part One: What Is a Log? | **이론** — 분산 시스템 원론 | 로그란 무엇이고 왜 복제·합의(consensus)의 근본 자료구조인가 |
-| [`02-part2-data-integration.md`](./02-part2-data-integration.md) | Part Two: Data Integration | **조직/데이터 아키텍처** | 왜 사내 데이터 파이프라인은 항상 O(N²) 스파게티가 되는가, 로그가 어떻게 이를 O(N)으로 바꾸는가 |
-| [`03-part3-stream-processing.md`](./03-part3-stream-processing.md) | Part Three: Logs & Real-time Stream Processing | **처리 모델** | 배치와 스트림은 왜 다른 패러다임이 아닌가, 상태 있는(stateful) 스트림 처리는 어떻게 장애를 견디는가 |
-| [`04-part4-system-building.md`](./04-part4-system-building.md) | Part Four: System Building | **시스템 설계 철학** | 미래의 분산 DB는 통합될 것인가 해체(unbundle)될 것인가, 로그는 그 안에서 어디에 놓이는가 |
-| [`05-critique-and-2026-update.md`](./05-critique-and-2026-update.md) | (원문 밖) | **비판 + 2026년 현재** | 13년 뒤 무엇이 맞았고 무엇이 틀렸는가, 지금 이 사상은 어디까지 왔는가 |
+| [`source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md`](./02-part1-what-is-a-log.md) | Part One: What Is a Log? | **이론** — 분산 시스템 원론 | 로그란 무엇이고 왜 복제·합의(consensus)의 근본 자료구조인가 |
+| [`source/distributed-systems/0001-the-log-kreps-2013/03-part2-data-integration.md`](./03-part2-data-integration.md) | Part Two: Data Integration | **조직/데이터 아키텍처** | 왜 사내 데이터 파이프라인은 항상 O(N²) 스파게티가 되는가, 로그가 어떻게 이를 O(N)으로 바꾸는가 |
+| [`source/distributed-systems/0001-the-log-kreps-2013/04-part3-stream-processing.md`](./04-part3-stream-processing.md) | Part Three: Logs & Real-time Stream Processing | **처리 모델** | 배치와 스트림은 왜 다른 패러다임이 아닌가, 상태 있는(stateful) 스트림 처리는 어떻게 장애를 견디는가 |
+| [`source/distributed-systems/0001-the-log-kreps-2013/05-part4-system-building.md`](./05-part4-system-building.md) | Part Four: System Building | **시스템 설계 철학** | 미래의 분산 DB는 통합될 것인가 해체(unbundle)될 것인가, 로그는 그 안에서 어디에 놓이는가 |
+| [`source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md`](./06-critique-and-2026-update.md) | (원문 밖) | **비판 + 2026년 현재** | 13년 뒤 무엇이 맞았고 무엇이 틀렸는가, 지금 이 사상은 어디까지 왔는가 |
 
 ### 이 글의 위상
 
@@ -75,7 +93,7 @@ state_now = fold(apply, initial_state, log[0..n])
 - 당시 LinkedIn 스택: Databus(Oracle CDC), Voldemort(KV), Espresso(document store), Search, Social Graph, Hadoop
 - Kreps의 2008년 Hadoop 프로젝트 회고: "데이터 옮기는 데 몇 주, 나머지는 알고리즘"이라 예상했지만 실제로는 **데이터 파이프라인 작업이 프로젝트 전체를 잡아먹음**
 
-> 2026년 현재 LinkedIn 수치와 비교하면 규모 감각이 잡힙니다: 2019년 **7조 메시지/일**, 2025년 기준 **32조 레코드/일, 17PB/일, 150개 클러스터, 40만 토픽**. 자세한 건 [`05-critique-and-2026-update.md`](./05-critique-and-2026-update.md) 참고.
+> 2026년 현재 LinkedIn 수치와 비교하면 규모 감각이 잡힙니다: 2019년 **7조 메시지/일**, 2025년 기준 **32조 레코드/일, 17PB/일, 150개 클러스터, 40만 토픽**. 자세한 건 [`source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md`](./06-critique-and-2026-update.md) 참고.
 
 ### 이 글이 낳은 후속 문헌 (혼동 주의)
 
@@ -102,4 +120,16 @@ state_now = fold(apply, initial_state, log[0..n])
 
 ## 다음 문서
 
-→ [Part One: What Is a Log?](./01-part1-what-is-a-log.md)
+→ [Part One: What Is a Log?](./02-part1-what-is-a-log.md)
+
+## 관련 문서
+
+- ["1급(first-class)"이란 무엇인가 — 일급 객체에서 "1급 개념"까지](../../../inquiry/cs/0006-first-class-concept.md)
+- [ClickHouse란 무엇인가](../../../inquiry/database/0009-clickhouse-overview.md)
+- [컬럼 지향 DB vs 로우 지향 DB — 극적인 성능 차이는 어떤 "방향성"에서 나오는가](../../../inquiry/database/0013-columnar-vs-row-oriented-db.md)
+- [Kafka 놔두고 왜 RabbitMQ를 쓸까?](../../../inquiry/distributed-systems/0003-kafka-vs-rabbitmq.md)
+- [Spring Kafka Consumer = N초마다 폴링? 그럼 Transactional Outbox랑은 뭐가 다름?](../../../inquiry/distributed-systems/0005-spring-kafka-consumer-vs-outbox.md)
+- [Kafka를 사실상 DB처럼 쓸 수 있나 — "offset 조회만", "순서만" 필요한 경우](../../../inquiry/distributed-systems/0006-kafka-as-a-database-offset-lookup.md)
+- [Kafka 파티션은 디스크를 논리적으로 쪼개 병렬 쓰기를 하려는 장치인가](../../../inquiry/distributed-systems/0007-kafka-partition-disk-and-parallelism.md)
+- [단일 디스크의 파티션 거래, 리더-팔로워 복제 모델, 그리고 Kafka의 CP/DP](../../../inquiry/distributed-systems/0008-kafka-replication-model-and-control-plane.md)
+- [고가용성: Replica와 Cluster는 무엇을 정의하나, 그리고 다른 방법들](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)

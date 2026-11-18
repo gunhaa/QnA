@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: claude-sonnet-5
+---
+
 # Claude Code의 `/compact`는 정확히 뭘 하는 걸까?
 
 ## 5살한테 설명하듯

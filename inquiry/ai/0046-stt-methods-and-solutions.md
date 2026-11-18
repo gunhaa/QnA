@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # STT(음성 인식) 방법: 오픈소스, 클라우드 API, 한국어 솔루션
 
 ## 쉬운 설명
@@ -61,7 +68,7 @@ STT는 "귀로 들은 말을 글자로 받아 적는 속기사"다. 속기사를
 
 | 상황 | 추천 |
 |---|---|
-| Teams 회의, 트랜스크립션 사용 가능 | **STT 불필요** — Graph 트랜스크립트 사용 ([관련 문서](../collaboration-tools/teams-meeting-transcript-summary-pipeline.md)) |
+| Teams 회의, 트랜스크립션 사용 가능 | **STT 불필요** — Graph 트랜스크립트 사용 ([관련 문서](../external-apis/0001-teams-meeting-transcript-summary-pipeline.md)) |
 | 한국어 품질 최우선, 빠른 도입 | Clova Speech / RTZR 또는 gpt-4o-transcribe(diarize)를 PoC 비교 |
 | 보안상 외부 전송 불가 | faster-whisper/WhisperX + pyannote 자체 호스팅 |
 | 화자 분리·요약까지 한 번에 | AssemblyAI, OpenAI diarize 모델 |

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # OpenRouter가 뭐예요?
 
 장난감 가게에 비유하면, 원래는 레고 사려면 레고 가게, 마블 피규어 사려면 마블 가게에 따로따로 가야 해요. **OpenRouter는 "이 열쇠 하나로 모든 가게 문을 열 수 있게" 만들어주는 만능 열쇠 가게**예요.

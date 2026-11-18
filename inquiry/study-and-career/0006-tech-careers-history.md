@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-17
+author: agent
+model: claude-opus-5-5
+---
+
 # 고객 대면 엔지니어 직무의 역사 (Field Engineer → SE → CSE → FDE)
 
 ## 쉬운 설명
@@ -51,7 +58,7 @@
 
 ## 관련 문서
 
-- [CSE와 FDE의 차이](./cse-vs-fde.md)
+- [CSE와 FDE의 차이](./0005-cse-vs-fde.md)
 
 ## 참고 자료
 

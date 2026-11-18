@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # nginx API Key 인증에 HMAC 해시 + DB/캐시 조회 방식 검토
 
 ## 결론부터

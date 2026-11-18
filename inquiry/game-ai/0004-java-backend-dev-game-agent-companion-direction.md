@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # Java 백엔드/인프라 개발자가 게임 에이전트·AI 동료를 만든다면 — 방향 추천
 
-> 관련 문서: [어떤 게임을 고를까 + FSM 역할](./which-game-to-build-agent-for-and-fsm-role.md) · [게임 API 개방 현황](./game-apis-and-vision-based-agents.md) · [라이브러리 언어 선택](./game-ai-library-language-choice.md) · [인간-AI 협동 플레이 지형](./human-ai-coop/human-ai-cooperative-play-landscape.md) · [레이드 AI 동료 선택지](./human-ai-coop/raid-coop-ai-companion-options.md) · [애드온 배포 현실](./human-ai-coop/ai-companion-addon-distribution-reality.md)
+> 관련 문서: [어떤 게임을 고를까 + FSM 역할](./0010-which-game-to-build-agent-for-and-fsm-role.md) · [게임 API 개방 현황](../../factual/game-ai/0001-game-apis-and-vision-based-agents.md) · [라이브러리 언어 선택](./0002-game-ai-library-language-choice.md) · [인간-AI 협동 플레이 지형](../../factual/game-ai/0003-human-ai-cooperative-play-landscape.md) · [레이드 AI 동료 선택지](./0003-raid-coop-ai-companion-options.md) · [애드온 배포 현실](../../factual/game-ai/0002-ai-companion-addon-distribution-reality.md)
 
 ## 쉬운 설명
 
@@ -24,11 +31,11 @@
 | **게임 경험** | 싱글플레이 거의 없음, StarCraft는 해봄, 나머지는 MMO·LoL(온라인 팀게임) | 도메인 지식이 RTS와 팀 기반 온라인 게임 쪽에 있음 |
 | **목표** | "게임 에이전트" 또는 "AI 동료" — 아직 미확정 | 둘 다 검토 가치 있음, 아래에서 축을 분리 |
 
-이 프로필에서 가장 중요한 신호는 **"싱글플레이를 거의 안 해봤다"** 입니다. [게임 선택 문서](./which-game-to-build-agent-for-and-fsm-role.md)에서 Minecraft를 1순위로 권했던 이유(도메인 지식 불필요, 촘촘한 보상)는 사실 **"이 게임을 잘 모르는 사람"** 을 전제로 한 것이었습니다. 여기서는 전제가 다릅니다 — StarCraft라는 **아는 게임**이 있고, 대신 Minecraft 같은 **모르는 오픈월드 게임에는 흥미도 시간도 없을 가능성**이 큽니다.
+이 프로필에서 가장 중요한 신호는 **"싱글플레이를 거의 안 해봤다"** 입니다. [게임 선택 문서](./0010-which-game-to-build-agent-for-and-fsm-role.md)에서 Minecraft를 1순위로 권했던 이유(도메인 지식 불필요, 촘촘한 보상)는 사실 **"이 게임을 잘 모르는 사람"** 을 전제로 한 것이었습니다. 여기서는 전제가 다릅니다 — StarCraft라는 **아는 게임**이 있고, 대신 Minecraft 같은 **모르는 오픈월드 게임에는 흥미도 시간도 없을 가능성**이 큽니다.
 
 ### 2. 두 개의 축을 분리한다
 
-질문 자체가 "게임 에이전트 혹은 AI 동료"라고 되어 있는데, 이건 [FSM 문서](./game-agent-fsm-vs-llm-architecture.md)와 [협동 플레이 문서](./human-ai-coop/human-ai-cooperative-play-landscape.md)에서 이미 완전히 다른 문제로 갈라놓은 것입니다.
+질문 자체가 "게임 에이전트 혹은 AI 동료"라고 되어 있는데, 이건 [FSM 문서](./0001-game-agent-fsm-vs-llm-architecture.md)와 [협동 플레이 문서](../../factual/game-ai/0003-human-ai-cooperative-play-landscape.md)에서 이미 완전히 다른 문제로 갈라놓은 것입니다.
 
 | | **게임 에이전트** (혼자 플레이) | **AI 동료** (사람과 협동) |
 |---|---|---|
@@ -41,7 +48,7 @@
 
 ### 3. 1순위 추천: 백엔드 강점이 가장 직접 먹히는 "직접 만든 협동 미니게임"
 
-[레이드 AI 동료 문서](./human-ai-coop/raid-coop-ai-companion-options.md) §2~3에서 이미 결론 낸 바 있습니다 — **인간-AI 협응 연구의 표준은 상용 게임에 붙는 게 아니라 직접 헤드리스 환경을 만드는 것**입니다 (Overcooked-AI, Collab-Overcooked, AH2AC2 전부 자체 제작). 그 이유(빨리감기, 결정론적 리셋, 전체 로깅, ablation, ToS 리스크 없음)가 **여기서는 배경 기술과도 정확히 맞아떨어집니다.**
+[레이드 AI 동료 문서](./0003-raid-coop-ai-companion-options.md) §2~3에서 이미 결론 낸 바 있습니다 — **인간-AI 협응 연구의 표준은 상용 게임에 붙는 게 아니라 직접 헤드리스 환경을 만드는 것**입니다 (Overcooked-AI, Collab-Overcooked, AH2AC2 전부 자체 제작). 그 이유(빨리감기, 결정론적 리셋, 전체 로깅, ablation, ToS 리스크 없음)가 **여기서는 배경 기술과도 정확히 맞아떨어집니다.**
 
 - 그래픽/엔진/클라이언트 경험이 없어도 됩니다 — **헤드리스 서비스 + 얇은 웹 뷰어**면 충분합니다.
 - 백엔드 개발자가 매일 하는 일(상태 머신, API 설계, 이벤트 처리, 배포)이 **그대로 구현 작업**이 됩니다.
@@ -61,11 +68,11 @@ AI 동료 레이어 — 아래 중 선택
 사람용 뷰어 — 웹(React/HTMX) 또는 간단 콘솔
 ```
 
-Koog와 Embabel은 둘 다 "JVM에서 순수 자바/스프링 감각으로 에이전트를 짠다"는 방향이라 **엔진 언어 문제 자체가 사라집니다.** 특히 Embabel의 GOAP 기반 재계획 구조는 [FSM 문서](./game-agent-fsm-vs-llm-architecture.md)에서 설명한 L2(전술) 계층과 개념이 거의 동일해서, "AI 동료의 판단 → 전술 검증 → 실행"이라는 계층 구조를 직접 짤 필요 없이 프레임워크가 제공합니다.
+Koog와 Embabel은 둘 다 "JVM에서 순수 자바/스프링 감각으로 에이전트를 짠다"는 방향이라 **엔진 언어 문제 자체가 사라집니다.** 특히 Embabel의 GOAP 기반 재계획 구조는 [FSM 문서](./0001-game-agent-fsm-vs-llm-architecture.md)에서 설명한 L2(전술) 계층과 개념이 거의 동일해서, "AI 동료의 판단 → 전술 검증 → 실행"이라는 계층 구조를 직접 짤 필요 없이 프레임워크가 제공합니다.
 
 ### 4. 2순위 추천: 아는 게임을 살리는 StarCraft + BWAPI(Java)
 
-[게임 API 개방 현황 문서](./game-apis-and-vision-based-agents.md) §5의 "B안"이 정확히 이 프로필을 위한 경로입니다. 이번 조사로 확인한 사실을 더하면:
+[게임 API 개방 현황 문서](../../factual/game-ai/0001-game-apis-and-vision-based-agents.md) §5의 "B안"이 정확히 이 프로필을 위한 경로입니다. 이번 조사로 확인한 사실을 더하면:
 
 - **[JavaBWAPI](https://github.com/JavaBWAPI/Java-BWAPI-Tutorial)** 튜토리얼이 현재도 유지되고 있고, **[Atlantis](https://github.com/Ravaelles/Atlantis)** 같은 JBWAPI 2.1.0 기반 오픈소스 Java 봇 프레임워크도 활발합니다. C++ 없이 순수 Java로 SSCAIT 래더에 참가하는 경로가 실제로 살아 있습니다.
 - 앞서 정리했듯 **BWAPI는 C++이 1급이지만 Java/Scala/Kotlin이 잘 지원**되는 편이라(§3.1), 백엔드 개발자가 새 언어를 배울 필요가 없습니다.
@@ -85,7 +92,7 @@ Koog와 Embabel은 둘 다 "JVM에서 순수 자바/스프링 감각으로 에�
 - Dota 2의 Lua VM은 **제한된 샌드박스**로, `io` 패키지·`loadlib`가 막혀 있어 **Lua 코드 안에서 직접 HTTP 요청을 보낼 수 없습니다.**
 - 다만 일부 봇 프레임워크는 **Lua 밖에 별도 프로세스(모드)를 두고, 그 프로세스가 게임과 외부 웹 서비스 사이를 JSON으로 중계하는 프록시 패턴**을 씁니다. 즉 **직접 호출은 불가하지만 간접 브리지는 가능**하다는 것이 현재까지 확인된 사실입니다. ([ModDota Lua Bots 문서](https://docs.moddota.com/lua_bots/), [Dota2AI 프레임워크](https://github.com/lightbringer/dota2ai) 참고)
 
-즉 Dota 2 Bot API로 LLM 동료를 만들려면 **Lua 봇 ↔ 로컬 프록시 프로세스(Java/Kotlin으로 작성 가능) ↔ LLM API** 3단 구조가 필요합니다. 이건 3절의 "직접 만든 환경"보다 확실히 복잡하고, [Valve 공식 API + 인간과 실제 혼합 팀 구성이 가능하다는 유일한 장점](./human-ai-coop/raid-coop-ai-companion-options.md#13-dota-2-bot-scripting-api--유일하게-공식--인간과-혼합) 하나 때문에 감수할 가치가 있는지는 프로젝트 목표에 달렸습니다. **"LoL 같은 MOBA에서 AI 동료가 실제 사람과 게임하는 걸 보고 싶다"** 는 목표라면 이 트랙이 유일한 정문이지만, 처음 시작하는 프로젝트로는 난도가 있습니다 — 3절을 먼저 돌리고 여유가 생기면 확장하는 편이 낫습니다.
+즉 Dota 2 Bot API로 LLM 동료를 만들려면 **Lua 봇 ↔ 로컬 프록시 프로세스(Java/Kotlin으로 작성 가능) ↔ LLM API** 3단 구조가 필요합니다. 이건 3절의 "직접 만든 환경"보다 확실히 복잡하고, [Valve 공식 API + 인간과 실제 혼합 팀 구성이 가능하다는 유일한 장점](./0003-raid-coop-ai-companion-options.md#13-dota-2-bot-scripting-api--유일하게-공식--인간과-혼합) 하나 때문에 감수할 가치가 있는지는 프로젝트 목표에 달렸습니다. **"LoL 같은 MOBA에서 AI 동료가 실제 사람과 게임하는 걸 보고 싶다"** 는 목표라면 이 트랙이 유일한 정문이지만, 처음 시작하는 프로젝트로는 난도가 있습니다 — 3절을 먼저 돌리고 여유가 생기면 확장하는 편이 낫습니다.
 
 ### 6. 정리 — 권장 순서
 

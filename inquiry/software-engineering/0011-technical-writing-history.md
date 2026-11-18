@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # 기술 문서화의 역사
 
 ## 쉬운 설명
@@ -30,7 +37,7 @@
 
 ## 관련 문서
 
-- [Diátaxis 문서화 프레임워크](./diataxis-documentation-framework.md)
+- [Diátaxis 문서화 프레임워크](./0010-diataxis-documentation-framework.md)
 
 ## 참고 자료
 

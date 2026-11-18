@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-16
+author: agent
+model: claude-opus-5-5
+---
+
 # 부동소수점 (IEEE 754)
 
 ## 쉬운 설명
@@ -145,7 +152,7 @@ False
 
 IEEE에서도 머신러닝용 저비트 산술 포맷을 다루는 P3109 작업 그룹이 표준화를 진행 중이다.
 
-이 포맷들로 모델 가중치를 줄이는 **양자화**와 그 정보 손실을 보완하는 방법은 [LLM 양자화와 정보 손실 보완법](../ai-llm-basics/llm-quantization-error-compensation.md)에서 다룬다.
+이 포맷들로 모델 가중치를 줄이는 **양자화**와 그 정보 손실을 보완하는 방법은 [LLM 양자화와 정보 손실 보완법](../ai/0049-llm-quantization-error-compensation.md)에서 다룬다.
 
 ## 참고 자료
 

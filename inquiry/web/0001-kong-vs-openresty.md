@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # Kong vs OpenResty, 뭐가 다른데?
 
-관련 글: [Kong의 역사](history.md) · [Kong의 RPC 지원](kong-rpc-support.md)
+관련 글: [Kong의 역사](./0019-kong-history.md) · [Kong의 RPC 지원](./0020-kong-rpc-support.md)
 
 레고로 비유하면, **OpenResty는 "레고 부품 상자+ 설명서"**이고, **Kong은 그 부품으로 이미 완성해놓은 "장난감 로봇"**이에요.
 

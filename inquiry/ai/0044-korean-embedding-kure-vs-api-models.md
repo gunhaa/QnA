@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # 한국어 임베딩: KURE vs OpenAI·Google·Claude(Voyage) API, 한국어 파인튜닝이 더 나은가
 
 ## 쉬운 설명
@@ -6,7 +13,7 @@
 
 ## 일반 설명
 
-> 임베딩 모델 선택 일반론은 [한국어 RAG 임베딩 선택](korean-rag-embedding-model-selection-vs-bpe.md) 문서를 참고. 이 문서는 KURE와 상용 API 비교에 집중한다.
+> 임베딩 모델 선택 일반론은 [한국어 RAG 임베딩 선택](./0039-korean-rag-embedding-model-selection-vs-bpe.md) 문서를 참고. 이 문서는 KURE와 상용 API 비교에 집중한다.
 
 ### 1. 결론
 

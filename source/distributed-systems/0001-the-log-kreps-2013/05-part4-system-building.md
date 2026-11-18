@@ -1,6 +1,13 @@
+---
+type: source
+created: 2026-09-15
+author: agent
+model: claude-opus-5
+---
+
 # Part Four: System Building — 상세 분석
 
-> [← Part Three](./03-part3-stream-processing.md) | [다음: 비판과 2026년 관점 →](./05-critique-and-2026-update.md)
+> [← Part Three](./04-part3-stream-processing.md) | [다음: 비판과 2026년 관점 →](./06-critique-and-2026-update.md)
 
 원문 해당 절: *System Building / Unbundling? / The place of the log in system architecture / (참고 문헌 목록)*
 
@@ -271,7 +278,7 @@ Part 4의 기술적 중핵이자, 이 글 전체의 결론입니다.
 - **로컬 SSD 비용** — 객체 스토리지 대비 10~20배
 - **"모든 데이터를 로그에"의 비용** — 저장 비용이 데이터 볼륨에 선형 비례
 
-이 비용 문제가 2020년대에 **diskless / 객체 스토리지 기반 Kafka**(WarpStream, AutoMQ, Aiven Inkless, KIP-1150)를 낳았습니다. 흥미롭게도 이 흐름은 **Part 4의 "로그 + 서빙 레이어" 분리를 한 층 더 밀어붙인 것**입니다 — 이제 로그 레이어 자체가 "객체 스토리지(내구성) + 상태 없는 브로커(서빙)"로 다시 쪼개집니다. 자세한 건 [05번 문서](./05-critique-and-2026-update.md).
+이 비용 문제가 2020년대에 **diskless / 객체 스토리지 기반 Kafka**(WarpStream, AutoMQ, Aiven Inkless, KIP-1150)를 낳았습니다. 흥미롭게도 이 흐름은 **Part 4의 "로그 + 서빙 레이어" 분리를 한 층 더 밀어붙인 것**입니다 — 이제 로그 레이어 자체가 "객체 스토리지(내구성) + 상태 없는 브로커(서빙)"로 다시 쪼개집니다. 자세한 건 [05번 문서](./06-critique-and-2026-update.md).
 
 #### (d) 세 시나리오의 거짓 삼분법
 
@@ -293,4 +300,4 @@ Part 4의 기술적 중핵이자, 이 글 전체의 결론입니다.
 
 ---
 
-> [← Part Three](./03-part3-stream-processing.md) | [다음: 비판적 종합과 2026년 관점 →](./05-critique-and-2026-update.md)
+> [← Part Three](./04-part3-stream-processing.md) | [다음: 비판적 종합과 2026년 관점 →](./06-critique-and-2026-update.md)

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: claude-sonnet-5
+---
+
 # cmd_sync_restore 스크립트 쉽게 풀어보기 — 왜 cgroup이 아니라 유닛 파일을 찾는가
 
 ```bash

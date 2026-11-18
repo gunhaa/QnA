@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # AI에서 쓰는 벡터랑 수학/물리에서 쓰는 벡터, 의미가 다른가요? 기본부터 설명해주세요
 
 ## 결론부터

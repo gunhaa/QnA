@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # API Key를 apiId_secret으로 쪼개 Vault에서 조회·캐싱하는 구조 검토
 
-> 지난 문서([nginx-api-key-hmac-hash-lookup-review.md](./nginx-api-key-hmac-hash-lookup-review.md))의 "HMAC 계산 후 DB/캐시 조회" 구조와, 이번에 제안하신 "`apiId_secret` 분리 + Vault 조회 + 캐싱" 구조를 비교해요.
+> 지난 문서([nginx-api-key-hmac-hash-lookup-review.md](./0002-nginx-api-key-hmac-hash-lookup-review.md))의 "HMAC 계산 후 DB/캐시 조회" 구조와, 이번에 제안하신 "`apiId_secret` 분리 + Vault 조회 + 캐싱" 구조를 비교해요.
 
 ## 결론부터
 

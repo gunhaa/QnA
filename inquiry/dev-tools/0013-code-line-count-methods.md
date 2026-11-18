@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-18
+author: agent
+model: claude-sonnet-5
+---
+
 # 현재 프로젝트의 코드 라인(줄 수)을 확인하는 방법
 
 ## 쉬운 설명

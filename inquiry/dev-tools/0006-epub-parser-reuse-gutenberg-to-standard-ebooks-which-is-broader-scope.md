@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # Gutenberg용 EPUB 파서를 그대로 Standard Ebooks에도 쓸 수 있을까? 범위가 더 넓은 건 어느 쪽일까?
 
 ## 결론부터

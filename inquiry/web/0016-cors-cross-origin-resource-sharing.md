@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-18
+author: agent
+model: claude-sonnet-5
+---
+
 # CORS(Cross-Origin Resource Sharing)란 무엇인가
 
 ## 쉬운 설명
@@ -196,5 +203,5 @@ CORS는 **"응답을 자바스크립트가 읽을 수 있는가"** 를 통제할
 
 ## 관련 문서
 
-- [`web-infra/sni-server-name-indication.md`](./sni-server-name-indication.md) — 브라우저-서버 간 또 다른 프로토콜 레벨 협상 메커니즘(SNI)
-- [`web-infra/http2-multiplexing-and-http1-coexistence.md`](./http2-multiplexing-and-http1-coexistence.md) — 같은 "브라우저 요청 동작"을 다루는 인접 주제
+- [`inquiry/web/0012-sni-server-name-indication.md`](./0012-sni-server-name-indication.md) — 브라우저-서버 간 또 다른 프로토콜 레벨 협상 메커니즘(SNI)
+- [`inquiry/web/0015-http2-multiplexing-and-http1-coexistence.md`](./0015-http2-multiplexing-and-http1-coexistence.md) — 같은 "브라우저 요청 동작"을 다루는 인접 주제

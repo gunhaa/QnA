@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-15
+author: agent
+model: claude-opus-5-5
+---
+
 # RAG 평가(벤치마크) 방법과 예외 케이스 테스트, 오픈소스 도구
 
 > 질문: RAG 예외 벤치마크 방법과 많이 사용되는 오픈소스 툴이 있을까?
@@ -20,7 +27,7 @@ RAG는 "도서관에서 책을 찾아(검색) 읽고 대답(생성)하는 학생
 | Generation | **Answer Relevancy** | 답변이 질문에 맞는 내용인지 |
 | End-to-end | Answer Correctness | 정답(ground truth)과의 일치도 |
 
-대부분 **LLM-as-a-Judge** 방식(평가용 LLM이 채점)이라, 정답 라벨 없이도 Faithfulness·Answer Relevancy·Context Precision은 측정 가능하다. 단, Judge 모델 편향·비결정성이 있으므로 일부 샘플은 사람이 교차 검증하는 게 좋다 (→ `ai-llm-basics/benchmark-hard-task-count-vs-judge-scoring.md` 참고).
+대부분 **LLM-as-a-Judge** 방식(평가용 LLM이 채점)이라, 정답 라벨 없이도 Faithfulness·Answer Relevancy·Context Precision은 측정 가능하다. 단, Judge 모델 편향·비결정성이 있으므로 일부 샘플은 사람이 교차 검증하는 게 좋다 (→ [`inquiry/ai/0027-benchmark-hard-task-count-vs-judge-scoring.md`](./0027-benchmark-hard-task-count-vs-judge-scoring.md) 참고).
 
 ### 2. 예외(robustness) 케이스 벤치마크
 

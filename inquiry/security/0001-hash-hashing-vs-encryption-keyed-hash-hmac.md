@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # "해시 암호화"가 뭐고, 거기서 key는 어떻게 쓰일까?
 
 ## 먼저 용어 바로잡기: 해시는 사실 "암호화"가 아니에요

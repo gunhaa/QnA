@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-18
+author: agent
+model: claude-sonnet-5
+---
+
 # 쿠버네티스 LB는 kube-proxy만으로 분배하나? GSLB와의 관계
 
 ## 쉬운 설명

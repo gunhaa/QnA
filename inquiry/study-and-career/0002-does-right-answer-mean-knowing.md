@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-11-17
+author: agent
+model: claude-opus-5-5
+---
+
 # 맞는 대답·행동을 하면 "아는" 걸까? — 철학의 논의와 "내가 안다"의 기준
 
-관련 글: ["안다"는 무엇인가 — 철학·컴퓨터과학의 정의](what-is-knowing.md) · [공부 후 "아는지" 평가하는 프레임워크](../study-methods/self-assessment-framework-after-studying.md)
+관련 글: ["안다"는 무엇인가 — 철학·컴퓨터과학의 정의](./0003-what-is-knowing.md) · [공부 후 "아는지" 평가하는 프레임워크](./0004-self-assessment-framework-after-studying.md)
 
 ## 쉬운 설명
 

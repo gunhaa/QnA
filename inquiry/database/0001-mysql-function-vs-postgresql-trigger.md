@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: unknown
+---
+
 # MySQL의 FUNCTION과 PostgreSQL의 TRIGGER, 왜 비슷해 보일까?
 
 ## 5살 아이에게 설명하면

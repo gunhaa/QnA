@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # pgvector vs 전용 Vector DB 차이
 
 ## 쉬운 설명

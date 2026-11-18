@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-15
+author: agent
+model: claude-opus-5
+---
+
 # Append-only 로그에 ClickHouse를 쓰는 이유
 
 ## 쉬운 설명

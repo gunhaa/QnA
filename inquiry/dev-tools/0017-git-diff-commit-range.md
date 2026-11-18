@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-15
+author: agent
+model: claude-opus-5-5
+---
+
 # Git에서 커밋 X부터 Y까지의 diff 보기
 
 ## 쉬운 설명

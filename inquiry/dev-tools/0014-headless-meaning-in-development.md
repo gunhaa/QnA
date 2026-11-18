@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 개발에서 "헤드리스(Headless)"란?
 
 ## 쉬운 설명

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # PDF → Markdown 변환: RAG에 좋은 방법인가, Java 생태계는?
 
 ## 쉬운 설명
@@ -84,7 +91,7 @@ flowchart TD
 - 정확도·속도 수치(0.907, 0.015초/페이지 등)는 **프로젝트/블로그의 자체 주장**이며 한국어 문서 기준이 아니다. 직접 검증이 필요하다.
 - OpenDataLoader PDF는 비교적 신생 프로젝트라 안정성, 한국어 OCR 품질, 유지보수 현황을 도입 전 확인한다.
 - Marker, PyMuPDF4LLM, iText 등은 **라이선스 조건**이 사내 사용에 영향을 줄 수 있으니 확인한다.
-- HWP는 이들 도구가 지원하지 않는다 ([데이터 타입별 파서 문서](internal-rag-data-types-and-parsers-spring-ai.md) 참고).
+- HWP는 이들 도구가 지원하지 않는다 ([데이터 타입별 파서 문서](./0043-internal-rag-data-types-and-parsers-spring-ai.md) 참고).
 
 ### 출처
 

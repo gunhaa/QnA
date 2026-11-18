@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # Linux의 cgroup(control group)이란 무엇인가요?
 
 ## 결론부터

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-15
+author: agent
+model: claude-opus-5-5
+---
+
 # CODEOWNERS란?
 
 ## 쉬운 설명

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # "NGINX Plus는 기능보다 SLA·벤더 지원을 사는 것"이 무슨 뜻일까?
 
 ## 다섯 살에게 설명하듯

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # "어려운 문제 여러 개 풀게 하고 맞춘 개수로 채점" — 이게 현재 AI 평가 방식 맞나?
 
 ## 쉬운 설명

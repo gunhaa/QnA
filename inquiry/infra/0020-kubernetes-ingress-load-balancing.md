@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-18
+author: agent
+model: claude-sonnet-5
+---
+
 # Ingress에 트래픽이 몰리는 문제, 어떻게 해결하나?
 
 ## 쉬운 설명

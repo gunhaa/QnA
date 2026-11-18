@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: claude-sonnet-5
+---
+
 # nginx/OpenResty의 init phase, rewrite phase, content phase는 뭘로 구분하는 걸까?
 
 > 참조: [Nginx/OpenResty Common Stories — innossh (Medium)](https://medium.com/@innossh/nginx-openresty-common-stories-a02207fcf492)
@@ -90,4 +97,4 @@ Sources:
 - [Nginx/OpenResty Common Stories — innossh (Medium)](https://medium.com/@innossh/nginx-openresty-common-stories-a02207fcf492) (요청하신 참조 사이트 — "Lua code execution order" 섹션에서 아래 공식 저장소의 phase 순서 다이어그램을 인용함)
 - [openresty/lua-nginx-module (GitHub)](https://github.com/openresty/lua-nginx-module) — 위 Medium 글이 인용한 phase 실행 순서 다이어그램의 원본
 - [OpenResty - Lua Nginx Module 공식 문서](https://openresty.org/en/lua-nginx-module.html)
-- 이 저장소 내 관련 상세 답변: [`nginx-openresty-njs-request-processing-phases.md`](./nginx-openresty-njs-request-processing-phases.md) (11개 phase 전체 표, njs 훅까지 포함한 더 넓은 설명)
+- 이 저장소 내 관련 상세 답변: [`inquiry/web/0004-nginx-openresty-njs-request-processing-phases.md`](./0004-nginx-openresty-njs-request-processing-phases.md) (11개 phase 전체 표, njs 훅까지 포함한 더 넓은 설명)

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # "역사 → 개요 → 트레이드오프 → 실패 → 평가" 학습 구조를 뒷받침하는 방법론
 
 ## 쉬운 설명
@@ -25,7 +32,7 @@
 | | **생산적 실패(Productive Failure)** — Manu Kapur | 먼저 풀어 보다 실패하고 나서 정식 설명을 들으면 **전이(새 문제에 적용)** 성과가 높다 (메타분석 53개 연구, 160여 비교) |
 | | 비난 없는 포스트모템 — Google SRE | 실패의 기여 요인을 찾아 재발 방지 조치로 연결 |
 | | 프리모템(Pre-mortem) — Gary Klein | "이게 실패했다고 가정하고 이유를 써 보라" → 실패 단계를 **예측 연습**으로 바꾸는 도구 |
-| **평가** | 인출 연습, 파인만 기법, Bloom·SOLO 분류 | 보지 않고 꺼내 설명할 수 있는지, 어느 수준(기억 → 이해 → 적용 → 분석 → **평가** → 창조)까지 갔는지 확인 → [공부 후 자기 평가 프레임워크](./self-assessment-framework-after-studying.md) |
+| **평가** | 인출 연습, 파인만 기법, Bloom·SOLO 분류 | 보지 않고 꺼내 설명할 수 있는지, 어느 수준(기억 → 이해 → 적용 → 분석 → **평가** → 창조)까지 갔는지 확인 → [공부 후 자기 평가 프레임워크](./0004-self-assessment-framework-after-studying.md) |
 
 ### 3. 가장 닮은 형식: 패턴 문서
 
@@ -73,8 +80,8 @@
 
 ## 관련 문서
 
-- [공부 후 자기 평가 프레임워크](./self-assessment-framework-after-studying.md)
-- [개발/CS 스터디 진행 시나리오](./cs-study-group-scenario.md)
+- [공부 후 자기 평가 프레임워크](./0004-self-assessment-framework-after-studying.md)
+- [개발/CS 스터디 진행 시나리오](./0001-cs-study-group-scenario.md)
 
 ## 참고 자료
 

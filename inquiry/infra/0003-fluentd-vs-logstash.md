@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # Fluentd랑 Logstash, 뭐가 다를까?
 
 둘 다 "로그를 모아서 가공한 뒤 다른 곳으로 보내는" 같은 일을 해요. 그런데 **국적(소속 생태계)과 몸무게(자원 사용량), 길 찾는 방식(라우팅)이 달라요.**

@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-18
+author: agent
+model: claude-sonnet-5
+---
+
 # Entity 정의는 어떻게 써야 하는가 — 필드(상태)는 정의에서 "역산"되는 것
 
-> 배경: [`entity-concept.md`](./entity-concept.md), [`web-infra/kong/kong-consumer-entity-vs-state-machine.md`](../web-infra/kong/kong-consumer-entity-vs-state-machine.md)에서 "Kong의 `Consumer`는 상태가 아니라 Entity"라고 정리했습니다. 그렇다면 **"Consumer란 무엇이다"라는 정의 자체는 어떻게 써야, 거기서 어떤 필드(상태 포함)를 가져야 할지가 명확해지는가**에 대한 질문.
+> 배경: [`inquiry/cs/0008-entity-concept.md`](./0008-entity-concept.md), [`inquiry/web/0017-kong-consumer-entity-vs-state-machine.md`](../web/0017-kong-consumer-entity-vs-state-machine.md)에서 "Kong의 `Consumer`는 상태가 아니라 Entity"라고 정리했습니다. 그렇다면 **"Consumer란 무엇이다"라는 정의 자체는 어떻게 써야, 거기서 어떤 필드(상태 포함)를 가져야 할지가 명확해지는가**에 대한 질문.
 
 ## 쉬운 설명
 
@@ -64,7 +71,7 @@ DDD(Eric Evans, Vaughn Vernon)의 관용적 구성 요소를 정리하면 다음
 
 ### 4. 템플릿을 Kong `Consumer`에 적용해보기
 
-앞선 두 문서의 결론([`entity-concept.md`](./entity-concept.md), [`kong-consumer-entity-vs-state-machine.md`](../web-infra/kong/kong-consumer-entity-vs-state-machine.md))이 왜 나왔는지, 템플릿으로 재구성하면 명확해집니다.
+앞선 두 문서의 결론([`inquiry/cs/0008-entity-concept.md`](./0008-entity-concept.md), [`inquiry/web/0017-kong-consumer-entity-vs-state-machine.md`](../web/0017-kong-consumer-entity-vs-state-machine.md))이 왜 나왔는지, 템플릿으로 재구성하면 명확해집니다.
 
 | 항목 | Kong Consumer의 정의 |
 |---|---|
@@ -122,5 +129,5 @@ Kong Enterprise Developer:
 
 ## 관련 문서
 
-- [`cs-fundamentals/entity-concept.md`](./entity-concept.md) — Entity 개념 자체의 정의와 Value Object/DTO 구분
-- [`web-infra/kong/kong-consumer-entity-vs-state-machine.md`](../web-infra/kong/kong-consumer-entity-vs-state-machine.md) — Kong Consumer가 상태가 아니라 Entity인 이유
+- [`inquiry/cs/0008-entity-concept.md`](./0008-entity-concept.md) — Entity 개념 자체의 정의와 Value Object/DTO 구분
+- [`inquiry/web/0017-kong-consumer-entity-vs-state-machine.md`](../web/0017-kong-consumer-entity-vs-state-machine.md) — Kong Consumer가 상태가 아니라 Entity인 이유

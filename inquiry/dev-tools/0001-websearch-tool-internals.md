@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # 내가 쓰는 WebSearch 도구, 어떻게 동작해요?
 
 이건 제가 직접 인터넷에 나가서 브라우저를 여는 게 아니에요. **"검색해줘"라고 부탁하면, 심부름꾼(Anthropic 서버)이 대신 검색해서 결과만 저에게 가져다주는 구조**예요. 이런 걸 **서버 사이드 도구(Server-side Tool)**라고 불러요.

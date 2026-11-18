@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # 쿠버네티스 Pod도 host 커널을 공유하는가?
 
 ## 결론부터

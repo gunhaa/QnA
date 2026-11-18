@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-10
+author: agent
+model: claude-sonnet-5
+---
+
 # EPUB3 같은 e-book 확장자들, 역사·구조·그리고 "표준"이라 부르기 애매한 현실
 
 ## 결론부터
@@ -76,7 +83,7 @@ EPUB 표준(W3C의 EPUB 3.3 스펙)은 ZIP 안에 어떤 파일이 어떤 이름
 같은 EPUB 확장자라도 **어느 서점에서 샀느냐에 따라 걸린 DRM이 달라요**(Adobe DRM, 애플의 FairPlay, 아마존의 자체 DRM 등). 파일 구조(EPUB 스펙)는 표준이어도, **그 파일을 열 수 있는 자물쇠 해제 권한은 표준화돼 있지 않아** 특정 서점 앱에서 산 책을 다른 리더 앱으로 그냥 옮겨서 못 여는 경우가 여전히 흔해요. 2026년 1월부터 아마존이 DRM-free EPUB/PDF 다운로드를 일부 허용하기 시작한 것도, 뒤집어 보면 그동안 이게 표준화된 적이 없었다는 방증이에요.
 
 ### 4) "표준을 지켰다"의 기준 자체가 배포처마다 다름
-같은 EPUB3 스펙을 따라도 실제로 얼마나 꼼꼼하게 태그를 붙이고 검증했는지는 배포처 재량이에요. 예를 들어 Project Gutenberg는 자동 변환 도구로 EPUB을 대량 생산하는 반면, Standard Ebooks는 사람이 직접 세밀한 시맨틱 태그를 손으로 붙여요. 이 차이는 같은 저장소 안의 다른 문서 [`epub3-structure-parsing-and-gutenberg-standardebooks-comparison.md`](epub3-structure-parsing-and-gutenberg-standardebooks-comparison.md)에서 더 자세히 다뤘어요 — 요점은 **"EPUB3 표준을 지켰다"는 말 자체가 실제로는 품질 스펙트럼이 매우 넓다**는 거예요.
+같은 EPUB3 스펙을 따라도 실제로 얼마나 꼼꼼하게 태그를 붙이고 검증했는지는 배포처 재량이에요. 예를 들어 Project Gutenberg는 자동 변환 도구로 EPUB을 대량 생산하는 반면, Standard Ebooks는 사람이 직접 세밀한 시맨틱 태그를 손으로 붙여요. 이 차이는 같은 저장소 안의 다른 문서 [`inquiry/dev-tools/0005-epub3-structure-parsing-and-gutenberg-standardebooks-comparison.md`](./0005-epub3-structure-parsing-and-gutenberg-standardebooks-comparison.md)에서 더 자세히 다뤘어요 — 요점은 **"EPUB3 표준을 지켰다"는 말 자체가 실제로는 품질 스펙트럼이 매우 넓다**는 거예요.
 
 ### 5) FB2·DjVu 같은 지역/니치 포맷은 애초에 국제 표준화 시도조차 없었음
 FB2는 러시아어권 커뮤니티에서 자생적으로 퍼진 포맷이라 국제 표준 기구를 거친 적이 없고, DjVu도 학술 스캔 문서용으로 특정 커뮤니티에서 개발돼 널리 쓰이지만 "전자책 표준"으로 공인된 적은 없어요. 즉 EPUB 바깥에는 애초에 "표준화 시도조차 없었던" 포맷들이 여전히 실사용되고 있는 것도 현실의 일부예요.

@@ -1,8 +1,15 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # KV 캐시(KV Cache)에 대해서 설명해줘
 
 ## 결론부터
 
-KV 캐시는 **"이 단어가 나오기까지, 앞에 나온 모든 단어들에 대해 이미 계산해둔 Key/Value 벡터를 다시 계산하지 않고 재사용하기 위해 저장해두는 메모리"**예요. 트랜스포머는 단어를 하나 만들 때마다 **문장 맨 앞부터 지금까지 나온 모든 토큰**과 비교(attention)를 해야 하는데, 이걸 매번 처음부터 다시 계산하면 문장이 길어질수록 계산량이 **제곱(O(t²))**으로 폭발해요. KV 캐시는 "한 번 계산한 결과는 서랍에 넣어두고 다음번엔 새로 생긴 것만 계산"하는 방식으로 이 비용을 **선형(O(t))**으로 낮춰주는 대신, 그 대가로 **문맥이 길어질수록 계속 커지는 GPU 메모리**를 요구해요. [이전 답변](../llm-inference-vram-weights-vs-input-memory.md)에서 "가중치 옆에서 계속 자라나는 서랍"이라고 부른 게 바로 이거예요.
+KV 캐시는 **"이 단어가 나오기까지, 앞에 나온 모든 단어들에 대해 이미 계산해둔 Key/Value 벡터를 다시 계산하지 않고 재사용하기 위해 저장해두는 메모리"**예요. 트랜스포머는 단어를 하나 만들 때마다 **문장 맨 앞부터 지금까지 나온 모든 토큰**과 비교(attention)를 해야 하는데, 이걸 매번 처음부터 다시 계산하면 문장이 길어질수록 계산량이 **제곱(O(t²))**으로 폭발해요. KV 캐시는 "한 번 계산한 결과는 서랍에 넣어두고 다음번엔 새로 생긴 것만 계산"하는 방식으로 이 비용을 **선형(O(t))**으로 낮춰주는 대신, 그 대가로 **문맥이 길어질수록 계속 커지는 GPU 메모리**를 요구해요. [이전 답변](./0010-llm-inference-vram-weights-vs-input-memory.md)에서 "가중치 옆에서 계속 자라나는 서랍"이라고 부른 게 바로 이거예요.
 
 ## 다섯 살에게 설명하듯
 
@@ -88,4 +95,4 @@ Sources:
 - [KV Cache Engineering for LLM Serving — Daily Dose of DS](https://blog.dailydoseofds.com/p/kv-cache-engineering-for-llm-serving)
 - [KV Cache Optimization: Memory Efficiency for Production LLMs — Introl Blog](https://introl.com/blog/kv-cache-optimization-memory-efficiency-production-llms-guide)
 - [KV Cache Optimization via Multi-Head Latent Attention — PyImageSearch](https://pyimagesearch.com/2025/10/13/kv-cache-optimization-via-multi-head-latent-attention/)
-- 이 저장소 내 관련 답변: [`llm-inference-vram-weights-vs-input-memory.md`](../llm-inference-vram-weights-vs-input-memory.md) (가중치·활성화·KV 캐시로 나눈 VRAM 구성 전체 그림)
+- 이 저장소 내 관련 답변: [`inquiry/ai/0010-llm-inference-vram-weights-vs-input-memory.md`](./0010-llm-inference-vram-weights-vs-input-memory.md) (가중치·활성화·KV 캐시로 나눈 VRAM 구성 전체 그림)

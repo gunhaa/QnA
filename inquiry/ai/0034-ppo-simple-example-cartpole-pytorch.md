@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # PPO 알고리즘 가장 기본적인 예제 만드는 방법 (CartPole)
 
 ## 쉬운 설명

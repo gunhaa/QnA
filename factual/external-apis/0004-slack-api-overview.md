@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-10-15
+author: agent
+model: claude-opus-5-5
+---
+
 # Slack API 한눈에 보기 (주요 기능·자주 쓰는 메서드)
 
 > 기준일: 2026-10-15 · 공식 문서: <https://docs.slack.dev>

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 자기지도학습에서 "정답"은 어떻게 판별하나?
 
 ## 쉬운 설명

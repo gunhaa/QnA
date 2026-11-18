@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-13
+author: agent
+model: claude-opus-5-5
+---
+
 # grep의 성능과 동작 원리
 
 ## 쉬운 설명

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # Q&A: 토큰화 후 "치환"하는 voca 테이블과, 연산에 쓰는 벡터가 같은 테이블인가요?
 
 ## 질문 요약
@@ -53,8 +60,8 @@
 
 ## 관련 문서
 
-- [1단계: 토크나이저](./01-tokenizer.md) — 어휘집이 어떻게 만들어지는지
-- [2단계: 토큰 임베딩](./02-token-embedding.md) — 임베딩 테이블 구조와 학습 원리
+- [1단계: 토크나이저](./0002-llm-architecture/02-tokenizer.md) — 어휘집이 어떻게 만들어지는지
+- [2단계: 토큰 임베딩](./0002-llm-architecture/03-token-embedding.md) — 임베딩 테이블 구조와 학습 원리
 
 ## 참고 자료 (Sources)
 

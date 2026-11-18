@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-17
+author: agent
+model: claude-sonnet-5
+---
+
 # 단일 디스크의 파티션 거래, 리더-팔로워 복제 모델, 그리고 Kafka의 CP/DP
 
 > 질문 셋:
@@ -23,7 +30,7 @@
 
 #### 정정 1 — 단일 디스크에서도 파티션 1 → 소수 구간은 **더 빨라집니다**
 
-[앞 문서](./kafka-partition-disk-and-parallelism.md)에서 "파티션을 늘리면 순차 I/O가 준랜덤이 된다"고 했는데, 이건 **파티션이 아주 많아졌을 때**의 이야기입니다. 초반 구간은 반대입니다.
+[앞 문서](./0007-kafka-partition-disk-and-parallelism.md)에서 "파티션을 늘리면 순차 I/O가 준랜덤이 된다"고 했는데, 이건 **파티션이 아주 많아졌을 때**의 이야기입니다. 초반 구간은 반대입니다.
 
 ```
   처리량
@@ -117,7 +124,7 @@
 
 **replication.factor=3이면 클러스터 전체 디스크 쓰기는 3배입니다.** 팔로워는 소비자가 아니라 **또 하나의 라이터**입니다.
 
-이것이 클라우드에서 Kafka 비용이 큰 이유이기도 합니다 — 3중 복제는 **디스크 3배 + 크로스 AZ 네트워크 트래픽 2배**를 발생시키고, 후자가 클라우드 Kafka TCO의 최대 80%를 차지합니다. [diskless Kafka(KIP-1150)](../distributed-systems/the-log/05-critique-and-2026-update.md)가 등장한 이유가 정확히 이 지점입니다.
+이것이 클라우드에서 Kafka 비용이 큰 이유이기도 합니다 — 3중 복제는 **디스크 3배 + 크로스 AZ 네트워크 트래픽 2배**를 발생시키고, 후자가 클라우드 Kafka TCO의 최대 80%를 차지합니다. [diskless Kafka(KIP-1150)](../../source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md)가 등장한 이유가 정확히 이 지점입니다.
 
 ### (b) 복제는 push가 아니라 pull입니다
 
@@ -218,7 +225,7 @@ broker.rack=ap-northeast-2a
 
 ### (f) The Log 관점에서의 정리
 
-[The Log Part 1 분석](../distributed-systems/the-log/01-part1-what-is-a-log.md)의 분류에 대입하면:
+[The Log Part 1 분석](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md)의 분류에 대입하면:
 
 | 축 | Kafka의 선택 |
 |---|---|
@@ -280,7 +287,7 @@ broker.rack=ap-northeast-2a
 
 > "KRaft stores metadata as an append-only log, which means every metadata change — topic creation, partition reassignment, ACL update — is a record appended to `__cluster_metadata`."
 
-**이것이 [The Log의 논증을 Kafka가 자기 자신에게 적용한 사례](../distributed-systems/the-log/01-part1-what-is-a-log.md)입니다.**
+**이것이 [The Log의 논증을 Kafka가 자기 자신에게 적용한 사례](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md)입니다.**
 
 - 데이터 평면: 사용자 데이터를 로그로 관리
 - 제어 평면: **클러스터 메타데이터도 로그로 관리**
@@ -449,9 +456,9 @@ CAP은 "파티션이 발생했을 때"만 다루므로 불충분합니다. Danie
 
 ## 관련 문서
 
-- [`kafka/kafka-partition-disk-and-parallelism.md`](./kafka-partition-disk-and-parallelism.md) — 파티션의 물리적 실체와 쓰기 경로 (이 문서의 전편)
-- [`kafka/kafka-as-a-database-offset-lookup.md`](./kafka-as-a-database-offset-lookup.md) — 세그먼트·sparse index·offset 조회
-- [`kafka/kafka-consumer-mechanism.md`](./kafka-consumer-mechanism.md) — 컨슈머 그룹·리밸런싱
-- [`kafka/kafka-overview.md`](./kafka-overview.md) — Kafka 기본 구조
-- [`distributed-systems/the-log/01-part1-what-is-a-log.md`](../distributed-systems/the-log/01-part1-what-is-a-log.md) — physical/logical logging × primary-backup/active-active 2축 분류, 합의와 로그
-- [`distributed-systems/the-log/05-critique-and-2026-update.md`](../distributed-systems/the-log/05-critique-and-2026-update.md) — 크로스 AZ 복제 비용과 diskless Kafka
+- [`inquiry/distributed-systems/0007-kafka-partition-disk-and-parallelism.md`](./0007-kafka-partition-disk-and-parallelism.md) — 파티션의 물리적 실체와 쓰기 경로 (이 문서의 전편)
+- [`inquiry/distributed-systems/0006-kafka-as-a-database-offset-lookup.md`](./0006-kafka-as-a-database-offset-lookup.md) — 세그먼트·sparse index·offset 조회
+- [`inquiry/distributed-systems/0001-kafka-consumer-mechanism.md`](./0001-kafka-consumer-mechanism.md) — 컨슈머 그룹·리밸런싱
+- [`inquiry/distributed-systems/0002-kafka-overview.md`](./0002-kafka-overview.md) — Kafka 기본 구조
+- [`source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md`](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md) — physical/logical logging × primary-backup/active-active 2축 분류, 합의와 로그
+- [`source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md`](../../source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md) — 크로스 AZ 복제 비용과 diskless Kafka

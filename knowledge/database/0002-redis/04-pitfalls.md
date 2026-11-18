@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # Redis 운영 시 자주 겪는 문제와 해결 방법
 
 ## 쉬운 설명
@@ -51,7 +58,7 @@
 
 ### 5. 데이터 유실·장애 조치
 
-노드 장애, 비동기 복제로 인한 쓰기 유실, 스플릿 브레인, 영속성 설정, 백업은 [Redis 장애 대응과 고가용성](./redis-failure-and-high-availability.md)에서 다룬다.
+노드 장애, 비동기 복제로 인한 쓰기 유실, 스플릿 브레인, 영속성 설정, 백업은 [Redis 장애 대응과 고가용성](./05-failures.md)에서 다룬다.
 
 ### 6. 캐시와 DB 불일치
 
@@ -112,10 +119,10 @@ Java에서는 Redisson의 `RLock`이 토큰·연장·재진입을 처리해 준�
 
 ## 관련 문서
 
-- [Redis의 역사](./history.md)
-- [Redis 개요와 기본 사용법](./redis-overview-and-basic-usage.md)
-- [Redis 장애 대응과 고가용성](./redis-failure-and-high-availability.md)
-- [Vault로 API 키 verify 이관 검토 (Redis 캐시 계층 비교)](../../security-crypto/api-key-verification/vault-apikey-split-verify-review.md)
+- [Redis의 역사](./01-history.md)
+- [Redis 개요와 기본 사용법](./02-overview.md)
+- [Redis 장애 대응과 고가용성](./05-failures.md)
+- [Vault로 API 키 verify 이관 검토 (Redis 캐시 계층 비교)](../../../inquiry/security/0003-vault-apikey-split-verify-review.md)
 
 ## 참고 자료
 

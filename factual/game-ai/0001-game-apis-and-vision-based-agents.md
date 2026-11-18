@@ -1,6 +1,13 @@
+---
+type: factual
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 게임 API 개방 현황, MMORPG의 한계, 비전(OCR) 기반 접근 — 그리고 API가 열린 게임 목록
 
-> 관련 문서: [FSM vs LLM 비중·성능·구현](./game-agent-fsm-vs-llm-architecture.md) · [라이브러리 언어 선택](./game-ai-library-language-choice.md) · [어떤 게임을 고를까 + FSM 역할](./which-game-to-build-agent-for-and-fsm-role.md)
+> 관련 문서: [FSM vs LLM 비중·성능·구현](../../inquiry/game-ai/0001-game-agent-fsm-vs-llm-architecture.md) · [라이브러리 언어 선택](../../inquiry/game-ai/0002-game-ai-library-language-choice.md) · [어떤 게임을 고를까 + FSM 역할](../../inquiry/game-ai/0010-which-game-to-build-agent-for-and-fsm-role.md)
 
 ## 한 줄 결론
 

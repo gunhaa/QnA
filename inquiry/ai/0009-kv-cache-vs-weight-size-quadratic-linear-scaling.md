@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # 레이어가 많은데, 14B 예시에서 KV 캐시가 2~3배로 안 불어나는 이유는?
 
 ## 결론부터
@@ -94,4 +101,4 @@ Sources:
 - [KV Cache Memory Calculation for LLMs — Lyceum Technology](https://lyceum.technology/magazine/kv-cache-memory-calculation-llm/)
 - [The KV Cache Is Killing Your LLM at Scale — AJ (Medium)](https://medium.com/@adityaj5400/the-kv-cache-is-killing-your-llm-at-scale-heres-the-low-level-physics-nobody-talks-about-b577c4c7549e)
 - [KV Cache Engineering for LLM Serving — Avi Chawla](https://blog.dailydoseofds.com/p/kv-cache-engineering-for-llm-serving)
-- 이 저장소 내 관련 답변: [`kv-cache-attention-explained.md`](./kv-cache-attention-explained.md), [`llm-inference-vram-weights-vs-input-memory.md`](../llm-inference-vram-weights-vs-input-memory.md)
+- 이 저장소 내 관련 답변: [`inquiry/ai/0007-kv-cache-attention-explained.md`](./0007-kv-cache-attention-explained.md), [`inquiry/ai/0010-llm-inference-vram-weights-vs-input-memory.md`](./0010-llm-inference-vram-weights-vs-input-memory.md)

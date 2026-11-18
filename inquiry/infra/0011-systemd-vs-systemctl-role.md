@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # Linux에서 systemd와 systemctl은 각각 무슨 역할을 하나요?
 
 ## 결론부터

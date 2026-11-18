@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-11
+author: agent
+model: claude-sonnet-5
+---
+
 # Claude Code는 입력을 기다리는 동안(idle) 뭘 하고 있을까?
 
 ## 5살 아이에게 설명하면

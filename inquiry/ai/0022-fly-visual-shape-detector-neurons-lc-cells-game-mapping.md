@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-14
+author: agent
+model: unknown
+---
+
 # 3D 게임에서 특정 모양을 보면 버튼이 눌리게 만들 수 있을까 (학습 없이)
 
 ## 쉬운 설명

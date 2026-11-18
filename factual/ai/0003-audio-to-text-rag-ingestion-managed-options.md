@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # 회의 녹음 → 텍스트 → RAG DB 적재: 직접 구현 없이 가능한 방법
 
 ## 한 줄 결론
@@ -10,7 +17,7 @@ STT 엔진은 직접 구현하지 않아도 된다. Azure AI Content Understandi
 
 - **STT 엔진은 직접 구현하지 않아도 된다.** 관리형 API/서비스가 변환까지 해 준다.
 - **완전 무코딩은 아니다.** 변환 결과를 청킹·임베딩해 RAG DB에 넣는 연결부는 대개 필요하다. 다만 프레임워크나 관리형 인덱서를 쓰면 설정 수준으로 줄어든다.
-- Teams 회의라면 STT 자체를 건너뛴다. Teams가 만든 트랜스크립트(VTT)를 Graph로 받으면 된다 ([관련 문서](../collaboration-tools/teams-meeting-transcript-summary-pipeline.md)).
+- Teams 회의라면 STT 자체를 건너뛴다. Teams가 만든 트랜스크립트(VTT)를 Graph로 받으면 된다 ([관련 문서](../../inquiry/external-apis/0001-teams-meeting-transcript-summary-pipeline.md)).
 
 ### 2. 선택지 (구현량 적은 순)
 
@@ -24,7 +31,7 @@ STT 엔진은 직접 구현하지 않아도 된다. Azure AI Content Understandi
 
 ### 3. 이미 pgvector/자체 RAG가 있을 때
 
-사내에 Spring AI + pgvector 같은 RAG가 있다면 ([인제스트 설계 문서](rag-internal-policy-xlsx-ingestion-design.md)) 가장 현실적인 구성은 다음과 같다.
+사내에 Spring AI + pgvector 같은 RAG가 있다면 ([인제스트 설계 문서](../../inquiry/ai/0040-rag-internal-policy-xlsx-ingestion-design.md)) 가장 현실적인 구성은 다음과 같다.
 
 ```
 Teams 트랜스크립트(Graph) 또는 오디오 → [STT: 관리형 API, 필요 시만]

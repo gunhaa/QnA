@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # Java 락 장애 대응과 다중 인스턴스 환경
 
 ## 쉬운 설명
@@ -59,7 +66,7 @@ if (ids != null) {
 ### 3. 복구: JVM은 데드락을 풀어 주지 않는다
 
 - 락을 쥔 스레드를 강제로 죽이는 수단이 없다(`Thread.stop()`은 JDK 20부터 `UnsupportedOperationException`).
-- **현실적인 복구 = 증거(덤프) 수집 후 인스턴스 재시작.** 그래서 [다중 인스턴스 + liveness 프로브](../java-failure-and-high-availability.md)가 전제다.
+- **현실적인 복구 = 증거(덤프) 수집 후 인스턴스 재시작.** 그래서 [다중 인스턴스 + liveness 프로브](../0001-java/05-failures.md)가 전제다.
 - 재시작은 증상 완화일 뿐이다. 덤프로 락 순서를 찾아 코드를 고쳐야 한다.
 
 ### 4. 예방 설계
@@ -101,10 +108,10 @@ JVM 락의 범위는 **한 프로세스**다. 서버를 2대 이상 띄우는 �
 | 방법 | 구현 | 장점 | 주의 |
 |---|---|---|---|
 | **원자적 UPDATE / 유니크 제약** | `UPDATE ... SET qty = qty - 1 WHERE qty > 0`, UNIQUE 키 | 가장 단순·정확 | 표현 가능한 경우에 한정 |
-| **비관적 락** | `SELECT ... FOR UPDATE` (`@Lock(PESSIMISTIC_WRITE)`) | DB가 정합성 보장 | 트랜잭션 길면 대기·데드락 → [MySQL 락 문제](../../database/mysql/mysql-common-problems-and-solutions.md) |
+| **비관적 락** | `SELECT ... FOR UPDATE` (`@Lock(PESSIMISTIC_WRITE)`) | DB가 정합성 보장 | 트랜잭션 길면 대기·데드락 → [MySQL 락 문제](../../database/0001-mysql/04-pitfalls.md) |
 | **낙관적 락** | `@Version` 컬럼 + 충돌 시 재시도 | 경합 적을 때 빠름 | 경합 많으면 재시도 폭증 |
 | DB 이름 락 | MySQL `GET_LOCK()`, PostgreSQL advisory lock | 행이 없는 자원도 보호 | 커넥션에 묶임, 풀과 함께 쓸 때 주의 |
-| **Redis 분산 락** | Redisson `RLock`(watchdog 자동 연장), `SET NX PX` + 토큰 | 빠름, 구현 쉬움 | 장애 조치 시 락 유실 가능 → [Redis 분산 락 함정](../../database/redis/redis-common-problems-and-solutions.md) |
+| **Redis 분산 락** | Redisson `RLock`(watchdog 자동 연장), `SET NX PX` + 토큰 | 빠름, 구현 쉬움 | 장애 조치 시 락 유실 가능 → [Redis 분산 락 함정](../../database/0002-redis/04-pitfalls.md) |
 | ZooKeeper / etcd | Curator `InterProcessMutex`, etcd lease | 합의 기반, 세션 만료로 자동 해제 | 별도 클러스터 운영 |
 | 스케줄러 중복 실행 방지 | **ShedLock** (`@SchedulerLock`, DB/Redis 백엔드) | `@Scheduled`가 모든 인스턴스에서 도는 문제 해결 | 작업 시간 > `lockAtMostFor`면 중복 |
 | 리더 선출 | Spring Integration Leader, k8s Lease | 한 인스턴스만 특정 역할 | — |
@@ -116,7 +123,7 @@ JVM 락의 범위는 **한 프로세스**다. 서버를 2대 이상 띄우는 �
 | 락 보유 인스턴스가 죽음 | 락이 영원히 남음 | **TTL/lease**로 자동 만료 |
 | 작업이 TTL보다 오래 걸림 | 만료 후 다른 인스턴스도 획득 → **동시 실행** | 자동 연장(Redisson watchdog), 넉넉한 TTL, 작업 분할 |
 | **긴 GC 정지·프로세스 정지** | 정지 동안 lease 만료 → 깨어난 옛 보유자가 락이 있다고 믿고 쓰기 | **fencing token**: 락마다 단조 증가 번호 발급, 저장소가 더 작은 번호의 쓰기를 거부 |
-| Redis 마스터 장애 조치 | 비동기 복제로 락 키 유실 → 두 보유자 | 정확성이 중요하면 DB·합의 기반(ZooKeeper/etcd) 사용 → [Redis 장애와 HA](../../database/redis/redis-failure-and-high-availability.md) |
+| Redis 마스터 장애 조치 | 비동기 복제로 락 키 유실 → 두 보유자 | 정확성이 중요하면 DB·합의 기반(ZooKeeper/etcd) 사용 → [Redis 장애와 HA](../../database/0002-redis/05-failures.md) |
 | 네트워크 분리 | 보유자는 락이 있다고 믿지만 lease는 만료 | fencing token, 세션 만료 감지 시 작업 중단 |
 | 락 저장소(Redis/ZK) 전체 장애 | 아무도 락을 못 얻음 | 실패 시 정책 결정: 작업 중단(안전) vs 락 없이 진행(가용성) |
 
@@ -147,12 +154,12 @@ public void handle(PaymentEvent e) {
 
 ## 관련 문서
 
-- [Java 락의 역사](./history.md)
-- [Java 락 개요와 기본 사용법](./java-lock-overview-and-basic-usage.md)
-- [Java 락: 자주 겪는 문제와 해결 방법](./java-lock-common-problems-and-solutions.md)
-- [Java 애플리케이션 장애 대응과 고가용성](../java-failure-and-high-availability.md)
-- [Redis 운영 시 자주 겪는 문제 — 분산 락의 함정](../../database/redis/redis-common-problems-and-solutions.md)
-- [MySQL 장애 대응과 고가용성](../../database/mysql/mysql-failure-and-high-availability.md)
+- [Java 락의 역사](./01-history.md)
+- [Java 락 개요와 기본 사용법](./02-overview.md)
+- [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Java 애플리케이션 장애 대응과 고가용성](../0001-java/05-failures.md)
+- [Redis 운영 시 자주 겪는 문제 — 분산 락의 함정](../../database/0002-redis/04-pitfalls.md)
+- [MySQL 장애 대응과 고가용성](../../database/0001-mysql/05-failures.md)
 
 ## 참고 자료
 

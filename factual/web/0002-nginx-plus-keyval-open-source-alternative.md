@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-15
+author: agent
+model: claude-opus-5
+---
+
 # NGINX Plus의 keyval, 오픈소스 NGINX에서도 쓸 수 있나
 
 ## 한 줄 결론

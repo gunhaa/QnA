@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: unknown
+---
+
 # AI가 RAG DB(벡터 데이터베이스)를 쓰면 아키텍처가 어떻게 바뀔까?
 
 ## 5살 아이에게 설명하듯이

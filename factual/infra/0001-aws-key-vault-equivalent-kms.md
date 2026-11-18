@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # AWS "키볼트"? — 사실은 AWS KMS를 말하는 거예요
 
 먼저 짚고 넘어갈 게 있어요. **"Key Vault"라는 이름의 서비스는 AWS가 아니라 마이크로소프트 Azure의 서비스명**이에요. AWS에서 같은 역할을 하는 서비스는 이름이 달라요. 그래서 "AWS 키볼트"라고 검색하면 나오는 건 대부분 "Azure Key Vault랑 비슷한 AWS 서비스가 뭐야?"에 대한 답변이에요.

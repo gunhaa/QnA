@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: claude-sonnet-5
+---
+
 # function calling은 결국 "시스템 프롬프트 주입 + 사전 파인튜닝"이 맞을까?
 
 ## 결론부터: 거의 맞아요, 다만 한 겹이 더 있어요

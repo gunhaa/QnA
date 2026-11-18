@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-11-16
+author: agent
+model: claude-opus-5-5
+---
+
 # 컴퓨터 스터디 진행 시나리오
 
-예시 주제로 **"부동소수점 → LLM 양자화"** 를 쓴다. 관련 문서: [부동소수점 (IEEE 754)](../cs-fundamentals/ieee754-floating-point.md), [LLM 양자화와 정보 손실 보완법](../ai-llm-basics/llm-quantization-error-compensation.md).
+예시 주제로 **"부동소수점 → LLM 양자화"** 를 쓴다. 관련 문서: [부동소수점 (IEEE 754)](../cs/0011-ieee754-floating-point.md), [LLM 양자화와 정보 손실 보완법](../ai/0049-llm-quantization-error-compensation.md).
 
 ## 1. 흔한 스터디 유형
 

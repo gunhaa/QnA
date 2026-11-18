@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 자율 AI 동료를 애드온으로 배포하기 — 어디가 열려 있고 어디가 닫혔나 (2026년 9월)
 
 ## 한 줄 결론

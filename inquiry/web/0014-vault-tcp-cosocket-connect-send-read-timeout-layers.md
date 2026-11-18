@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # Vault용 tcpsock 타임아웃, connect/send/read 3개 레이어를 그림으로 설명해줘
 
 ## 결론부터
@@ -95,4 +102,4 @@ Sources:
 - [The core of OpenResty: cosocket — API7.ai](https://api7.ai/learning-center/openresty/the-core-of-openresty-cosocket)
 - [lua-nginx-module — tcpsock:settimeouts 관련 이슈 및 테스트 (openresty/lua-nginx-module, GitHub)](https://github.com/openresty/lua-nginx-module/blob/master/t/065-tcp-socket-timeout.t)
 - [OpenResty - Lua Nginx Module 공식 문서](https://openresty.org/en/lua-nginx-module.html)
-- 이 저장소 내 관련 답변: [`nginx-lua-init-rewrite-content-phase-distinction.md`](./nginx-lua-init-rewrite-content-phase-distinction.md) (같은 `default.conf`에서 `vault_auth.enforce()`/`rate_limit.enforce()`가 access phase에서 호출되는 맥락)
+- 이 저장소 내 관련 답변: [`inquiry/web/0003-nginx-lua-init-rewrite-content-phase-distinction.md`](./0003-nginx-lua-init-rewrite-content-phase-distinction.md) (같은 `default.conf`에서 `vault_auth.enforce()`/`rate_limit.enforce()`가 access phase에서 호출되는 맥락)

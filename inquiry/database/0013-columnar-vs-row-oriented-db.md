@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-17
+author: agent
+model: claude-sonnet-5
+---
+
 # 컬럼 지향 DB vs 로우 지향 DB — 극적인 성능 차이는 어떤 "방향성"에서 나오는가
 
 ## 쉬운 설명
@@ -164,7 +171,7 @@ SELECT country, COUNT(*) FROM events GROUP BY country;
 
 **이 인코딩들은 "같은 종류 값이 연속으로 붙어 있어야" 성립합니다.** 로우 지향에서는 값 사이사이에 다른 타입이 끼어 있어 원천적으로 적용 불가입니다. 즉 **압축률 차이는 튜닝의 문제가 아니라 배치 방향의 필연적 결과**입니다.
 
-> **인코딩 체이닝:** 타임스탬프 컬럼에 `Delta → Bit-packing → LZ4`를 순서대로 걸면 각 단계가 다른 종류의 중복을 제거해 압축률이 곱해집니다. 이 저장소의 [`database/clickhouse/clickhouse-strengths-columnar-and-replica.md`](./clickhouse/clickhouse-strengths-columnar-and-replica.md)에서 ClickHouse의 코덱 체이닝 사례를 다룹니다.
+> **인코딩 체이닝:** 타임스탬프 컬럼에 `Delta → Bit-packing → LZ4`를 순서대로 걸면 각 단계가 다른 종류의 중복을 제거해 압축률이 곱해집니다. 이 저장소의 [`inquiry/database/0010-clickhouse-strengths-columnar-and-replica.md`](./0010-clickhouse-strengths-columnar-and-replica.md)에서 ClickHouse의 코덱 체이닝 사례를 다룹니다.
 
 #### (c) 압축 해제 없이 연산하기 (Operating on Compressed Data)
 
@@ -368,7 +375,7 @@ UPDATE users SET last_login = NOW() WHERE id = 12345;
 - **`ALTER TABLE ... UPDATE`는 뮤테이션(mutation)** — 해당 파트 전체를 다시 쓰는 무거운 비동기 작업. ClickHouse는 이를 "일반 UPDATE라고 생각하지 말라"고 문서에 명시합니다
 - **삭제 표식(delete marker) / tombstone** — 실제 삭제는 나중에 병합 시 반영
 
-> **핵심:** 컬럼 지향은 **"대량 append + 거의 수정 없음"** 을 전제로 설계되었습니다. 이 저장소의 [`database/clickhouse/clickhouse-append-only-log-reason.md`](./clickhouse/clickhouse-append-only-log-reason.md)가 다루는 "왜 ClickHouse가 append-only 로그에 적합한가"의 근본 이유가 이것입니다. 그리고 이 성질은 [`distributed-systems/the-log/`](../distributed-systems/the-log/00-overview.md)에서 분석한 로그 추상화와 정확히 같은 철학입니다 — **불변 + append-only + 순차 I/O**.
+> **핵심:** 컬럼 지향은 **"대량 append + 거의 수정 없음"** 을 전제로 설계되었습니다. 이 저장소의 [`inquiry/database/0008-clickhouse-append-only-log-reason.md`](./0008-clickhouse-append-only-log-reason.md)가 다루는 "왜 ClickHouse가 append-only 로그에 적합한가"의 근본 이유가 이것입니다. 그리고 이 성질은 [`source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md)에서 분석한 로그 추상화와 정확히 같은 철학입니다 — **불변 + append-only + 순차 I/O**.
 
 #### (c) 트랜잭션·동시성 제어
 
@@ -378,7 +385,7 @@ UPDATE users SET last_login = NOW() WHERE id = 12345;
 | **MVCC** | 행 버전 체인(PostgreSQL) / undo 로그(InnoDB) | 파트 단위 버전 관리. 행 단위 MVCC 구현이 훨씬 복잡 |
 | **격리 수준** | Serializable까지 성숙 | 많은 컬럼 DB가 제한적 트랜잭션만 지원(ClickHouse는 다중 문장 트랜잭션 미지원) |
 
-> 관련: [`database/mysql-postgresql/`](./mysql-postgresql/)의 락·MVCC 문서들이 로우 지향 DB의 이 영역을 다룹니다.
+> 관련: [`inquiry/database/`](./)의 락·MVCC 문서들이 로우 지향 DB의 이 영역을 다룹니다.
 
 #### (d) 정리 — 워크로드별 우열
 
@@ -451,7 +458,7 @@ SELECT * FROM access_log WHERE request_id = 'abc-123';
 | **SingleStore** | 로우스토어(메모리) + 컬럼스토어(디스크) 테이블 타입 선택 |
 | **PostgreSQL 확장** | Citus Columnar, `pg_mooncake`, Hydra 등 |
 
-> **TiDB가 구조적으로 흥미롭습니다.** TiFlash(컬럼 복제본)는 TiKV의 **RAFT 로그를 구독해서** 컬럼 형태로 물질화합니다. 이는 [`distributed-systems/the-log/`](../distributed-systems/the-log/00-overview.md)에서 분석한 **"테이블/인덱스는 로그의 투영"** 원리의 교과서적 구현입니다 — 컬럼 스토어가 로그의 또 하나의 projection인 셈입니다.
+> **TiDB가 구조적으로 흥미롭습니다.** TiFlash(컬럼 복제본)는 TiKV의 **RAFT 로그를 구독해서** 컬럼 형태로 물질화합니다. 이는 [`source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md)에서 분석한 **"테이블/인덱스는 로그의 투영"** 원리의 교과서적 구현입니다 — 컬럼 스토어가 로그의 또 하나의 projection인 셈입니다.
 
 #### (c) 2026년의 지배적 실무 패턴
 
@@ -568,8 +575,8 @@ SELECT * FROM access_log WHERE request_id = 'abc-123';
 
 ## 관련 문서
 
-- [`database/clickhouse/clickhouse-strengths-columnar-and-replica.md`](./clickhouse/clickhouse-strengths-columnar-and-replica.md) — ClickHouse의 코덱 체이닝, 스파스 인덱스, 벡터화 구현 세부
-- [`database/clickhouse/clickhouse-append-only-log-reason.md`](./clickhouse/clickhouse-append-only-log-reason.md) — 왜 컬럼 DB가 append-only 로그에 적합한가
-- [`database/clickhouse/clickhouse-vs-timeseries-and-log-db.md`](./clickhouse/clickhouse-vs-timeseries-and-log-db.md) — 시계열/로그 특화 DB와의 비교
-- [`database/mysql-postgresql/`](./mysql-postgresql/) — 로우 지향 DB의 락·MVCC·격리 수준
-- [`distributed-systems/the-log/`](../distributed-systems/the-log/00-overview.md) — "테이블/인덱스는 로그의 투영" 원리. 컬럼 스토어를 로그의 projection으로 보는 관점
+- [`inquiry/database/0010-clickhouse-strengths-columnar-and-replica.md`](./0010-clickhouse-strengths-columnar-and-replica.md) — ClickHouse의 코덱 체이닝, 스파스 인덱스, 벡터화 구현 세부
+- [`inquiry/database/0008-clickhouse-append-only-log-reason.md`](./0008-clickhouse-append-only-log-reason.md) — 왜 컬럼 DB가 append-only 로그에 적합한가
+- [`inquiry/database/0011-clickhouse-vs-timeseries-and-log-db.md`](./0011-clickhouse-vs-timeseries-and-log-db.md) — 시계열/로그 특화 DB와의 비교
+- [`inquiry/database/`](./) — 로우 지향 DB의 락·MVCC·격리 수준
+- [`source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md) — "테이블/인덱스는 로그의 투영" 원리. 컬럼 스토어를 로그의 projection으로 보는 관점

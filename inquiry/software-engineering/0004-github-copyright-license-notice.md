@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # GitHub 저장소의 저작권 표기 방법
 
 ## 쉬운 설명

@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # MySQL 장애 대응과 고가용성
 
 ## 쉬운 설명
@@ -159,9 +166,9 @@ mysqlbinlog --start-position=<백업 시점 위치> \
 
 ## 관련 문서
 
-- [MySQL의 역사](./history.md)
-- [MySQL 개요와 기본 사용법](./mysql-overview-and-basic-usage.md)
-- [MySQL 운영 시 자주 겪는 문제와 해결 방법](./mysql-common-problems-and-solutions.md)
+- [MySQL의 역사](./01-history.md)
+- [MySQL 개요와 기본 사용법](./02-overview.md)
+- [MySQL 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
 
 ## 참고 자료
 

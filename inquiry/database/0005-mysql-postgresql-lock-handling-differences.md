@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-11
+author: agent
+model: claude-sonnet-5
+---
+
 # MySQL과 PostgreSQL은 락(Lock)을 다루는 방식이 다르다 — 장단점과 isolation level 이름이 같아도 동작이 다른 이유
 
 ## 비유로 먼저 이해하기

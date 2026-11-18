@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # Spring Kafka Consumer = N초마다 폴링? 그럼 Transactional Outbox랑은 뭐가 다름?
 
 두 개념이 완전히 다른 층(레이어)의 문제를 풀어요. 헷갈리기 쉬운 이유는 **둘 다 내부적으로 "폴링"이라는 단어를 쓰기 때문**이에요. 하나씩 풀어볼게요.

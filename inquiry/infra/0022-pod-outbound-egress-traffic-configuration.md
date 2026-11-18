@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-18
+author: agent
+model: claude-sonnet-5
+---
+
 # 쿠버네티스 파드에서 외부로 나가는 통신(egress), 별도 설정이 필요할까
 
 ## 쉬운 설명
@@ -78,5 +85,5 @@
 
 ## 관련 문서
 
-- [`kubernetes/kubernetes-ingress-load-balancing.md`](./kubernetes-ingress-load-balancing.md) — 반대 방향인 인바운드(ingress) 트래픽 처리 방식
-- [`kubernetes/kubernetes-service-loadbalancer-gslb.md`](./kubernetes-service-loadbalancer-gslb.md) — Service/LoadBalancer 타입의 외부 노출 방식
+- [`inquiry/infra/0020-kubernetes-ingress-load-balancing.md`](./0020-kubernetes-ingress-load-balancing.md) — 반대 방향인 인바운드(ingress) 트래픽 처리 방식
+- [`inquiry/infra/0021-kubernetes-service-loadbalancer-gslb.md`](./0021-kubernetes-service-loadbalancer-gslb.md) — Service/LoadBalancer 타입의 외부 노출 방식

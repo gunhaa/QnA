@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-17
+author: agent
+model: claude-sonnet-5
+---
+
 # Kafka 파티션은 디스크를 논리적으로 쪼개 병렬 쓰기를 하려는 장치인가
 
 > 질문: 파티션이란 HDD/SSD가 1개여도 그걸 논리적으로 나눠놓은 여러 개이고, 디스크 시스템콜을 이용한 동시성 이슈 없는 병렬 쓰기를 위한 것인가?
@@ -127,7 +134,7 @@ Kafka의 속도는 **순차 I/O**에서 나오는데, 파티션이 많아지면 
 
 #### 왜 느려지는가
 
-Kafka의 성능 근거는 [The Log 분석에서 다룬](../distributed-systems/the-log/02-part2-data-integration.md) **순차 I/O**입니다. 그런데:
+Kafka의 성능 근거는 [The Log 분석에서 다룬](../../source/distributed-systems/0001-the-log-kreps-2013/03-part2-data-integration.md) **순차 I/O**입니다. 그런데:
 
 ```
   파티션 1개: 활성 세그먼트 파일 1개에만 append
@@ -214,7 +221,7 @@ Kafka의 성능 근거는 [The Log 분석에서 다룬](../distributed-systems/t
 
 #### ③ 순서 보장 범위의 제어
 
-[The Log Part 1 분석](../distributed-systems/the-log/01-part1-what-is-a-log.md)에서 다룬 이론적 긴장이 여기서 실무 결정으로 나타납니다.
+[The Log Part 1 분석](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md)에서 다룬 이론적 긴장이 여기서 실무 결정으로 나타납니다.
 
 > **전순서(total order)는 본질적으로 직렬화 지점(serialization point)을 요구한다.**
 > 누군가는 "이게 3번, 저게 4번"이라고 혼자 결정해야 하고, 그 결정은 한 곳에서만 일어날 수 있다.
@@ -364,9 +371,9 @@ kafka-producer-perf-test.sh --topic test-p100 --num-records 10000000 \
 
 ## 관련 문서
 
-- [`kafka/kafka-overview.md`](./kafka-overview.md) — Kafka 기본 구조
-- [`kafka/kafka-consumer-mechanism.md`](./kafka-consumer-mechanism.md) — 컨슈머 그룹·리밸런싱 동작
-- [`kafka/kafka-as-a-database-offset-lookup.md`](./kafka-as-a-database-offset-lookup.md) — 세그먼트·sparse index 내부 구조와 offset 조회
-- [`distributed-systems/the-log/01-part1-what-is-a-log.md`](../distributed-systems/the-log/01-part1-what-is-a-log.md) — 전순서가 직렬화 지점을 요구하는 이유
-- [`distributed-systems/the-log/02-part2-data-integration.md`](../distributed-systems/the-log/02-part2-data-integration.md) — 파티셔닝·배칭·순차 I/O·제로카피가 만드는 확장성
-- [`os-fundamentals/`](../os-fundamentals/) — 페이지 캐시·시스템콜 등 OS 기초
+- [`inquiry/distributed-systems/0002-kafka-overview.md`](./0002-kafka-overview.md) — Kafka 기본 구조
+- [`inquiry/distributed-systems/0001-kafka-consumer-mechanism.md`](./0001-kafka-consumer-mechanism.md) — 컨슈머 그룹·리밸런싱 동작
+- [`inquiry/distributed-systems/0006-kafka-as-a-database-offset-lookup.md`](./0006-kafka-as-a-database-offset-lookup.md) — 세그먼트·sparse index 내부 구조와 offset 조회
+- [`source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md`](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md) — 전순서가 직렬화 지점을 요구하는 이유
+- [`source/distributed-systems/0001-the-log-kreps-2013/03-part2-data-integration.md`](../../source/distributed-systems/0001-the-log-kreps-2013/03-part2-data-integration.md) — 파티셔닝·배칭·순차 I/O·제로카피가 만드는 확장성
+- [`inquiry/cs/`](../cs/) — 페이지 캐시·시스템콜 등 OS 기초

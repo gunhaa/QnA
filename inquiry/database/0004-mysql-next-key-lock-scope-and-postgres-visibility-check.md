@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-11
+author: agent
+model: claude-sonnet-5
+---
+
 # MySQL next-key lock은 RR에서만? / PostgreSQL은 "스냅샷이 틀렸다"를 어떻게 판별할까
 
-관련 글: [gap/next-key lock이 걸리는 시점과 용어](mysql-gap-lock-next-key-lock-mechanism-and-terms.md) · [postgres는 gap lock 없이 어떻게 감지할까](postgresql-phantom-detection-without-gap-lock.md)
+관련 글: [gap/next-key lock이 걸리는 시점과 용어](./0003-mysql-gap-lock-next-key-lock-mechanism-and-terms.md) · [postgres는 gap lock 없이 어떻게 감지할까](./0006-postgresql-phantom-detection-without-gap-lock.md)
 
 ## 1. MySQL next-key lock, RR에서만 걸리나?
 

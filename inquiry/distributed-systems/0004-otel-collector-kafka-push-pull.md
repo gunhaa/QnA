@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # Kafka랑 연동되면 Push일까?
 
 **"어느 쪽이냐"에 따라 달라요.** Kafka 자체가 원래 **반은 Push, 반은 Pull인 하이브리드 구조**라서, Collector가 Kafka의 어느 쪽(입구/출구)에 붙느냐에 따라 대답이 달라져요.

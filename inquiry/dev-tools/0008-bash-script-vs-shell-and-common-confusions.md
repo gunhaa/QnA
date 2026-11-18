@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-10
+author: agent
+model: claude-sonnet-5
+---
+
 # bash 스크립트란 무엇이고, 평소 쓰는 터미널 쉘과 뭐가 다를까?
 
 ## 결론부터

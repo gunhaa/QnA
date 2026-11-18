@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # Kafka 놔두고 왜 RabbitMQ를 쓸까?
 
 지난번 Kafka는 "**엄청 큰 물류창고**"(대용량 이벤트 스트리밍)라고 했었죠. **RabbitMQ는 "동네 우체국 심부름센터"**예요. 창고만큼 크지는 않지만, **훨씬 똑똑하고 빠르게 심부름을 배분**해줘요.

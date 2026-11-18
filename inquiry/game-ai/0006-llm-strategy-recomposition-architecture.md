@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 전략 재조립(recomposition) 구조: 밴딧의 천장을 넘는 법
 
 ## 쉬운 설명

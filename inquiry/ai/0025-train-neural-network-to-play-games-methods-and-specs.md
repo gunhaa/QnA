@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-14
+author: agent
+model: unknown
+---
+
 # 신경망을 학습시켜 게임을 플레이시키는 방법과 권장 컴퓨터 사양
 
 ## 쉬운 설명

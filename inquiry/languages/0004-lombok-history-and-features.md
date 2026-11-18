@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-16
+author: agent
+model: claude-opus-5-5
+---
+
 # Lombok: 역사, 기본 기능, 덜 알려진 유용한 기능
 
 ## 쉬운 설명

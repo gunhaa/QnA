@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-17
+author: agent
+model: claude-sonnet-5
+---
+
 # Kafka를 사실상 DB처럼 쓸 수 있나 — "offset 조회만", "순서만" 필요한 경우
 
 ## 쉬운 설명
@@ -33,7 +40,7 @@ Kafka는 **"들어온 순서대로 번호표를 붙여서 한 줄로 쌓아두�
 
 ### 1. 먼저 — Kafka는 이미 DB의 상당 부분을 갖고 있다
 
-"Kafka는 메시지 큐일 뿐"이라는 인식은 틀렸습니다. [이전에 분석한 The Log](../distributed-systems/the-log/00-overview.md)의 논지대로, Kafka는 처음부터 **"DB의 WAL을 밖으로 꺼낸 물건"** 으로 설계됐습니다.
+"Kafka는 메시지 큐일 뿐"이라는 인식은 틀렸습니다. [이전에 분석한 The Log](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md)의 논지대로, Kafka는 처음부터 **"DB의 WAL을 밖으로 꺼낸 물건"** 으로 설계됐습니다.
 
 | DB 속성 | Kafka의 제공 여부 |
 |---|---|
@@ -91,7 +98,7 @@ Jay Kreps는 2017년 **"It's Okay to Store Data in Apache Kafka"** 라는 글로
 
 **즉 offset 조회는 O(log n) + 상수 시간 선형 스캔입니다.** B-tree 인덱스 탐색과 복잡도가 비슷합니다. "Kafka는 순차 읽기만 된다"는 것은 오해입니다.
 
-> **sparse index의 트레이드오프:** 1,000만 개 메시지가 든 세그먼트의 인덱스 엔트리는 약 1만 개 수준입니다. 인덱스가 작아 **전부 페이지 캐시에 상주**할 수 있고, 이것이 Kafka가 메모리를 적게 쓰면서도 빠른 이유입니다. `log.index.interval.bytes`를 줄이면 조회가 빨라지지만 인덱스 파일이 커집니다. 이 구조는 [`database/clickhouse/`](../database/clickhouse/clickhouse-strengths-columnar-and-replica.md)의 ClickHouse 스파스 인덱스와 동일한 설계 철학입니다.
+> **sparse index의 트레이드오프:** 1,000만 개 메시지가 든 세그먼트의 인덱스 엔트리는 약 1만 개 수준입니다. 인덱스가 작아 **전부 페이지 캐시에 상주**할 수 있고, 이것이 Kafka가 메모리를 적게 쓰면서도 빠른 이유입니다. `log.index.interval.bytes`를 줄이면 조회가 빨라지지만 인덱스 파일이 커집니다. 이 구조는 [`inquiry/database/0010-clickhouse-strengths-columnar-and-replica.md`](../database/0010-clickhouse-strengths-columnar-and-replica.md)의 ClickHouse 스파스 인덱스와 동일한 설계 철학입니다.
 
 #### "offset 조회"의 세 가지 서로 다른 의미
 
@@ -282,7 +289,7 @@ Kafka가 빠른 이유는 **거의 모든 읽기가 "tail read"(최근 데이터
 | **Kafka** | 제로카피 + 순차 I/O + 배칭 → **수십 초~수 분** |
 | **PostgreSQL** | 풀 스캔, MVCC 가시성 검사, 튜플 디코딩 → **훨씬 느림** |
 
-**즉 Kafka와 RDB는 "누가 빠른가"가 아니라 "어떤 접근 패턴에 최적화되었는가"가 정반대입니다.** [직전 문서에서 다룬 로우/컬럼 지향의 대비](../database/columnar-vs-row-oriented-db.md)와 정확히 같은 구조의 트레이드오프입니다.
+**즉 Kafka와 RDB는 "누가 빠른가"가 아니라 "어떤 접근 패턴에 최적화되었는가"가 정반대입니다.** [직전 문서에서 다룬 로우/컬럼 지향의 대비](../database/0013-columnar-vs-row-oriented-db.md)와 정확히 같은 구조의 트레이드오프입니다.
 
 ---
 
@@ -305,7 +312,7 @@ Kafka가 빠른 이유는 **거의 모든 읽기가 "tail read"(최근 데이터
   단건조회   캐시      검색            분석
 ```
 
-**이것이 [The Log의 핵심 주장](../distributed-systems/the-log/00-overview.md) 그 자체입니다** — "테이블/인덱스는 로그의 투영(projection)". Kafka를 DB로 쓰려 하지 말고, **Kafka를 진실의 원본으로 두고 조회용 투영을 따로 만드는 것**이 저자가 설계한 의도입니다.
+**이것이 [The Log의 핵심 주장](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md) 그 자체입니다** — "테이블/인덱스는 로그의 투영(projection)". Kafka를 DB로 쓰려 하지 말고, **Kafka를 진실의 원본으로 두고 조회용 투영을 따로 만드는 것**이 저자가 설계한 의도입니다.
 
 #### 패턴 B — Kafka 안에서 조회 가능하게 만들기
 
@@ -335,7 +342,7 @@ Kafka가 빠른 이유는 **거의 모든 읽기가 "tail read"(최근 데이터
 
 #### 패턴 D — 2026년의 답: 토픽을 테이블로 물질화
 
-[The Log 분석 05번 문서](../distributed-systems/the-log/05-critique-and-2026-update.md)에서 다룬 흐름입니다.
+[The Log 분석 05번 문서](../../source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md)에서 다룬 흐름입니다.
 
 | 제품 | 동작 |
 |---|---|
@@ -352,7 +359,7 @@ Kafka가 빠른 이유는 **거의 모든 읽기가 "tail read"(최근 데이터
    Trino / Spark / DuckDB / Snowflake
 ```
 
-**이것이 "Kafka를 DB처럼 쓰고 싶다"에 대한 2026년의 정식 답변입니다.** Kafka를 억지로 DB로 만드는 게 아니라, **같은 데이터를 로그 표현과 테이블 표현으로 동시에 물질화**하는 것. [Part 1의 로그/테이블 이중성](../distributed-systems/the-log/01-part1-what-is-a-log.md)이 제품으로 구현된 형태입니다.
+**이것이 "Kafka를 DB처럼 쓰고 싶다"에 대한 2026년의 정식 답변입니다.** Kafka를 억지로 DB로 만드는 게 아니라, **같은 데이터를 로그 표현과 테이블 표현으로 동시에 물질화**하는 것. [Part 1의 로그/테이블 이중성](../../source/distributed-systems/0001-the-log-kreps-2013/02-part1-what-is-a-log.md)이 제품으로 구현된 형태입니다.
 
 ---
 
@@ -422,9 +429,9 @@ Kafka가 빠른 이유는 **거의 모든 읽기가 "tail read"(최근 데이터
 
 ## 관련 문서
 
-- [`distributed-systems/the-log/`](../distributed-systems/the-log/00-overview.md) — "테이블은 로그의 투영" 원리. 이 질문의 사상적 배경
-- [`distributed-systems/the-log/03-part3-stream-processing.md`](../distributed-systems/the-log/03-part3-stream-processing.md) — log compaction, 로컬 상태 + changelog
-- [`distributed-systems/the-log/05-critique-and-2026-update.md`](../distributed-systems/the-log/05-critique-and-2026-update.md) — Tableflow/Fluss 등 토픽-테이블 물질화
-- [`kafka/kafka-vs-rabbitmq.md`](./kafka-vs-rabbitmq.md) — "큐 vs 로그"의 차이
-- [`kafka/spring-kafka-consumer-vs-outbox.md`](./spring-kafka-consumer-vs-outbox.md) — Outbox 패턴
-- [`database/columnar-vs-row-oriented-db.md`](../database/columnar-vs-row-oriented-db.md) — 접근 패턴에 따른 저장 구조 최적화의 일반 원리
+- [`source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`](../../source/distributed-systems/0001-the-log-kreps-2013/01-overview.md) — "테이블은 로그의 투영" 원리. 이 질문의 사상적 배경
+- [`source/distributed-systems/0001-the-log-kreps-2013/04-part3-stream-processing.md`](../../source/distributed-systems/0001-the-log-kreps-2013/04-part3-stream-processing.md) — log compaction, 로컬 상태 + changelog
+- [`source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md`](../../source/distributed-systems/0001-the-log-kreps-2013/06-critique-and-2026-update.md) — Tableflow/Fluss 등 토픽-테이블 물질화
+- [`inquiry/distributed-systems/0003-kafka-vs-rabbitmq.md`](./0003-kafka-vs-rabbitmq.md) — "큐 vs 로그"의 차이
+- [`inquiry/distributed-systems/0005-spring-kafka-consumer-vs-outbox.md`](./0005-spring-kafka-consumer-vs-outbox.md) — Outbox 패턴
+- [`inquiry/database/0013-columnar-vs-row-oriented-db.md`](../database/0013-columnar-vs-row-oriented-db.md) — 접근 패턴에 따른 저장 구조 최적화의 일반 원리

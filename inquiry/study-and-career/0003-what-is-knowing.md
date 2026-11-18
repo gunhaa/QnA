@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-11-17
+author: agent
+model: claude-opus-5-5
+---
+
 # "안다(knowing)"는 건 무엇인가 — 철학(인식론)과 컴퓨터과학의 정의
 
-관련 글: [맞는 대답·행동을 하면 "아는" 걸까?](does-right-answer-mean-knowing.md)
+관련 글: [맞는 대답·행동을 하면 "아는" 걸까?](./0002-does-right-answer-mean-knowing.md)
 
 ## 쉬운 설명
 

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: unknown
+---
+
 # 유전 알고리즘(Genetic Algorithm)이 뭐예요?
 
 ## 5살 아이에게 설명하듯이

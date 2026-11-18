@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: unknown
+---
+
 # LLM의 "추론(reasoning)"은 어떤 동작인가? — 추가 쿼리인가, 새 레이어인가?
 
-관련 글: [Agent의 tool call도 추론이라 부르는 이유](faq-agentic-reasoning-tool-call.md) · [Chain-of-Thought도 강화학습으로 학습되나](faq-cot-reinforcement-learning.md)
+관련 글: [Agent의 tool call도 추론이라 부르는 이유](./0012-llm-faq-agentic-reasoning-tool-call.md) · [Chain-of-Thought도 강화학습으로 학습되나](./0013-llm-faq-cot-reinforcement-learning.md)
 
 ## 결론부터
 

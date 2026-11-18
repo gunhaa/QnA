@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-15
+author: agent
+model: claude-opus-5
+---
+
 # ClickHouse의 강점 — 컬럼 지향 저장과 복제(Replica) 관점 심화
 
 ## 쉬운 설명

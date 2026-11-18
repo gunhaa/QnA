@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # 개발에서 "업스트림(Upstream)"이란?
 
 ## 쉬운 설명

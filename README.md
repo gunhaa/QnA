@@ -39,7 +39,7 @@ Claude와 나눈 질문/답변을 `.md` 파일로 아카이빙하는 저장소. 
 
 | 원전 | 위치 | linked |
 |---|---|---|
-| Jay Kreps, *The Log* (2013) | `source/distributed-systems/<ID>-the-log-kreps-2013/` | (리팩토링 시 ID와 `01-overview.md`의 `linked`로 채움) |
+| Jay Kreps, *The Log* (2013) | [`source/distributed-systems/0001-the-log-kreps-2013/`](./source/distributed-systems/0001-the-log-kreps-2013/01-overview.md) | Kafka·고가용성 6개(`inquiry/distributed-systems/0003·0005~0009`), ClickHouse·컬럼 지향 DB(`inquiry/database/0009·0013`), 1급 개념(`inquiry/cs/0006`) — 전체 목록은 `01-overview.md`의 `linked` |
 
 ## 대주제
 

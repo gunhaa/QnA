@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # 터미널에 타자를 치면 무슨 일이 일어날까?
 
 ## 한 줄 비유

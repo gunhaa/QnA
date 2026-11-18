@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: unknown
+---
+
 # Go 문법 많이 외워야 해? 지금 Kotlin도 버거운데 Go는 나중에 하는 게 나을까?
 
 ## 5살 아이에게 설명하듯이

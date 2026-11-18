@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: claude-sonnet-5
+---
+
 # systemd로 싱글 인스턴스 켜두는 것 = 쿠버네티스 Pod과 같은 동작인가?
 
 ## 결론부터

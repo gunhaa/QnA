@@ -1,6 +1,13 @@
+---
+type: inquiry
+created: 2026-09-23
+author: agent
+model: claude-sonnet-5
+---
+
 # RL로 학습시킨다는 것 — "상황 넣으면 행동 나오는 프로그램"이 맞는가
 
-> 관련 문서: [RL이란 무엇인가](./what-is-reinforcement-learning.md) · [TAS vs RL](./tas-tool-assisted-speedrun-vs-reinforcement-learning.md) · [작은 전장 자가대국 + 판단 RL](./starcraft-micro-scenario-self-play-judgment-rl.md)
+> 관련 문서: [RL이란 무엇인가](./0038-what-is-reinforcement-learning.md) · [TAS vs RL](./0037-tas-tool-assisted-speedrun-vs-reinforcement-learning.md) · [작은 전장 자가대국 + 판단 RL](../game-ai/0011-starcraft-micro-scenario-self-play-judgment-rl.md)
 
 ## 쉬운 설명
 
@@ -14,7 +21,7 @@
 
 ### 1. 맞는 이해입니다 — 용어로 다시 표현하면
 
-말씀하신 그림을 [RL 개론 문서](./what-is-reinforcement-learning.md) §2의 용어로 옮기면 정확히 **정책(policy)** 입니다.
+말씀하신 그림을 [RL 개론 문서](./0038-what-is-reinforcement-learning.md) §2의 용어로 옮기면 정확히 **정책(policy)** 입니다.
 
 ```
 π(a | s)
@@ -33,12 +40,12 @@
 | **런타임 코드** | 신경망 forward pass를 계산하는 범용 엔진(예: ONNX Runtime, TensorRT, PyTorch) | ❌ 고정, 재사용 |
 | **가중치 파일** | 학습으로 얻어진 숫자들(파라미터). 이게 진짜 "학습된 것" | ✅ 게임·시나리오마다 다름 |
 
-두 개를 합쳐서 배포하면 사실상 "상황 넣으면 행동 나오는 프로그램"이 맞습니다. 프로덕션 게임에서는 실제로 이렇게 합니다 — **PyTorch로 학습한 정책을 ONNX로 내보내고(옵션으로 TensorRT까지 컴파일), 정규화 상수까지 그래프 안에 박아 넣은 뒤, 게임 코드가 이 모델을 불러와 매 프레임 관측을 넣고 행동을 받는** 구조입니다. 실측 사례로 **완전한 추론 1회(관측 수집+모델 호출+행동 반환)에 마이크로초 단위 예산**(약 200μs)을 걸고, 작은 5층 MLP(약 30만 파라미터)로 약 170μs를 달성한 AAA 게임 사례가 보고돼 있습니다. [FSM 문서](../game-ai/game-agent-fsm-vs-llm-architecture.md)에서 "L1 반응 계층은 매 프레임, 마이크로초 단위"라고 했던 게 바로 이 형태의 프로그램을 가리킨 것입니다.
+두 개를 합쳐서 배포하면 사실상 "상황 넣으면 행동 나오는 프로그램"이 맞습니다. 프로덕션 게임에서는 실제로 이렇게 합니다 — **PyTorch로 학습한 정책을 ONNX로 내보내고(옵션으로 TensorRT까지 컴파일), 정규화 상수까지 그래프 안에 박아 넣은 뒤, 게임 코드가 이 모델을 불러와 매 프레임 관측을 넣고 행동을 받는** 구조입니다. 실측 사례로 **완전한 추론 1회(관측 수집+모델 호출+행동 반환)에 마이크로초 단위 예산**(약 200μs)을 걸고, 작은 5층 MLP(약 30만 파라미터)로 약 170μs를 달성한 AAA 게임 사례가 보고돼 있습니다. [FSM 문서](../game-ai/0001-game-agent-fsm-vs-llm-architecture.md)에서 "L1 반응 계층은 매 프레임, 마이크로초 단위"라고 했던 게 바로 이 형태의 프로그램을 가리킨 것입니다.
 
 ### 3. 정확화가 필요한 두 지점
 
 **① 입력이 "현재 화면 한 장"만은 아닐 수 있다**
-전장의 안개처럼 한 번에 상황을 다 못 보는 게임(부분관측, POMDP — [RL 개론 문서](./what-is-reinforcement-learning.md) §2 참조)에서는, 정책이 **현재 관측 + 과거를 요약한 내부 기억(hidden state)** 을 같이 받습니다.
+전장의 안개처럼 한 번에 상황을 다 못 보는 게임(부분관측, POMDP — [RL 개론 문서](./0038-what-is-reinforcement-learning.md) §2 참조)에서는, 정책이 **현재 관측 + 과거를 요약한 내부 기억(hidden state)** 을 같이 받습니다.
 
 ```
 (관측_t, 기억_t-1) → (행동_t, 기억_t)
@@ -56,17 +63,17 @@ LSTM·트랜스포머 기반 정책이 이 구조입니다. "입력에 상황만
 
 ### 4. 학습 때 필요했던 것은 최종 산출물에 없다
 
-이 구분이 중요합니다. **학습 인프라**(환경, 보상 계산기, 옵티마이저, 경험 재생 버퍼, [지난 답변](./starcraft-micro-scenario-self-play-judgment-rl.md)에서 다룬 과거 체크포인트 저장소까지)는 전부 **학습 과정에서만 쓰이는 공사 비계**입니다. 최종 배포 산출물에는 하나도 남지 않습니다.
+이 구분이 중요합니다. **학습 인프라**(환경, 보상 계산기, 옵티마이저, 경험 재생 버퍼, [지난 답변](../game-ai/0011-starcraft-micro-scenario-self-play-judgment-rl.md)에서 다룬 과거 체크포인트 저장소까지)는 전부 **학습 과정에서만 쓰이는 공사 비계**입니다. 최종 배포 산출물에는 하나도 남지 않습니다.
 
-이걸 체감할 수 있는 예로, [Pluto 관련 조사](./starcraft-rl-bot-training-cost-and-difficulty.md) §3에서 확인했듯 **Pluto의 추론용 가중치 파일은 약 1.2GB, 실행에 필요한 VRAM은 2.5GB**뿐입니다. 그 가중치를 만들어내기 위해 저자가 돌린 학습 인프라(수백만 판의 자가대국, 분산 환경, 리그 관리)는 훨씬 거대했지만, **최종적으로 남아 배포되는 건 이 작은 파일 하나**입니다. 말씀하신 "바이너리 프로그램"의 실체가 정확히 이겁니다.
+이걸 체감할 수 있는 예로, [Pluto 관련 조사](../game-ai/0012-starcraft-rl-bot-training-cost-and-difficulty.md) §3에서 확인했듯 **Pluto의 추론용 가중치 파일은 약 1.2GB, 실행에 필요한 VRAM은 2.5GB**뿐입니다. 그 가중치를 만들어내기 위해 저자가 돌린 학습 인프라(수백만 판의 자가대국, 분산 환경, 리그 관리)는 훨씬 거대했지만, **최종적으로 남아 배포되는 건 이 작은 파일 하나**입니다. 말씀하신 "바이너리 프로그램"의 실체가 정확히 이겁니다.
 
 ### 5. 지도학습 분류기와 모양이 똑같다
 
-한 가지 흥미로운 점 — 이 최종 산출물의 **형태(입력→출력 함수)** 는 지도학습으로 만든 이미지 분류기와 수학적으로 동일한 대상입니다(둘 다 파라미터화된 함수 근사기). [RL 개론 문서](./what-is-reinforcement-learning.md) §1에서 정리했듯, RL과 지도학습의 차이는 **"어떻게 그 함수를 학습시켰는가"**(정답 라벨 vs 보상 기반 시행착오)에 있지, **"최종적으로 무엇이 나오는가"** 에 있지 않습니다. 그래서 배포 파이프라인(ONNX 변환, 추론 최적화 등)도 지도학습 모델과 RL 정책이 거의 동일한 도구를 씁니다.
+한 가지 흥미로운 점 — 이 최종 산출물의 **형태(입력→출력 함수)** 는 지도학습으로 만든 이미지 분류기와 수학적으로 동일한 대상입니다(둘 다 파라미터화된 함수 근사기). [RL 개론 문서](./0038-what-is-reinforcement-learning.md) §1에서 정리했듯, RL과 지도학습의 차이는 **"어떻게 그 함수를 학습시켰는가"**(정답 라벨 vs 보상 기반 시행착오)에 있지, **"최종적으로 무엇이 나오는가"** 에 있지 않습니다. 그래서 배포 파이프라인(ONNX 변환, 추론 최적화 등)도 지도학습 모델과 RL 정책이 거의 동일한 도구를 씁니다.
 
 ### 6. TAS와 대비해서 다시 확인하면
 
-[직전 답변](./tas-tool-assisted-speedrun-vs-reinforcement-learning.md)에서 "최종 정책은 되감기 없이 실시간으로 반응해야 한다"고 한 문장이 바로 지금 설명한 이 프로그램을 가리킵니다. TAS의 산출물(하나의 고정 입력 레코딩)과 달리, RL의 산출물은 **한 번도 본 적 없는 상황이 와도 그 순간 입력을 넣으면 그럴듯한 출력을 내는 함수**라는 점이 핵심 차이입니다.
+[직전 답변](./0037-tas-tool-assisted-speedrun-vs-reinforcement-learning.md)에서 "최종 정책은 되감기 없이 실시간으로 반응해야 한다"고 한 문장이 바로 지금 설명한 이 프로그램을 가리킵니다. TAS의 산출물(하나의 고정 입력 레코딩)과 달리, RL의 산출물은 **한 번도 본 적 없는 상황이 와도 그 순간 입력을 넣으면 그럴듯한 출력을 내는 함수**라는 점이 핵심 차이입니다.
 
 ### 7. 정리
 
@@ -83,4 +90,4 @@ LSTM·트랜스포머 기반 정책이 이 구조입니다. "입력에 상황만
 - [Augmenting Game AI with Deep Reinforcement Learning (arXiv 2606.20210)](https://arxiv.org/pdf/2606.20210)
 - [TensorRT — Wikipedia](https://en.wikipedia.org/wiki/TensorRT)
 - [Accelerating AI Inference with ONNX and TensorRT](https://medium.com/@bskkim2022/accelerating-ai-inference-with-onnx-and-tensorrt-f9f43bd26854)
-- 관련 문서: [RL이란 무엇인가](./what-is-reinforcement-learning.md), [TAS vs RL](./tas-tool-assisted-speedrun-vs-reinforcement-learning.md), [작은 전장 자가대국 + 판단 RL](./starcraft-micro-scenario-self-play-judgment-rl.md), [RTS RL 풀게임 비용·난이도](./starcraft-rl-bot-training-cost-and-difficulty.md), [게임 에이전트 FSM vs LLM](../game-ai/game-agent-fsm-vs-llm-architecture.md)
+- 관련 문서: [RL이란 무엇인가](./0038-what-is-reinforcement-learning.md), [TAS vs RL](./0037-tas-tool-assisted-speedrun-vs-reinforcement-learning.md), [작은 전장 자가대국 + 판단 RL](../game-ai/0011-starcraft-micro-scenario-self-play-judgment-rl.md), [RTS RL 풀게임 비용·난이도](../game-ai/0012-starcraft-rl-bot-training-cost-and-difficulty.md), [게임 에이전트 FSM vs LLM](../game-ai/0001-game-agent-fsm-vs-llm-architecture.md)

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # nginx에 붙은 Lua가 JIT으로 잘 처리됐는지 확인 — 이전 방법 그대로 될까?
 
 ## 결론부터

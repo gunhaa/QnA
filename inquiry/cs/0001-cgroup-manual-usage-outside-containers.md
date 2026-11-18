@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # cgroup을 이름으로 지정해서 프로세스를 실행/종료하는 방식, 도커·쿠버네티스 없이도 실무에서 많이 쓰나요?
 
 ## 결론부터

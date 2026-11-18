@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-15
+author: agent
+model: claude-opus-5
+---
+
 # ClickStack이란 무엇인가
 
 ## 쉬운 설명

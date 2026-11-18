@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-08
+author: agent
+model: unknown
+---
+
 # EPUB3 파일의 구조, 일반적인 파싱 방법, 그리고 Project Gutenberg·Standard Ebooks 등의 컨벤션 비교
 
 ## 결론부터

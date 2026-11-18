@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # Redis 개요와 기본 사용법
 
 ## 쉬운 설명
@@ -26,7 +33,7 @@ DB는 큰 창고라서 물건을 찾으려면 걸어가야 한다. Redis는 **�
   - **RDB**: 특정 시점 스냅샷. `fork()` 후 자식 프로세스가 파일로 덤프. 복구 빠름, 마지막 스냅샷 이후 데이터 유실.
   - **AOF**: 모든 쓰기 명령을 로그로 추가. `appendfsync everysec`(기본, 최대 1초 유실) / `always`(느림) / `no`.
   - 실무 기본은 **RDB + AOF 혼합**(`aof-use-rdb-preamble yes`).
-- **배포 형태**: 단일 노드 → Replication(읽기 분산) → Sentinel(자동 장애 조치) → Cluster(16384 해시 슬롯으로 샤딩). 장애 시 동작과 선택 기준은 [장애 대응과 고가용성](./redis-failure-and-high-availability.md)에서 다룬다.
+- **배포 형태**: 단일 노드 → Replication(읽기 분산) → Sentinel(자동 장애 조치) → Cluster(16384 해시 슬롯으로 샤딩). 장애 시 동작과 선택 기준은 [장애 대응과 고가용성](./05-failures.md)에서 다룬다.
 - **만료(TTL) 처리**: 접근 시 만료 확인(lazy) + 주기적으로 일부 키 샘플링 삭제(active). 그래서 만료된 키가 메모리에서 바로 사라지지 않을 수 있다.
 
 ### 3. 자료구조와 대표 명령
@@ -178,9 +185,9 @@ XACK orders billing 1731900000000-0
 
 ## 관련 문서
 
-- [Redis의 역사](./history.md)
-- [Redis 운영 시 자주 겪는 문제와 해결 방법](./redis-common-problems-and-solutions.md)
-- [Redis 장애 대응과 고가용성](./redis-failure-and-high-availability.md)
+- [Redis의 역사](./01-history.md)
+- [Redis 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Redis 장애 대응과 고가용성](./05-failures.md)
 
 ## 참고 자료
 

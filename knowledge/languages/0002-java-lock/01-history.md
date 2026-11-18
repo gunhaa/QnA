@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # Java 락의 역사
 
 ## 쉬운 설명
@@ -51,11 +58,11 @@
 
 ## 관련 문서
 
-- [Java 락 개요와 기본 사용법](./java-lock-overview-and-basic-usage.md)
-- [Java 락: 자주 겪는 문제와 해결 방법](./java-lock-common-problems-and-solutions.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](./java-lock-failure-and-high-availability.md)
-- [Java AQS와 LockSupport 정리](./java-aqs-locksupport.md)
-- [Java의 역사](../history.md)
+- [Java 락 개요와 기본 사용법](./02-overview.md)
+- [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](./05-failures.md)
+- [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
+- [Java의 역사](../0001-java/01-history.md)
 
 ## 참고 자료
 

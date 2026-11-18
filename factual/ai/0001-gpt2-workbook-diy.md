@@ -1,3 +1,10 @@
+---
+type: factual
+created: 2026-09-04
+author: agent
+model: unknown
+---
+
 # GPT-2를 직접 만들어보는 워크북, 있을까?
 
 네, 있어요! 레고 설명서처럼 "한 조각씩" GPT-2를 조립해보는 자료가 두 개 유명해요.

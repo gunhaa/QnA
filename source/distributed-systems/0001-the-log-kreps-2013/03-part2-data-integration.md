@@ -1,6 +1,13 @@
+---
+type: source
+created: 2026-09-15
+author: agent
+model: claude-opus-5
+---
+
 # Part Two: Data Integration — 상세 분석
 
-> [← Part One](./01-part1-what-is-a-log.md) | [다음: Part Three →](./03-part3-stream-processing.md)
+> [← Part One](./02-part1-what-is-a-log.md) | [다음: Part Three →](./04-part3-stream-processing.md)
 
 원문 해당 절: *Data Integration / Data Integration: Two complications / Log-structured data flow / At LinkedIn / Relationship to ETL and the Data Warehouse / Log Files and Events / Building a Scalable Log*
 
@@ -56,7 +63,7 @@ Part 1이 **이론**(로그란 무엇인가)이었다면, Part 2는 **조직 문
 
 이 진단의 힘은 지금도 유효합니다. 2026년 현재로 번역하면: **"LLM/RAG 파이프라인을 붙이기 전에, 사내 데이터가 애초에 한 곳에서 신뢰성 있게 흐르고 있는지부터 보라"** 는 말과 같습니다. 데이터 기반이 없는 상태에서 상위 기능을 만들면, 기능 자체보다 데이터를 끌어오는 배관에 인력의 대부분이 소모됩니다 — 저자 본인이 2008년에 겪은 일이 정확히 그것입니다(아래 4절).
 
-> **관련:** 이 저장소의 [`ai-llm-basics/`](../../ai-llm-basics/) 문서들에서 다루는 RAG·벡터 임베딩도 결국 "원본 데이터를 임베딩 인덱스라는 또 하나의 projection으로 만드는 일"입니다. Part 1의 관점에서 보면 벡터 DB는 로그의 새로운 투영 대상 중 하나일 뿐입니다.
+> **관련:** 이 저장소의 [`inquiry/ai/`](../../../inquiry/ai/) 문서들에서 다루는 RAG·벡터 임베딩도 결국 "원본 데이터를 임베딩 인덱스라는 또 하나의 projection으로 만드는 일"입니다. Part 1의 관점에서 보면 벡터 DB는 로그의 새로운 투영 대상 중 하나일 뿐입니다.
 
 ### 2. 두 가지 복잡화 요인 (Two complications)
 
@@ -89,7 +96,7 @@ Part 1이 **이론**(로그란 무엇인가)이었다면, Part 2는 **조직 문
 | 문서/온라인 | Espresso, MongoDB | MongoDB, DynamoDB |
 | 벡터 | (없음) | pgvector, Milvus, Qdrant, Pinecone |
 
-> **관련 문서:** 이 저장소의 [`database/clickhouse/`](../../database/clickhouse/) 문서들이 다루는 ClickHouse가 바로 "OLAP 전용 특화 시스템"의 2026년 대표 주자이고, 그 append-only·컬럼 지향 설계는 이 글의 로그 철학과 직접 맞닿아 있습니다.
+> **관련 문서:** 이 저장소의 [ClickHouse](../../../inquiry/database/0009-clickhouse-overview.md) 문서들이 다루는 ClickHouse가 바로 "OLAP 전용 특화 시스템"의 2026년 대표 주자이고, 그 append-only·컬럼 지향 설계는 이 글의 로그 철학과 직접 맞닿아 있습니다.
 
 #### (3) 두 트렌드의 곱 = 조합 폭발
 
@@ -150,7 +157,7 @@ Part 1이 **이론**(로그란 무엇인가)이었다면, Part 2는 **조직 문
 
 **"비동기 버퍼"** 항목이 특히 실무적으로 중요합니다. 점대점 파이프라인에서는 다운스트림 장애가 업스트림으로 역전파(backpressure → 장애 전파)됩니다. 중앙 로그는 그 사이에 **내구성 있는 버퍼**를 끼워 넣어 **장애 격리(failure isolation)** 를 만듭니다. Kafka가 단순 메시지 큐와 결정적으로 다른 지점이 여기입니다 — 메시지를 소비 후 삭제하지 않고 보존 기간 동안 유지하므로, 소비자가 몇 시간 죽어 있어도 데이터가 사라지지 않고 복구 후 따라잡을 수 있습니다.
 
-> **관련 문서:** 이 저장소의 [`kafka/kafka-vs-rabbitmq.md`](../../kafka/kafka-vs-rabbitmq.md)가 다루는 "큐 vs 로그" 차이의 사상적 근거가 정확히 이 절입니다. RabbitMQ는 전달 후 삭제하는 브로커이고, Kafka는 **보존되는 로그**입니다.
+> **관련 문서:** 이 저장소의 [`inquiry/distributed-systems/0003-kafka-vs-rabbitmq.md`](../../../inquiry/distributed-systems/0003-kafka-vs-rabbitmq.md)가 다루는 "큐 vs 로그" 차이의 사상적 근거가 정확히 이 절입니다. RabbitMQ는 전달 후 삭제하는 브로커이고, Kafka는 **보존되는 로그**입니다.
 
 ### 4. At LinkedIn — 실화
 
@@ -430,7 +437,7 @@ sendfile 경로 (0~1회 복사 + 2회 컨텍스트 스위치):
 
 CDC는 도입이 쉽지만(애플리케이션 수정 불필요) **DB 스키마를 전사 공개 API로 만들어버리는** 부작용이 있습니다. 이 긴장은 2026년에도 활발한 논쟁거리이며, Outbox 패턴이 그 절충안입니다.
 
-> **관련 문서:** [`kafka/spring-kafka-consumer-vs-outbox.md`](../../kafka/spring-kafka-consumer-vs-outbox.md)가 이 Outbox 패턴을 다룹니다 — DB 트랜잭션 안에서 이벤트를 테이블에 쓰고, 그 테이블을 CDC로 흘려 "도메인 이벤트의 원자적 발행"을 얻는 방식입니다. 이 글의 이상(로그 = 단일 원본)을 실제 트랜잭션 경계 안에서 실현하는 실무 기법입니다.
+> **관련 문서:** [`inquiry/distributed-systems/0005-spring-kafka-consumer-vs-outbox.md`](../../../inquiry/distributed-systems/0005-spring-kafka-consumer-vs-outbox.md)가 이 Outbox 패턴을 다룹니다 — DB 트랜잭션 안에서 이벤트를 테이블에 쓰고, 그 테이블을 CDC로 흘려 "도메인 이벤트의 원자적 발행"을 얻는 방식입니다. 이 글의 이상(로그 = 단일 원본)을 실제 트랜잭션 경계 안에서 실현하는 실무 기법입니다.
 
 ---
 
@@ -448,4 +455,4 @@ CDC는 도입이 쉽지만(애플리케이션 수정 불필요) **DB 스키마�
 
 ---
 
-> [← Part One](./01-part1-what-is-a-log.md) | [다음: Part Three — Logs & Real-time Stream Processing →](./03-part3-stream-processing.md)
+> [← Part One](./02-part1-what-is-a-log.md) | [다음: Part Three — Logs & Real-time Stream Processing →](./04-part3-stream-processing.md)

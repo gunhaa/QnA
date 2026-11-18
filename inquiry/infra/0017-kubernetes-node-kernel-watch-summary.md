@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-17
+author: agent
+model: claude-sonnet-5
+---
+
 # 지금까지 정리: 커널 공유 / Node 구조 / 오토스케일링 / Watch의 신선도
 
 지금까지 나온 이야기를 한 장으로 요약하면 이래요.

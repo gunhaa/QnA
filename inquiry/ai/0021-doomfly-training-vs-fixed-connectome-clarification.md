@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-14
+author: agent
+model: unknown
+---
+
 # DOOMFLY는 학습을 한 걸까, 그냥 완성된 지도로 게임만 시킨 걸까
 
 ## 쉬운 설명

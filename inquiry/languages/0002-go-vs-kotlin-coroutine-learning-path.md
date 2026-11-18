@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-09
+author: agent
+model: unknown
+---
+
 # Go랑 Kotlin, 코루틴/동시성 관점에서 많이 다를까? Go 먼저 배우면 Kotlin이 빨라질까?
 
 ## 5살 아이에게 설명하듯이

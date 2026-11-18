@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-09-14
+author: agent
+model: unknown
+---
+
 # 초파리 뇌 커넥톰(connectome)으로 게임을 플레이하는 원리
 
 ## 한 줄 비유

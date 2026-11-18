@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # Diátaxis 문서화 프레임워크
 
 ## 쉬운 설명
@@ -77,8 +84,8 @@
 
 ## 관련 문서
 
-- [기술 문서화의 역사](./history.md)
-- [역사 → 개요 → 트레이드오프 → 실패 학습 구조의 근거 방법론](../study-methods/history-overview-tradeoff-failure-learning-frameworks.md)
+- [기술 문서화의 역사](./0011-technical-writing-history.md)
+- [역사 → 개요 → 트레이드오프 → 실패 학습 구조의 근거 방법론](../study-and-career/0007-history-overview-tradeoff-failure-learning-frameworks.md)
 
 ## 참고 자료
 

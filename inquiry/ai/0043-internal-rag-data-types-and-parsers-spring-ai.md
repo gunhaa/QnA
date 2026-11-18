@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-13
+author: agent
+model: claude-opus-5-5
+---
+
 # 사내 RAG에 들어가는 데이터 타입과 파서 선택 (Spring AI 기준)
 
 ## 쉬운 설명
@@ -17,7 +24,7 @@
 | **티켓/이슈** | Jira, 헬프데스크, 장애 리포트 | JSON(API) | 중 |
 | **표 데이터** | 엑셀 규정집, FAQ 시트, CSV | xlsx, csv | 중 (병합 셀·계층) |
 | **프레젠테이션** | 제안서, 교육자료 | PPTX, PDF | 상 (그림 위주) |
-| **회의/통화** | 회의록, 녹취 | VTT, 오디오 ([관련](audio-to-text-rag-ingestion-managed-options.md)) | 중 |
+| **회의/통화** | 회의록, 녹취 | VTT, 오디오 ([관련](../../factual/ai/0003-audio-to-text-rag-ingestion-managed-options.md)) | 중 |
 | **스캔 문서/이미지** | 계약서 스캔, 영수증, 도면 | 이미지 PDF, PNG/JPG | 상 (OCR 필요) |
 | **DB/정형 데이터** | 제품 카탈로그, 고객 FAQ | RDB 테이블 | 하 (보통 SQL/텍스트 변환) |
 
@@ -50,7 +57,7 @@ Spring AI ETL은 `DocumentReader → DocumentTransformer → DocumentWriter`다.
 | **표/레이아웃 복잡한 PDF** | **Docling**(사이드카 서비스) | LlamaParse(관리형), Unstructured | 표를 Markdown/구조로 복원. 검색된 비교글에서 복잡한 표 정확도가 높다고 평가(97.9% 등은 벤더/블로그 수치라 자체 검증 필요), 처리 속도는 느림 |
 | **DOCX** | `TikaDocumentReader` 또는 **Apache POI(XWPF)** | Docling | 헤딩 스타일을 보존하려면 POI로 직접 구조 추출 |
 | **PPTX** | Tika 또는 POI(XSLF) | PDF 변환 후 Docling | 슬라이드 단위 청킹, 이미지 내 텍스트는 별도 처리 |
-| **xlsx/csv** | **Apache POI + 직접 매핑/청킹** | - | `TikaDocumentReader`는 표 구조 손실 ([상세 설계](rag-internal-policy-xlsx-ingestion-design.md)) |
+| **xlsx/csv** | **Apache POI + 직접 매핑/청킹** | - | `TikaDocumentReader`는 표 구조 손실 ([상세 설계](./0040-rag-internal-policy-xlsx-ingestion-design.md)) |
 | **HWP/HWPX** | 전용 파서 (아래) | HWP→PDF/DOCX 변환 후 처리 | 표준 파서가 HWP 미지원 |
 | **스캔 PDF/이미지** | OCR 포함 파서(Docling OCR, Azure Document Intelligence, Clova OCR 등) | Tesseract | 텍스트 레이어가 없어 OCR 필수 |
 | **EML/MSG** | Tika 또는 Jakarta Mail | - | 헤더/본문/첨부 분리 후 첨부는 재귀 파싱 |
@@ -123,4 +130,4 @@ flowchart LR
 - [Best PDF Parsing Tools for RAG (fast.io)](https://www.fast.io/resources/best-pdf-parsing-tools-rag.md)
 - [dochan (HWP/HWPX 파서)](https://pypi.org/project/dochan)
 - [kordoc (한국 문서 파서)](https://www.sourcepulse.org/projects/27164665)
-- 관련 문서: [사내 규정 xlsx 인제스트 설계](rag-internal-policy-xlsx-ingestion-design.md)
+- 관련 문서: [사내 규정 xlsx 인제스트 설계](./0040-rag-internal-policy-xlsx-ingestion-design.md)

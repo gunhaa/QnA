@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # Redis의 역사
 
 ## 쉬운 설명
@@ -63,9 +70,9 @@
 
 ## 관련 문서
 
-- [Redis 개요와 기본 사용법](./redis-overview-and-basic-usage.md)
-- [Redis 운영 시 자주 겪는 문제와 해결 방법](./redis-common-problems-and-solutions.md)
-- [Redis 장애 대응과 고가용성](./redis-failure-and-high-availability.md)
+- [Redis 개요와 기본 사용법](./02-overview.md)
+- [Redis 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Redis 장애 대응과 고가용성](./05-failures.md)
 
 ## 참고 자료
 

@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # GitHub Pages 개요
 
 ## 쉬운 설명
@@ -156,8 +163,8 @@ const data = await res.json();
 
 ## 관련 문서
 
-- [GitHub CODEOWNERS](./github-codeowners.md)
-- [CORS (Cross-Origin Resource Sharing)](../web-infra/cors-cross-origin-resource-sharing.md)
+- [GitHub CODEOWNERS](./0018-github-codeowners.md)
+- [CORS (Cross-Origin Resource Sharing)](../web/0016-cors-cross-origin-resource-sharing.md)
 
 ## 참고 자료
 

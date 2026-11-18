@@ -1,8 +1,15 @@
+---
+type: inquiry
+created: 2026-09-14
+author: agent
+model: unknown
+---
+
 # 초파리 커넥톰 게임 프로젝트, 직접 따라 해보기
 
 ## 쉬운 설명
 
-이건 새로 자동차를 설계하는 게 아니라, 이미 완성돼서 도로 위를 잘 달리는 남의 자동차 설계도(커넥톰)를 받아서 내 차고(내 컴퓨터)에서 시동만 걸어보는 것과 같아요. 그래서 [지난번 강화학습 답변](../reinforcement-learning/train-neural-network-to-play-games-methods-and-specs.md)처럼 몇 시간씩 "훈련"시킬 필요가 없고, 그냥 내려받아서 실행 버튼만 누르면 됩니다.
+이건 새로 자동차를 설계하는 게 아니라, 이미 완성돼서 도로 위를 잘 달리는 남의 자동차 설계도(커넥톰)를 받아서 내 차고(내 컴퓨터)에서 시동만 걸어보는 것과 같아요. 그래서 [지난번 강화학습 답변](./0025-train-neural-network-to-play-games-methods-and-specs.md)처럼 몇 시간씩 "훈련"시킬 필요가 없고, 그냥 내려받아서 실행 버튼만 누르면 됩니다.
 
 ## 일반 설명
 
@@ -44,7 +51,7 @@ Rust로 짠 스파이킹 뉴런 시뮬레이션을 WebAssembly로 컴파일해�
 - **MaleCNS 대량 다운로드**: [male-cns.janelia.org/download](https://male-cns.janelia.org/download/)에서 커넥톰 전체를 CSV/neo4j 백업 형태로 통째로 받을 수 있음 (`gs://flyem-male-cns/v1.0/connectome-data/` 버킷).
 - **FlyWire Codex**: [codex.flywire.ai](https://codex.flywire.ai/)에서 정적 스냅샷 CSV를 다운로드 (실시간 쿼리 API는 제공하지 않음, "Info → Download Data" 메뉴 이용).
 
-받은 연결 정보(뉴런 쌍 + 시냅스 개수 + 신경전달물질 극성)를 인접행렬로 만들고, LIF(leaky integrate-and-fire) 규칙으로 매 타임스텝 갱신하는 루프를 직접 작성하면 [지난 답변](fruit-fly-connectome-game-playing.md)에서 설명한 시뮬레이션을 처음부터 재현할 수 있습니다.
+받은 연결 정보(뉴런 쌍 + 시냅스 개수 + 신경전달물질 극성)를 인접행렬로 만들고, LIF(leaky integrate-and-fire) 규칙으로 매 타임스텝 갱신하는 루프를 직접 작성하면 [지난 답변](./0023-fruit-fly-connectome-game-playing.md)에서 설명한 시뮬레이션을 처음부터 재현할 수 있습니다.
 
 ### 3) 필요한 컴퓨터 사양
 

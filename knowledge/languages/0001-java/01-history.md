@@ -1,3 +1,10 @@
+---
+type: knowledge
+created: 2026-11-18
+author: agent
+model: claude-opus-5-5
+---
+
 # Java의 역사
 
 ## 쉬운 설명
@@ -59,10 +66,10 @@
 
 ## 관련 문서
 
-- [Java 개요와 기본 사용법](./java-overview-and-basic-usage.md)
-- [Java 개발·운영 시 자주 겪는 문제와 해결 방법](./java-common-problems-and-solutions.md)
-- [Java 애플리케이션 장애 대응과 고가용성](./java-failure-and-high-availability.md)
-- [Java 락의 역사](./lock/history.md)
+- [Java 개요와 기본 사용법](./02-overview.md)
+- [Java 개발·운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Java 애플리케이션 장애 대응과 고가용성](./05-failures.md)
+- [Java 락의 역사](../0002-java-lock/01-history.md)
 
 ## 참고 자료
 

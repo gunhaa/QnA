@@ -1,3 +1,10 @@
+---
+type: inquiry
+created: 2026-10-12
+author: agent
+model: claude-sonnet-5-5
+---
+
 # Claude Code 플러그인과 사내 마켓플레이스 배포
 
 ## 쉬운 설명
