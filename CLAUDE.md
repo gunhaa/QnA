@@ -50,7 +50,7 @@
 | `database/redis/` | Redis 솔루션 4문서 (역사·라이선스 변경·Valkey 포크, 개요·기본 사용법, 캐시 장애 패턴 등 자주 겪는 문제, 장애·고가용성 — 복제·Sentinel·Cluster) |
 | `dev-tools/` | 개발 유틸리티/스크립트/CLI 도구 (bash, vim, grep 성능·원리, no-op, git 설정, GitHub CODEOWNERS·Pages 등) |
 | `dev-tools/github-trending/` | GitHub 트렌딩/스타 추적 관련 |
-| `distributed-systems/` | 분산 시스템 일반 (복제, 합의, 로그 추상화, 데이터 통합 아키텍처) |
+| `distributed-systems/` | 분산 시스템 일반 (복제, 합의, 로그 추상화, 데이터 통합 아키텍처, 고가용성 구성 방식 — replica vs cluster·공유 스토리지·쿼럼·DR 전략) |
 | `distributed-systems/the-log/` | Jay Kreps "The Log"(2013) 에세이 챕터별 상세 분석 + 2026년 관점 비판 |
 | `docker/` | Docker/컨테이너 내부 동작 (커널 공유 등) |
 | `file-formats/` | 파일 포맷 구조/역사 (전자책 포맷, Markdown 역사·CommonMark/GFM 규격·렌더러별 차이 등) |
