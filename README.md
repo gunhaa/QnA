@@ -46,6 +46,7 @@ Claude와 나눈 질문/답변을 주제별 `.md` 파일로 아카이빙하는 �
 | `software-testing/` | 테스트 방법론 (부하 테스트 등) |
 | `speech-ai/` | 음성 AI (STT, 화자 분리, 한국어 STT) |
 | `tech-careers/` | IT 직무·커리어 (CSE vs FDE 등) |
+| `technical-writing/` | 기술 문서화 (Diátaxis, 문서화 방법론의 역사) |
 | `web-infra/` | 웹 인프라 (TLS/SNI, HTTP/2), nginx·OpenResty(`nginx/`), Kong(`kong/`) |
 
 > `nginx/`(루트)는 답변 아카이브가 아니라 실제 nginx 설정 파일(`nginx.conf`, `default.conf`) 디렉터리.
