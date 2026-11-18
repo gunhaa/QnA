@@ -20,7 +20,7 @@ Claude와 나눈 질문/답변을 주제별 `.md` 파일로 아카이빙하는 �
 | `claude-tools/` | Claude Code 등 클로드 도구의 내부 동작 |
 | `collaboration-tools/` | 협업 도구 API 연동 (Teams Graph API, 회의 트랜스크립트 파이프라인), Slack(`slack/`) |
 | `cs-fundamentals/` | 컴퓨터공학 일반 개념·용어 |
-| `database/` | DB 이론/실무 일반 (트리거, pg_bigm, pgvector vs Vector DB), ClickHouse(`clickhouse/`), MySQL·PostgreSQL 락·MVCC(`mysql-postgresql/`), Redis(`redis/`) |
+| `database/` | DB 이론/실무 일반 (트리거, pg_bigm, pgvector vs Vector DB), ClickHouse(`clickhouse/`), MySQL·PostgreSQL 락·MVCC(`mysql-postgresql/`), MySQL(`mysql/`), Redis(`redis/`) |
 | `dev-tools/` | 개발 도구·CLI·git 설정, GitHub 트렌딩/스타 수집(`github-trending/`) |
 | `distributed-systems/` | 분산 시스템 일반, "The Log" 에세이 분석(`the-log/`) |
 | `docker/` | Docker/컨테이너 내부 동작 |

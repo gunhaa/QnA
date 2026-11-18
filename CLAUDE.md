@@ -45,6 +45,7 @@
 | `cs-fundamentals/` | 컴퓨터공학 일반 개념·용어 (일급 객체/first-class, IEEE 754 부동소수점 등) |
 | `database/` | DB 이론/실무 일반 (트리거, pg_bigm 등 Postgres 검색 확장, pgvector vs 전용 Vector DB 비교) |
 | `database/clickhouse/` | ClickHouse 아키텍처(컬럼 지향, MergeTree, 샤딩/복제), append-only 로그 활용, ClickStack(관측성 스택) |
+| `database/mysql/` | MySQL 솔루션 4문서 (역사, 개요·기본 사용법, 자주 겪는 문제와 해결, 장애·고가용성 — 복제·InnoDB Cluster·백업/PITR) |
 | `database/mysql-postgresql/` | MySQL·PostgreSQL 락(gap/next-key lock), MVCC, 격리 수준 비교 |
 | `database/redis/` | Redis 솔루션 4문서 (역사·라이선스 변경·Valkey 포크, 개요·기본 사용법, 캐시 장애 패턴 등 자주 겪는 문제, 장애·고가용성 — 복제·Sentinel·Cluster) |
 | `dev-tools/` | 개발 유틸리티/스크립트/CLI 도구 (bash, vim, grep 성능·원리, no-op, git 설정, GitHub CODEOWNERS·Pages 등) |
