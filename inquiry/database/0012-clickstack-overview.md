@@ -42,6 +42,11 @@ ClickStack의 특징적인 설계는 로그·메트릭·트레이스를 각각 �
 
 ClickStack은 "ClickHouse(저장·질의) + OpenTelemetry Collector(수집) + HyperDX(시각화)"를 하나의 opinionated 패키지로 묶어, 로그·메트릭·트레이스·세션 리플레이를 단일 플랫폼에서 다룰 수 있게 한 오픈소스 관측성 스택이다. 핵심은 ClickHouse가 애초에 강점을 가진 append-only·대량 집계 워크로드 위에, 업계 표준인 OpenTelemetry와 사용자 친화적 UI를 얹어 "직접 구축하기 번거로운 관측성 파이프라인"을 완제품으로 제공한다는 데 있다.
 
+## 관련 문서
+
+- [ClickHouse의 역사](../../knowledge/database/0003-clickhouse/01-history.md)
+- [ClickHouse 개요와 동작 방식](../../knowledge/database/0003-clickhouse/02-overview.md)
+
 ---
 
 ### Sources

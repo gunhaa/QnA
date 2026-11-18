@@ -50,6 +50,10 @@ model: claude-opus-5
 - 데이터 볼륨이 커서 **저장 비용과 쿼리 지연시간을 동시에 줄여야** 할 때.
 - 반대로, 순수 텍스트 전문 검색이 핵심이거나(Elasticsearch), 비용을 극한까지 줄이고 라벨 기반 필터링만으로 충분하거나(Loki), PostgreSQL 생태계 안에서 관계형+시계열을 함께 다뤄야 한다면(TimescaleDB) 각 전용 도구가 더 적합할 수 있다.
 
+## 관련 문서
+
+- [ClickHouse 트레이드오프와 선택 기준](../../knowledge/database/0003-clickhouse/03-tradeoffs.md)
+
 ---
 
 ### Sources

@@ -578,4 +578,5 @@ SELECT * FROM access_log WHERE request_id = 'abc-123';
 - [`inquiry/database/0010-clickhouse-strengths-columnar-and-replica.md`](./0010-clickhouse-strengths-columnar-and-replica.md) — ClickHouse의 코덱 체이닝, 스파스 인덱스, 벡터화 구현 세부
 - [`inquiry/database/0008-clickhouse-append-only-log-reason.md`](./0008-clickhouse-append-only-log-reason.md) — 왜 컬럼 DB가 append-only 로그에 적합한가
 - [`inquiry/database/0011-clickhouse-vs-timeseries-and-log-db.md`](./0011-clickhouse-vs-timeseries-and-log-db.md) — 시계열/로그 특화 DB와의 비교
+- [`knowledge/database/0003-clickhouse/02-overview.md`](../../knowledge/database/0003-clickhouse/02-overview.md) — ClickHouse 개요와 동작 방식 (knowledge 세트)
 - [`inquiry/database/`](./) — 로우 지향 DB의 락·MVCC·격리 수준

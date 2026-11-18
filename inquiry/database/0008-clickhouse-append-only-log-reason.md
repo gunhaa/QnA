@@ -46,6 +46,11 @@ ClickHouse의 MergeTree 엔진은 INSERT될 때마다 정렬된 **불변(immutab
 
 append-only 로그는 "쓰기는 단순 추가, 읽기는 대량 집계"라는 단일 패턴을 갖는데, 이는 OLTP(빈번한 단건 갱신·삭제, 트랜잭션 무결성 중시)가 아니라 OLAP의 전형적인 사용 사례다. ClickHouse는 컬럼 지향 저장, 불변 part 기반 MergeTree, 벡터화 실행, TTL 기반 파티션 관리를 통해 이 패턴에 정확히 맞춰 설계되어 있어, 관측성(observability)·로그 분석·이벤트 스트림 저장소로 널리 채택된다.
 
+## 관련 문서
+
+- [ClickHouse 개요와 동작 방식](../../knowledge/database/0003-clickhouse/02-overview.md)
+- [ClickHouse 트레이드오프와 선택 기준](../../knowledge/database/0003-clickhouse/03-tradeoffs.md)
+
 ---
 
 ### Sources

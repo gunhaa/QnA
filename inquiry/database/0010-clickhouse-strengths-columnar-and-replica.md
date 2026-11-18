@@ -64,6 +64,11 @@ model: claude-opus-5
 - **Keeper 기반 조정 + 비동기 기본 복제 + 선택적 quorum**은 "대량 INSERT 처리량은 유지하면서, 필요한 경우에만 내구성을 강화"할 수 있는 유연성을 제공한다.
 - 두 관점 모두 "기본은 빠르고 가볍게, 필요할 때만 비용을 지불하는" 설계 철학을 공유하며, 이것이 ClickHouse가 대규모 분석 워크로드에서 반복적으로 선택되는 근본 이유다.
 
+## 관련 문서
+
+- [ClickHouse 개요와 동작 방식](../../knowledge/database/0003-clickhouse/02-overview.md)
+- [ClickHouse 장애 유형과 복구](../../knowledge/database/0003-clickhouse/05-failures.md)
+
 ---
 
 ### Sources

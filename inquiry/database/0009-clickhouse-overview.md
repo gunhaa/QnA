@@ -59,6 +59,11 @@ ClickHouse의 핵심 테이블 엔진은 **MergeTree** 계열이다.
 - 개별 행 단위 UPDATE/DELETE는 원래 무겁다(백그라운드 병합 시점에 반영되는 구조이기 때문). 최근 버전은 "Lightweight Update/Delete" 기능으로 이를 개선하고 있으나, 여전히 OLTP처럼 빈번한 단건 트랜잭션 처리에는 적합하지 않다.
 - 따라서 일반적인 아키텍처는 MySQL/PostgreSQL 같은 OLTP DB에서 트랜잭션을 처리하고, 변경분을 ClickHouse로 스트리밍(예: Kafka, CDC)해 분석 전용으로 사용하는 조합이 흔하다.
 
+## 관련 문서
+
+- [ClickHouse 개요와 동작 방식](../../knowledge/database/0003-clickhouse/02-overview.md)
+- [ClickHouse의 역사](../../knowledge/database/0003-clickhouse/01-history.md)
+
 ---
 
 ### Sources
