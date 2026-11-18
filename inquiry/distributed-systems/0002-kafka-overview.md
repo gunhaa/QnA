@@ -40,6 +40,11 @@ model: unknown
 ## 한 줄 정리
 Kafka는 **토픽을 파티션으로 쪼개 여러 서버(브로커)에 분산 저장하고, 여러 소비자가 각자 속도대로 당겨가며 처리하게 해주는, 대용량·고성능 분산 메시징 시스템**이에요. LinkedIn의 내부 문제 해결용으로 태어나 지금은 사실상 실시간 데이터 파이프라인의 표준이 됐어요.
 
+## 관련 문서
+
+- [Kafka의 역사](../../knowledge/distributed-systems/0001-kafka/01-history.md)
+- [Kafka 개요와 기본 사용법](../../knowledge/distributed-systems/0001-kafka/02-overview.md)
+
 **출처**
 - [What Is Apache Kafka? | IBM](https://www.ibm.com/think/topics/apache-kafka)
 - [아파치 카프카 | 위키백과](https://ko.wikipedia.org/wiki/%EC%95%84%ED%8C%8C%EC%B9%98_%EC%B9%B4%ED%94%84%EC%B9%B4)

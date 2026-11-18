@@ -133,6 +133,7 @@ model: claude-opus-5-5
 - [MySQL 장애 대응과 고가용성 (반동기·InnoDB Cluster·ClusterSet)](../../knowledge/database/0001-mysql/05-failures.md)
 - [Java 애플리케이션 장애 대응과 고가용성 (상태 없는 다중 인스턴스)](../../knowledge/languages/0001-java/05-failures.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경 (펜싱 토큰)](../../knowledge/languages/0002-java-lock/05-failures.md)
+- [Kafka 장애 대응과 고가용성 (ISR·KRaft·MirrorMaker 2)](../../knowledge/distributed-systems/0001-kafka/05-failures.md)
 
 ## 참고 자료
 

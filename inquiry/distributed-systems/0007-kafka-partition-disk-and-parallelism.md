@@ -375,3 +375,4 @@ kafka-producer-perf-test.sh --topic test-p100 --num-records 10000000 \
 - [`inquiry/distributed-systems/0001-kafka-consumer-mechanism.md`](./0001-kafka-consumer-mechanism.md) — 컨슈머 그룹·리밸런싱 동작
 - [`inquiry/distributed-systems/0006-kafka-as-a-database-offset-lookup.md`](./0006-kafka-as-a-database-offset-lookup.md) — 세그먼트·sparse index 내부 구조와 offset 조회
 - [`inquiry/cs/`](../cs/) — 페이지 캐시·시스템콜 등 OS 기초
+- [Kafka 트레이드오프와 선택 기준 — 파티션 수](../../knowledge/distributed-systems/0001-kafka/03-tradeoffs.md#32-파티션-수--소비-병렬성과-키-분포로-고른다)

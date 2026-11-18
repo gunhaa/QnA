@@ -58,6 +58,10 @@ while (살아있는 동안) {
 ## 한 줄 정리
 Spring Kafka Consumer의 "폴링"은 **이미 Kafka 안에 있는 메시지를 읽어오는 방법**(대부분 즉시 처리되는 롱 폴링)이고, Transactional Outbox의 "폴링"(선택적)은 **내 DB 변경 사항을 나중에 Kafka로 안전하게 보내기 위한 릴레이 방식 중 하나**예요. 둘은 파이프라인의 정반대 끝(발행 전 vs 소비 시)에서 서로 다른 문제를 풀고 있어서, 같이 써도 전혀 이상하지 않아요 (Outbox로 안전하게 발행 → Kafka Consumer로 안전하게 소비).
 
+## 관련 문서
+
+- [Kafka 운영 시 자주 겪는 문제 — 전달 보장과 중복](../../knowledge/distributed-systems/0001-kafka/04-pitfalls.md#4-전달-보장과-중복)
+
 **출처**
 - [Message Listener Containers | Spring Kafka 공식 문서](https://docs.spring.io/spring-kafka/reference/kafka/receiving-messages/message-listener-container.html)
 - [ContainerProperties API | Spring for Apache Kafka](https://docs.spring.io/spring-kafka/docs/current/api/org/springframework/kafka/listener/ContainerProperties.html)

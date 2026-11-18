@@ -34,6 +34,11 @@ model: unknown
 ## 한 줄 정리
 Kafka 수신은 **"엔드포인트를 계속 두드리는 감시"도, "브로커가 알아서 밀어주는 Push"도 아니고**, 소비자가 `subscribe()`로 관심사를 등록한 뒤 `poll()`을 반복 호출하면서, **메시지가 없을 땐 브로커가 응답을 잠깐 들고 기다렸다가(Long Polling) 생기면 바로 돌려주는** 구조예요. 항상 "물어보는 쪽은 소비자"라는 게 두 가설과 다른 핵심 포인트예요.
 
+## 관련 문서
+
+- [Kafka 개요 — 읽기 경로와 리밸런스 프로토콜](../../knowledge/distributed-systems/0001-kafka/02-overview.md#7-읽기-경로-컨슈머)
+- [Kafka 운영 시 자주 겪는 문제 — 컨슈머 실수](../../knowledge/distributed-systems/0001-kafka/04-pitfalls.md#3-컨슈머-실수)
+
 **출처**
 - [Understanding Long Polling in Kafka: A Deep Dive | Medium](https://tahseenrchowdhury.medium.com/understanding-long-polling-in-kafka-a-deep-dive-982c07abef6d)
 - [Kafka Consumer Poll & Timeout Settings | Conduktor](https://www.conduktor.io/kafka/kafka-consumer-important-settings-poll-and-internal-threads-behavior)

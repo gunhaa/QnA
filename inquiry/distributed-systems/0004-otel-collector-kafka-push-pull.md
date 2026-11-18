@@ -46,6 +46,10 @@ Producer 역할 Collector와 Consumer 역할 Collector를 **Kafka로 분리(디�
 ## 한 줄 정리
 Kafka와 연동 시, **Exporter는 Push**(Collector→Kafka로 밀어넣기), **Receiver는 Pull**(Collector가 Kafka에서 당겨오기)이에요. 다만 이 Pull은 "외부가 Collector에게 요청"하는 게 아니라 "**Collector가 스스로 Kafka에게** 계속 물어보며 가져오는" 능동적 Pull이라, 전체적으로는 여전히 데이터가 끊임없이 흐르는 파이프라인이에요.
 
+## 관련 문서
+
+- [Kafka 개요와 기본 사용법](../../knowledge/distributed-systems/0001-kafka/02-overview.md)
+
 **출처**
 - [Kafka receiver and exporter | AWS Distro for OpenTelemetry](https://aws-otel.github.io/docs/components/kafka-receiver-exporter/)
 - [How to Use the Kafka Exporter and Kafka Receiver in the Collector](https://oneuptime.com/blog/post/2026-02-06-kafka-exporter-receiver-buffered-telemetry/view)

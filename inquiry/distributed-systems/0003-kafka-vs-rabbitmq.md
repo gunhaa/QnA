@@ -48,6 +48,10 @@ RabbitMQ는 메시지가 도착하면 **소비자에게 바로 밀어줘요(Push
 ## 한 줄 정리
 "이벤트를 여러 소비자가 각자 다시 꺼내보며 대용량으로 흘려보내야 하냐" vs "**작업 하나를 빠르고 정교하게 배정해서 한 번에 끝내야 하냐**"의 차이예요. 후자라면, 그리고 규모가 Kafka만큼 거대하지 않다면 **RabbitMQ가 더 간단하고 빠른 선택**이 돼요.
 
+## 관련 문서
+
+- [Kafka 트레이드오프와 선택 기준 — 대안 비교](../../knowledge/distributed-systems/0001-kafka/03-tradeoffs.md#2-대안-비교)
+
 **출처**
 - [RabbitMQ vs. Apache Kafka | Confluent](https://www.confluent.io/compare/rabbitmq-vs-apache-kafka/)
 - [When to use RabbitMQ or Apache Kafka | CloudAMQP](https://www.cloudamqp.com/blog/when-to-use-rabbitmq-or-apache-kafka.html)

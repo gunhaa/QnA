@@ -432,3 +432,4 @@ The Log 분석의 비판·2026년 관점 장에서 다룬 흐름입니다.
 - [`inquiry/distributed-systems/0003-kafka-vs-rabbitmq.md`](./0003-kafka-vs-rabbitmq.md) — "큐 vs 로그"의 차이
 - [`inquiry/distributed-systems/0005-spring-kafka-consumer-vs-outbox.md`](./0005-spring-kafka-consumer-vs-outbox.md) — Outbox 패턴
 - [`inquiry/database/0013-columnar-vs-row-oriented-db.md`](../database/0013-columnar-vs-row-oriented-db.md) — 접근 패턴에 따른 저장 구조 최적화의 일반 원리
+- [Kafka 트레이드오프와 선택 기준 — 저장 계층](../../knowledge/distributed-systems/0001-kafka/03-tradeoffs.md#34-저장-계층--보존-기간으로-고른다)
