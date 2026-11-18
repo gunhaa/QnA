@@ -33,6 +33,11 @@ model: unknown
 | 커널 메커니즘 | epoll(Linux) / kqueue(BSD, macOS) |
 | 워커 간 통신 | 기본적으로 없음 (공유 자원 최소화) |
 
+## 관련 문서
+
+- [NGINX 개요와 기본 사용법](../../knowledge/web/0001-nginx/02-overview.md)
+- [NGINX 트레이드오프와 선택 기준](../../knowledge/web/0001-nginx/03-tradeoffs.md)
+
 Sources:
 - [Inside NGINX: How We Designed for Performance & Scale – NGINX Community Blog](https://blog.nginx.org/blog/inside-nginx-how-we-designed-for-performance-scale)
 - [NGINX Process Model - Master-Worker Architecture Guide - NGINX Wiki](https://nginx-wiki.getpagespeed.com/architecture/process-model/)

@@ -53,6 +53,10 @@ model: claude-opus-5
 
 일반(오픈소스) NGINX에서 keyval 자체는 쓸 수 없지만, **공식적으로 무료 제공되는 njs의 `js_shared_dict_zone`**이 가장 가까운 공식 대안이며, 더 강력한 동적 상태 관리가 필요하다면 OpenResty의 `lua_shared_dict`도 유력한 선택지다.
 
+## 관련 문서
+
+- [NGINX 개요와 기본 사용법](../../knowledge/web/0001-nginx/02-overview.md)
+
 ---
 
 ### Sources

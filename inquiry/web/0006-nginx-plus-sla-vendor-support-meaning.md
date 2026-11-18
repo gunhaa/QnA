@@ -45,6 +45,10 @@ NGINX Plus에만 있는 기능들 — 액티브 헬스체크, 세션 퍼시스�
 
 > NGINX Plus 요금의 본질은 "이 기능은 돈 내야만 쓸 수 있다"가 아니라, **"장애가 터졌을 때 우리 회사가 아니라 F5가 시계를 보며 30분 안에 대응할 책임을 진다"**는 **보험(계약상 책임과 응답시간 보장)**을 사는 것에 가까워요. 그래서 비즈니스 크리티컬한(SLA를 어기면 우리 회사도 고객에게 위약금을 물어야 하는) 서비스일수록 이 "돈으로 산 확실성"의 가치가 커져요.
 
+## 관련 문서
+
+- [NGINX 트레이드오프와 선택 기준](../../knowledge/web/0001-nginx/03-tradeoffs.md)
+
 Sources:
 - [NGINX Vs NGINX Plus: Why Upgrade from Open Source to Commercial Version - Techjockey](https://www.techjockey.com/blog/nginx-vs-nginx-plus)
 - [How much does NGINX cost? - Sirius Open Source](https://www.siriusopensource.com/en-us/blog/how-much-does-nginx-cost)

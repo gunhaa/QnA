@@ -38,6 +38,11 @@ nginx가 워낙 유명해지자, 여기서 갈라져 나오거나 위에 올라�
 - OpenResty·Kong = nginx 위에 프로그래밍 능력(Lua)을 얹어서 새 제품으로 발전
 - NGINX Plus = 원조 회사가 만든 유료(상업용) 버전
 
+## 관련 문서
+
+- [NGINX의 역사](../../knowledge/web/0001-nginx/01-history.md)
+- [NGINX 트레이드오프와 선택 기준](../../knowledge/web/0001-nginx/03-tradeoffs.md)
+
 **출처**
 - [NGINX 역사 | nginxkorea](https://www.nginxkorea.co.kr/history)
 - [C10K 문제와 NGINX 등장배경](https://velog.io/@secuwave/C10K-%EB%AC%B8%EC%A0%9C%EC%99%80-NGINX-%EB%93%B1%EC%9E%A5%EB%B0%B0%EA%B2%BD-eswubesd)

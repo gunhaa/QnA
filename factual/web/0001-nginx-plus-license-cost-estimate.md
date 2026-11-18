@@ -53,6 +53,10 @@ model: unknown
 2. **PoC는 클라우드 마켓플레이스 종량제로**: 정식 계약 전에 AWS/Azure의 시간당 과금으로 먼저 테스트해보고 실제 필요 사양을 파악한 뒤 F5 영업팀과 협상하세요.
 3. **정확한 견적은 F5/리셀러(CDW 등)에 직접 문의**: 위 숫자는 추정치일 뿐이고, 정확한 금액은 인스턴스 수·지원 등급·계약 기간을 정해서 견적 요청을 해야 나와요.
 
+## 관련 문서
+
+- [NGINX 트레이드오프와 선택 기준](../../knowledge/web/0001-nginx/03-tradeoffs.md)
+
 Sources:
 - [NGINX Plus Pricing 2026: $849–$2,099/per instance per year - CostBench](https://costbench.com/software/load-balancers/nginx-plus/)
 - [How much does NGINX cost? - Sirius Open Source](https://www.siriusopensource.com/en-us/blog/how-much-does-nginx-cost)

@@ -100,6 +100,11 @@ flowchart TD
 | 프로세스 생명주기 훅 | 요청과 무관, 마스터/워커 시작·종료 시 | `init_by_lua*`, `init_worker_by_lua*` |
 | internal redirect | 새 location 기준으로 phase 엔진 재시작 | `r.internalRedirect()`, `error_page = @named` |
 
+## 관련 문서
+
+- [NGINX 개요와 기본 사용법](../../knowledge/web/0001-nginx/02-overview.md)
+- [NGINX 운영 시 자주 겪는 문제와 해결 방법](../../knowledge/web/0001-nginx/04-pitfalls.md)
+
 Sources:
 - [OpenResty - Lua Nginx Module](https://openresty.org/en/lua-nginx-module.html)
 - [lua-nginx-module/doc/HttpLuaModule.wiki (GitHub)](https://github.com/openresty/lua-nginx-module/blob/master/doc/HttpLuaModule.wiki)

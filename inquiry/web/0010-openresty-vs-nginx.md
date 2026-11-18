@@ -35,6 +35,11 @@ OpenResty는 그 웨이터에게 **"즉석에서 요리법을 바꿀 수 있는 
 | 대표 용도 | 정적 서빙, 프록시, 로드밸런싱 | API 게이트웨이, 동적 로직 처리 |
 | 난이도 | 비교적 쉬움 | Lua 지식 필요, 다소 어려움 |
 
+## 관련 문서
+
+- [NGINX 트레이드오프와 선택 기준](../../knowledge/web/0001-nginx/03-tradeoffs.md)
+- [NGINX의 역사](../../knowledge/web/0001-nginx/01-history.md)
+
 Sources:
 - [OpenResty vs NGINX: Differences, Use Cases, and API Gateway Fit - API7.ai](https://api7.ai/learning-center/openresty/openresty-vs-nginx)
 - [OpenResty vs Nginx: Detailed Comparison Review - Zoftwarehub](https://blogs.zoftwarehub.com/openresty-vs-nginx-detailed-comparison-review-in-2025/)

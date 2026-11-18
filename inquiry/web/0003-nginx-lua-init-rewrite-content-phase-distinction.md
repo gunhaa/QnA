@@ -93,6 +93,10 @@ flowchart TD
 | `content_by_lua*` / `js_content` | 매 요청, CONTENT phase | 매칭된 location 안에서 | **지시어 이름**(위치 무관) |
 | 내부 리다이렉트 | CONTENT phase 도중 발생 가능 | 새 location 기준 REWRITE부터 재시작 | — |
 
+## 관련 문서
+
+- [NGINX 개요와 기본 사용법](../../knowledge/web/0001-nginx/02-overview.md)
+
 Sources:
 - [Nginx/OpenResty Common Stories — innossh (Medium)](https://medium.com/@innossh/nginx-openresty-common-stories-a02207fcf492) (요청하신 참조 사이트 — "Lua code execution order" 섹션에서 아래 공식 저장소의 phase 순서 다이어그램을 인용함)
 - [openresty/lua-nginx-module (GitHub)](https://github.com/openresty/lua-nginx-module) — 위 Medium 글이 인용한 phase 실행 순서 다이어그램의 원본
