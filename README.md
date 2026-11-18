@@ -8,6 +8,7 @@ Claude와 나눈 질문/답변을 주제별 `.md` 파일로 아카이빙하는 �
 - 한 폴더 안에서 같은 기술/제품명(예: nginx)을 다루는 답변이 3개 이상 쌓이면 그 이름의 하위 폴더로 다시 묶음 (예: `web-infra/nginx/`).
 - 각 답변은 **쉬운 설명**(비유로 핵심 요약) → **일반 설명**(전문 용어 포함 상세) 순서로 구성.
 - 새 폴더(주제 폴더, 또는 3개 이상 쌓여 만드는 하위 폴더)를 만들 때는 답변과 별도로 그 폴더에 **`history.md`**(분야·기술의 등장 배경 → 변천 → 현재)를 함께 만든다. 파일명은 항상 `history.md`로 고정하며, 기존 폴더에는 소급하지 않음.
+- **솔루션(Redis, MySQL 등) 자체를 물어보면** 솔루션 이름의 하위 폴더에 4개 문서로 나눔: ① `history.md` 역사 ② `<솔루션>-overview-and-basic-usage.md` 개요·기본 사용법 ③ `<솔루션>-common-problems-and-solutions.md` 자주 겪는 문제와 해결 ④ `<솔루션>-failure-and-high-availability.md` 장애 대응·고가용성. (예: `database/redis/`, `database/mysql/`)
 
 ## 주제 폴더
 
