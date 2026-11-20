@@ -67,6 +67,10 @@ model: claude-opus-5-5
 
 > 2026년 기준 업계 합의는 대체로 **"Postgres를 이미 쓰면 pgvector로 시작하고, 규모·필터 성능·지연이 한계에 닿을 때 전용 Vector DB로 옮긴다"**이다. pgvector는 0.8의 iterative scan, halfvec/양자화, Postgres 17·18의 병렬 처리 개선으로 수천만 이하 규모에서는 충분히 프로덕션급이다.
 
+## 관련 knowledge
+
+- [RAG 5문서 세트 — 개요와 동작 방식](../../knowledge/ai/0001-rag/02-overview.md) (역사·트레이드오프·흔한 함정·장애 유형으로 이어진다)
+
 ## 출처
 
 - [Vector Database Comparison 2026: pgvector, Pinecone, Turbopuffer, and Qdrant](https://alexcloudstar.com/blog/vector-database-comparison-2026/)
