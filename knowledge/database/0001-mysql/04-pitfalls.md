@@ -47,7 +47,7 @@ model: claude-opus-5-5
 
 진단: `SHOW ENGINE INNODB STATUS\G`의 `LATEST DETECTED DEADLOCK`, `performance_schema.data_locks` / `data_lock_waits`, `sys.innodb_lock_waits`. 모든 데드락을 로그로 남기려면 `innodb_print_all_deadlocks=ON`.
 
-gap/next-key lock이 언제 걸리는지는 [RR에서 next-key lock이 걸리는 경우](../../../inquiry/database/0016-mysql-rr-next-key-lock-cases.md)에 쿼리 유형별로 정리돼 있다.
+락 종류·설계 선택·장애 대응 전체는 [MySQL 락 knowledge 세트](../0004-mysql-lock/02-overview.md)에서 다룬다. gap/next-key lock이 언제 걸리는지는 [RR에서 next-key lock이 걸리는 경우](../../../inquiry/database/0016-mysql-rr-next-key-lock-cases.md)에 쿼리 유형별로 정리돼 있다.
 
 ### 3. 긴 트랜잭션과 History List
 
@@ -121,6 +121,7 @@ gap/next-key lock이 언제 걸리는지는 [RR에서 next-key lock이 걸리는
 - [MySQL 개요와 기본 사용법](./02-overview.md)
 - [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](./03-tradeoffs.md)
 - [MySQL 장애 대응과 고가용성](./05-failures.md)
+- [MySQL 락: 자주 겪는 문제와 해결 방법](../0004-mysql-lock/04-pitfalls.md)
 - [MySQL/PostgreSQL 락 처리 차이](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)
 
 ## 참고 자료

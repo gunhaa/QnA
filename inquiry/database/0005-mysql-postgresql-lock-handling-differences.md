@@ -47,6 +47,7 @@ model: claude-sonnet-5
 
 ## 관련 문서
 
+- [MySQL 락 knowledge 세트 — 개요](../../knowledge/database/0004-mysql-lock/02-overview.md) · [트레이드오프](../../knowledge/database/0004-mysql-lock/03-tradeoffs.md) · [자주 겪는 문제](../../knowledge/database/0004-mysql-lock/04-pitfalls.md)
 - [MySQL 개요와 기본 사용법 — 트랜잭션과 격리 수준](../../knowledge/database/0001-mysql/02-overview.md#4-트랜잭션과-격리-수준)
 - [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](../../knowledge/database/0001-mysql/03-tradeoffs.md)
 
