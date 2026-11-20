@@ -281,6 +281,16 @@ img.avatar-sm {
     border-radius: 50%;
 }
 
+/*
+ * 문서 종류 라벨(history, overview … distilled, labs): 파일명과 같은 영어 이름이라
+ * 고정폭 글꼴로 "태그"처럼 보이게 해 한글 제목·설명과 구별한다
+ */
+.kind {
+    font-family: "D2 coding", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.85em;
+    white-space: nowrap;
+}
+
 /* 정제본 링크: 원본 문서 옆에 작게 */
 h2 small {
     font-size: var(--text-small);

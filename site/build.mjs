@@ -61,14 +61,11 @@ const topicRank = (topic) => {
   return i === -1 ? TOPIC_ORDER.length : i;
 };
 
-// knowledge 5문서 표시 이름
-const DOC_LABELS = {
-  '01-history': '역사',
-  '02-overview': '개요',
-  '03-tradeoffs': '트레이드오프',
-  '04-pitfalls': '흔한 함정',
-  '05-failure-modes': '장애 유형',
-};
+// 문서 종류 라벨은 파일명에서 순서 번호를 뗀 영어 이름 그대로 쓴다 (01-history → history).
+// 저장소 경로·사이트 주소·화면 라벨이 같은 이름이 된다
+const docKind = (name) => name.replace(/^\d+-/, '');
+const kindLink = (href, label, cls = '') =>
+  `<a class="kind${cls ? ` ${cls}` : ''}" href="${escapeHtml(href)}">${escapeHtml(label)}</a>`;
 
 const toPosix = (p) => p.split(path.sep).join('/');
 const isExternalUrl = (url) => /^[a-z][a-z0-9+.-]*:/i.test(url) || url.startsWith('//');
@@ -137,7 +134,7 @@ const problems = [];
 
 // 정제본 링크 (site/distilled.yaml). 키는 대주제·세트·문서 경로,
 // 값은 computer_study 저장소 안 경로(CS/Database/Distilled.md#redis) 또는 전체 주소.
-// 위치를 적지 않은 세트·문서는 "정제본(추가 예정)"으로 computer_study 첫 화면에 연결한다.
+// 위치를 적지 않은 세트·문서는 "distilled (soon)"으로 computer_study 첫 화면에 연결한다.
 const DISTILLED_REPO = 'https://github.com/gunhaa/computer_study';
 const distilledUrl = (v) =>
   /^https?:\/\//.test(v) ? v : `${DISTILLED_REPO}/${/\.md(#|$)/.test(v) ? 'blob' : 'tree'}/main/${encodeURI(v.replace(/^\/+/, ''))}`;
@@ -154,9 +151,22 @@ for (const key of Object.keys(distilled)) {
 // 문서 → 세트 → 대주제 순으로 가장 구체적인 정제본 주소
 const distilledFor = (...keys) => keys.map((k) => distilled[k]).find(Boolean);
 const distilledLink = (url) =>
-  url
-    ? `<a class="gh distilled" href="${escapeHtml(url)}">정제본</a>`
-    : `<a class="gh distilled pending" href="${DISTILLED_REPO}">정제본(추가 예정)</a>`;
+  url ? kindLink(url, 'distilled', 'gh distilled') : kindLink(DISTILLED_REPO, 'distilled (soon)', 'gh distilled pending');
+
+// 실습 프로젝트 (site/labs.yaml). 따로 배포된 예제 코드 사이트로, 연결한 세트에만 labs 링크가 붙는다
+const labs = YAML.parse(fs.readFileSync(path.join(SITE_DIR, 'labs.yaml'), 'utf8')) ?? [];
+const setKeys = new Set(sets.map((s) => `${s.topic}/${s.dir}`));
+for (const lab of labs) {
+  if (!lab.name || !lab.url) problems.push(`labs.yaml: name·url이 없는 항목 ${JSON.stringify(lab)}`);
+  for (const key of lab.sets ?? []) {
+    if (!setKeys.has(key)) problems.push(`labs.yaml: 없는 세트 ${key} (${lab.name})`);
+  }
+}
+const labsFor = (setKey) => labs.filter((lab) => lab.sets?.includes(setKey));
+// 한 세트에 실습이 여럿이면 labs 링크가 여럿 붙고, 마우스를 올리면 이름이 보인다
+const labsLinks = (setKey) =>
+  labsFor(setKey).map((lab) =>
+    `<a class="kind gh labs" href="${escapeHtml(lab.url)}" title="${escapeHtml(lab.name)}">labs</a>`);
 
 function rewriteLinks(mdast, sourceFile) {
   visit(mdast, ['link', 'definition'], (node) => {
@@ -331,14 +341,15 @@ for (const set of sets) {
 
     const navItems = set.docs
       .map((d) => {
-        const label = `${d.name.slice(0, 2)} ${DOC_LABELS[d.name] ?? d.name}`;
+        const label = `${d.name.slice(0, 2)} ${docKind(d.name)}`;
         return d === doc
-          ? `<span class="current">${label}</span>`
-          : `<a href="${d.name}.html">${label}</a>`;
+          ? `<span class="kind current">${label}</span>`
+          : kindLink(`${d.name}.html`, label);
       })
       .join('<br>');
     const docDistilled = distilledFor(`${set.topic}/${set.dir}/${doc.name}`, `${set.topic}/${set.dir}`, set.topic);
-    const marginNav = `<p class="nav-holder"><span class="marginnote margin-nav"><strong>${escapeHtml(set.label)}</strong><br>${navItems}<br><br>${distilledLink(docDistilled)}<br><a href="../../index.html">← 전체 목록</a></span></p>`;
+    const extras = [distilledLink(docDistilled), ...labsLinks(`${set.topic}/${set.dir}`)].join('<br>');
+    const marginNav = `<p class="nav-holder"><span class="marginnote margin-nav"><strong>${escapeHtml(set.label)}</strong><br>${navItems}<br><br>${extras}<br><a href="../../index.html">← 전체 목록</a></span></p>`;
 
     const crumbs = `<a class="home" href="../../index.html"><img class="avatar-sm" src="${AVATAR(40)}" alt="" width="20" height="20">${SITE_TITLE}</a> / ${escapeHtml(topicLabel)} / ${escapeHtml(set.label)}`;
     const meta = docMeta(frontmatter);
@@ -356,24 +367,48 @@ const byTopic = Map.groupBy(
   sets.toSorted((a, b) => topicRank(a.topic) - topicRank(b.topic) || a.topic.localeCompare(b.topic)),
   (s) => s.topic,
 );
+const kindTag = (label) => `<span class="kind">${label}</span>`;
+const setByKey = new Map(sets.map((s) => [`${s.topic}/${s.dir}`, s]));
+const labsSection = labs.length
+  ? `<section><h2>Labs</h2><ul>${labs
+      .map((lab) => {
+        const links = [
+          kindLink(lab.url, lab.site_label ?? 'site', 'gh'),
+          ...(lab.repo ? [kindLink(lab.repo, 'repo', 'gh')] : []),
+        ].join(' · ');
+        const related = (lab.sets ?? [])
+          .map((key) => setByKey.get(key))
+          .filter(Boolean)
+          .map((s) => `<a href="${s.topic}/${s.dir}/01-history.html">${escapeHtml(s.label)}</a>`)
+          .join(', ');
+        return `<li><strong>${escapeHtml(lab.name)}</strong>${lab.description ? ` — ${escapeHtml(lab.description)}` : ''} · ${links}${related ? ` · 관련: ${related}` : ''}</li>`;
+      })
+      .join('\n')}</ul></section>`
+  : '';
 const indexBody = [
-  `<section><p>하나의 지식을 <strong>역사 → 개요 → 트레이드오프 → 흔한 함정 → 장애 유형</strong> 다섯 문서로 정리합니다.</p><ul><li><strong>다섯 문서</strong>: Claude Code로 정리한 원본입니다.</li><li><strong>정제본</strong>: 정리된 내용을 사람이 직접 검수하고 다듬은 핵심 요약입니다. 분야별로 <a class="gh" href="${DISTILLED_REPO}">computer_study</a>에 올립니다.</li></ul><p>질문 단위로 쓴 기록은 <a class="gh" href="https://github.com/gunhaa/knowledge">GitHub 저장소</a>에 있습니다.</p></section>`,
+  `<section><p>하나의 지식을 다섯 문서로 정리합니다.</p><ul>`
+    + `<li>${['history', 'overview', 'tradeoffs', 'pitfalls', 'failure-modes'].map(kindTag).join(' · ')}: Claude Code로 정리한 원본입니다. 역사 → 개요 → 트레이드오프 → 흔한 함정 → 장애 유형 순서로 읽습니다.</li>`
+    + `<li>${kindTag('distilled')}: 정리된 내용을 사람이 직접 검수하고 다듬은 핵심 요약입니다. 분야별로 <a class="gh" href="${DISTILLED_REPO}">computer_study</a>에 올립니다.</li>`
+    + `<li>${kindTag('labs')}: 직접 코드로 확인한 예제 프로젝트입니다.</li>`
+    + `</ul><p>질문 단위로 쓴 기록은 <a class="gh" href="https://github.com/gunhaa/knowledge">GitHub 저장소</a>에 있습니다.</p></section>`,
   ...[...byTopic].map(([topic, topicSets]) => {
     const items = topicSets
       .map((s) => {
         const links = s.docs
           .map((d) => {
             const docDistilled = distilled[`${s.topic}/${s.dir}/${d.name}`];
-            return `<a href="${s.topic}/${s.dir}/${d.name}.html">${DOC_LABELS[d.name] ?? d.name}</a>${docDistilled ? `<sup>${distilledLink(docDistilled)}</sup>` : ''}`;
+            return `${kindLink(`${s.topic}/${s.dir}/${d.name}.html`, docKind(d.name))}${docDistilled ? `<sup>${distilledLink(docDistilled)}</sup>` : ''}`;
           })
           .join(' · ');
-        const setDistilled = distilledFor(`${s.topic}/${s.dir}`, s.topic);
-        return `<li><strong>${escapeHtml(s.label)}</strong> — ${links} · ${distilledLink(setDistilled)}</li>`;
+        const setKey = `${s.topic}/${s.dir}`;
+        const extras = [distilledLink(distilledFor(setKey, s.topic)), ...labsLinks(setKey)].join(' · ');
+        return `<li><strong>${escapeHtml(s.label)}</strong> — ${links} · ${extras}</li>`;
       })
       .join('\n');
     const topicDistilled = distilled[topic];
     return `<section><h2>${escapeHtml(TOPIC_LABELS[topic] ?? topic)}${topicDistilled ? ` <small>${distilledLink(topicDistilled)}</small>` : ''}</h2><ul>${items}</ul></section>`;
   }),
+  labsSection,
 ].join('\n');
 fs.writeFileSync(path.join(DIST, 'index.html'), page({
     title: SITE_TITLE,
@@ -393,7 +428,7 @@ fs.writeFileSync(path.join(DIST, '.nojekyll'), '');
 
 console.log(`세트 ${sets.length}개, 문서 ${pageCount}개 → ${toPosix(path.relative(REPO, DIST))}/`);
 if (problems.length) {
-  console.error(`\n빌드 문제 ${problems.length}개 (끊긴 링크·앵커, distilled.yaml 경로):`);
+  console.error(`\n빌드 문제 ${problems.length}개 (끊긴 링크·앵커, distilled.yaml·labs.yaml 경로):`);
   for (const p of problems) console.error(`  - ${p}`);
   process.exit(1);
 }
