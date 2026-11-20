@@ -64,6 +64,8 @@ const topicRank = (topic) => {
 // 문서 종류 라벨은 파일명에서 순서 번호를 뗀 영어 이름 그대로 쓴다 (01-history → history).
 // 저장소 경로·사이트 주소·화면 라벨이 같은 이름이 된다
 const docKind = (name) => name.replace(/^\d+-/, '');
+// 세트에 선택으로 두는 실습 문서. 있으면 여백 목차에 06으로, 첫 화면에는 labs 자리에 보인다
+const LABS_DOC = '06-labs';
 const kindLink = (href, label, cls = '') =>
   `<a class="kind${cls ? ` ${cls}` : ''}" href="${escapeHtml(href)}">${escapeHtml(label)}</a>`;
 
@@ -285,7 +287,8 @@ function page({ title, depth, crumbs, heading, meta = '', marginNav = '', body, 
     ? `<script type="module">
 import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs';
 const dark = matchMedia('(prefers-color-scheme: dark)').matches;
-mermaid.initialize({ startOnLoad: true, theme: dark ? 'dark' : 'neutral' });
+// 기본 id는 시각(Date.now) 기반이라 같은 ms에 그린 두 그림이 같은 id를 얻어 한 자리에 겹쳐 그려진다. 순번 id로 바꾼다
+mermaid.initialize({ startOnLoad: true, theme: dark ? 'dark' : 'neutral', deterministicIds: true });
 </script>`
     : '';
   return `<!doctype html>
@@ -381,7 +384,10 @@ const indexBody = [
   ...[...byTopic].map(([topic, topicSets]) => {
     const rows = topicSets
       .map((s) => {
+        // 원본 칸은 01~05만. 06-labs는 정리·실습 칸의 labs 자리에 둔다
+        const labsDoc = s.docs.find((d) => d.name === LABS_DOC);
         const links = s.docs
+          .filter((d) => d !== labsDoc)
           .map((d) => {
             const docDistilled = distilled[`${s.topic}/${s.dir}/${d.name}`];
             return `${kindLink(`${s.topic}/${s.dir}/${d.name}.html`, docKind(d.name))}${docDistilled ? `<sup>${distilledLink(docDistilled)}</sup>` : ''}`;
@@ -392,7 +398,8 @@ const indexBody = [
         const distilledSlot = setDistilled
           ? kindLink(setDistilled, 'distilled', 'gh distilled')
           : '<span class="kind off" title="준비 중">distilled</span>';
-        const labsSlot = `<span class="slot">${labsLinks(setKey).join(' ')}</span>`;
+        const labsDocLink = labsDoc ? [kindLink(`${setKey}/${labsDoc.name}.html`, 'labs', 'labs')] : [];
+        const labsSlot = `<span class="slot">${[...labsDocLink, ...labsLinks(setKey)].join(' ')}</span>`;
         return `<tr><td class="name">${escapeHtml(s.label)}</td><td class="docs">${links}</td><td class="extra"><span class="slot">${distilledSlot}</span>${labsSlot}</td></tr>`;
       })
       .join('\n');
