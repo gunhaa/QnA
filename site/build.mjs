@@ -391,22 +391,29 @@ const indexBody = [
     + `<li>${kindTag('distilled')}: 정리된 내용을 사람이 직접 검수하고 다듬은 핵심 요약입니다. 분야별로 <a class="gh" href="${DISTILLED_REPO}">computer_study</a>에 올립니다.</li>`
     + `<li>${kindTag('labs')}: 직접 코드로 확인한 예제 프로젝트입니다.</li>`
     + `</ul><p>질문 단위로 쓴 기록은 <a class="gh" href="https://github.com/gunhaa/knowledge">GitHub 저장소</a>에 있습니다.</p></section>`,
+  // 대주제마다 표 하나: 세트 이름 | 원본 5문서 | 정리·실습
+  // distilled·labs는 칸 안의 고정 자리에 두어, 없는 세트도 자리를 비워 세로줄을 맞춘다
   ...[...byTopic].map(([topic, topicSets]) => {
-    const items = topicSets
+    const rows = topicSets
       .map((s) => {
         const links = s.docs
           .map((d) => {
             const docDistilled = distilled[`${s.topic}/${s.dir}/${d.name}`];
             return `${kindLink(`${s.topic}/${s.dir}/${d.name}.html`, docKind(d.name))}${docDistilled ? `<sup>${distilledLink(docDistilled)}</sup>` : ''}`;
           })
-          .join(' · ');
+          .join('');
         const setKey = `${s.topic}/${s.dir}`;
-        const extras = [distilledLink(distilledFor(setKey, s.topic)), ...labsLinks(setKey)].join(' · ');
-        return `<li><strong>${escapeHtml(s.label)}</strong> — ${links} · ${extras}</li>`;
+        const setDistilled = distilledFor(setKey, s.topic);
+        const distilledSlot = setDistilled
+          ? kindLink(setDistilled, 'distilled', 'gh distilled')
+          : '<span class="kind off" title="준비 중">distilled</span>';
+        const labsSlot = `<span class="slot">${labsLinks(setKey).join(' ')}</span>`;
+        return `<tr><td class="name">${escapeHtml(s.label)}</td><td class="docs">${links}</td><td class="extra"><span class="slot">${distilledSlot}</span>${labsSlot}</td></tr>`;
       })
       .join('\n');
     const topicDistilled = distilled[topic];
-    return `<section><h2>${escapeHtml(TOPIC_LABELS[topic] ?? topic)}${topicDistilled ? ` <small>${distilledLink(topicDistilled)}</small>` : ''}</h2><ul>${items}</ul></section>`;
+    return `<section><h2>${escapeHtml(TOPIC_LABELS[topic] ?? topic)}${topicDistilled ? ` <small>${distilledLink(topicDistilled)}</small>` : ''}</h2>`
+      + `<table class="sets"><thead><tr><th></th><th>원본 5문서</th><th class="extra">정리·실습</th></tr></thead><tbody>${rows}</tbody></table></section>`;
   }),
   labsSection,
 ].join('\n');

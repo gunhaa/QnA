@@ -15,12 +15,14 @@
     --text-small: 1rem;
     --code-bg: #f1efe4;
     --rule: #ccc;
+    --rule-soft: #e6e4da;
     --muted: #444;
 }
 @media (prefers-color-scheme: dark) {
     :root {
         --code-bg: #262626;
         --rule: #555;
+        --rule-soft: #3a3a3a;
         --muted: #bbb;
     }
 }
@@ -289,6 +291,67 @@ img.avatar-sm {
     font-family: "D2 coding", Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 0.85em;
     white-space: nowrap;
+}
+
+/*
+ * 첫 화면 세트 표: 세트 이름 | 원본 5문서 | 정리·실습
+ * 한 세트를 한 줄에 두고, 이름 칸 폭을 고정해 모든 표에서 history … failure-modes가 같은 세로줄에 온다.
+ * Tufte 표처럼 가로선만 쓰고, 원본과 정리·실습 사이만 세로선 하나로 나눈다.
+ */
+table.sets {
+    border-collapse: collapse;
+    font-size: var(--text-small);
+    line-height: 1.6;
+    margin: 0.6rem 0 0;
+}
+table.sets th {
+    font-weight: 400;
+    color: #888;
+    text-align: left;
+    padding: 0 1.4rem 0.3rem 0;
+    border-bottom: 1px solid var(--rule);
+}
+table.sets td {
+    padding: 0.45rem 1.4rem 0.45rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+table.sets td.name {
+    font-size: var(--text-body);
+    width: 9rem;
+    min-width: 9rem;
+}
+table.sets td.docs .kind {
+    margin-right: 0.9rem;
+}
+table.sets .extra {
+    padding-left: 1.4rem;
+    border-left: 1px solid var(--rule);
+}
+table.sets .slot {
+    display: inline-block;
+    min-width: 5.5em;
+}
+/* 밑줄 대신 옅은 아랫선: 링크가 많아도 세트 이름보다 눈에 덜 띄게 */
+table.sets a.kind {
+    text-decoration: none;
+    background: none;
+    border-bottom: 1px solid #bbb;
+}
+table.sets a.kind:hover {
+    border-bottom-color: currentColor;
+}
+table.sets .kind.off {
+    color: #aaa;
+}
+/* 좁은 화면: 칸을 아래로 쌓고, 5문서는 줄바꿈을 허용한다 (위 규칙을 덮도록 표 규칙 뒤에 둔다) */
+@media (max-width: 760px) {
+    table.sets, table.sets tbody { display: block; }
+    table.sets thead { display: none; }
+    table.sets tr { display: block; padding: 0.5rem 0; border-bottom: 1px solid var(--rule-soft); }
+    table.sets td, table.sets td.name { display: block; width: auto; min-width: 0; padding: 0.1rem 0; border: none; white-space: normal; }
+    table.sets td.extra { padding-left: 0; border-left: none; }
 }
 
 /* 정제본 링크: 원본 문서 옆에 작게 */
