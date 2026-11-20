@@ -42,7 +42,7 @@ flowchart LR
 - `knowledge/database/0002-redis/01-history.md`
 - `source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`
 
-루트의 `README.md`, `CLAUDE.md`, `ARCHITECTURE.md`는 저장소 안내 문서이고, 루트의 `nginx/`는 로컬 nginx 설정 파일 디렉터리다. 둘 다 이 구조의 대상이 아니다.
+루트의 `README.md`, `CLAUDE.md`, `ARCHITECTURE.md`는 저장소 안내 문서이고, 루트의 `nginx/`는 로컬 nginx 설정 파일 디렉터리다. `site/`는 `knowledge/`를 GitHub Pages 사이트로 만드는 빌드 도구이고, `.github/workflows/`는 그 배포 워크플로다. 이것들은 모두 이 구조의 대상이 아니다.
 
 유형을 맨 위에 둔 이유:
 - 유형마다 관리 방식이 다르다. inquiry는 쌓기만 하고, factual은 주기적으로 재확인하고, knowledge는 세트를 완성·갱신한다.
