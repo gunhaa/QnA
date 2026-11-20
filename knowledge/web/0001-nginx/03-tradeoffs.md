@@ -13,7 +13,7 @@ NGINX는 **미리 인쇄한 안내판대로만 움직이는 빠른 교통 정리
 
 ## 일반 설명
 
-이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), NGINX 자체의 장애는 [장애 대응](./05-failure-modes.md)에 있다.
+이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [흔한 함정](./04-pitfalls.md), NGINX 자체의 장애는 [장애 대응](./05-failure-modes.md)에 있다.
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -111,7 +111,7 @@ NGINX는 **미리 인쇄한 안내판대로만 움직이는 빠른 교통 정리
 
 - [NGINX의 역사](./01-history.md)
 - [NGINX 개요와 기본 사용법](./02-overview.md)
-- [NGINX 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [NGINX 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [NGINX 장애 대응과 고가용성](./05-failure-modes.md)
 - [OpenResty와 nginx, 뭐가 다를까?](../../../inquiry/web/0010-openresty-vs-nginx.md)
 - [Kong vs OpenResty](../../../inquiry/web/0001-kong-vs-openresty.md)

@@ -103,7 +103,7 @@ flowchart TD
 ## 관련 문서
 
 - [NGINX 개요와 기본 사용법](../../knowledge/web/0001-nginx/02-overview.md)
-- [NGINX 운영 시 자주 겪는 문제와 해결 방법](../../knowledge/web/0001-nginx/04-pitfalls.md)
+- [NGINX 운영 시 흔한 함정과 해결 방법](../../knowledge/web/0001-nginx/04-pitfalls.md)
 
 Sources:
 - [OpenResty - Lua Nginx Module](https://openresty.org/en/lua-nginx-module.html)

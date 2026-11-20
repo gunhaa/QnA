@@ -90,7 +90,7 @@ stream {                               # L4 프록시
 }
 ```
 
-- 바깥 컨텍스트의 지시어는 안쪽으로 **상속**된다. 단 `add_header`, `proxy_set_header` 같은 배열형 지시어는 안쪽에 하나라도 쓰면 바깥 것이 **모두 사라진다**(1.29.3부터 `add_header_inherit`로 조절 가능). 이 함정은 [자주 겪는 문제 — 설정](./04-pitfalls.md#1-설정-함정)에 있다.
+- 바깥 컨텍스트의 지시어는 안쪽으로 **상속**된다. 단 `add_header`, `proxy_set_header` 같은 배열형 지시어는 안쪽에 하나라도 쓰면 바깥 것이 **모두 사라진다**(1.29.3부터 `add_header_inherit`로 조절 가능). 이 함정은 [흔한 함정 — 설정](./04-pitfalls.md#1-설정-함정)에 있다.
 - 설정은 선언형이다. `if`는 rewrite 모듈의 지시어일 뿐 프로그래밍 언어의 분기가 아니다.
 
 ### 4. 요청이 어디로 가나 — server와 location 선택
@@ -146,7 +146,7 @@ location이 정해지면 요청은 11개 처리 단계(rewrite → access → co
 
 - [NGINX의 역사](./01-history.md)
 - [NGINX 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [NGINX 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [NGINX 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [NGINX 장애 대응과 고가용성](./05-failure-modes.md)
 - [nginx 워커는 정말 각자 독립된 이벤트 루프를 가질까?](../../../inquiry/web/0007-nginx-worker-event-loop-architecture.md)
 - [nginx의 요청 처리 단계와 OpenResty·njs](../../../inquiry/web/0004-nginx-openresty-njs-request-processing-phases.md)

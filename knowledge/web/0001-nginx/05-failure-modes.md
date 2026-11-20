@@ -13,7 +13,7 @@ NGINX는 모든 요청이 지나가는 **외길 다리**다. 다리 자체는 �
 
 ## 일반 설명
 
-원인이 **NGINX 쪽**인 장애와 복구를 다룬다. 설정 실수처럼 사람이 원인인 문제는 [자주 겪는 문제](./04-pitfalls.md)에 있다.
+원인이 **NGINX 쪽**인 장애와 복구를 다룬다. 설정 실수처럼 사람이 원인인 문제는 [흔한 함정](./04-pitfalls.md)에 있다.
 
 ### 1. 장애 유형 한눈에
 
@@ -119,7 +119,7 @@ NGINX는 거의 상태가 없다. 지켜야 할 것과 다시 만들 수 있는 
 - [NGINX의 역사](./01-history.md)
 - [NGINX 개요와 기본 사용법](./02-overview.md)
 - [NGINX 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [NGINX 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [NGINX 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [nginx 워커는 정말 각자 독립된 이벤트 루프를 가질까?](../../../inquiry/web/0007-nginx-worker-event-loop-architecture.md)
 - [고가용성 구성 방식 — replica vs cluster](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 
