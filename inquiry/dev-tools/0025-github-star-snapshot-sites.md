@@ -1,6 +1,7 @@
 ---
-type: factual
+type: inquiry
 created: 2026-09-04
+verified: 2026-09-04
 author: agent
 model: unknown
 ---
@@ -14,7 +15,7 @@ model: unknown
 - 스타 개수 스냅샷보다 한 단계 더 나아가서, **GitHub에서 일어나는 모든 공개 이벤트(스타, 커밋, PR, 이슈 등) 105억 건 이상을 실시간으로 수집**해요.
 - 이 데이터를 통째로 데이터베이스(TiDB)에 쌓아두고 SQL처럼 분석해서, 일간/주간/월간 트렌딩을 계산해요.
 - `github.com/trending` HTML을 베끼는 게 아니라 **원본 이벤트 로그를 직접 집계**하는 방식이라 훨씬 근거가 투명해요.
-- **[2026-09-02 업데이트] 직접 접속해서 확인해보니, GitHub의 이벤트 피드 페이지네이션 변경을 감지 못해 2025년 중반부터 스타/PR/이슈 트렌딩 순위 업데이트가 공식적으로 중단(pause)된 상태예요.** 설계는 좋지만 지금 당장은 최신 트렌딩 용도로 신뢰하기 어려워요. 자세한 건 [`factual/dev-tools/0004-github-trending-sites-verification.md`](./0004-github-trending-sites-verification.md) 참고.
+- **[2026-09-02 업데이트] 직접 접속해서 확인해보니, GitHub의 이벤트 피드 페이지네이션 변경을 감지 못해 2025년 중반부터 스타/PR/이슈 트렌딩 순위 업데이트가 공식적으로 중단(pause)된 상태예요.** 설계는 좋지만 지금 당장은 최신 트렌딩 용도로 신뢰하기 어려워요. 자세한 건 [`inquiry/dev-tools/0026-github-trending-sites-verification.md`](./0026-github-trending-sites-verification.md) 참고.
 
 ## 2. Trendshift — trendshift.io
 
