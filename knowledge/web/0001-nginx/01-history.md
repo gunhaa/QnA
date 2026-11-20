@@ -36,7 +36,7 @@ model: claude-opus-5-5
 | **2024.02** | 오랜 핵심 개발자 **Maxim Dounin**이 "회사의 임의 결정에서 자유로운 개발"을 내걸고 포크 **freenginx** 발표. 계기로 HTTP/3 관련 보안 공지 처리를 둘러싼 F5와의 이견이 거론된다 |
 | 2024.09 | 공식 저장소를 Mercurial에서 **GitHub**(`nginx/nginx`)로 이전. 이슈·PR도 GitHub에서 받음 |
 
-NGINX Plus의 가격과 "지원을 산다"는 의미는 [NGINX Plus 비용](../../../factual/web/0001-nginx-plus-license-cost-estimate.md), [NGINX Plus SLA의 의미](../../../inquiry/web/0006-nginx-plus-sla-vendor-support-meaning.md)에 있다.
+NGINX Plus의 가격과 "지원을 산다"는 의미는 [NGINX Plus 비용](../../../inquiry/web/0023-nginx-plus-license-cost-estimate.md), [NGINX Plus SLA의 의미](../../../inquiry/web/0006-nginx-plus-sla-vendor-support-meaning.md)에 있다.
 
 ### 3. 주요 버전 변천
 

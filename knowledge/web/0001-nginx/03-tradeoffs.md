@@ -38,7 +38,7 @@ NGINX는 **미리 인쇄한 안내판대로만 움직이는 빠른 교통 정리
 | **Envoy** (Apache-2.0, CNCF) | xDS 동적 설정, 서비스 메시(Istio) 데이터 플레인, 풍부한 지표 | 쿠버네티스·메시, 설정을 컨트롤 플레인이 관리 | 손으로 쓰는 설정이 장황함. 단독 웹 서버 용도로는 과함 |
 | **Traefik** (MIT) | Docker·쿠버네티스 라벨에서 라우트 **자동 발견**, ACME 내장 | 컨테이너 환경의 엣지 라우터 | 3.7에서 Ingress NGINX 어노테이션 85개 이상 호환을 추가. 고성능 정적 서빙 용도는 아님 |
 | **OpenResty** | nginx + LuaJIT. 요청마다 Lua 로직 | API 게이트웨이, 동적 라우팅·인증 | nginx 코어 업데이트가 OpenResty 릴리스를 기다려야 함 → [OpenResty vs nginx](../../../inquiry/web/0010-openresty-vs-nginx.md) |
-| **NGINX Plus** | 같은 코어 + API·액티브 헬스체크·keyval·zone_sync + **벤더 지원** | 계약상 지원(SLA)이 필요, 동적 업스트림을 코드 없이 | 인스턴스당 연 수천 달러 추정 → [비용](../../../factual/web/0001-nginx-plus-license-cost-estimate.md), [SLA의 의미](../../../inquiry/web/0006-nginx-plus-sla-vendor-support-meaning.md) |
+| **NGINX Plus** | 같은 코어 + API·액티브 헬스체크·keyval·zone_sync + **벤더 지원** | 계약상 지원(SLA)이 필요, 동적 업스트림을 코드 없이 | 인스턴스당 연 수천 달러 추정 → [비용](../../../inquiry/web/0023-nginx-plus-license-cost-estimate.md), [SLA의 의미](../../../inquiry/web/0006-nginx-plus-sla-vendor-support-meaning.md) |
 | **Angie / freenginx** | nginx 포크. 설정 호환 | F5 거버넌스를 피하고 싶음, Angie의 추가 기능(API·모니터링 등) | 서드파티 모듈·배포판 패키지·문서 생태계는 원본보다 작음 |
 | **클라우드 LB**(AWS ALB, GCP LB 등) | 매니지드, 다중 AZ 기본 | 엣지 TLS·분산만 필요하고 운영 인력이 없음 | 세밀한 rewrite·캐시·스크립팅은 제한. 흔히 ALB 뒤에 NGINX를 둔다 |
 

@@ -140,7 +140,7 @@ location이 정해지면 요청은 11개 처리 단계(rewrite → access → co
 | 동적 모듈 | C | 1.9.11+. `load_module`로 적재. **같은 nginx 버전·빌드 옵션으로 컴파일**해야 함 |
 | njs | JavaScript | 공식 모듈. `js_content`, `js_access`, 공유 딕셔너리 `js_shared_dict_zone` |
 | OpenResty | Lua(LuaJIT) | 별도 배포판. 가장 풍부한 스크립팅 생태계 → [OpenResty vs nginx](../../../inquiry/web/0010-openresty-vs-nginx.md) |
-| NGINX Plus 모듈 | — | keyval, 액티브 헬스체크, REST API, zone_sync 등. keyval의 오픈소스 대안은 [keyval 대안](../../../factual/web/0002-nginx-plus-keyval-open-source-alternative.md) |
+| NGINX Plus 모듈 | — | keyval, 액티브 헬스체크, REST API, zone_sync 등. keyval의 오픈소스 대안은 [keyval 대안](../../../inquiry/web/0024-nginx-plus-keyval-open-source-alternative.md) |
 
 ## 관련 문서
 
