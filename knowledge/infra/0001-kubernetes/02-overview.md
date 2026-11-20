@@ -170,7 +170,7 @@ kubectl logs <pod> --previous           # 재시작 전 컨테이너 로그
 - [Kubernetes의 역사](./01-history.md)
 - [Kubernetes 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Kubernetes 운영 시 자주 겪는 문제](./04-pitfalls.md)
-- [Kubernetes 장애 유형과 복구](./05-failures.md)
+- [Kubernetes 장애 유형과 복구](./05-failure-modes.md)
 - ["k8s는 시스템의 추상화다" — 맞는 답인가?](../../../inquiry/infra/0025-kubernetes-as-system-abstraction.md)
 - [systemd 싱글 인스턴스 vs 쿠버네티스 Pod](../../../inquiry/infra/0015-systemd-single-instance-vs-kubernetes-pod.md)
 

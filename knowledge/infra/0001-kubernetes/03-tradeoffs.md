@@ -13,7 +13,7 @@ Kubernetes는 **무엇이든 끼울 수 있는 빈 공장 설비**다. 컨베이
 
 ## 일반 설명
 
-이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), 클러스터 자체가 깨지는 상황은 [장애 유형과 복구](./05-failures.md)에서 다룬다.
+이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), 클러스터 자체의 장애는 [장애 유형과 복구](./05-failure-modes.md)에서 다룬다.
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -72,7 +72,7 @@ Kubernetes는 **무엇이든 끼울 수 있는 빈 공장 설비**다. 컨베이
 | **3** | 1 | 일반적인 프로덕션 |
 | 5 | 2 | 대규모·중요 클러스터. 쓰기 지연 증가 |
 
-짝수는 이득이 없다(4대도 1대만 견딤). 컨트롤 플레인은 존(AZ)을 나눠 배치한다. 쿼럼을 잃었을 때의 동작은 [장애 — etcd](./05-failures.md#2-etcd-쿼럼-상실과-용량-초과).
+짝수는 이득이 없다(4대도 1대만 견딤). 컨트롤 플레인은 존(AZ)을 나눠 배치한다. 쿼럼을 잃었을 때의 동작은 [장애 — etcd](./05-failure-modes.md#2-etcd-쿼럼-상실과-용량-초과).
 
 #### 3.4 네트워크 구성 요소
 
@@ -109,7 +109,7 @@ Kubernetes는 **무엇이든 끼울 수 있는 빈 공장 설비**다. 컨베이
 - [Kubernetes의 역사](./01-history.md)
 - [Kubernetes 개요 — 구조와 동작 방식](./02-overview.md)
 - [Kubernetes 운영 시 자주 겪는 문제](./04-pitfalls.md)
-- [Kubernetes 장애 유형과 복구](./05-failures.md)
+- [Kubernetes 장애 유형과 복구](./05-failure-modes.md)
 - [고가용성 구성 방식 — replica vs cluster, 쿼럼, DR 전략](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 
 ## 참고 자료

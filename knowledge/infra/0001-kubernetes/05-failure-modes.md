@@ -106,7 +106,7 @@ Kubernetes에서 가장 위험한 고장은 일하는 기계(노드)가 아니�
 
 ### 8. 애드온 장애
 
-| 애드온 | 깨지면 | 대응 |
+| 애드온 | 장애 시 영향 | 대응 |
 |---|---|---|
 | CNI | 새 Pod IP 할당 실패(`ContainerCreating`), 노드 간 통신 단절 | CNI DaemonSet 상태, IP 풀 고갈(클라우드 CNI는 서브넷 IP 부족) 확인 |
 | CoreDNS | 이름 해석 실패 → 거의 모든 서비스 호출 실패 | 레플리카·PDB·안티 어피니티, NodeLocal DNSCache로 캐시 계층 |

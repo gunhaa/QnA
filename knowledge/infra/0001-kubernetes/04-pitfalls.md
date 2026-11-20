@@ -13,7 +13,7 @@ Kubernetes는 적어 준 대로만 한다. "얼마나 먹는지"를 안 적으�
 
 ## 일반 설명
 
-이 문서는 **원인이 사용자**인 문제를 다룬다. 컨트롤 플레인·etcd·노드처럼 Kubernetes 자체가 깨지는 경우는 [장애 유형과 복구](./05-failures.md)에 있다.
+이 문서는 **원인이 사용자**인 문제를 다룬다. 컨트롤 플레인·etcd·노드처럼 Kubernetes 자체의 장애는 [장애 유형과 복구](./05-failure-modes.md)에 있다.
 
 ### 1. 자원 설정 (requests / limits)
 
@@ -75,9 +75,9 @@ Kubernetes는 적어 준 대로만 한다. "얼마나 먹는지"를 안 적으�
 | 노드 OS가 cgroup v1 | 1.35부터 kubelet이 기본적으로 기동 실패 | 노드 이미지를 cgroup v2 배포판(커널 5.8+)으로 교체. `failCgroupV1: false`는 임시 회피일 뿐 |
 | containerd 1.x 노드 | 1.35가 1.x를 지원하는 마지막 버전 | 1.36 전에 containerd 2.0+로. `kubelet_cri_losing_support` 메트릭으로 대상 노드 확인 |
 | kube-proxy IPVS 모드 유지 | 1.35부터 폐기 경고, 향후 제거 | nftables(또는 eBPF 대체)로 이전 |
-| 노드 라벨·내부 이름에 기대는 애드온 | 업그레이드가 라벨을 바꾸면 조용히 깨짐 | 2023.03 Reddit: 1.23→1.24 업그레이드에서 `node-role.kubernetes.io/master` 라벨이 사라져, 그 라벨로 노드를 고르던 Calico 설정이 깨지고 314분 장애. 스테이징 클러스터에서 실제 애드온 구성으로 업그레이드 리허설 |
+| 노드 라벨·내부 이름에 기대는 애드온 | 업그레이드가 라벨을 바꾸면 조용히 오동작 | 2023.03 Reddit: 1.23→1.24 업그레이드에서 `node-role.kubernetes.io/master` 라벨이 사라져, 그 라벨로 노드를 고르던 Calico 설정이 오동작해 314분 장애. 스테이징 클러스터에서 실제 애드온 구성으로 업그레이드 리허설 |
 
-업그레이드 자체가 실패해 클러스터가 깨지는 경우(etcd 복구, 다운그레이드 불가)는 [장애 — 업그레이드](./05-failures.md#6-업그레이드-실패)에 있다.
+업그레이드 자체가 실패해 클러스터 장애로 이어지는 경우(etcd 복구, 다운그레이드 불가)는 [장애 — 업그레이드](./05-failure-modes.md#6-업그레이드-실패)에 있다.
 
 ### 7. 오토스케일링
 
@@ -102,7 +102,7 @@ Kubernetes는 적어 준 대로만 한다. "얼마나 먹는지"를 안 적으�
 - [Kubernetes의 역사](./01-history.md)
 - [Kubernetes 개요 — 구조와 동작 방식](./02-overview.md)
 - [Kubernetes 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Kubernetes 장애 유형과 복구](./05-failures.md)
+- [Kubernetes 장애 유형과 복구](./05-failure-modes.md)
 - [EKS를 쓰면 K8s를 덜 알아도 되나?](../../../inquiry/infra/0023-eks-vs-self-managed-k8s-knowledge-scope.md)
 
 ## 참고 자료

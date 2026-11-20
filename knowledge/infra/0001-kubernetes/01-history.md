@@ -98,7 +98,7 @@ GA 연도에 맞춰 보면 흐름이 보인다. 2015~2020년은 **API 확장성*
 - [Kubernetes 개요 — 구조와 동작 방식](./02-overview.md)
 - [Kubernetes 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Kubernetes 운영 시 자주 겪는 문제](./04-pitfalls.md)
-- [Kubernetes 장애 유형과 복구](./05-failures.md)
+- [Kubernetes 장애 유형과 복구](./05-failure-modes.md)
 - [Kubernetes(쿠버네티스)가 뭐예요?](../../../inquiry/infra/0002-kubernetes-overview.md)
 
 ## 참고 자료

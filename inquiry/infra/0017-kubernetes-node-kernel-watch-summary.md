@@ -151,7 +151,7 @@ apiserver가 watch를 포함한 여러 요청을 TCP 연결 1개 위에서 어�
 ## 관련 문서
 
 - [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
-- [Kubernetes 장애 유형과 복구](../../knowledge/infra/0001-kubernetes/05-failures.md)
+- [Kubernetes 장애 유형과 복구](../../knowledge/infra/0001-kubernetes/05-failure-modes.md)
 
 Sources:
 - [Leases | Kubernetes](https://kubernetes.io/docs/concepts/architecture/leases/)

@@ -190,7 +190,7 @@ Kubernetes 클러스터는 **Control Plane**과 **Node(Data Plane)**로 나뉜�
 ## 관련 문서
 
 - [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
-- [Kubernetes 장애 유형과 복구](../../knowledge/infra/0001-kubernetes/05-failures.md)
+- [Kubernetes 장애 유형과 복구](../../knowledge/infra/0001-kubernetes/05-failure-modes.md)
 
 Sources:
 - [Cluster Architecture | Kubernetes](https://kubernetes.io/docs/concepts/architecture/)
