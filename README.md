@@ -46,4 +46,4 @@ flowchart LR
 
 ## 대주제
 
-`ai`, `game-ai`, `database`, `distributed-systems`, `web`, `infra`, `cs`, `languages`, `software-engineering`, `dev-tools`, `security`, `external-apis`, `study-and-career` — 각 대주제가 다루는 범위는 [CLAUDE.md — 대주제 맵](./CLAUDE.md#대주제-맵).
+`ai`, `game-ai`, `database`, `distributed-systems`, `web`, `infra`, `cs`, `java`, `languages`, `software-engineering`, `dev-tools`, `security`, `external-apis`, `study-and-career` — 각 대주제가 다루는 범위는 [CLAUDE.md — 대주제 맵](./CLAUDE.md#대주제-맵).

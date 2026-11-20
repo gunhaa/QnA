@@ -58,7 +58,8 @@ model: claude-opus-5-5   # author: agent일 때만. 모르면 unknown
 | `web/` | HTTP·TLS·CORS 등 웹 프로토콜, Nginx/OpenResty, Kong, SEO·GEO |
 | `infra/` | Kubernetes, Docker, AWS, 관측성(로그·메트릭·트레이스), systemd |
 | `cs/` | 컴퓨터공학 기초 개념(일급 객체, IEEE 754), 리눅스/OS(cgroup, 프로세스, 터미널), 알고리즘 |
-| `languages/` | Java(락·AQS, Lombok 등 생태계), Kotlin·코루틴, 언어 비교 |
+| `java/` | Java 언어·JVM, 동시성(락·AQS·Condition), Lombok 등 생태계 |
+| `languages/` | Java 외 언어(Kotlin·코루틴, Go), 언어 비교 |
 | `software-engineering/` | 아키텍처 패턴(DDD, 헥사고날, 클린 아키텍처, Outbox), 테스트, 기술 문서화(Diátaxis 등), 오픈소스 라이선스 실무 |
 | `dev-tools/` | git·GitHub(CODEOWNERS, Pages, 트렌딩), bash·vim·grep 등 CLI, Claude Code 등 클로드 도구, 파일 포맷(전자책, Markdown) |
 | `security/` | 암호·인증 일반(HMAC, 2FA), API 키 검증 |

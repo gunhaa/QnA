@@ -45,6 +45,7 @@ const TOPIC_LABELS = {
   web: '웹',
   infra: '인프라',
   cs: '컴퓨터 과학',
+  java: 'Java',
   languages: '프로그래밍 언어',
   'software-engineering': '소프트웨어 공학',
   'dev-tools': '개발 도구',
@@ -55,7 +56,7 @@ const TOPIC_LABELS = {
 
 // 첫 화면에 보일 대주제 순서. 언어 → DB → 분산 시스템 → 인프라처럼 아래 계층에서 위로 쌓아 읽는다.
 // 여기에 없는 대주제는 맨 뒤에 이름순으로 붙는다.
-const TOPIC_ORDER = ['languages', 'database', 'distributed-systems', 'infra', 'web'];
+const TOPIC_ORDER = ['java', 'languages', 'database', 'distributed-systems', 'infra', 'web'];
 const topicRank = (topic) => {
   const i = TOPIC_ORDER.indexOf(topic);
   return i === -1 ? TOPIC_ORDER.length : i;

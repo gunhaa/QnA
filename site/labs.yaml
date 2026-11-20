@@ -15,4 +15,4 @@
   url: https://gunhaa.github.io/java_lock/
   repo: https://github.com/gunhaa/java_lock
   description: 락·동기화 API 13개를 예제와 테스트로 확인
-  sets: [languages/0002-java-lock]
+  sets: [java/0002-java-lock]
