@@ -1,10 +1,9 @@
 # 저장소 구조 (Architecture)
 
-이 저장소의 **폴더 구조와 나누는 기준**을 정의하는 문서. 폴더 규칙의 원문은 이 문서이고, [`CLAUDE.md`](./CLAUDE.md)는 이 문서를 불러와 쓴다.
+이 저장소의 **폴더 구조와 나누는 기준**을 정의하는 문서. 폴더 규칙의 원문은 이 문서이고, 문서를 만드는 스킬이 이 문서를 읽고 따른다.
 
-- 문서 유형의 정의·구성·frontmatter → [CLAUDE.md — 문서 유형](./CLAUDE.md#문서-유형)
-- knowledge 5문서의 내용 → [CLAUDE.md — knowledge 5문서 구성](./CLAUDE.md#knowledge-5문서-구성)
-- 원전 분석의 frontmatter·연결 → [CLAUDE.md — 원전 분석](./CLAUDE.md#원전-분석-source)
+- 문서 유형과 공통 규칙(요약 섹션, frontmatter) → [CLAUDE.md — 문서 만들기](./CLAUDE.md#문서-만들기)
+- 유형별 구성 → [`/inquiry`](./.claude/skills/inquiry/SKILL.md), [`/knowledge`](./.claude/skills/knowledge/SKILL.md), [`/source`](./.claude/skills/source/SKILL.md) 스킬
 - 대주제 목록 → [CLAUDE.md — 대주제 맵](./CLAUDE.md#대주제-맵)
 
 ## 1. 폴더 구조
@@ -38,7 +37,7 @@ flowchart LR
 - `knowledge/database/0002-redis/01-history.md`
 - `source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`
 
-루트의 `README.md`, `CLAUDE.md`, `ARCHITECTURE.md`는 저장소 안내 문서이고, `site/`는 `knowledge/`를 GitHub Pages 사이트로 만드는 빌드 도구이고, `.github/workflows/`는 그 배포 워크플로다. 이것들은 모두 이 구조의 대상이 아니다.
+루트의 `README.md`, `CLAUDE.md`, `ARCHITECTURE.md`는 저장소 안내 문서, `.claude/skills/`는 문서를 만드는 스킬이고, `site/`는 `knowledge/`를 GitHub Pages 사이트로 만드는 빌드 도구이고, `.github/workflows/`는 그 배포 워크플로다. 이것들은 모두 이 구조의 대상이 아니다.
 
 유형을 맨 위에 둔 이유:
 - 유형마다 만드는 때와 구성이 다르다. inquiry는 질문 하나에 문서 하나, knowledge와 source는 순서대로 읽는 묶음이다.
@@ -62,7 +61,7 @@ flowchart LR
 
 ## 3. 유형 결정
 
-유형은 만드는 때로 정한다 — 질문하면 inquiry, 세트를 지시하면 knowledge, 원전 분석을 지시하면 source. 자세한 내용은 [CLAUDE.md — 문서 유형](./CLAUDE.md#문서-유형).
+유형은 사용자가 요청한 스킬로 정해진다 — `/inquiry`, `/knowledge`, `/source`. 자세한 내용은 [CLAUDE.md — 문서 만들기](./CLAUDE.md#문서-만들기).
 
 ## 4. 대주제 결정
 
@@ -107,8 +106,8 @@ flowchart LR
 
 | 묶음 | 위치 | 내용 규칙 |
 |---|---|---|
-| knowledge 5문서 | `knowledge/<대주제>/<ID>-<대상>/01-history` ~ `05-failure-modes`, 선택 `06-labs` | [CLAUDE.md — knowledge 5문서 구성](./CLAUDE.md#knowledge-5문서-구성) |
-| 원전 분석 | `source/<대주제>/<ID>-<제목>-<저자성>-<연도>/01-overview` → `02-…` | [CLAUDE.md — 원전 분석](./CLAUDE.md#원전-분석-source) |
+| knowledge 5문서 | `knowledge/<대주제>/<ID>-<대상>/01-history` ~ `05-failure-modes`, 선택 `06-labs` | [`/knowledge` 스킬](./.claude/skills/knowledge/SKILL.md) |
+| 원전 분석 | `source/<대주제>/<ID>-<제목>-<저자성>-<연도>/01-overview` → `02-…` | [`/source` 스킬](./.claude/skills/source/SKILL.md) |
 | 연재 | `inquiry/<대주제>/<ID>-<연재>/01-…` | — |
 
 - 순서는 `01-`부터 시작한다. `00-`은 쓰지 않는다. 안내 문서가 필요하면 그것이 `01-`이 된다.

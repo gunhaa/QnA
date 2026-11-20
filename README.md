@@ -1,8 +1,8 @@
 # knowledge
 
-질문 하나에 답한 문서(inquiry)를 쌓고, 지시가 있으면 기술·개념 하나를 **역사 → 개요 → 트레이드오프 → 흔한 함정 → 장애 유형** 다섯 문서로 정리한 세트(knowledge)와 원전 분석(source)을 만드는 저장소.
+기술·개념 지식을 문서로 모으는 저장소. 질문 하나에 답한 문서(inquiry), 기술·개념 하나를 **역사 → 개요 → 트레이드오프 → 흔한 함정 → 장애 유형** 다섯 문서로 정리한 세트(knowledge), 저작물 자체의 분석(source)을 요청할 때 스킬로 만든다.
 
-저장 규칙은 [`CLAUDE.md`](./CLAUDE.md), 폴더 구조와 번호 규칙은 [`ARCHITECTURE.md`](./ARCHITECTURE.md) 참고.
+공통 규칙은 [`CLAUDE.md`](./CLAUDE.md), 유형별 구성은 [`.claude/skills/`](./.claude/skills/), 폴더 구조와 번호 규칙은 [`ARCHITECTURE.md`](./ARCHITECTURE.md) 참고.
 
 ```mermaid
 flowchart LR
@@ -14,11 +14,11 @@ flowchart LR
 
 루트를 문서 유형 3개로 나누고, 그 아래를 대주제로 나눈다. 경로는 `<유형>/<대주제>/<ID>-<이름>.md`이고, 순서대로 읽는 묶음(5문서 세트, 원전, 연재)만 폴더가 한 단 더 붙는다.
 
-| 폴더 | 만드는 때 | 담는 것 |
+| 폴더 | 만드는 스킬 | 담는 것 |
 |---|---|---|
-| [`inquiry/`](./inquiry/) | 질문하면 | 질문 하나에 대한 답 |
-| [`knowledge/`](./knowledge/) | 세트를 지시하면 | 대상 하나의 5문서 세트 (+ 선택 `06-labs` 실습 기록) |
-| [`source/`](./source/) | 원전 분석을 지시하면 | 논문·에세이·책 같은 저작물 자체의 장별 분석 |
+| [`inquiry/`](./inquiry/) | [`/inquiry`](./.claude/skills/inquiry/SKILL.md) | 질문 하나에 대한 답 |
+| [`knowledge/`](./knowledge/) | [`/knowledge`](./.claude/skills/knowledge/SKILL.md) | 대상 하나의 5문서 세트 (+ 선택 `06-labs` 실습 기록) |
+| [`source/`](./source/) | [`/source`](./.claude/skills/source/SKILL.md) | 논문·에세이·책 같은 저작물 자체의 장별 분석 |
 
 **번호**: 4자리(`0012-`)는 폴더 안에서 매기는 문서 ID이고 순서와 무관하다. 2자리(`01-`)는 묶음 폴더 안에서 읽는 순서다.
 
