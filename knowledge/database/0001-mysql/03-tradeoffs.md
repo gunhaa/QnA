@@ -13,7 +13,7 @@ MySQL은 **누구나 금방 몰 수 있는 튼튼한 소형 트럭**이다. 짐�
 
 ## 일반 설명
 
-> 동작 원리(InnoDB 구조, 격리 수준 표, 기본 SQL)는 [MySQL 개요와 기본 사용법](./02-overview.md), 고른 뒤 겪는 문제는 [자주 겪는 문제](./04-pitfalls.md)와 [장애 대응과 고가용성](./05-failures.md)에서 다룬다. 이 문서는 **왜 그렇게 만들었고 대가는 무엇인가, 언제 고르나**만 다룬다.
+> 동작 원리(InnoDB 구조, 격리 수준 표, 기본 SQL)는 [MySQL 개요와 기본 사용법](./02-overview.md), 고른 뒤 겪는 문제는 [자주 겪는 문제](./04-pitfalls.md)와 [장애 대응과 고가용성](./05-failure-modes.md)에서 다룬다. 이 문서는 **왜 그렇게 만들었고 대가는 무엇인가, 언제 고르나**만 다룬다.
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -35,7 +35,7 @@ MySQL은 **누구나 금방 몰 수 있는 튼튼한 소형 트럭**이다. 짐�
 |---|---|---|---|
 | **PostgreSQL** | 확장(PostGIS·pgvector·TimescaleDB), 부분·표현식·GIN 인덱스, 트랜잭션 DDL, 엄격한 SQL. 2025 Stack Overflow 설문 사용률(전체 응답자) 약 56% vs MySQL 약 40% | VACUUM·bloat 관리, 연결당 프로세스라 PgBouncer 거의 필수, 기본 격리 수준이 READ COMMITTED이고 RR 의미가 MySQL과 다름 | 복잡한 쿼리·다양한 데이터 타입·확장이 중요할 때 |
 | **MariaDB** | 커뮤니티판에 스레드 풀·Galera·시스템 버전 테이블 포함 | 10.x 이후 **호환이 갈라짐**: GTID 형식이 달라 MySQL ↔ MariaDB 복제가 제한적, JSON은 바이너리 타입이 아니라 `LONGTEXT` 별칭, 8.0+ 기능 일부 없음 | 리눅스 배포판 기본·Galera 멀티 마스터가 필요할 때. "MySQL 드롭인"으로 가정하면 안 된다 |
-| **Aurora MySQL** | 스토리지를 3 AZ·6벌 분산 볼륨으로 분리 → 최대 128 TiB, replica 최대 15대가 같은 볼륨 공유(AWS 문서: 복제 지연 보통 100ms보다 훨씬 짧음). 장애 조치 동작은 [05 §6](./05-failures.md#6-매니지드-서비스의-ha) | AWS 종속, 엔진 버전이 커뮤니티보다 늦게 따라옴, 비용 구조 복잡(Standard는 I/O 요청당 과금, I/O-Optimized는 I/O 무료 대신 인스턴스·스토리지 단가 인상 — AWS 안내 기준 I/O가 Aurora 비용의 25%를 넘으면 유리, 실제 손익분기는 워크로드마다 다름) | AWS에서 운영 부담을 줄이고 읽기 확장이 필요할 때 |
+| **Aurora MySQL** | 스토리지를 3 AZ·6벌 분산 볼륨으로 분리 → 최대 128 TiB, replica 최대 15대가 같은 볼륨 공유(AWS 문서: 복제 지연 보통 100ms보다 훨씬 짧음). 장애 조치 동작은 [05 §6](./05-failure-modes.md#6-매니지드-서비스의-ha) | AWS 종속, 엔진 버전이 커뮤니티보다 늦게 따라옴, 비용 구조 복잡(Standard는 I/O 요청당 과금, I/O-Optimized는 I/O 무료 대신 인스턴스·스토리지 단가 인상 — AWS 안내 기준 I/O가 Aurora 비용의 25%를 넘으면 유리, 실제 손익분기는 워크로드마다 다름) | AWS에서 운영 부담을 줄이고 읽기 확장이 필요할 때 |
 | **Vitess / PlanetScale** | MySQL 앞단 샤딩 미들웨어(YouTube 출신). 쓰기 수평 확장, 온라인 리샤딩, 실제 MySQL 엔진 사용 | 샤드 키 설계 필요, 교차 샤드 조인·트랜잭션·외래 키 제약(외래 키는 단일 샤드 범위에서부터 지원) | 단일 primary 쓰기 한계를 넘었고 MySQL 운영 경험을 살리고 싶을 때 |
 | **TiDB** | MySQL 프로토콜 호환 분산 SQL(Raft, TiKV). 샤드 키 없이 노드 추가로 확장, HTAP(TiFlash) | 컴포넌트가 많아 운영 복잡(PD·TiKV·TiDB), 단건 지연은 단일 MySQL보다 높음, 일부 MySQL 기능·동작 차이 | 수십 TB 이상·쓰기 확장이 필요한데 애플리케이션 샤딩은 피하고 싶을 때 |
 
@@ -62,7 +62,7 @@ PostgreSQL과의 락·MVCC 차이는 [MySQL과 PostgreSQL의 락 처리 차이](
 
 `binlog_format` 변수 자체가 8.0.34부터 deprecated이며, 장기적으로 ROW만 남을 예정이다.
 
-**복제·고가용성 모드** (동작 방식·구성 절차·장애 조치는 [05 §3 복제 방식](./05-failures.md#3-복제-방식), [05 §5 고가용성 구성 선택지](./05-failures.md#5-고가용성-구성-선택지))
+**복제·고가용성 모드** (동작 방식·구성 절차·장애 조치는 [05 §3 복제 방식](./05-failure-modes.md#3-복제-방식), [05 §5 고가용성 구성 선택지](./05-failure-modes.md#5-고가용성-구성-선택지))
 
 | 모드 | 커밋 지연 비용 | 유실(RPO) | 제약 |
 |---|---|---|---|
@@ -117,7 +117,7 @@ PostgreSQL과의 락·MVCC 차이는 [MySQL과 PostgreSQL의 락 처리 차이](
 - [MySQL의 역사](./01-history.md)
 - [MySQL 개요와 기본 사용법](./02-overview.md)
 - [MySQL 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [MySQL 장애 대응과 고가용성](./05-failures.md)
+- [MySQL 장애 대응과 고가용성](./05-failure-modes.md)
 - [MySQL과 PostgreSQL은 락(Lock)을 다루는 방식이 다르다](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)
 - [PostgreSQL을 REPEATABLE READ로 올리면 MVCC를 MySQL이랑 "똑같이" 쓰는 걸까?](../../../inquiry/database/0007-postgresql-repeatable-read-mvcc-vs-mysql.md)
 - [MySQL RR에서 next-key lock은 어떤 경우에 걸리나](../../../inquiry/database/0016-mysql-rr-next-key-lock-cases.md)

@@ -65,7 +65,7 @@ model: claude-opus-5-5
 - [MySQL 개요와 기본 사용법](./02-overview.md)
 - [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](./03-tradeoffs.md)
 - [MySQL 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [MySQL 장애 대응과 고가용성](./05-failures.md)
+- [MySQL 장애 대응과 고가용성](./05-failure-modes.md)
 - [MySQL과 PostgreSQL의 락 처리 차이](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)
 
 ## 참고 자료

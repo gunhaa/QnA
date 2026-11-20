@@ -96,7 +96,7 @@ ClickHouse에 데이터를 넣으면 **정렬된 작은 묶음(파트)** 이 하
 
 - 복제는 기본 **비동기**다. 한 레플리카에 쓰고 Keeper에 기록하면 나머지가 가져간다. `insert_quorum`으로 N개 레플리카 기록을 기다리게 할 수 있다.
 - 복제는 **테이블 단위**, 리더 없음(multi-master): 어느 레플리카에나 쓸 수 있다.
-- Keeper·quorum insert의 세부는 [ClickHouse의 강점 — 복제 관점](../../../inquiry/database/0010-clickhouse-strengths-columnar-and-replica.md), 깨질 때의 동작은 [장애 유형과 복구](./05-failures.md)에 있다.
+- Keeper·quorum insert의 세부는 [ClickHouse의 강점 — 복제 관점](../../../inquiry/database/0010-clickhouse-strengths-columnar-and-replica.md), 장애 때의 동작은 [장애 유형과 복구](./05-failure-modes.md)에 있다.
 
 ### 8. 수정·삭제
 
@@ -167,7 +167,7 @@ clickhouse local -q "SELECT status, count() FROM file('access.parquet') GROUP BY
 - [ClickHouse의 역사](./01-history.md)
 - [ClickHouse 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [ClickHouse 사용 시 자주 겪는 문제](./04-pitfalls.md)
-- [ClickHouse 장애 유형과 복구](./05-failures.md)
+- [ClickHouse 장애 유형과 복구](./05-failure-modes.md)
 - [ClickHouse란 무엇인가](../../../inquiry/database/0009-clickhouse-overview.md)
 - [ClickHouse의 강점 — 컬럼 지향과 복제](../../../inquiry/database/0010-clickhouse-strengths-columnar-and-replica.md)
 - [컬럼 지향 vs 행 지향 DB](../../../inquiry/database/0013-columnar-vs-row-oriented-db.md)

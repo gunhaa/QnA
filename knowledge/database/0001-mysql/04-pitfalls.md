@@ -13,7 +13,7 @@ model: claude-opus-5-5
 
 ## 일반 설명
 
-> 서버·복제 장애, 데이터 유실, 백업/복구는 [MySQL 장애 대응과 고가용성](./05-failures.md)에서 다룬다.
+> 서버·복제 장애, 데이터 유실, 백업/복구는 [MySQL 장애 대응과 고가용성](./05-failure-modes.md)에서 다룬다.
 
 ### 1. 느린 쿼리
 
@@ -111,7 +111,7 @@ model: claude-opus-5-5
 | 락 | `Innodb_row_lock_waits`, `Innodb_row_lock_time`, 데드락 로그 |
 | Buffer Pool | 적중률, `Innodb_buffer_pool_pages_dirty` |
 | undo | `History list length` |
-| 복제 | → [장애 대응과 고가용성](./05-failures.md) |
+| 복제 | → [장애 대응과 고가용성](./05-failure-modes.md) |
 
 수집은 `mysqld_exporter` + Prometheus/Grafana, Percona Monitoring and Management(PMM), 클라우드라면 RDS Performance Insights / CloudWatch Database Insights 등.
 
@@ -120,7 +120,7 @@ model: claude-opus-5-5
 - [MySQL의 역사](./01-history.md)
 - [MySQL 개요와 기본 사용법](./02-overview.md)
 - [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](./03-tradeoffs.md)
-- [MySQL 장애 대응과 고가용성](./05-failures.md)
+- [MySQL 장애 대응과 고가용성](./05-failure-modes.md)
 - [MySQL 락: 자주 겪는 문제와 해결 방법](../0004-mysql-lock/04-pitfalls.md)
 - [MySQL/PostgreSQL 락 처리 차이](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)
 

@@ -13,7 +13,7 @@ Redis는 **요리사가 한 명뿐인 아주 빠른 포장마차**다. 재료를
 
 ## 일반 설명
 
-이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), Redis 자체가 깨지는 상황은 [장애 대응](./05-failures.md)에서 다룬다.
+이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), Redis 자체의 장애는 [장애 대응](./05-failure-modes.md)에서 다룬다.
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -51,7 +51,7 @@ Redis는 **요리사가 한 명뿐인 아주 빠른 포장마차**다. 재료를
 | 세션·토큰처럼 잃으면 불편한 데이터 | **RDB + AOF `everysec`** (공식 권장 조합) | 최대 약 1초 유실, RDB 프리앰블로 재시작 빠름 |
 | 한 건도 잃으면 안 됨 | AOF `always`는 "매우 느림"(공식). 차라리 원장을 RDBMS에 두거나 MemoryDB | Redis OSS 복제가 비동기라 디스크만 지켜서는 해결되지 않음 |
 
-유실 범위(RPO)·복구 시간(RTO)의 구체 표는 [장애 대응 — 영속성](./05-failures.md#2-영속성-재시작-후-무엇이-남나)에 있다.
+유실 범위(RPO)·복구 시간(RTO)의 구체 표는 [장애 대응 — 영속성](./05-failure-modes.md#2-영속성-재시작-후-무엇이-남나)에 있다.
 
 #### 3.2 축출 정책 — 데이터의 성격으로 고른다
 
@@ -86,7 +86,7 @@ Redis는 **요리사가 한 명뿐인 아주 빠른 포장마차**다. 재료를
 | 운영 복잡도 | 낮음 | 높음 (리샤딩, 슬롯 관리) |
 | 클라이언트 | Sentinel 지원 클라이언트 | Cluster 지원 클라이언트 (`MOVED`/`ASK` 처리) |
 
-장애 조치가 실제로 어떻게 일어나는지는 [장애 대응 — Sentinel](./05-failures.md#4-sentinel-단일-샤드-자동-장애-조치)과 [장애 대응 — Cluster](./05-failures.md#5-cluster-샤딩--자동-장애-조치)에, 제품을 가리지 않는 복제·클러스터 구성 방식 비교는 [고가용성 구성 방식 — replica vs cluster](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)에 있다.
+장애 조치가 실제로 어떻게 일어나는지는 [장애 대응 — Sentinel](./05-failure-modes.md#4-sentinel-단일-샤드-자동-장애-조치)과 [장애 대응 — Cluster](./05-failure-modes.md#5-cluster-샤딩--자동-장애-조치)에, 제품을 가리지 않는 복제·클러스터 구성 방식 비교는 [고가용성 구성 방식 — replica vs cluster](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)에 있다.
 
 #### 3.4 엔진과 매니지드 서비스 — 라이선스와 비용으로 고른다
 
@@ -126,7 +126,7 @@ Redis는 **요리사가 한 명뿐인 아주 빠른 포장마차**다. 재료를
 - [Redis의 역사](./01-history.md)
 - [Redis 개요와 기본 사용법](./02-overview.md)
 - [Redis 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [Redis 장애 대응과 고가용성](./05-failures.md)
+- [Redis 장애 대응과 고가용성](./05-failure-modes.md)
 
 ## 참고 자료
 

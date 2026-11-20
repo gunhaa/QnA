@@ -13,7 +13,7 @@ ClickHouse는 **"많이 세기"를 위해 "하나 고치기"를 포기**했다. 
 
 ## 일반 설명
 
-이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), ClickHouse 자체가 깨지는 상황은 [장애 유형과 복구](./05-failures.md)에서 다룬다.
+이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), ClickHouse 자체의 장애는 [장애 유형과 복구](./05-failure-modes.md)에서 다룬다.
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -117,7 +117,7 @@ ClickHouse는 **"많이 세기"를 위해 "하나 고치기"를 포기**했다. 
 - [ClickHouse의 역사](./01-history.md)
 - [ClickHouse 개요와 동작 방식](./02-overview.md)
 - [ClickHouse 사용 시 자주 겪는 문제](./04-pitfalls.md)
-- [ClickHouse 장애 유형과 복구](./05-failures.md)
+- [ClickHouse 장애 유형과 복구](./05-failure-modes.md)
 - [ClickHouse는 시계열 DB와 뭐가 다르고, 로그 전용 DB보다 뭐가 나은가](../../../inquiry/database/0011-clickhouse-vs-timeseries-and-log-db.md)
 - [컬럼 지향 vs 행 지향 DB](../../../inquiry/database/0013-columnar-vs-row-oriented-db.md)
 

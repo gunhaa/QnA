@@ -32,7 +32,7 @@ model: claude-opus-5-5
 | 설정 | 의미 | 권장 |
 |---|---|---|
 | `innodb_flush_log_at_trx_commit=1` | 커밋마다 redo log fsync | **1** (기본). 2/0은 OS/서버 크래시 시 최대 ~1초 유실 |
-| `sync_binlog=1` | 커밋마다 binlog fsync | **1** (기본). 아니면 binlog와 데이터가 어긋나 복제·PITR이 깨질 수 있음 |
+| `sync_binlog=1` | 커밋마다 binlog fsync | **1** (기본). 아니면 binlog와 데이터가 어긋나 복제·PITR을 신뢰할 수 없게 됨 |
 | `innodb_doublewrite=ON` | 찢어진 페이지 방지 | 기본 ON 유지 |
 
 이 "**double 1**" 설정이 기본값이며, 성능 때문에 끄는 경우 유실 범위를 받아들인 것이다.

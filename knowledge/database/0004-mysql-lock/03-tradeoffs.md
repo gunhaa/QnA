@@ -13,7 +13,7 @@ InnoDB는 "**의심스러우면 넓게 잠근다**"를 골랐다. 빈칸까지 �
 
 ## 일반 설명
 
-> 동작 원리는 [개요](./02-overview.md), 고른 뒤 실수는 [자주 겪는 문제](./04-pitfalls.md), 깨지는 상황은 [장애 유형](./05-failures.md). 이 문서는 "왜 이렇게 만들었고, 대가는 무엇이고, 언제 무엇을 고르나"만 다룬다. MySQL 전체의 트레이드오프는 [MySQL 트레이드오프](../0001-mysql/03-tradeoffs.md).
+> 동작 원리는 [개요](./02-overview.md), 고른 뒤 실수는 [자주 겪는 문제](./04-pitfalls.md), 장애는 [장애 유형](./05-failure-modes.md). 이 문서는 "왜 이렇게 만들었고, 대가는 무엇이고, 언제 무엇을 고르나"만 다룬다. MySQL 전체의 트레이드오프는 [MySQL 트레이드오프](../0001-mysql/03-tradeoffs.md).
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -49,7 +49,7 @@ InnoDB는 "**의심스러우면 넓게 잠근다**"를 골랐다. 빈칸까지 �
 | **`SKIP LOCKED`** | 잠긴 행 건너뛰기 | 작업자 여러 명이 겹치지 않게 분배 | 결과가 비결정적. 일관된 뷰가 필요하면 부적합 | DB 기반 작업 큐, Outbox 폴링 |
 | **`GET_LOCK()`** 이름 락 | 행과 무관한 이름에 세션 락 | 테이블 없이 상호 배제 | **세션 단위**, 장애 조치 시 사라짐, Group Replication에서 노드 간 공유 안 됨 | 단일 primary에서 배치 중복 실행 방지 |
 | **READ COMMITTED로 낮추기** | gap lock 대부분 제거 | 데드락·INSERT 대기 크게 감소 | 팬텀 허용, binlog ROW 필수 | 쓰기 경합이 큰 OLTP |
-| **분산 락 (Redis·ZooKeeper·etcd)** | DB 밖에서 상호 배제 | DB 부하 분리, 여러 저장소에 걸친 작업 | 정합성은 보장 못 함(fencing 필요) | DB 하나로 묶이지 않는 작업 → [Java 락 — 분산 락](../../languages/0002-java-lock/05-failures.md#6-분산-락의-장애-시나리오) |
+| **분산 락 (Redis·ZooKeeper·etcd)** | DB 밖에서 상호 배제 | DB 부하 분리, 여러 저장소에 걸친 작업 | 정합성은 보장 못 함(fencing 필요) | DB 하나로 묶이지 않는 작업 → [Java 락 — 분산 락](../../languages/0002-java-lock/05-failure-modes.md#6-분산-락의-장애-시나리오) |
 
 PostgreSQL과의 모델 차이(범위 잠금 vs SSI·직렬화 오류)는 [MySQL과 PostgreSQL의 락 처리 차이](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md), [PostgreSQL은 gap lock 없이 어떻게 감지하나](../../../inquiry/database/0006-postgresql-phantom-detection-without-gap-lock.md).
 
@@ -71,7 +71,7 @@ PostgreSQL과의 모델 차이(범위 잠금 vs SSI·직렬화 오류)는 [MySQL
 |---|---|---|
 | 비동기·반동기 복제 (primary 1) | primary 안에서만 | replica 읽기는 락과 무관. replica에서 `FOR UPDATE`는 의미 없음 |
 | Group Replication **single-primary** | primary 안에서만 | 권장 구성 |
-| Group Replication **multi-primary** | **노드 간 락 공유 없음**. 커밋 시 인증(certification)으로 충돌 검사 | gap lock을 인증하지 않음, `FOR UPDATE`가 다른 노드를 막지 못함 → [장애 유형](./05-failures.md) |
+| Group Replication **multi-primary** | **노드 간 락 공유 없음**. 커밋 시 인증(certification)으로 충돌 검사 | gap lock을 인증하지 않음, `FOR UPDATE`가 다른 노드를 막지 못함 → [장애 유형](./05-failure-modes.md) |
 
 ### 5. 쓰지 말아야 할 때
 
@@ -98,7 +98,7 @@ PostgreSQL과의 모델 차이(범위 잠금 vs SSI·직렬화 오류)는 [MySQL
 - [MySQL 락의 역사](./01-history.md)
 - [MySQL 락 개요와 동작 방식](./02-overview.md)
 - [MySQL 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [MySQL 락 장애 유형과 대응](./05-failures.md)
+- [MySQL 락 장애 유형과 대응](./05-failure-modes.md)
 - [MySQL 트레이드오프](../0001-mysql/03-tradeoffs.md)
 - [MySQL과 PostgreSQL의 락 처리 차이](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)
 - [PostgreSQL RR의 MVCC vs MySQL](../../../inquiry/database/0007-postgresql-repeatable-read-mvcc-vs-mysql.md)

@@ -93,7 +93,7 @@ model: claude-opus-5-5
 - [ClickHouse 개요와 동작 방식](./02-overview.md)
 - [ClickHouse 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [ClickHouse 사용 시 자주 겪는 문제](./04-pitfalls.md)
-- [ClickHouse 장애 유형과 복구](./05-failures.md)
+- [ClickHouse 장애 유형과 복구](./05-failure-modes.md)
 - [ClickHouse란 무엇인가](../../../inquiry/database/0009-clickhouse-overview.md)
 
 ## 참고 자료

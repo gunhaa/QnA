@@ -13,7 +13,7 @@ model: claude-opus-5-5
 
 ## 일반 설명
 
-원인이 **사용자**인 문제만 다룬다. 노드·Keeper·디스크처럼 ClickHouse 쪽이 깨지는 상황은 [장애 유형과 복구](./05-failures.md)에 있다.
+원인이 **사용자**인 문제만 다룬다. 노드·Keeper·디스크처럼 ClickHouse 쪽의 장애는 [장애 유형과 복구](./05-failure-modes.md)에 있다.
 
 | # | 실수 | 증상 | 한 줄 해결 |
 |---|---|---|---|
@@ -112,8 +112,8 @@ model: claude-opus-5-5
 ### 9. 비동기 경로의 내구성을 오해한다
 
 - `async_insert=1`에 `wait_for_async_insert=0`이면 서버 버퍼에 들어간 시점에 성공을 응답한다. 버퍼를 디스크에 쓰기 전 서버가 죽으면 **승인된 데이터가 사라진다.** 공식 권장은 `wait_for_async_insert=1`.
-- `Distributed` 테이블에 INSERT하면 기본은 **백그라운드 전송**이다. 데이터를 먼저 받은 노드 디스크에 두었다가 샤드로 보낸다. 그 노드가 깨지거나 배치 파일이 손상되면 유실된다. 즉시 모든 샤드 기록을 보장하려면 `distributed_foreground_insert=1`(옛 이름 `insert_distributed_sync`)을 쓰거나, 샤드의 로컬 테이블에 직접 넣는다.
-- 기본 복제는 비동기라 INSERT 승인 직후 그 레플리카가 죽으면 다른 레플리카에 없을 수 있다. 필요하면 `insert_quorum` ([장애 유형과 복구 — 복제](./05-failures.md#3-복제와-keeper)).
+- `Distributed` 테이블에 INSERT하면 기본은 **백그라운드 전송**이다. 데이터를 먼저 받은 노드 디스크에 두었다가 샤드로 보낸다. 그 노드에 장애가 나거나 배치 파일이 손상되면 유실된다. 즉시 모든 샤드 기록을 보장하려면 `distributed_foreground_insert=1`(옛 이름 `insert_distributed_sync`)을 쓰거나, 샤드의 로컬 테이블에 직접 넣는다.
+- 기본 복제는 비동기라 INSERT 승인 직후 그 레플리카가 죽으면 다른 레플리카에 없을 수 있다. 필요하면 `insert_quorum` ([장애 유형과 복구 — 복제](./05-failure-modes.md#3-복제와-keeper)).
 
 ### 10. 기타 자주 보는 실수
 
@@ -127,7 +127,7 @@ model: claude-opus-5-5
 - [ClickHouse의 역사](./01-history.md)
 - [ClickHouse 개요와 동작 방식](./02-overview.md)
 - [ClickHouse 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [ClickHouse 장애 유형과 복구](./05-failures.md)
+- [ClickHouse 장애 유형과 복구](./05-failure-modes.md)
 - [Append-only 로그에 ClickHouse를 쓰는 이유](../../../inquiry/database/0008-clickhouse-append-only-log-reason.md)
 
 ## 참고 자료

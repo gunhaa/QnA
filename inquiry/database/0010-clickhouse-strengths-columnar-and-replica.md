@@ -67,7 +67,7 @@ model: claude-opus-5
 ## 관련 문서
 
 - [ClickHouse 개요와 동작 방식](../../knowledge/database/0003-clickhouse/02-overview.md)
-- [ClickHouse 장애 유형과 복구](../../knowledge/database/0003-clickhouse/05-failures.md)
+- [ClickHouse 장애 유형과 복구](../../knowledge/database/0003-clickhouse/05-failure-modes.md)
 
 ---
 

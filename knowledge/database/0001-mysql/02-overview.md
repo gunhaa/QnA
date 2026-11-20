@@ -29,7 +29,7 @@ MySQL은 **칸이 딱 정해진 큰 장부(표)** 를 관리하는 사서다. �
 | 여러 사용자가 동시에 수정 | **트랜잭션(ACID)**, MVCC, 행 단위 락 |
 | 대량 데이터에서 빠른 검색 | **B+Tree 인덱스** |
 | 서버가 죽어도 커밋한 데이터 보존 | redo log(WAL)·doublewrite buffer로 크래시 복구 |
-| 읽기 부하 분산, 장애 대비 | binlog 기반 복제 → [장애 대응과 고가용성](./05-failures.md) |
+| 읽기 부하 분산, 장애 대비 | binlog 기반 복제 → [장애 대응과 고가용성](./05-failure-modes.md) |
 
 ### 3. 아키텍처 핵심
 
@@ -191,7 +191,7 @@ spring:
 - [MySQL의 역사](./01-history.md)
 - [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](./03-tradeoffs.md)
 - [MySQL 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [MySQL 장애 대응과 고가용성](./05-failures.md)
+- [MySQL 장애 대응과 고가용성](./05-failure-modes.md)
 - [PostgreSQL RR의 MVCC vs MySQL](../../../inquiry/database/0007-postgresql-repeatable-read-mvcc-vs-mysql.md)
 
 ## 참고 자료
