@@ -5,7 +5,7 @@ author: agent
 model: claude-opus-5-5
 ---
 
-# MySQL 락: 자주 겪는 문제와 해결 방법
+# MySQL 락: 흔한 함정과 해결 방법
 
 ## 쉬운 설명
 
@@ -13,7 +13,7 @@ model: claude-opus-5-5
 
 ## 일반 설명
 
-> 원인이 **사용자(애플리케이션·운영자)** 인 문제만 다룬다. MySQL 자체의 장애는 [장애 유형](./05-failure-modes.md). MySQL 전반의 운영 문제는 [MySQL 자주 겪는 문제](../0001-mysql/04-pitfalls.md).
+> 원인이 **사용자(애플리케이션·운영자)** 인 문제만 다룬다. MySQL 자체의 장애는 [장애 유형](./05-failure-modes.md). MySQL 전반의 운영 문제는 [MySQL 흔한 함정](../0001-mysql/04-pitfalls.md).
 
 ### 1. 락 범위를 키우는 실수
 
@@ -104,9 +104,9 @@ model: claude-opus-5-5
 - [MySQL 락 개요와 동작 방식](./02-overview.md)
 - [MySQL 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [MySQL 락 장애 유형과 대응](./05-failure-modes.md)
-- [MySQL 자주 겪는 문제](../0001-mysql/04-pitfalls.md)
+- [MySQL 흔한 함정](../0001-mysql/04-pitfalls.md)
 - [RR에서 next-key lock이 걸리는 경우](../../../inquiry/database/0016-mysql-rr-next-key-lock-cases.md)
-- [Java 락: 자주 겪는 문제 — Spring·JPA와 섞일 때](../../languages/0002-java-lock/04-pitfalls.md#6-springjpa와-섞일-때)
+- [Java 락: 흔한 함정 — Spring·JPA와 섞일 때](../../languages/0002-java-lock/04-pitfalls.md#6-springjpa와-섞일-때)
 
 ## 참고 자료
 

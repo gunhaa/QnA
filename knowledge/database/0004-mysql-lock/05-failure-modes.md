@@ -13,7 +13,7 @@ model: claude-opus-5-5
 
 ## 일반 설명
 
-> 원인이 **MySQL·인프라 쪽**인 상황을 다룬다. 사람이 잘못 쓰는 패턴은 [자주 겪는 문제](./04-pitfalls.md). 서버·복제 장애 전반과 백업/DR은 [MySQL 장애 대응과 고가용성](../0001-mysql/05-failure-modes.md).
+> 원인이 **MySQL·인프라 쪽**인 상황을 다룬다. 사람이 잘못 쓰는 패턴은 [흔한 함정](./04-pitfalls.md). 서버·복제 장애 전반과 백업/DR은 [MySQL 장애 대응과 고가용성](../0001-mysql/05-failure-modes.md).
 
 ### 1. 락 관련 장애 유형
 
@@ -24,7 +24,7 @@ model: claude-opus-5-5
 | **데드락 폭주** | `Innodb_deadlocks` 급증, 1213 오류 다발 | 트래픽 증가로 같은 gap·행에 대한 경합이 임계점을 넘음. 재시도가 다시 경합을 만든다 |
 | **핫 로우 + 데드락 감지 과부하** | CPU 100%, 처리량 급락 | 한 행에 대기자가 수백~수천 → 락 요청마다 대기 그래프 탐색. 대기 목록 200개를 넘으면 사이클이 없어도 **데드락으로 간주해 롤백** |
 | **큰 트랜잭션 KILL 후에도 안 풀림** | `KILL` 했는데 락이 계속 유지 | KILL은 **롤백**을 시작할 뿐. 롤백은 실행한 시간만큼(또는 더) 걸리고 그동안 락 유지 |
-| **긴 트랜잭션** | 락 대기 + `History list length` 증가 → 읽기까지 느려짐 | 락과 MVCC 스냅샷을 동시에 붙잡음 → [MySQL 자주 겪는 문제 — 긴 트랜잭션](../0001-mysql/04-pitfalls.md#3-긴-트랜잭션과-history-list) |
+| **긴 트랜잭션** | 락 대기 + `History list length` 증가 → 읽기까지 느려짐 | 락과 MVCC 스냅샷을 동시에 붙잡음 → [MySQL 흔한 함정 — 긴 트랜잭션](../0001-mysql/04-pitfalls.md#3-긴-트랜잭션과-history-list) |
 
 ### 2. 크래시와 재시작
 
@@ -78,14 +78,14 @@ model: claude-opus-5-5
 3. **차단**: 신규 유입부터 멈춘다(기능 플래그, 해당 배치 중단, 진행 중인 DDL 취소).
 4. **KILL**: `KILL <blocking_pid>;` (MDL이면 DDL 세션 또는 그 앞의 긴 트랜잭션)
 5. **XA 확인**: 재시작 후라면 `XA RECOVER`.
-6. **사후**: 에러 로그의 데드락 기록, slow log, `events_statements_history`로 원인 쿼리 확인 → [자주 겪는 문제](./04-pitfalls.md)의 패턴과 대조.
+6. **사후**: 에러 로그의 데드락 기록, slow log, `events_statements_history`로 원인 쿼리 확인 → [흔한 함정](./04-pitfalls.md)의 패턴과 대조.
 
 ## 관련 문서
 
 - [MySQL 락의 역사](./01-history.md)
 - [MySQL 락 개요와 동작 방식](./02-overview.md)
 - [MySQL 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [MySQL 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [MySQL 락: 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [MySQL 장애 대응과 고가용성](../0001-mysql/05-failure-modes.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](../../languages/0002-java-lock/05-failure-modes.md)
 - [고가용성: 복제 vs 클러스터](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)

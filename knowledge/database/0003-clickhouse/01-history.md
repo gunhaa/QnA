@@ -56,7 +56,7 @@ model: claude-opus-5-5
 | 25.12 | 2025.12 | 다중 테이블 **JOIN 순서 재배치**·통계 기반 최적화 기본 활성 | 사람이 작은 테이블을 오른쪽에 두던 수동 튜닝 |
 | 26.9 | 2026.09 | 새 분석기 **필수**(`enable_analyzer` 설정 폐지) | 옛 분석기 경로 정리 |
 
-경량 DELETE·UPDATE가 왜 필요했고 어디까지 믿을 수 있는지는 [트레이드오프 — 핵심 설계 선택](./03-tradeoffs.md#1-핵심-설계-선택-얻은-것과-포기한-것)과 [자주 겪는 문제](./04-pitfalls.md)에 있다.
+경량 DELETE·UPDATE가 왜 필요했고 어디까지 믿을 수 있는지는 [트레이드오프 — 핵심 설계 선택](./03-tradeoffs.md#1-핵심-설계-선택-얻은-것과-포기한-것)과 [흔한 함정](./04-pitfalls.md)에 있다.
 
 ### 4. 릴리스 주기
 
@@ -92,7 +92,7 @@ model: claude-opus-5-5
 
 - [ClickHouse 개요와 동작 방식](./02-overview.md)
 - [ClickHouse 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [ClickHouse 사용 시 자주 겪는 문제](./04-pitfalls.md)
+- [ClickHouse 사용 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [ClickHouse 장애 유형과 복구](./05-failure-modes.md)
 - [ClickHouse란 무엇인가](../../../inquiry/database/0009-clickhouse-overview.md)
 

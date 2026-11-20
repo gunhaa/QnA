@@ -171,7 +171,7 @@ mysqlbinlog --start-position=<백업 시점 위치> \
 - [MySQL의 역사](./01-history.md)
 - [MySQL 개요와 기본 사용법](./02-overview.md)
 - [MySQL 트레이드오프 — 무엇을 얻고 무엇을 포기했나, 언제 고르나](./03-tradeoffs.md)
-- [MySQL 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [MySQL 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [고가용성: Replica와 Cluster는 무엇을 정의하나, 그리고 다른 방법들](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 
 ## 참고 자료

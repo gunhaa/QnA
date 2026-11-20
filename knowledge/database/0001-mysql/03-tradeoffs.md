@@ -13,7 +13,7 @@ MySQL은 **누구나 금방 몰 수 있는 튼튼한 소형 트럭**이다. 짐�
 
 ## 일반 설명
 
-> 동작 원리(InnoDB 구조, 격리 수준 표, 기본 SQL)는 [MySQL 개요와 기본 사용법](./02-overview.md), 고른 뒤 겪는 문제는 [자주 겪는 문제](./04-pitfalls.md)와 [장애 대응과 고가용성](./05-failure-modes.md)에서 다룬다. 이 문서는 **왜 그렇게 만들었고 대가는 무엇인가, 언제 고르나**만 다룬다.
+> 동작 원리(InnoDB 구조, 격리 수준 표, 기본 SQL)는 [MySQL 개요와 기본 사용법](./02-overview.md), 고른 뒤 겪는 문제는 [흔한 함정](./04-pitfalls.md)와 [장애 대응과 고가용성](./05-failure-modes.md)에서 다룬다. 이 문서는 **왜 그렇게 만들었고 대가는 무엇인가, 언제 고르나**만 다룬다.
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -116,7 +116,7 @@ PostgreSQL과의 락·MVCC 차이는 [MySQL과 PostgreSQL의 락 처리 차이](
 
 - [MySQL의 역사](./01-history.md)
 - [MySQL 개요와 기본 사용법](./02-overview.md)
-- [MySQL 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [MySQL 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [MySQL 장애 대응과 고가용성](./05-failure-modes.md)
 - [MySQL과 PostgreSQL은 락(Lock)을 다루는 방식이 다르다](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)
 - [PostgreSQL을 REPEATABLE READ로 올리면 MVCC를 MySQL이랑 "똑같이" 쓰는 걸까?](../../../inquiry/database/0007-postgresql-repeatable-read-mvcc-vs-mysql.md)

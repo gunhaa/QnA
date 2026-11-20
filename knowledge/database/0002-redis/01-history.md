@@ -72,7 +72,7 @@ model: claude-opus-5-5
 
 - [Redis 개요와 기본 사용법](./02-overview.md)
 - [Redis 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Redis 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Redis 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Redis 장애 대응과 고가용성](./05-failure-modes.md)
 
 ## 참고 자료

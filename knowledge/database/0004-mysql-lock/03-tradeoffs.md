@@ -13,7 +13,7 @@ InnoDB는 "**의심스러우면 넓게 잠근다**"를 골랐다. 빈칸까지 �
 
 ## 일반 설명
 
-> 동작 원리는 [개요](./02-overview.md), 고른 뒤 실수는 [자주 겪는 문제](./04-pitfalls.md), 장애는 [장애 유형](./05-failure-modes.md). 이 문서는 "왜 이렇게 만들었고, 대가는 무엇이고, 언제 무엇을 고르나"만 다룬다. MySQL 전체의 트레이드오프는 [MySQL 트레이드오프](../0001-mysql/03-tradeoffs.md).
+> 동작 원리는 [개요](./02-overview.md), 고른 뒤 실수는 [흔한 함정](./04-pitfalls.md), 장애는 [장애 유형](./05-failure-modes.md). 이 문서는 "왜 이렇게 만들었고, 대가는 무엇이고, 언제 무엇을 고르나"만 다룬다. MySQL 전체의 트레이드오프는 [MySQL 트레이드오프](../0001-mysql/03-tradeoffs.md).
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -97,7 +97,7 @@ PostgreSQL과의 모델 차이(범위 잠금 vs SSI·직렬화 오류)는 [MySQL
 
 - [MySQL 락의 역사](./01-history.md)
 - [MySQL 락 개요와 동작 방식](./02-overview.md)
-- [MySQL 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [MySQL 락: 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [MySQL 락 장애 유형과 대응](./05-failure-modes.md)
 - [MySQL 트레이드오프](../0001-mysql/03-tradeoffs.md)
 - [MySQL과 PostgreSQL의 락 처리 차이](../../../inquiry/database/0005-mysql-postgresql-lock-handling-differences.md)

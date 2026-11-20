@@ -52,7 +52,7 @@ ClickHouse에 데이터를 넣으면 **정렬된 작은 묶음(파트)** 이 하
 3. 백그라운드 스레드가 작은 파트들을 **병합(merge)** 해 큰 파트로 만든다. 이 시점에 엔진별 후처리(중복 제거, 합산 등)가 일어난다.
 4. 복제 테이블이면 Keeper에 "새 파트 생김"을 기록하고, 다른 레플리카가 그 파트를 내려받는다.
 
-이 구조의 결과로 **"INSERT는 자주·작게 보내지 말고 크게 묶어서 보낸다"** 가 ClickHouse 사용의 제1원칙이 된다. 공식 권장은 배치당 최소 1,000행, 이상적으로 10,000~100,000행, 초당 약 1회 INSERT다. 배치를 못 하면 서버 측 버퍼링인 **비동기 삽입**(`async_insert=1`)을 쓴다. 이를 어겼을 때 생기는 문제는 [자주 겪는 문제 — 작은 INSERT](./04-pitfalls.md#1-작은-insert를-자주-보낸다)에 있다.
+이 구조의 결과로 **"INSERT는 자주·작게 보내지 말고 크게 묶어서 보낸다"** 가 ClickHouse 사용의 제1원칙이 된다. 공식 권장은 배치당 최소 1,000행, 이상적으로 10,000~100,000행, 초당 약 1회 INSERT다. 배치를 못 하면 서버 측 버퍼링인 **비동기 삽입**(`async_insert=1`)을 쓴다. 이를 어겼을 때 생기는 문제는 [흔한 함정 — 작은 INSERT](./04-pitfalls.md#1-작은-insert를-자주-보낸다)에 있다.
 
 ### 4. 읽기 경로
 
@@ -78,7 +78,7 @@ ClickHouse에 데이터를 넣으면 **정렬된 작은 묶음(파트)** 이 하
 | `Distributed` | 데이터 없음. 여러 샤드에 질의·삽입을 분배 | 셀프 호스팅 샤딩 |
 | `Kafka`, `S3`, `PostgreSQL`, `MySQL` 등 | 외부 시스템을 테이블처럼 읽기·쓰기 | 수집·연동 |
 
-**중복 제거·합산은 병합 때만 일어난다.** 병합 전에는 같은 키의 행이 여러 개 보인다. `FINAL`이나 `GROUP BY`로 질의 시점에 정리해야 한다 → [자주 겪는 문제 — ReplacingMergeTree](./04-pitfalls.md#4-replacingmergetree가-바로-중복을-없애-준다고-믿는다).
+**중복 제거·합산은 병합 때만 일어난다.** 병합 전에는 같은 키의 행이 여러 개 보인다. `FINAL`이나 `GROUP BY`로 질의 시점에 정리해야 한다 → [흔한 함정 — ReplacingMergeTree](./04-pitfalls.md#4-replacingmergetree가-바로-중복을-없애-준다고-믿는다).
 
 ### 6. 머티리얼라이즈드 뷰와 딕셔너리
 
@@ -166,7 +166,7 @@ clickhouse local -q "SELECT status, count() FROM file('access.parquet') GROUP BY
 
 - [ClickHouse의 역사](./01-history.md)
 - [ClickHouse 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [ClickHouse 사용 시 자주 겪는 문제](./04-pitfalls.md)
+- [ClickHouse 사용 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [ClickHouse 장애 유형과 복구](./05-failure-modes.md)
 - [ClickHouse란 무엇인가](../../../inquiry/database/0009-clickhouse-overview.md)
 - [ClickHouse의 강점 — 컬럼 지향과 복제](../../../inquiry/database/0010-clickhouse-strengths-columnar-and-replica.md)

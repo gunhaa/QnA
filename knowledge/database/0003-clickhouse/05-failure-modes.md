@@ -13,7 +13,7 @@ ClickHouse 클러스터에서 가장 약한 고리는 데이터 서버가 아니
 
 ## 일반 설명
 
-원인이 **ClickHouse 쪽**(노드·Keeper·디스크·네트워크)인 장애와 복구를 다룬다. 사람이 잘못 써서 생기는 문제는 [자주 겪는 문제](./04-pitfalls.md)에 있다.
+원인이 **ClickHouse 쪽**(노드·Keeper·디스크·네트워크)인 장애와 복구를 다룬다. 사람이 잘못 써서 생기는 문제는 [흔한 함정](./04-pitfalls.md)에 있다.
 
 ### 1. 장애 유형
 
@@ -34,7 +34,7 @@ ClickHouse 클러스터에서 가장 약한 고리는 데이터 서버가 아니
 - 파트는 **불변**이고 완성된 뒤에야 활성으로 등록된다. 쓰던 도중 죽은 파트는 활성 집합에 들어가지 않으므로, 기존 데이터가 반쯤 덮어써지는 일은 구조적으로 없다.
 - 응답을 받지 못한 INSERT는 실패로 보고 **재시도**한다. 복제 테이블은 INSERT 블록 해시로 중복을 걸러 같은 블록 재시도가 안전하다(`insert_deduplicate`). 비복제 `MergeTree`는 재시도 시 중복이 생길 수 있으니 앱에서 멱등 키를 둔다.
 - 손상 파트가 발견되면 서버는 그 파트를 `detached` 디렉터리로 떼어 내고 시작한다. 복제 테이블이면 다른 레플리카에서 다시 받아 온다.
-- `async_insert`의 `wait_for_async_insert=0`이나 `Distributed` 백그라운드 전송처럼 **디스크 기록 전 승인하는 경로**는 크래시 시 유실될 수 있다 ([자주 겪는 문제 — 비동기 경로](./04-pitfalls.md#9-비동기-경로의-내구성을-오해한다)).
+- `async_insert`의 `wait_for_async_insert=0`이나 `Distributed` 백그라운드 전송처럼 **디스크 기록 전 승인하는 경로**는 크래시 시 유실될 수 있다 ([흔한 함정 — 비동기 경로](./04-pitfalls.md#9-비동기-경로의-내구성을-오해한다)).
 
 ### 3. 복제와 Keeper
 
@@ -89,7 +89,7 @@ ClickHouse 클러스터에서 가장 약한 고리는 데이터 서버가 아니
 | 자원 | 증상 | 대응 |
 |---|---|---|
 | 데이터 디스크 | INSERT·병합 실패, 읽기 전용 전환 | 병합은 일시적으로 원본+결과 공간이 필요하므로 여유 공간을 넉넉히. TTL로 오래된 파티션 삭제·S3 계층 이동 |
-| 병합 스레드·I/O | 파트 수 증가 → INSERT 지연 → `Too many parts` | `system.merges`로 진행 확인. 근본 원인은 대개 작은 INSERT ([자주 겪는 문제 1](./04-pitfalls.md#1-작은-insert를-자주-보낸다)) |
+| 병합 스레드·I/O | 파트 수 증가 → INSERT 지연 → `Too many parts` | `system.merges`로 진행 확인. 근본 원인은 대개 작은 INSERT ([흔한 함정 1](./04-pitfalls.md#1-작은-insert를-자주-보낸다)) |
 | 메모리 | `MEMORY_LIMIT_EXCEEDED`로 질의 실패, 서버 전체 OOM | 질의별 `max_memory_usage`, 서버 전체 `max_server_memory_usage`로 OS OOM Killer 전에 ClickHouse가 거절하게 함. 큰 JOIN·GROUP BY는 디스크 스필 설정 |
 | 뮤테이션 고착 | `system.mutations`에 실패 반복, 이후 병합 지연 | `latest_fail_reason` 확인 후 `KILL MUTATION` |
 
@@ -139,7 +139,7 @@ ClickHouse 클러스터에서 가장 약한 고리는 데이터 서버가 아니
 - [ClickHouse의 역사](./01-history.md)
 - [ClickHouse 개요와 동작 방식](./02-overview.md)
 - [ClickHouse 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [ClickHouse 사용 시 자주 겪는 문제](./04-pitfalls.md)
+- [ClickHouse 사용 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [ClickHouse의 강점 — 컬럼 지향과 복제](../../../inquiry/database/0010-clickhouse-strengths-columnar-and-replica.md)
 - [고가용성 구성 방식 — replica vs cluster](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 

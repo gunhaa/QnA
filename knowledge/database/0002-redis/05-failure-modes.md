@@ -182,7 +182,7 @@ Redis 자체의 HA만큼 중요한 것이 **애플리케이션이 Redis 장애�
 - [Redis의 역사](./01-history.md)
 - [Redis 개요와 기본 사용법](./02-overview.md)
 - [Redis 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Redis 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Redis 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [고가용성 구성 방식 — replica vs cluster, 쿼럼, DR 전략](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 
 ## 참고 자료
