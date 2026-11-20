@@ -6,7 +6,7 @@
 
 - 질문에는 웹 검색으로 최신 정보를 확인한 뒤 답한다.
 - 말투는 간결하게 쓴다.
-- 답은 `.md` 문서로 만든다.
+- 답은 `.md` 문서로 만든다. 저장소 자체(규칙·구조·사이트)에 대한 질문과 작업 지시는 문서로 만들지 않는다.
 
 # 문서 유형
 
@@ -44,7 +44,7 @@ model: claude-opus-5-5   # author: agent일 때만. 모르면 unknown
 
 # knowledge 5문서 구성
 
-사용자가 지시하면 솔루션(기술·제품)이나 개념(방법, 이론, 제도) 하나를 대상으로 `knowledge/<대주제>/<ID>-<대상>/`에 아래 **5개 문서를 모두** 작성한다. 하나라도 빠지면 knowledge가 아니다. 순서는 역사 → 개요 → 트레이드오프 → 실패 학습 구조를 따른다 (근거: [`inquiry/study-and-career/0007-history-overview-tradeoff-failure-learning-frameworks.md`](./inquiry/study-and-career/0007-history-overview-tradeoff-failure-learning-frameworks.md)).
+사용자가 지시하면 솔루션(기술·제품)이나 개념(방법, 이론, 제도) 하나를 대상으로 `knowledge/<대주제>/<ID>-<대상>/`에 아래 **5개 문서를 모두** 작성한다. 순서는 역사 → 개요 → 트레이드오프 → 실패 학습 구조를 따른다 (근거: [`inquiry/study-and-career/0007-history-overview-tradeoff-failure-learning-frameworks.md`](./inquiry/study-and-career/0007-history-overview-tradeoff-failure-learning-frameworks.md)).
 
 1. `01-history.md` — 등장 배경과 풀려던 문제 → 주요 버전·변천 → 현재 상태(최신 버전, 라이선스, 포크·경쟁 대상)
 2. `02-overview.md` — 무엇을 해결하나, 어떻게 동작하나(구조), 기본 사용법·대표 예
@@ -79,7 +79,7 @@ model: claude-opus-5-5   # author: agent일 때만. 모르면 unknown
 
   - "실패"는 개별 요청·작업의 결과에만 쓴다 (예: 쓰기 실패, 커밋 실패).
   - 각 장애 유형은 장애 지점 → 원인 → 영향 → 대응 순으로 쓰는 것을 기본으로 한다.
-- 세트를 쓸 때 그 대상을 다루는 기존 inquiry를 재료로 쓰고, 각 inquiry에서 세트를 관련 문서로 링크한다.
+- 세트를 쓸 때 그 대상을 다루는 inquiry·source를 재료로 쓰고, 각 inquiry에서 세트를 관련 문서로 링크한다.
 - 다섯 문서는 서로를 관련 문서로 링크한다. 같은 내용은 한 문서에서만 자세히 쓰고 나머지는 링크한다.
 - 평가 단계(스스로 확인 질문)는 문서에 넣지 않는다. 사용자가 직접 만든다.
 - 대상 안의 큰 하위 주제는 별도 대상으로 세트를 만든다 (예: `knowledge/languages/<ID>-java-lock/`).
@@ -137,4 +137,4 @@ model: claude-opus-5-5   # author: agent일 때만. 모르면 unknown
 # 커밋 규칙
 
 - 커밋/푸시 시점에 아직 커밋되지 않은 변경이 여러 대주제에 걸쳐 있다면, 하나의 커밋으로 묶지 말고 **대주제별로 나누어 각각 커밋**한다.
-- 같은 대주제 내 변경이라도 성격이 다르면(예: 새 답변 추가 vs 기존 답변 폴더 재구성) 별도 커밋으로 분리하는 것을 우선 고려한다.
+- 같은 대주제 내 변경이라도 성격이 다르면(예: 새 문서 추가 vs 폴더 재구성) 별도 커밋으로 분리하는 것을 우선 고려한다.
