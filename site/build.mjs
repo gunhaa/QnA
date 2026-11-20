@@ -134,26 +134,26 @@ function headingIds(file) {
 
 const problems = [];
 
-// 정제본 링크 (site/distilled.yaml). 키는 대주제·세트·문서 경로,
-// 값은 computer_study 저장소 안 경로(CS/Database/Distilled.md#redis) 또는 전체 주소.
-// 위치를 적지 않은 세트·문서는 "distilled (soon)"으로 computer_study 첫 화면에 연결한다.
-const DISTILLED_REPO = 'https://github.com/gunhaa/computer_study';
-const distilledUrl = (v) =>
-  /^https?:\/\//.test(v) ? v : `${DISTILLED_REPO}/${/\.md(#|$)/.test(v) ? 'blob' : 'tree'}/main/${encodeURI(v.replace(/^\/+/, ''))}`;
-const distilled = Object.fromEntries(
-  Object.entries(YAML.parse(fs.readFileSync(path.join(SITE_DIR, 'distilled.yaml'), 'utf8')) ?? {})
-    .map(([k, v]) => [k, distilledUrl(String(v))]),
+// 요약본 링크 (site/digest.yaml). 키는 대주제·세트·문서 경로,
+// 값은 computer_study 저장소 안 경로(CS/Database/Digest.md#redis) 또는 전체 주소.
+// 위치를 적지 않은 세트·문서는 "digest (soon)"으로 computer_study 첫 화면에 연결한다.
+const DIGEST_REPO = 'https://github.com/gunhaa/computer_study';
+const digestUrl = (v) =>
+  /^https?:\/\//.test(v) ? v : `${DIGEST_REPO}/${/\.md(#|$)/.test(v) ? 'blob' : 'tree'}/main/${encodeURI(v.replace(/^\/+/, ''))}`;
+const digest = Object.fromEntries(
+  Object.entries(YAML.parse(fs.readFileSync(path.join(SITE_DIR, 'digest.yaml'), 'utf8')) ?? {})
+    .map(([k, v]) => [k, digestUrl(String(v))]),
 );
 const knownKeys = new Set(
   sets.flatMap((s) => [s.topic, `${s.topic}/${s.dir}`, ...s.docs.map((d) => `${s.topic}/${s.dir}/${d.name}`)]),
 );
-for (const key of Object.keys(distilled)) {
-  if (!knownKeys.has(key)) problems.push(`distilled.yaml: 없는 경로 ${key}`);
+for (const key of Object.keys(digest)) {
+  if (!knownKeys.has(key)) problems.push(`digest.yaml: 없는 경로 ${key}`);
 }
-// 문서 → 세트 → 대주제 순으로 가장 구체적인 정제본 주소
-const distilledFor = (...keys) => keys.map((k) => distilled[k]).find(Boolean);
-const distilledLink = (url) =>
-  url ? kindLink(url, 'distilled', 'gh distilled') : kindLink(DISTILLED_REPO, 'distilled (soon)', 'gh distilled pending');
+// 문서 → 세트 → 대주제 순으로 가장 구체적인 요약본 주소
+const digestFor = (...keys) => keys.map((k) => digest[k]).find(Boolean);
+const digestLink = (url) =>
+  url ? kindLink(url, 'digest', 'gh digest') : kindLink(DIGEST_REPO, 'digest (soon)', 'gh digest pending');
 
 // 실습 프로젝트 (site/labs.yaml). 따로 배포된 예제 코드 사이트로, 연결한 세트에만 labs 링크가 붙는다
 const labs = YAML.parse(fs.readFileSync(path.join(SITE_DIR, 'labs.yaml'), 'utf8')) ?? [];
@@ -352,8 +352,8 @@ for (const set of sets) {
           : kindLink(`${d.name}.html`, label);
       })
       .join('<br>');
-    const docDistilled = distilledFor(`${set.topic}/${set.dir}/${doc.name}`, `${set.topic}/${set.dir}`, set.topic);
-    const extras = [distilledLink(docDistilled), ...labsLinks(`${set.topic}/${set.dir}`)].join('<br>');
+    const docDigest = digestFor(`${set.topic}/${set.dir}/${doc.name}`, `${set.topic}/${set.dir}`, set.topic);
+    const extras = [digestLink(docDigest), ...labsLinks(`${set.topic}/${set.dir}`)].join('<br>');
     const marginNav = `<p class="nav-holder"><span class="marginnote margin-nav"><strong>${escapeHtml(set.label)}</strong><br>${navItems}<br><br>${extras}<br><a href="../../index.html">← 전체 목록</a></span></p>`;
 
     const crumbs = `<a class="home" href="../../index.html"><img class="avatar-sm" src="${AVATAR(40)}" alt="" width="20" height="20">${SITE_TITLE}</a> / ${escapeHtml(topicLabel)} / ${escapeHtml(set.label)}`;
@@ -376,11 +376,11 @@ const kindTag = (label) => `<span class="kind">${label}</span>`;
 const indexBody = [
   `<section><p>하나의 지식을 다섯 문서로 정리합니다.</p><ul>`
     + `<li>${['history', 'overview', 'tradeoffs', 'pitfalls', 'failure-modes'].map(kindTag).join(' · ')}: 역사 → 개요 → 트레이드오프 → 흔한 함정 → 장애 유형 순서로 읽습니다.</li>`
-    + `<li>${kindTag('distilled')}: 정리된 내용을 사람이 직접 검수하고 다듬은 핵심 요약입니다. 분야별로 <a class="gh" href="${DISTILLED_REPO}">computer_study</a>에 올립니다.</li>`
+    + `<li>${kindTag('digest')}: 정리된 내용을 사람이 직접 검수하고 다듬은 핵심 요약입니다. 분야별로 <a class="gh" href="${DIGEST_REPO}">computer_study</a>에 올립니다.</li>`
     + `<li>${kindTag('labs')}: 직접 코드로 확인한 예제 프로젝트입니다.</li>`
     + `</ul><p>질문 단위로 쓴 기록은 <a class="gh" href="https://github.com/gunhaa/knowledge">GitHub 저장소</a>에 있습니다.</p></section>`,
   // 대주제마다 표 하나: 세트 이름 | 원본 5문서 | 정리·실습
-  // distilled·labs는 칸 안의 고정 자리에 두어, 없는 세트도 자리를 비워 세로줄을 맞춘다
+  // digest·labs는 칸 안의 고정 자리에 두어, 없는 세트도 자리를 비워 세로줄을 맞춘다
   ...[...byTopic].map(([topic, topicSets]) => {
     const rows = topicSets
       .map((s) => {
@@ -389,22 +389,22 @@ const indexBody = [
         const links = s.docs
           .filter((d) => d !== labsDoc)
           .map((d) => {
-            const docDistilled = distilled[`${s.topic}/${s.dir}/${d.name}`];
-            return `${kindLink(`${s.topic}/${s.dir}/${d.name}.html`, docKind(d.name))}${docDistilled ? `<sup>${distilledLink(docDistilled)}</sup>` : ''}`;
+            const docDigest = digest[`${s.topic}/${s.dir}/${d.name}`];
+            return `${kindLink(`${s.topic}/${s.dir}/${d.name}.html`, docKind(d.name))}${docDigest ? `<sup>${digestLink(docDigest)}</sup>` : ''}`;
           })
           .join('');
         const setKey = `${s.topic}/${s.dir}`;
-        const setDistilled = distilledFor(setKey, s.topic);
-        const distilledSlot = setDistilled
-          ? kindLink(setDistilled, 'distilled', 'gh distilled')
-          : '<span class="kind off" title="준비 중">distilled</span>';
+        const setDigest = digestFor(setKey, s.topic);
+        const digestSlot = setDigest
+          ? kindLink(setDigest, 'digest', 'gh digest')
+          : '<span class="kind off" title="준비 중">digest</span>';
         const labsDocLink = labsDoc ? [kindLink(`${setKey}/${labsDoc.name}.html`, 'labs', 'labs')] : [];
         const labsSlot = `<span class="slot">${[...labsDocLink, ...labsLinks(setKey)].join(' ')}</span>`;
-        return `<tr><td class="name">${escapeHtml(s.label)}</td><td class="docs">${links}</td><td class="extra"><span class="slot">${distilledSlot}</span>${labsSlot}</td></tr>`;
+        return `<tr><td class="name">${escapeHtml(s.label)}</td><td class="docs">${links}</td><td class="extra"><span class="slot">${digestSlot}</span>${labsSlot}</td></tr>`;
       })
       .join('\n');
-    const topicDistilled = distilled[topic];
-    return `<section><h2>${escapeHtml(TOPIC_LABELS[topic] ?? topic)}${topicDistilled ? ` <small>${distilledLink(topicDistilled)}</small>` : ''}</h2>`
+    const topicDigest = digest[topic];
+    return `<section><h2>${escapeHtml(TOPIC_LABELS[topic] ?? topic)}${topicDigest ? ` <small>${digestLink(topicDigest)}</small>` : ''}</h2>`
       + `<table class="sets"><thead><tr><th></th><th>원본 5문서</th><th class="extra">정리·실습</th></tr></thead><tbody>${rows}</tbody></table></section>`;
   }),
 ].join('\n');
@@ -426,7 +426,7 @@ fs.writeFileSync(path.join(DIST, '.nojekyll'), '');
 
 console.log(`세트 ${sets.length}개, 문서 ${pageCount}개 → ${toPosix(path.relative(REPO, DIST))}/`);
 if (problems.length) {
-  console.error(`\n빌드 문제 ${problems.length}개 (끊긴 링크·앵커, distilled.yaml·labs.yaml 경로):`);
+  console.error(`\n빌드 문제 ${problems.length}개 (끊긴 링크·앵커, digest.yaml·labs.yaml 경로):`);
   for (const p of problems) console.error(`  - ${p}`);
   process.exit(1);
 }

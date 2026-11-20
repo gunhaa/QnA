@@ -1,12 +1,12 @@
-# 정제본(distilled) 연결
+# 요약본(digest) 연결
 #
-# 이 사이트의 knowledge 문서는 정제하기 전의 원본이다.
-# 정제본은 computer_study 저장소(https://github.com/gunhaa/computer_study)에 분야당 문서 하나로 정리하고,
+# 이 사이트의 knowledge 문서는 요약하기 전의 원본이다.
+# 요약본은 computer_study 저장소(https://github.com/gunhaa/computer_study)에 분야당 문서 하나로 정리하고,
 # 여기에 그 위치(경로, 필요하면 #앵커까지)를 적는다.
 #
-# 모든 세트와 문서 페이지에는 정제본 링크가 붙는다.
-#   - 위치를 적은 곳: "distilled" → 적은 위치
-#   - 적지 않은 곳:   "distilled (soon)" → computer_study 첫 화면
+# 모든 세트와 문서 페이지에는 요약본 링크가 붙는다.
+#   - 위치를 적은 곳: "digest" → 적은 위치
+#   - 적지 않은 곳:   "digest (soon)" → computer_study 첫 화면
 #
 # 키: knowledge/ 기준 경로. 세 단계 중 하나
 #   대주제   database
@@ -19,7 +19,7 @@
 # 키에 없는 경로를 적으면 빌드가 실패한다. 값(computer_study 쪽 경로·앵커)은 검사하지 않는다.
 #
 # 예:
-#   database: CS/Database/Distilled.md
-#   database/0002-redis: CS/Database/Distilled.md#redis
-#   database/0002-redis/03-tradeoffs: CS/Database/Distilled.md#redis-트레이드오프
+#   database: CS/Database/Digest.md
+#   database/0002-redis: CS/Database/Digest.md#redis
+#   database/0002-redis/03-tradeoffs: CS/Database/Digest.md#redis-트레이드오프
 {}
