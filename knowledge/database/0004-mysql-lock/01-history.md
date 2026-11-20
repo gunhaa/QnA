@@ -54,7 +54,7 @@ model: claude-opus-5-5
 - [MySQL 락: 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [MySQL 락 장애 유형과 대응](./05-failure-modes.md)
 - [MySQL의 역사](../0001-mysql/01-history.md)
-- [Java 락의 역사](../../languages/0002-java-lock/01-history.md)
+- [Java 락의 역사](../../java/0002-java-lock/01-history.md)
 
 ## 참고 자료
 

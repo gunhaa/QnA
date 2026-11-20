@@ -15,7 +15,7 @@ model: claude-opus-5-5
 
 ### 1. 등장 배경 (2009~2013): JVM 밖의 상호 배제
 
-- 웹 서비스가 **여러 인스턴스**로 늘면서 `synchronized`·`ReentrantLock`은 프로세스 하나 안에서만 유효해졌다. 같은 주문을 두 서버가 동시에 처리하거나, 스케줄러 배치가 서버 수만큼 중복 실행되는 문제가 생겼다 → [Java 락의 역사 — JVM 밖으로](../../languages/0002-java-lock/01-history.md#3-jvm-밖으로-분산-락의-시대).
+- 웹 서비스가 **여러 인스턴스**로 늘면서 `synchronized`·`ReentrantLock`은 프로세스 하나 안에서만 유효해졌다. 같은 주문을 두 서버가 동시에 처리하거나, 스케줄러 배치가 서버 수만큼 중복 실행되는 문제가 생겼다 → [Java 락의 역사 — JVM 밖으로](../../java/0002-java-lock/01-history.md#3-jvm-밖으로-분산-락의-시대).
 - DB 락(`SELECT ... FOR UPDATE`)은 정확하지만, 락 하나를 위해 트랜잭션과 커넥션을 붙잡아야 하고 DB 부하가 늘었다.
 - Redis는 **단일 스레드로 명령을 하나씩 원자적으로 실행**하고 응답이 1ms 안쪽이라, "키가 없으면 만든다"(`SETNX`)는 명령 하나로 상호 배제를 흉내 낼 수 있었다. 공식 문서도 `SETNX`를 락 용도로 소개했다.
 - 초기 패턴의 약점: `SETNX`는 만료 시간을 함께 줄 수 없어서 `SETNX` → `EXPIRE` 두 명령 사이에 클라이언트가 죽으면 **락이 영원히 남았다**. 이를 피하려고 값에 만료 시각을 넣고 `GETSET`으로 빼앗는 복잡한 패턴이 문서에 실렸다.
@@ -61,7 +61,7 @@ model: claude-opus-5-5
 - [Redis 락 장애 유형과 대응](./05-failure-modes.md)
 - [Redis의 역사](../0002-redis/01-history.md)
 - [MySQL 락의 역사](../0004-mysql-lock/01-history.md)
-- [Java 락의 역사](../../languages/0002-java-lock/01-history.md)
+- [Java 락의 역사](../../java/0002-java-lock/01-history.md)
 
 ## 참고 자료
 

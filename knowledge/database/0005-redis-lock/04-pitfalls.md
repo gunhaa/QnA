@@ -166,7 +166,7 @@ while not r.set(key, token, nx=True, px=30000):
 - [Redis 락 장애 유형과 대응](./05-failure-modes.md)
 - [Redis 운영 시 흔한 함정 — 분산 락의 함정](../0002-redis/04-pitfalls.md#7-분산-락의-함정)
 - [MySQL 락: 흔한 함정과 해결 방법](../0004-mysql-lock/04-pitfalls.md)
-- [Java 락 흔한 함정](../../languages/0002-java-lock/04-pitfalls.md)
+- [Java 락 흔한 함정](../../java/0002-java-lock/04-pitfalls.md)
 
 ## 참고 자료
 

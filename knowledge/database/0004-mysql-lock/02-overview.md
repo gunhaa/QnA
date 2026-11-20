@@ -156,7 +156,7 @@ SHOW ENGINE INNODB STATUS\G   -- LATEST DETECTED DEADLOCK
 - [gap lock·next-key lock 용어 정리](../../../inquiry/database/0003-mysql-gap-lock-next-key-lock-mechanism-and-terms.md)
 - [next-key lock은 RR에서만 걸리나](../../../inquiry/database/0004-mysql-next-key-lock-scope-and-postgres-visibility-check.md)
 - [RR에서 next-key lock이 걸리는 경우](../../../inquiry/database/0016-mysql-rr-next-key-lock-cases.md)
-- [Java 락 개요](../../languages/0002-java-lock/02-overview.md)
+- [Java 락 개요](../../java/0002-java-lock/02-overview.md)
 
 ## 참고 자료
 

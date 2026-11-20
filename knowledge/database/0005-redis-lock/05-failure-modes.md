@@ -149,7 +149,7 @@ Redis 락이 제 기능을 못 하는 경우는 크게 둘이다. **게시판(Re
 - [Redis 락 사용 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Redis 장애 대응과 고가용성](../0002-redis/05-failure-modes.md)
 - [MySQL 락 장애 유형과 대응](../0004-mysql-lock/05-failure-modes.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](../../languages/0002-java-lock/05-failure-modes.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](../../java/0002-java-lock/05-failure-modes.md)
 - [고가용성: 복제 vs 클러스터와 패턴](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 
 ## 참고 자료

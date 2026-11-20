@@ -106,7 +106,7 @@ Redis 락은 **빠르고 간편한 대신 "가끔 두 명이 동시에 열쇠를
 | 정확성이 필수인데 fencing을 걸 곳이 없음 | 락이 뚫리는 순간을 막을 수단이 없음 | etcd/ZooKeeper + fencing, 멱등키 |
 | 락 보유 시간이 길다(수 분~시간) | TTL·연장 관리가 어려워지고 장애 시 대기 김 | 작업 상태 테이블(상태 컬럼 + 조건부 갱신), 워크플로 엔진 |
 | 한 키에 초당 수천 번 경합 | 핫 키 → Redis 한 샤드 과부하, 대부분 대기 | 파티셔닝, 큐로 직렬화, 원자 명령(`INCRBY`, Lua)으로 락 없이 |
-| 단일 프로세스 | 네트워크 왕복이 낭비 | JVM 락 → [Java 락](../../languages/0002-java-lock/03-tradeoffs.md) |
+| 단일 프로세스 | 네트워크 왕복이 낭비 | JVM 락 → [Java 락](../../java/0002-java-lock/03-tradeoffs.md) |
 
 ### 6. 선택 체크리스트
 
@@ -126,7 +126,7 @@ Redis 락은 **빠르고 간편한 대신 "가끔 두 명이 동시에 열쇠를
 - [Redis 락 장애 유형과 대응](./05-failure-modes.md)
 - [Redis 트레이드오프와 선택 기준](../0002-redis/03-tradeoffs.md)
 - [MySQL 락 트레이드오프와 선택 기준](../0004-mysql-lock/03-tradeoffs.md)
-- [Java 락 트레이드오프](../../languages/0002-java-lock/03-tradeoffs.md)
+- [Java 락 트레이드오프](../../java/0002-java-lock/03-tradeoffs.md)
 - [고가용성: 복제 vs 클러스터와 패턴](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 
 ## 참고 자료

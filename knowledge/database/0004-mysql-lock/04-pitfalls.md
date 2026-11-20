@@ -106,7 +106,7 @@ model: claude-opus-5-5
 - [MySQL 락 장애 유형과 대응](./05-failure-modes.md)
 - [MySQL 흔한 함정](../0001-mysql/04-pitfalls.md)
 - [RR에서 next-key lock이 걸리는 경우](../../../inquiry/database/0016-mysql-rr-next-key-lock-cases.md)
-- [Java 락: 흔한 함정 — Spring·JPA와 섞일 때](../../languages/0002-java-lock/04-pitfalls.md#6-springjpa와-섞일-때)
+- [Java 락: 흔한 함정 — Spring·JPA와 섞일 때](../../java/0002-java-lock/04-pitfalls.md#6-springjpa와-섞일-때)
 
 ## 참고 자료
 

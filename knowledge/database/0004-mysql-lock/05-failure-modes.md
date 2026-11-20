@@ -87,7 +87,7 @@ model: claude-opus-5-5
 - [MySQL 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [MySQL 락: 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [MySQL 장애 대응과 고가용성](../0001-mysql/05-failure-modes.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](../../languages/0002-java-lock/05-failure-modes.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](../../java/0002-java-lock/05-failure-modes.md)
 - [고가용성: 복제 vs 클러스터](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 
 ## 참고 자료

@@ -155,7 +155,7 @@ public void settle() { ... }
 - [Redis 락 장애 유형과 대응](./05-failure-modes.md)
 - [Redis 개요와 기본 사용법](../0002-redis/02-overview.md)
 - [MySQL 락 개요와 동작 방식](../0004-mysql-lock/02-overview.md)
-- [Java 락 개요](../../languages/0002-java-lock/02-overview.md)
+- [Java 락 개요](../../java/0002-java-lock/02-overview.md)
 
 ## 참고 자료
 
