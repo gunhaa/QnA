@@ -37,7 +37,7 @@ Kafka 수신은 **"엔드포인트를 계속 두드리는 감시"도, "브로커
 ## 관련 문서
 
 - [Kafka 개요 — 읽기 경로와 리밸런스 프로토콜](../../knowledge/distributed-systems/0001-kafka/02-overview.md#7-읽기-경로-컨슈머)
-- [Kafka 운영 시 자주 겪는 문제 — 컨슈머 실수](../../knowledge/distributed-systems/0001-kafka/04-pitfalls.md#3-컨슈머-실수)
+- [Kafka 운영 시 흔한 함정 — 컨슈머 실수](../../knowledge/distributed-systems/0001-kafka/04-pitfalls.md#3-컨슈머-실수)
 
 **출처**
 - [Understanding Long Polling in Kafka: A Deep Dive | Medium](https://tahseenrchowdhury.medium.com/understanding-long-polling-in-kafka-a-deep-dive-982c07abef6d)

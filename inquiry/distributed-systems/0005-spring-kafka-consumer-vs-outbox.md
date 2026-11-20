@@ -60,7 +60,7 @@ Spring Kafka Consumer의 "폴링"은 **이미 Kafka 안에 있는 메시지를 �
 
 ## 관련 문서
 
-- [Kafka 운영 시 자주 겪는 문제 — 전달 보장과 중복](../../knowledge/distributed-systems/0001-kafka/04-pitfalls.md#4-전달-보장과-중복)
+- [Kafka 운영 시 흔한 함정 — 전달 보장과 중복](../../knowledge/distributed-systems/0001-kafka/04-pitfalls.md#4-전달-보장과-중복)
 
 **출처**
 - [Message Listener Containers | Spring Kafka 공식 문서](https://docs.spring.io/spring-kafka/reference/kafka/receiving-messages/message-listener-container.html)

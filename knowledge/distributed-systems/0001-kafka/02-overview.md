@@ -120,7 +120,7 @@ Kafka는 **번호가 매겨진 칸에 기록을 차례로 적어 나가는 두�
 | **at-least-once** (실무 기본) | 처리 후 커밋 + 멱등 프로듀서. 소비 측은 멱등 처리 필요 |
 | exactly-once | **Kafka → Kafka** 구간에서 트랜잭션(`transactional.id`) + 컨슈머 `isolation.level=read_committed`(기본은 `read_uncommitted`). Streams는 `processing.guarantee=exactly_once_v2` |
 
-외부 DB에 쓰는 소비자까지 exactly-once가 되지는 않는다. 이 오해는 [자주 겪는 문제 — 전달 보장](./04-pitfalls.md#4-전달-보장과-중복)에서 다룬다. DB 변경과 이벤트 발행을 묶는 방법은 [Spring Kafka Consumer vs Transactional Outbox](../../../inquiry/distributed-systems/0005-spring-kafka-consumer-vs-outbox.md).
+외부 DB에 쓰는 소비자까지 exactly-once가 되지는 않는다. 이 오해는 [흔한 함정 — 전달 보장](./04-pitfalls.md#4-전달-보장과-중복)에서 다룬다. DB 변경과 이벤트 발행을 묶는 방법은 [Spring Kafka Consumer vs Transactional Outbox](../../../inquiry/distributed-systems/0005-spring-kafka-consumer-vs-outbox.md).
 
 ### 10. 기본 사용법
 
@@ -169,7 +169,7 @@ while (running) {
 
 - [Kafka의 역사](./01-history.md)
 - [Kafka 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Kafka 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Kafka 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Kafka 장애 대응과 고가용성](./05-failure-modes.md)
 - [Kafka(카프카)가 뭐예요?](../../../inquiry/distributed-systems/0002-kafka-overview.md)
 

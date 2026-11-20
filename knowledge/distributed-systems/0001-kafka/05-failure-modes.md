@@ -13,7 +13,7 @@ Kafka는 같은 기록을 서버 세 대에 나눠 들고 있어서 한 대가 �
 
 ## 일반 설명
 
-이 문서는 **Kafka 자체의 장애**를 다룬다. 사람이 설정·사용을 잘못한 문제는 [자주 겪는 문제](./04-pitfalls.md)에 있다. 리더·팔로워·ISR·HW 개념은 [개요 — 복제 요약](./02-overview.md#5-복제-요약)과 [Kafka 복제 모델](../../../inquiry/distributed-systems/0008-kafka-replication-model-and-control-plane.md)에 있다.
+이 문서는 **Kafka 자체의 장애**를 다룬다. 사람이 설정·사용을 잘못한 문제는 [흔한 함정](./04-pitfalls.md)에 있다. 리더·팔로워·ISR·HW 개념은 [개요 — 복제 요약](./02-overview.md#5-복제-요약)과 [Kafka 복제 모델](../../../inquiry/distributed-systems/0008-kafka-replication-model-and-control-plane.md)에 있다.
 
 ### 1. 장애 유형 한눈에 보기
 
@@ -129,7 +129,7 @@ DR 일반 전략(Pilot Light, Warm Standby 등)은 [고가용성 구성 방식](
 - [Kafka의 역사](./01-history.md)
 - [Kafka 개요와 기본 사용법](./02-overview.md)
 - [Kafka 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Kafka 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Kafka 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Redis 장애 대응과 고가용성](../../database/0002-redis/05-failure-modes.md)
 
 ## 참고 자료
