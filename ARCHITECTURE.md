@@ -20,7 +20,7 @@ factual/                          목록·수치·가격·현황 (주기적 재�
 └── <대주제>/<ID>-<이름>.md
 knowledge/                        5문서 세트만
 └── <대주제>/<ID>-<대상>/
-    └── 01-history.md … 05-failures.md
+    └── 01-history.md … 05-failure-modes.md
 source/                           저작물 자체의 분석
 └── <대주제>/<ID>-<제목>-<저자성>-<연도>/
     └── 01-overview.md → 02-….md
@@ -31,7 +31,7 @@ flowchart LR
     root["저장소 루트"] --> q["inquiry/"] & f["factual/"] & k["knowledge/"] & s["source/"]
     q --> qm["대주제/"] --> qf["ID-이름.md<br/>또는 ID-연재/NN-…"]
     f --> fm["대주제/"] --> ff["ID-이름.md"]
-    k --> km["대주제/"] --> kt["ID-대상/<br/>01-history … 05-failures"]
+    k --> km["대주제/"] --> kt["ID-대상/<br/>01-history … 05-failure-modes"]
     s --> sm["대주제/"] --> sw["ID-제목-저자성-연도/<br/>01-overview → 02-…"]
 ```
 
@@ -72,7 +72,7 @@ flowchart LR
 flowchart TD
     start["새 답변 문서"] --> src{"저작물 자체를<br/>장 구조로 분석하나?"}
     src -- 예 --> S["source/"]
-    src -- 아니오 --> know{"대상의 5문서 세트<br/>(01-history ~ 05-failures)의 하나인가?"}
+    src -- 아니오 --> know{"대상의 5문서 세트<br/>(01-history ~ 05-failure-modes)의 하나인가?"}
     know -- 예 --> K["knowledge/"]
     know -- 아니오 --> fact{"목록·수치·가격·현황·<br/>개별 사실이 중심인가?"}
     fact -- 예 --> F["factual/"]
@@ -111,7 +111,7 @@ flowchart TD
 flowchart LR
     subgraph k5["knowledge/대주제/ID-대상/ — 5문서"]
         direction LR
-        h["01-history"] --> o["02-overview"] --> t["03-tradeoffs"] --> p["04-pitfalls"] --> fl["05-failures"]
+        h["01-history"] --> o["02-overview"] --> t["03-tradeoffs"] --> p["04-pitfalls"] --> fl["05-failure-modes"]
     end
     subgraph src["source/대주제/ID-저작물/ — 원전"]
         direction LR
@@ -125,7 +125,7 @@ flowchart LR
 
 | 묶음 | 위치 | 내용 규칙 |
 |---|---|---|
-| knowledge 5문서 | `knowledge/<대주제>/<ID>-<대상>/01-history` ~ `05-failures` | [CLAUDE.md — knowledge 5문서 구성](./CLAUDE.md#knowledge-5문서-구성) |
+| knowledge 5문서 | `knowledge/<대주제>/<ID>-<대상>/01-history` ~ `05-failure-modes` | [CLAUDE.md — knowledge 5문서 구성](./CLAUDE.md#knowledge-5문서-구성) |
 | 원전 분석 | `source/<대주제>/<ID>-<제목>-<저자성>-<연도>/01-overview` → `02-…` | [CLAUDE.md — 원전 분석](./CLAUDE.md#원전-분석-source) |
 | 연재 | `inquiry/<대주제>/<ID>-<연재>/01-…` | — |
 
