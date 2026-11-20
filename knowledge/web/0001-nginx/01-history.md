@@ -80,12 +80,12 @@ NGINX Plus의 가격과 "지원을 산다"는 의미는 [NGINX Plus 비용](../.
 | **Kubernetes Ingress NGINX**(`kubernetes/ingress-nginx`) | 쿠버네티스 커뮤니티의 nginx 기반 인그레스 컨트롤러 | **2026년 3월 은퇴**, 저장소 보관(archived). 이후 보안 패치 없음 |
 | **F5 NGINX Ingress Controller / NGINX Gateway Fabric** | F5가 관리하는 별도 프로젝트 | 활동 중(Gateway Fabric 2.8.1, 2026.11) |
 
-Ingress NGINX 은퇴의 배경은 유지보수 인력 부족과 2025년 3월 **IngressNightmare**(CVE-2025-1974 등 CVSS 9.8, 어드미션 컨트롤러를 통한 설정 주입 → 클러스터 장악) 같은 취약점이다. 이 취약점은 nginx 자체가 아니라 컨트롤러의 결함이다. 운영 중 영향은 [장애 대응 — 쿠버네티스](./05-failures.md#6-쿠버네티스-인그레스로-쓸-때)에 있다.
+Ingress NGINX 은퇴의 배경은 유지보수 인력 부족과 2025년 3월 **IngressNightmare**(CVE-2025-1974 등 CVSS 9.8, 어드미션 컨트롤러를 통한 설정 주입 → 클러스터 장악) 같은 취약점이다. 이 취약점은 nginx 자체가 아니라 컨트롤러의 결함이다. 운영 중 영향은 [장애 대응 — 쿠버네티스](./05-failure-modes.md#6-쿠버네티스-인그레스로-쓸-때)에 있다.
 
 ### 6. 현재 상태 (2026년 11월)
 
 - **최신 버전**: stable **1.30.6**(2026-10-14), mainline **1.31.8**(2026-10-21). njs는 1.0.x(1.0.0부터 자체 njs 엔진을 폐기 예정으로 두고 QuickJS 엔진 중심).
-- **보안 릴리스 빈도**: 2026년에만 stable이 1.28.2~1.28.3, 1.30.1~1.30.6으로 이어지며 대부분 CVE 수정이었다(rewrite·HTTP/3·SSI·mp4 모듈 등). 상세는 [장애 대응 — 보안 취약점](./05-failures.md#7-보안-취약점--패치가-곧-가용성)에 있다.
+- **보안 릴리스 빈도**: 2026년에만 stable이 1.28.2~1.28.3, 1.30.1~1.30.6으로 이어지며 대부분 CVE 수정이었다(rewrite·HTTP/3·SSI·mp4 모듈 등). 상세는 [장애 대응 — 보안 취약점](./05-failure-modes.md#7-보안-취약점--패치가-곧-가용성)에 있다.
 - **점유율**: W3Techs(2026년 5월, 서버를 식별한 사이트 기준) nginx 32.7%, Cloudflare 27.8%, Apache 23.6%, LiteSpeed 15.2%. Netcraft(2026년 7월, 전체 사이트) nginx 20.37%, OpenResty 별도 8.02%. 측정 방식이 달라 숫자끼리 직접 비교하지 않는다.
 - **경쟁 대상**: Caddy(2.11.x, 자동 HTTPS), Envoy(1.40.x, xDS 동적 설정), HAProxy(3.4 LTS), Traefik(3.7.x, 서비스 디스커버리). 비교는 [트레이드오프 — 대안 비교](./03-tradeoffs.md#2-대안-비교)에 있다.
 
@@ -94,7 +94,7 @@ Ingress NGINX 은퇴의 배경은 유지보수 인력 부족과 2025년 3월 **I
 - [NGINX 개요와 기본 사용법](./02-overview.md)
 - [NGINX 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [NGINX 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [NGINX 장애 대응과 고가용성](./05-failures.md)
+- [NGINX 장애 대응과 고가용성](./05-failure-modes.md)
 - [nginx는 어떻게 태어났고, 어떤 자식들이 있을까?](../../../inquiry/web/0005-nginx-origin-and-forks.md)
 
 ## 참고 자료

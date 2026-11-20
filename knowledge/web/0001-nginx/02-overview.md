@@ -130,7 +130,7 @@ location이 정해지면 요청은 11개 처리 단계(rewrite → access → co
 | USR2 → WINCH → QUIT | 실행 파일 무중단 교체(새 마스터 기동 → 옛 워커 정리 → 옛 마스터 종료) |
 | `nginx -s quit` (QUIT) | 그레이스풀 종료 |
 
-리로드는 무중단이지만 공짜는 아니다. 옛 워커가 긴 연결(WebSocket 등)을 붙든 채 남는 문제는 [장애 대응 — 리로드](./05-failures.md#3-리로드와-업그레이드가-남기는-문제)에 있다.
+리로드는 무중단이지만 공짜는 아니다. 옛 워커가 긴 연결(WebSocket 등)을 붙든 채 남는 문제는 [장애 대응 — 리로드](./05-failure-modes.md#3-리로드와-업그레이드가-남기는-문제)에 있다.
 
 ### 7. 확장 방식
 
@@ -147,7 +147,7 @@ location이 정해지면 요청은 11개 처리 단계(rewrite → access → co
 - [NGINX의 역사](./01-history.md)
 - [NGINX 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [NGINX 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [NGINX 장애 대응과 고가용성](./05-failures.md)
+- [NGINX 장애 대응과 고가용성](./05-failure-modes.md)
 - [nginx 워커는 정말 각자 독립된 이벤트 루프를 가질까?](../../../inquiry/web/0007-nginx-worker-event-loop-architecture.md)
 - [nginx의 요청 처리 단계와 OpenResty·njs](../../../inquiry/web/0004-nginx-openresty-njs-request-processing-phases.md)
 

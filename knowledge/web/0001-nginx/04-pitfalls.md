@@ -13,7 +13,7 @@ NGINX 사고의 대부분은 NGINX가 고장 나서가 아니라 **설정 한 �
 
 ## 일반 설명
 
-원인이 **사람(설정·사용법)** 인 문제만 다룬다. NGINX 자체가 깨지는 상황은 [장애 대응](./05-failures.md)에 있다.
+원인이 **사람(설정·사용법)** 인 문제만 다룬다. NGINX 자체의 장애는 [장애 대응](./05-failure-modes.md)에 있다.
 
 ### 1. 설정 함정
 
@@ -83,7 +83,7 @@ NGINX 사고의 대부분은 NGINX가 고장 나서가 아니라 **설정 한 �
 - [NGINX의 역사](./01-history.md)
 - [NGINX 개요와 기본 사용법](./02-overview.md)
 - [NGINX 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [NGINX 장애 대응과 고가용성](./05-failures.md)
+- [NGINX 장애 대응과 고가용성](./05-failure-modes.md)
 - [nginx의 요청 처리 단계와 OpenResty·njs](../../../inquiry/web/0004-nginx-openresty-njs-request-processing-phases.md)
 
 ## 참고 자료

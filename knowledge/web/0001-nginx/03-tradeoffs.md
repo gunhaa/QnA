@@ -13,7 +13,7 @@ NGINX는 **미리 인쇄한 안내판대로만 움직이는 빠른 교통 정리
 
 ## 일반 설명
 
-이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), NGINX가 깨지는 상황은 [장애 대응](./05-failures.md)에 있다.
+이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), NGINX 자체의 장애는 [장애 대응](./05-failure-modes.md)에 있다.
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -74,7 +74,7 @@ NGINX는 **미리 인쇄한 안내판대로만 움직이는 빠른 교통 정리
 | Active-Active + 앞단 LB | 클라우드 LB·DNS·ECMP가 여러 NGINX에 분산 | 앞단 헬스체크 주기 | 노드 간 상태(rate limit, 캐시, sticky)가 따로 놂 |
 | 쿠버네티스 인그레스 | 컨트롤러 Pod 여러 개 + Service(LoadBalancer) | Pod 재시작 | Ingress NGINX 은퇴 → Gateway API 구현체 선택 필요 |
 
-장애가 실제로 어떻게 번지고 어떻게 복구하는지는 [장애 대응 — 고가용성](./05-failures.md#5-nginx-자체의-고가용성)에, 제품을 가리지 않는 고가용성 패턴은 [고가용성 구성 방식](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)에 있다.
+장애가 실제로 어떻게 번지고 어떻게 복구하는지는 [장애 대응 — 고가용성](./05-failure-modes.md#5-nginx-자체의-고가용성)에, 제품을 가리지 않는 고가용성 패턴은 [고가용성 구성 방식](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)에 있다.
 
 #### 3.4 쿠버네티스에서
 
@@ -112,7 +112,7 @@ NGINX는 **미리 인쇄한 안내판대로만 움직이는 빠른 교통 정리
 - [NGINX의 역사](./01-history.md)
 - [NGINX 개요와 기본 사용법](./02-overview.md)
 - [NGINX 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [NGINX 장애 대응과 고가용성](./05-failures.md)
+- [NGINX 장애 대응과 고가용성](./05-failure-modes.md)
 - [OpenResty와 nginx, 뭐가 다를까?](../../../inquiry/web/0010-openresty-vs-nginx.md)
 - [Kong vs OpenResty](../../../inquiry/web/0001-kong-vs-openresty.md)
 
