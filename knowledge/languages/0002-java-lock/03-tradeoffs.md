@@ -13,7 +13,7 @@ model: claude-opus-5-5
 
 ## 일반 설명
 
-> 각 도구가 **어떻게 동작하는지**는 [개요](./02-overview.md), 고른 뒤 **잘못 쓰는 패턴**은 [자주 겪는 문제](./04-pitfalls.md), **장애 유형과 분산 락 장애**는 [장애 대응](./05-failure-modes.md)에서 다룬다. 이 문서는 "왜 그렇게 만들었고, 대가는 무엇이고, 언제 고르나"만 다룬다.
+> 각 도구가 **어떻게 동작하는지**는 [개요](./02-overview.md), 고른 뒤 **잘못 쓰는 패턴**은 [흔한 함정](./04-pitfalls.md), **장애 유형과 분산 락 장애**는 [장애 대응](./05-failure-modes.md)에서 다룬다. 이 문서는 "왜 그렇게 만들었고, 대가는 무엇이고, 언제 고르나"만 다룬다.
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -149,7 +149,7 @@ JDK Javadoc도 "많은 스레드가 쓰는 공정 락은 처리량이 낮다(oft
 
 - [Java 락의 역사](./01-history.md)
 - [Java 락 개요와 기본 사용법](./02-overview.md)
-- [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Java 락: 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)
 - [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
 - [Java 개요와 기본 사용법](../0001-java/02-overview.md)

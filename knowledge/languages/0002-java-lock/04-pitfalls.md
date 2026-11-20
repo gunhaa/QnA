@@ -5,7 +5,7 @@ author: agent
 model: claude-opus-5-5
 ---
 
-# Java 락: 자주 겪는 문제와 해결 방법
+# Java 락: 흔한 함정과 해결 방법
 
 ## 쉬운 설명
 
@@ -133,7 +133,7 @@ public synchronized void decrease(Long id) {   // ✗
 - [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)
 - [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
-- [MySQL 운영 시 자주 겪는 문제 — 락 대기와 데드락](../../database/0001-mysql/04-pitfalls.md)
+- [MySQL 운영 시 흔한 함정 — 락 대기와 데드락](../../database/0001-mysql/04-pitfalls.md)
 
 ## 참고 자료
 

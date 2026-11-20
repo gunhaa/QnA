@@ -5,7 +5,7 @@ author: agent
 model: claude-opus-5-5
 ---
 
-# Java 개발·운영 시 자주 겪는 문제와 해결 방법
+# Java 개발·운영 시 흔한 함정과 해결 방법
 
 ## 쉬운 설명
 
@@ -13,7 +13,7 @@ Java는 청소부(GC)가 있어 편하지만, ① 청소부가 못 치우게 물
 
 ## 일반 설명
 
-> 락·동시성 문제는 [Java 락: 자주 겪는 문제와 해결 방법](../0002-java-lock/04-pitfalls.md), 프로세스가 죽거나 멈추는 장애와 다중 인스턴스 운영은 [장애 대응과 고가용성](./05-failure-modes.md)에서 다룬다.
+> 락·동시성 문제는 [Java 락: 흔한 함정과 해결 방법](../0002-java-lock/04-pitfalls.md), 프로세스가 죽거나 멈추는 장애와 다중 인스턴스 운영은 [장애 대응과 고가용성](./05-failure-modes.md)에서 다룬다.
 
 ### 1. 코드 수준의 흔한 버그
 
@@ -101,7 +101,7 @@ AOT 캐시(JDK 24+ `-XX:AOTCache`, 26에서 모든 GC 지원)·GraalVM Native Im
 - [Java 개요와 기본 사용법](./02-overview.md)
 - [Java 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 애플리케이션 장애 대응과 고가용성](./05-failure-modes.md)
-- [Java 락: 자주 겪는 문제와 해결 방법](../0002-java-lock/04-pitfalls.md)
+- [Java 락: 흔한 함정과 해결 방법](../0002-java-lock/04-pitfalls.md)
 
 ## 참고 자료
 

@@ -211,7 +211,7 @@ record Snapshot(List<String> items) {}                   // 불변 객체는 공
 
 - [Java 락의 역사](./01-history.md)
 - [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Java 락: 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)
 - [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
 - [Java 개요와 기본 사용법](../0001-java/02-overview.md)

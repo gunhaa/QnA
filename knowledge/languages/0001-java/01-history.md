@@ -68,7 +68,7 @@ model: claude-opus-5-5
 
 - [Java 개요와 기본 사용법](./02-overview.md)
 - [Java 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Java 개발·운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Java 개발·운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Java 애플리케이션 장애 대응과 고가용성](./05-failure-modes.md)
 - [Java 락의 역사](../0002-java-lock/01-history.md)
 

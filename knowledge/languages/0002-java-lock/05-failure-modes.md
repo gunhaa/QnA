@@ -159,9 +159,9 @@ public void handle(PaymentEvent e) {
 - [Java 락의 역사](./01-history.md)
 - [Java 락 개요와 기본 사용법](./02-overview.md)
 - [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
+- [Java 락: 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Java 애플리케이션 장애 대응과 고가용성](../0001-java/05-failure-modes.md)
-- [Redis 운영 시 자주 겪는 문제 — 분산 락의 함정](../../database/0002-redis/04-pitfalls.md)
+- [Redis 운영 시 흔한 함정 — 분산 락의 함정](../../database/0002-redis/04-pitfalls.md)
 - [MySQL 장애 대응과 고가용성](../../database/0001-mysql/05-failure-modes.md)
 
 ## 참고 자료
