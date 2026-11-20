@@ -76,7 +76,7 @@ model: claude-opus-5-5
 
 ### 7. 이 저장소의 구조와 비교
 
-이 구조를 반영해 저장소의 knowledge 세트는 **5문서**로 고정했다 ([CLAUDE.md — knowledge 5문서 구성](../../CLAUDE.md#knowledge-5문서-구성)).
+이 구조를 반영해 저장소의 knowledge 세트는 **5문서**로 고정했다 ([`/knowledge` 스킬](../../.claude/skills/knowledge/SKILL.md)).
 
 | 학습 단계 | knowledge 문서 | 다루는 질문 |
 |---|---|---|
