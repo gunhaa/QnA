@@ -162,6 +162,7 @@ public void handle(PaymentEvent e) {
 - [Java 락: 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Java 애플리케이션 장애 대응과 고가용성](../0001-java/05-failure-modes.md)
 - [Redis 운영 시 흔한 함정 — 분산 락의 함정](../../database/0002-redis/04-pitfalls.md)
+- [Redis 락 장애 유형과 대응](../../database/0005-redis-lock/05-failure-modes.md)
 - [MySQL 장애 대응과 고가용성](../../database/0001-mysql/05-failure-modes.md)
 
 ## 참고 자료
