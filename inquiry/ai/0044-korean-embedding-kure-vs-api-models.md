@@ -109,3 +109,7 @@ KURE 프로젝트의 한국어 검색 벤치마크(8개 태스크: Ko-StrategyQA
 - [Gemini Embedding 논문 리뷰](https://www.themoonlight.io/review/gemini-embedding-generalizable-embeddings-from-gemini)
 - [Google Gemini Embedding 2 출시](https://rits.shanghai.nyu.edu/ai/google-launches-gemini-embedding-2-its-first-multimodal-embedding-model/)
 - [Best Embedding Models for RAG (2026) (PremAI)](https://www.premai.io/blog/best-embedding-models-for-rag-2026-ranked-by-mteb-score-cost-and-self-hosting/)
+
+## 관련 knowledge
+
+- [RAG 5문서 세트 — 개요와 동작 방식](../../knowledge/ai/0001-rag/02-overview.md) (역사·트레이드오프·흔한 함정·장애 유형으로 이어진다)

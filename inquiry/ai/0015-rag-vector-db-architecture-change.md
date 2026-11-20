@@ -64,6 +64,10 @@ RAG DB를 도입하면 AI 아키텍처는 "혼자 외워서 답하는 구조"에
 
 ---
 
+## 관련 knowledge
+
+- [RAG 5문서 세트 — 개요와 동작 방식](../../knowledge/ai/0001-rag/02-overview.md) (역사·트레이드오프·흔한 함정·장애 유형으로 이어진다)
+
 ## 출처
 - [Retrieval-augmented generation - Wikipedia](https://en.wikipedia.org/wiki/Retrieval-augmented_generation)
 - [Best vector databases for RAG in 2026 - Braintrust](https://www.braintrust.dev/articles/best-vector-databases-for-rag-2026)

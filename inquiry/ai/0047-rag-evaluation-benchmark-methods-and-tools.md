@@ -72,6 +72,10 @@ Java/Spring AI 스택이라면 Spring AI의 `Evaluator` 인터페이스(`Relevan
 3. **생성 지표** (Faithfulness, 거절률) — 프롬프트에 "근거 없으면 모른다고 답하라" 명시 후 비교
 4. DeepEval/promptfoo로 **CI 회귀 테스트**화, Phoenix/Langfuse로 운영 트레이스 모니터링
 
+## 관련 knowledge
+
+- [RAG 5문서 세트 — 개요와 동작 방식](../../knowledge/ai/0001-rag/02-overview.md) (역사·트레이드오프·흔한 함정·장애 유형으로 이어진다)
+
 ## Sources
 
 - [RAGAS vs. TruLens vs. DeepEval: LLM Evaluation Frameworks Compared (Atlan, 2026)](https://atlan.com/know/llm-evaluation-frameworks-compared/)

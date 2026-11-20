@@ -173,6 +173,10 @@ L3 miss가 난 문항을 규칙으로 분류하면 "어디를 고쳐야 하는�
 5. 설정 매트릭스 실험 자동화 → baseline 고정 → CI 회귀 게이트
 6. distractor 인덱스, 사내 질문 추가로 난이도 현실화
 
+## 관련 knowledge
+
+- [RAG 5문서 세트 — 개요와 동작 방식](../../knowledge/ai/0001-rag/02-overview.md) (역사·트레이드오프·흔한 함정·장애 유형으로 이어진다)
+
 ## Sources
 
 - [allganize/RAG-Evaluation-Dataset-KO (Hugging Face)](https://huggingface.co/datasets/allganize/RAG-Evaluation-Dataset-KO)

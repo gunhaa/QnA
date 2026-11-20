@@ -197,3 +197,7 @@ Sources:
 - [AWS RDS pg_bigm 지원](https://aws.amazon.com/about-aws/whats-new/2021/04/amazon-rds-for-postgresql-supports-pg-bigm-extension-for-faster-full-text-search)
 - [PGroonga (pigsty)](https://ext.pigsty.io/e/pgroonga_database/)
 - [textsearch_ko (mecab-ko)](https://hub.docker.com/r/karoid/postgres-textsearch_ko)
+
+## 관련 knowledge
+
+- [RAG 5문서 세트 — 개요와 동작 방식](../../knowledge/ai/0001-rag/02-overview.md) (역사·트레이드오프·흔한 함정·장애 유형으로 이어진다)

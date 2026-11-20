@@ -131,3 +131,7 @@ flowchart LR
 - [dochan (HWP/HWPX 파서)](https://pypi.org/project/dochan)
 - [kordoc (한국 문서 파서)](https://www.sourcepulse.org/projects/27164665)
 - 관련 문서: [사내 규정 xlsx 인제스트 설계](./0040-rag-internal-policy-xlsx-ingestion-design.md)
+
+## 관련 knowledge
+
+- [RAG 5문서 세트 — 개요와 동작 방식](../../knowledge/ai/0001-rag/02-overview.md) (역사·트레이드오프·흔한 함정·장애 유형으로 이어진다)

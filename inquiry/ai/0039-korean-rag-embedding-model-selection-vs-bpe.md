@@ -95,3 +95,7 @@ Sources:
 - [What is BGE-M3? (Superlinked)](https://superlinked.com/glossary/what-is-bge-m3.md)
 - [Hybrid Search in Production: Why BM25 Still Wins](https://tianpan.co/blog/2026-04-12-hybrid-search-production-bm25-dense-embeddings)
 - [Best Ollama Embedding Models 2026](https://www.morphllm.com/ollama-embedding-models)
+
+## 관련 knowledge
+
+- [RAG 5문서 세트 — 개요와 동작 방식](../../knowledge/ai/0001-rag/02-overview.md) (역사·트레이드오프·흔한 함정·장애 유형으로 이어진다)
