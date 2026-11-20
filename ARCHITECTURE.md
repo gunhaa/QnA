@@ -20,7 +20,7 @@ factual/                          목록·수치·가격·현황 (주기적 재�
 └── <대주제>/<ID>-<이름>.md
 knowledge/                        5문서 세트만
 └── <대주제>/<ID>-<대상>/
-    └── 01-history.md … 05-failure-modes.md
+    └── 01-history.md … 05-failure-modes.md (+ 선택: 06-labs.md)
 source/                           저작물 자체의 분석
 └── <대주제>/<ID>-<제목>-<저자성>-<연도>/
     └── 01-overview.md → 02-….md
@@ -72,7 +72,7 @@ flowchart LR
 flowchart TD
     start["새 답변 문서"] --> src{"저작물 자체를<br/>장 구조로 분석하나?"}
     src -- 예 --> S["source/"]
-    src -- 아니오 --> know{"대상의 5문서 세트<br/>(01-history ~ 05-failure-modes)의 하나인가?"}
+    src -- 아니오 --> know{"대상의 5문서 세트<br/>(01-history ~ 05-failure-modes, 선택 06-labs)의 하나인가?"}
     know -- 예 --> K["knowledge/"]
     know -- 아니오 --> fact{"목록·수치·가격·현황·<br/>개별 사실이 중심인가?"}
     fact -- 예 --> F["factual/"]
@@ -111,7 +111,7 @@ flowchart TD
 flowchart LR
     subgraph k5["knowledge/대주제/ID-대상/ — 5문서"]
         direction LR
-        h["01-history"] --> o["02-overview"] --> t["03-tradeoffs"] --> p["04-pitfalls"] --> fl["05-failure-modes"]
+        h["01-history"] --> o["02-overview"] --> t["03-tradeoffs"] --> p["04-pitfalls"] --> fl["05-failure-modes"] -.-> lb["06-labs (선택)"]
     end
     subgraph src["source/대주제/ID-저작물/ — 원전"]
         direction LR
@@ -125,7 +125,7 @@ flowchart LR
 
 | 묶음 | 위치 | 내용 규칙 |
 |---|---|---|
-| knowledge 5문서 | `knowledge/<대주제>/<ID>-<대상>/01-history` ~ `05-failure-modes` | [CLAUDE.md — knowledge 5문서 구성](./CLAUDE.md#knowledge-5문서-구성) |
+| knowledge 5문서 | `knowledge/<대주제>/<ID>-<대상>/01-history` ~ `05-failure-modes`, 선택 `06-labs` | [CLAUDE.md — knowledge 5문서 구성](./CLAUDE.md#knowledge-5문서-구성) |
 | 원전 분석 | `source/<대주제>/<ID>-<제목>-<저자성>-<연도>/01-overview` → `02-…` | [CLAUDE.md — 원전 분석](./CLAUDE.md#원전-분석-source) |
 | 연재 | `inquiry/<대주제>/<ID>-<연재>/01-…` | — |
 
