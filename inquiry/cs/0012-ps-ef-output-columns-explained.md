@@ -1,6 +1,7 @@
 ---
-type: factual
+type: inquiry
 created: 2026-09-08
+verified: 2026-09-08
 author: agent
 model: unknown
 ---
