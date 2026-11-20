@@ -1,0 +1,22 @@
+{
+  "name": "knowledge-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "hast-util-to-string": "3.0.1",
+    "rehype-raw": "7.0.0",
+    "rehype-slug": "6.0.0",
+    "rehype-stringify": "10.0.1",
+    "remark-frontmatter": "5.0.0",
+    "remark-gfm": "4.0.1",
+    "remark-parse": "11.0.0",
+    "remark-rehype": "11.1.2",
+    "tufte-css": "1.9.0",
+    "unified": "11.0.5",
+    "unist-util-visit": "5.2.0",
+    "yaml": "2.9.1"
+  }
+}
