@@ -163,10 +163,12 @@ for (const lab of labs) {
   }
 }
 const labsFor = (setKey) => labs.filter((lab) => lab.sets?.includes(setKey));
-// 한 세트에 실습이 여럿이면 labs 링크가 여럿 붙고, 마우스를 올리면 이름이 보인다
+// 한 세트에 실습이 여럿이면 labs 링크가 여럿 붙고, 마우스를 올리면 이름·설명이 보인다
 const labsLinks = (setKey) =>
-  labsFor(setKey).map((lab) =>
-    `<a class="kind gh labs" href="${escapeHtml(lab.url)}" title="${escapeHtml(lab.name)}">labs</a>`);
+  labsFor(setKey).map((lab) => {
+    const title = lab.description ? `${lab.name} — ${lab.description}` : lab.name;
+    return `<a class="kind gh labs" href="${escapeHtml(lab.url)}" title="${escapeHtml(title)}">labs</a>`;
+  });
 
 function rewriteLinks(mdast, sourceFile) {
   visit(mdast, ['link', 'definition'], (node) => {
@@ -368,26 +370,9 @@ const byTopic = Map.groupBy(
   (s) => s.topic,
 );
 const kindTag = (label) => `<span class="kind">${label}</span>`;
-const setByKey = new Map(sets.map((s) => [`${s.topic}/${s.dir}`, s]));
-const labsSection = labs.length
-  ? `<section><h2>Labs</h2><ul>${labs
-      .map((lab) => {
-        const links = [
-          kindLink(lab.url, lab.site_label ?? 'site', 'gh'),
-          ...(lab.repo ? [kindLink(lab.repo, 'repo', 'gh')] : []),
-        ].join(' · ');
-        const related = (lab.sets ?? [])
-          .map((key) => setByKey.get(key))
-          .filter(Boolean)
-          .map((s) => `<a href="${s.topic}/${s.dir}/01-history.html">${escapeHtml(s.label)}</a>`)
-          .join(', ');
-        return `<li><strong>${escapeHtml(lab.name)}</strong>${lab.description ? ` — ${escapeHtml(lab.description)}` : ''} · ${links}${related ? ` · 관련: ${related}` : ''}</li>`;
-      })
-      .join('\n')}</ul></section>`
-  : '';
 const indexBody = [
   `<section><p>하나의 지식을 다섯 문서로 정리합니다.</p><ul>`
-    + `<li>${['history', 'overview', 'tradeoffs', 'pitfalls', 'failure-modes'].map(kindTag).join(' · ')}: Claude Code로 정리한 원본입니다. 역사 → 개요 → 트레이드오프 → 흔한 함정 → 장애 유형 순서로 읽습니다.</li>`
+    + `<li>${['history', 'overview', 'tradeoffs', 'pitfalls', 'failure-modes'].map(kindTag).join(' · ')}: 역사 → 개요 → 트레이드오프 → 흔한 함정 → 장애 유형 순서로 읽습니다.</li>`
     + `<li>${kindTag('distilled')}: 정리된 내용을 사람이 직접 검수하고 다듬은 핵심 요약입니다. 분야별로 <a class="gh" href="${DISTILLED_REPO}">computer_study</a>에 올립니다.</li>`
     + `<li>${kindTag('labs')}: 직접 코드로 확인한 예제 프로젝트입니다.</li>`
     + `</ul><p>질문 단위로 쓴 기록은 <a class="gh" href="https://github.com/gunhaa/knowledge">GitHub 저장소</a>에 있습니다.</p></section>`,
@@ -415,7 +400,6 @@ const indexBody = [
     return `<section><h2>${escapeHtml(TOPIC_LABELS[topic] ?? topic)}${topicDistilled ? ` <small>${distilledLink(topicDistilled)}</small>` : ''}</h2>`
       + `<table class="sets"><thead><tr><th></th><th>원본 5문서</th><th class="extra">정리·실습</th></tr></thead><tbody>${rows}</tbody></table></section>`;
   }),
-  labsSection,
 ].join('\n');
 fs.writeFileSync(path.join(DIST, 'index.html'), page({
     title: SITE_TITLE,

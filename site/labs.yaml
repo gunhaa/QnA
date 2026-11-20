@@ -1,22 +1,18 @@
 # 실습(labs) 연결
 #
 # 직접 코드로 확인한 예제 프로젝트 가운데 정적 사이트(Javadoc 등)로 따로 배포한 것을 적는다.
-# 이 사이트는 내용을 가져오지 않고 링크와 설명만 보여 준다.
+# 이 사이트는 내용을 가져오지 않고 링크만 보여 준다.
 #
-# 보이는 곳
-#   - 첫 화면 맨 아래 Labs 절: 모든 항목
-#   - sets에 적은 세트: 첫 화면 세트 줄과 문서 페이지 여백 목차에 labs 링크
+# 보이는 곳: sets에 적은 세트의 첫 화면 표 줄과 문서 페이지 여백 목차에 labs 링크
 #
 # 필드
-#   name         표시 이름 (필수)
+#   name         이름 (필수). labs 링크에 마우스를 올리면 보인다
 #   url          배포된 사이트 주소 (필수)
-#   site_label   url 링크 글자. 생략하면 site
-#   repo         저장소 주소
-#   description  한 줄 설명
+#   description  한 줄 설명. 이름 뒤에 함께 보인다
+#   repo         저장소 주소 (기록용, 화면에는 보이지 않는다)
 #   sets         연결할 knowledge 세트 (knowledge/ 기준 대주제/세트 폴더). 없는 세트를 적으면 빌드가 실패한다
 - name: Java 락 실습
   url: https://gunhaa.github.io/java_lock/
-  site_label: javadoc
   repo: https://github.com/gunhaa/java_lock
   description: 락·동기화 API 13개를 예제와 테스트로 확인
   sets: [languages/0002-java-lock]
