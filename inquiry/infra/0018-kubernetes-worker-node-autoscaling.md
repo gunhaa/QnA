@@ -71,7 +71,7 @@ sequenceDiagram
 ## 관련 문서
 
 - [Kubernetes 개요 — 구조와 동작 방식](../../knowledge/infra/0001-kubernetes/02-overview.md)
-- [Kubernetes 운영 시 자주 겪는 문제](../../knowledge/infra/0001-kubernetes/04-pitfalls.md)
+- [Kubernetes 운영 시 흔한 함정과 해결 방법](../../knowledge/infra/0001-kubernetes/04-pitfalls.md)
 
 Sources:
 - [Kubernetes Cluster Autoscaler vs Karpenter: When to Use Each (2026) | DEV Community](https://dev.to/alexandrev/kubernetes-cluster-autoscaler-vs-karpenter-when-to-use-each-2026-1dgc)

@@ -91,13 +91,13 @@ GA 연도에 맞춰 보면 흐름이 보인다. 2015~2020년은 **API 확장성*
 - **위상**: CNCF 2025 연례 설문(2026.01 발표)에서 컨테이너 사용자의 **82%가 프로덕션에서 Kubernetes를 사용**(2023년 66%). 생성형 AI 모델을 운영하는 조직의 66%가 추론 워크로드에 Kubernetes를 쓴다.
 - **라이선스**: Apache 2.0. 거버넌스는 CNCF와 Steering Committee, SIG(Special Interest Group) 체제.
 - **배포판·관리형**: EKS·GKE·AKS 같은 관리형, OpenShift·Rancher(RKE2) 같은 엔터프라이즈 배포판, 엣지용 경량 배포판 k3s가 있다. 모두 같은 Kubernetes API를 쓴다. k3s 비교는 [k3s vs k8s](../../../inquiry/infra/0019-k3s-vs-k8s.md).
-- **진행 중인 정리**: Ingress NGINX → Gateway API 이전, IPVS → nftables, cgroup v1 → v2, containerd 1.x → 2.x. 이 변화가 업그레이드 함정이 되는 경우는 [자주 겪는 문제 — 업그레이드](./04-pitfalls.md#6-업그레이드와-폐기-api)에 있다.
+- **진행 중인 정리**: Ingress NGINX → Gateway API 이전, IPVS → nftables, cgroup v1 → v2, containerd 1.x → 2.x. 이 변화가 업그레이드 함정이 되는 경우는 [흔한 함정 — 업그레이드](./04-pitfalls.md#6-업그레이드와-폐기-api)에 있다.
 
 ## 관련 문서
 
 - [Kubernetes 개요 — 구조와 동작 방식](./02-overview.md)
 - [Kubernetes 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Kubernetes 운영 시 자주 겪는 문제](./04-pitfalls.md)
+- [Kubernetes 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Kubernetes 장애 유형과 복구](./05-failure-modes.md)
 - [Kubernetes(쿠버네티스)가 뭐예요?](../../../inquiry/infra/0002-kubernetes-overview.md)
 

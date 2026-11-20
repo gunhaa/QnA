@@ -13,7 +13,7 @@ Kubernetes는 **무엇이든 끼울 수 있는 빈 공장 설비**다. 컨베이
 
 ## 일반 설명
 
-이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), 클러스터 자체의 장애는 [장애 유형과 복구](./05-failure-modes.md)에서 다룬다.
+이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [흔한 함정](./04-pitfalls.md), 클러스터 자체의 장애는 [장애 유형과 복구](./05-failure-modes.md)에서 다룬다.
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -108,7 +108,7 @@ Kubernetes는 **무엇이든 끼울 수 있는 빈 공장 설비**다. 컨베이
 
 - [Kubernetes의 역사](./01-history.md)
 - [Kubernetes 개요 — 구조와 동작 방식](./02-overview.md)
-- [Kubernetes 운영 시 자주 겪는 문제](./04-pitfalls.md)
+- [Kubernetes 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Kubernetes 장애 유형과 복구](./05-failure-modes.md)
 - [고가용성 구성 방식 — replica vs cluster, 쿼럼, DR 전략](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 

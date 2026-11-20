@@ -13,7 +13,7 @@ Kubernetes에서 가장 위험한 고장은 일하는 기계(노드)가 아니�
 
 ## 일반 설명
 
-이 문서는 **원인이 Kubernetes 자체**(컨트롤 플레인, etcd, 노드, 네트워크, 애드온)인 장애를 다룬다. 사람이 설정을 잘못해서 생기는 문제는 [자주 겪는 문제](./04-pitfalls.md)에 있다.
+이 문서는 **원인이 Kubernetes 자체**(컨트롤 플레인, etcd, 노드, 네트워크, 애드온)인 장애를 다룬다. 사람이 설정을 잘못해서 생기는 문제는 [흔한 함정](./04-pitfalls.md)에 있다.
 
 ### 1. 장애 영향 범위 한눈에 보기
 
@@ -95,7 +95,7 @@ Kubernetes에서 가장 위험한 고장은 일하는 기계(노드)가 아니�
 ### 6. 업그레이드 실패
 
 - 업그레이드는 etcd 데이터의 스키마·저장 버전을 바꿀 수 있어 **공식 다운그레이드 경로가 없다**. 되돌리는 방법은 업그레이드 전 **etcd 스냅샷 복원**뿐이다.
-- 사례: Reddit(2023.03)은 1.24 업그레이드 후 CNI 라우팅이 무너지자 롤백 대신 백업에서 컨트롤 플레인을 복원했다. 원인(라벨 변경)은 [자주 겪는 문제 — 업그레이드](./04-pitfalls.md#6-업그레이드와-폐기-api).
+- 사례: Reddit(2023.03)은 1.24 업그레이드 후 CNI 라우팅이 무너지자 롤백 대신 백업에서 컨트롤 플레인을 복원했다. 원인(라벨 변경)은 [흔한 함정 — 업그레이드](./04-pitfalls.md#6-업그레이드와-폐기-api).
 - 순서: etcd 스냅샷 → 컨트롤 플레인 한 대씩 → 애드온(CNI, CoreDNS, kube-proxy) → 노드 풀 교체(드레인 + PDB 존중). 관리형은 노드 풀을 새로 만들어 옮기는 블루/그린 방식이 안전하다.
 
 ### 7. 인증서 만료
@@ -140,7 +140,7 @@ Kubernetes에서 가장 위험한 고장은 일하는 기계(노드)가 아니�
 - [Kubernetes의 역사](./01-history.md)
 - [Kubernetes 개요 — 구조와 동작 방식](./02-overview.md)
 - [Kubernetes 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Kubernetes 운영 시 자주 겪는 문제](./04-pitfalls.md)
+- [Kubernetes 운영 시 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [고가용성 구성 방식 — replica vs cluster, 쿼럼, DR 전략](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 
 ## 참고 자료

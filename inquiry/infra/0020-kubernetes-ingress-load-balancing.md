@@ -156,7 +156,7 @@ Ingress Controller가 단일 병목이 되지 않는 이유는 (1) 앞단에 클
 ## 관련 문서
 
 - [Kubernetes 트레이드오프와 선택 기준](../../knowledge/infra/0001-kubernetes/03-tradeoffs.md)
-- [Kubernetes 운영 시 자주 겪는 문제](../../knowledge/infra/0001-kubernetes/04-pitfalls.md)
+- [Kubernetes 운영 시 흔한 함정과 해결 방법](../../knowledge/infra/0001-kubernetes/04-pitfalls.md)
 
 ---
 

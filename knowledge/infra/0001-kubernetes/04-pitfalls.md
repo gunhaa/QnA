@@ -5,7 +5,7 @@ author: agent
 model: claude-opus-5-5
 ---
 
-# Kubernetes 운영 시 자주 겪는 문제
+# Kubernetes 운영 시 흔한 함정과 해결 방법
 
 ## 쉬운 설명
 
