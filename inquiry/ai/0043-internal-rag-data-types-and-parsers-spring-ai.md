@@ -24,7 +24,7 @@ model: claude-opus-5-5
 | **티켓/이슈** | Jira, 헬프데스크, 장애 리포트 | JSON(API) | 중 |
 | **표 데이터** | 엑셀 규정집, FAQ 시트, CSV | xlsx, csv | 중 (병합 셀·계층) |
 | **프레젠테이션** | 제안서, 교육자료 | PPTX, PDF | 상 (그림 위주) |
-| **회의/통화** | 회의록, 녹취 | VTT, 오디오 ([관련](../../factual/ai/0003-audio-to-text-rag-ingestion-managed-options.md)) | 중 |
+| **회의/통화** | 회의록, 녹취 | VTT, 오디오 ([관련](../../inquiry/ai/0052-audio-to-text-rag-ingestion-managed-options.md)) | 중 |
 | **스캔 문서/이미지** | 계약서 스캔, 영수증, 도면 | 이미지 PDF, PNG/JPG | 상 (OCR 필요) |
 | **DB/정형 데이터** | 제품 카탈로그, 고객 FAQ | RDB 테이블 | 하 (보통 SQL/텍스트 변환) |
 

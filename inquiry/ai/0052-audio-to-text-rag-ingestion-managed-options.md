@@ -1,6 +1,7 @@
 ---
-type: factual
+type: inquiry
 created: 2026-10-13
+verified: 2026-10-13
 author: agent
 model: claude-opus-5-5
 ---

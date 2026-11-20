@@ -139,4 +139,4 @@ RL은 수백만~수십억 스텝의 경험을 먹는다. 그래서 **빠른 시�
 - [AlphaZero Chess: how it works — Towards Data Science](https://towardsdatascience.com/alphazero-chess-how-it-works-what-sets-it-apart-and-what-it-can-tell-us-4ab3d2d08867/)
 - [Reinforcement Learning in Strategy-Based and Atari Games: A Review of DeepMind's Innovations (arXiv)](https://arxiv.org/pdf/2502.10303)
 - [An Introduction to the Basics of Reinforcement Learning — OPIG](https://www.blopig.com/blog/2025/12/an-introduction-to-the-basics-of-reinforcement-learning/)
-- 관련 문서: [Pluto — 브루드워 자가대국 RL 봇](../../factual/game-ai/0005-pluto-rl-bot-ladder-incident.md), [신경망에 게임 학습시키기](./0025-train-neural-network-to-play-games-methods-and-specs.md)
+- 관련 문서: [Pluto — 브루드워 자가대국 RL 봇](../../inquiry/game-ai/0019-pluto-rl-bot-ladder-incident.md), [신경망에 게임 학습시키기](./0025-train-neural-network-to-play-games-methods-and-specs.md)

@@ -56,7 +56,7 @@ model: claude-sonnet-5
 
 ### 5. "레트로 게임을 RL로 학습시키기"는 TAS가 아니라 진짜 이 계열이다
 
-싱글플레이 레트로 게임에 지금까지 논의해온 방식(신경망 정책 + PPO 등)을 적용하고 싶다면, 그건 TAS가 아니라 [게임 API 개방 현황 문서](../../factual/game-ai/0001-game-apis-and-vision-based-agents.md) §4.2에서 이미 소개한 **[Stable-Retro](https://github.com/Farama-Foundation/stable-retro)**(gym-retro 포크, SNES/Genesis 등 지원)나 **[Arcade Learning Environment(ALE)](https://github.com/Farama-Foundation/Arcade-Learning-Environment)**(Atari) 같은 환경입니다. 이쪽은 에뮬레이터를 **Gymnasium 표준 인터페이스**로 감싸서, 매 에피소드 환경을 리셋하고(필요시 초기 상태를 다양화하고) 신경망 정책이 관측→행동을 반복하며 학습하는, **지금까지 다뤄온 것과 완전히 동일한 RL 파이프라인**입니다.
+싱글플레이 레트로 게임에 지금까지 논의해온 방식(신경망 정책 + PPO 등)을 적용하고 싶다면, 그건 TAS가 아니라 [게임 API 개방 현황 문서](../../inquiry/game-ai/0015-game-apis-and-vision-based-agents.md) §4.2에서 이미 소개한 **[Stable-Retro](https://github.com/Farama-Foundation/stable-retro)**(gym-retro 포크, SNES/Genesis 등 지원)나 **[Arcade Learning Environment(ALE)](https://github.com/Farama-Foundation/Arcade-Learning-Environment)**(Atari) 같은 환경입니다. 이쪽은 에뮬레이터를 **Gymnasium 표준 인터페이스**로 감싸서, 매 에피소드 환경을 리셋하고(필요시 초기 상태를 다양화하고) 신경망 정책이 관측→행동을 반복하며 학습하는, **지금까지 다뤄온 것과 완전히 동일한 RL 파이프라인**입니다.
 
 ### 6. 정리
 
@@ -76,4 +76,4 @@ model: claude-sonnet-5
 - [Tom Murphy VII — Wikipedia](https://en.wikipedia.org/wiki/Tom_Murphy_VII)
 - [Stable-Retro (Farama Foundation)](https://github.com/Farama-Foundation/stable-retro)
 - [Arcade Learning Environment](https://github.com/Farama-Foundation/Arcade-Learning-Environment)
-- 관련 문서: [마이크로 시나리오 RL 난이도](../game-ai/0014-starcraft-scenario-micro-rl-feasibility.md) §4(초기 상태 랜덤화), [작은 전장 자가대국 + 판단 RL](../game-ai/0011-starcraft-micro-scenario-self-play-judgment-rl.md), [게임 API 개방 현황](../../factual/game-ai/0001-game-apis-and-vision-based-agents.md)
+- 관련 문서: [마이크로 시나리오 RL 난이도](../game-ai/0014-starcraft-scenario-micro-rl-feasibility.md) §4(초기 상태 랜덤화), [작은 전장 자가대국 + 판단 RL](../game-ai/0011-starcraft-micro-scenario-self-play-judgment-rl.md), [게임 API 개방 현황](../../inquiry/game-ai/0015-game-apis-and-vision-based-agents.md)

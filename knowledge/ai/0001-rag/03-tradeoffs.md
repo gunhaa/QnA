@@ -135,7 +135,7 @@ Markdown 문서(제목 단위 섹션, 한국어)를 색인하는 RAG 백엔드�
 - [RAG 실습: 백엔드 구조](./06-labs.md)
 - [RAG·벡터 DB 도입 시 아키텍처 변화](../../../inquiry/ai/0015-rag-vector-db-architecture-change.md)
 - [LLM Wiki 패턴 (Karpathy)](../../../inquiry/ai/0042-llm-wiki-karpathy-pattern.md)
-- [한국어 RAG 벤치마크와 목표 점수](../../../factual/ai/0004-korean-rag-benchmark-datasets-and-score-targets.md)
+- [한국어 RAG 벤치마크와 목표 점수](../../../inquiry/ai/0053-korean-rag-benchmark-datasets-and-score-targets.md)
 
 ## 참고 자료
 
