@@ -106,4 +106,4 @@ model: claude-sonnet-5
 - [TorchCraftAI — Micromanagement Scenarios Tutorial](https://torchcraft.github.io/TorchCraftAI/docs/microtut-intro.html)
 - [StarCraft Micromanagement with RL and Curriculum Transfer Learning (arXiv)](https://arxiv.org/pdf/1804.00810)
 - [Episodic Exploration for Deep Deterministic Policies: StarCraft Micromanagement (arXiv)](https://arxiv.org/pdf/1609.02993)
-- 관련 문서: [RL이란 무엇인가](../ai/0038-what-is-reinforcement-learning.md), [RTS RL 학습 비용·난이도](./0012-starcraft-rl-bot-training-cost-and-difficulty.md), [Pluto 정리](../../factual/game-ai/0005-pluto-rl-bot-ladder-incident.md)
+- 관련 문서: [RL이란 무엇인가](../ai/0038-what-is-reinforcement-learning.md), [RTS RL 학습 비용·난이도](./0012-starcraft-rl-bot-training-cost-and-difficulty.md), [Pluto 정리](../../inquiry/game-ai/0019-pluto-rl-bot-ladder-incident.md)

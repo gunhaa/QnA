@@ -166,4 +166,4 @@ CPU가 GPU보다 중요한 구간이 길다는 점이 RTS RL의 특징이다. �
 - [TorchCraftAI (CherryPi 팀: Gant, Synnaeve, **Mella**, Gehring, Lin)](https://github.com/TorchCraft/TorchCraftAI)
 - [Brood War API — The Comprehensive Guide](https://makingcomputerdothings.com/brood-war-api-the-comprehensive-guide-of-time-and-space/)
 - [tscmoo/pluto](https://github.com/tscmoo/pluto)
-- 관련 문서: [RL이란 무엇인가](../ai/0038-what-is-reinforcement-learning.md), [Pluto 래더 사건 정리](../../factual/game-ai/0005-pluto-rl-bot-ladder-incident.md)
+- 관련 문서: [RL이란 무엇인가](../ai/0038-what-is-reinforcement-learning.md), [Pluto 래더 사건 정리](../../inquiry/game-ai/0019-pluto-rl-bot-ladder-incident.md)

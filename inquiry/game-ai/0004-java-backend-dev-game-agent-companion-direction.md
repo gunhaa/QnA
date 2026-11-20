@@ -7,7 +7,7 @@ model: claude-sonnet-5
 
 # Java 백엔드/인프라 개발자가 게임 에이전트·AI 동료를 만든다면 — 방향 추천
 
-> 관련 문서: [어떤 게임을 고를까 + FSM 역할](./0010-which-game-to-build-agent-for-and-fsm-role.md) · [게임 API 개방 현황](../../factual/game-ai/0001-game-apis-and-vision-based-agents.md) · [라이브러리 언어 선택](./0002-game-ai-library-language-choice.md) · [인간-AI 협동 플레이 지형](../../factual/game-ai/0003-human-ai-cooperative-play-landscape.md) · [레이드 AI 동료 선택지](./0003-raid-coop-ai-companion-options.md) · [애드온 배포 현실](../../factual/game-ai/0002-ai-companion-addon-distribution-reality.md)
+> 관련 문서: [어떤 게임을 고를까 + FSM 역할](./0010-which-game-to-build-agent-for-and-fsm-role.md) · [게임 API 개방 현황](../../inquiry/game-ai/0015-game-apis-and-vision-based-agents.md) · [라이브러리 언어 선택](./0002-game-ai-library-language-choice.md) · [인간-AI 협동 플레이 지형](../../inquiry/game-ai/0017-human-ai-cooperative-play-landscape.md) · [레이드 AI 동료 선택지](./0003-raid-coop-ai-companion-options.md) · [애드온 배포 현실](../../inquiry/game-ai/0016-ai-companion-addon-distribution-reality.md)
 
 ## 쉬운 설명
 
@@ -35,7 +35,7 @@ model: claude-sonnet-5
 
 ### 2. 두 개의 축을 분리한다
 
-질문 자체가 "게임 에이전트 혹은 AI 동료"라고 되어 있는데, 이건 [FSM 문서](./0001-game-agent-fsm-vs-llm-architecture.md)와 [협동 플레이 문서](../../factual/game-ai/0003-human-ai-cooperative-play-landscape.md)에서 이미 완전히 다른 문제로 갈라놓은 것입니다.
+질문 자체가 "게임 에이전트 혹은 AI 동료"라고 되어 있는데, 이건 [FSM 문서](./0001-game-agent-fsm-vs-llm-architecture.md)와 [협동 플레이 문서](../../inquiry/game-ai/0017-human-ai-cooperative-play-landscape.md)에서 이미 완전히 다른 문제로 갈라놓은 것입니다.
 
 | | **게임 에이전트** (혼자 플레이) | **AI 동료** (사람과 협동) |
 |---|---|---|
@@ -72,7 +72,7 @@ Koog와 Embabel은 둘 다 "JVM에서 순수 자바/스프링 감각으로 에�
 
 ### 4. 2순위 추천: 아는 게임을 살리는 StarCraft + BWAPI(Java)
 
-[게임 API 개방 현황 문서](../../factual/game-ai/0001-game-apis-and-vision-based-agents.md) §5의 "B안"이 정확히 이 프로필을 위한 경로입니다. 이번 조사로 확인한 사실을 더하면:
+[게임 API 개방 현황 문서](../../inquiry/game-ai/0015-game-apis-and-vision-based-agents.md) §5의 "B안"이 정확히 이 프로필을 위한 경로입니다. 이번 조사로 확인한 사실을 더하면:
 
 - **[JavaBWAPI](https://github.com/JavaBWAPI/Java-BWAPI-Tutorial)** 튜토리얼이 현재도 유지되고 있고, **[Atlantis](https://github.com/Ravaelles/Atlantis)** 같은 JBWAPI 2.1.0 기반 오픈소스 Java 봇 프레임워크도 활발합니다. C++ 없이 순수 Java로 SSCAIT 래더에 참가하는 경로가 실제로 살아 있습니다.
 - 앞서 정리했듯 **BWAPI는 C++이 1급이지만 Java/Scala/Kotlin이 잘 지원**되는 편이라(§3.1), 백엔드 개발자가 새 언어를 배울 필요가 없습니다.
