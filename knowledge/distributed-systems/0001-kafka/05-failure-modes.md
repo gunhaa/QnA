@@ -9,11 +9,11 @@ model: claude-opus-5-5
 
 ## 쉬운 설명
 
-Kafka는 같은 기록을 서버 세 대에 나눠 들고 있어서 한 대가 쓰러지면 다른 서버가 바로 그 기록의 담당이 된다. 깨지는 곳은 **"아직 다 베껴 적지 못한 마지막 몇 줄"** 과 **"누가 담당인지 정하는 위원회(컨트롤러)가 과반을 잃을 때"**, 그리고 **사람이 지운 것을 모든 사본이 똑같이 지울 때**다.
+Kafka는 같은 기록을 서버 세 대에 나눠 들고 있어서 한 대가 쓰러지면 다른 서버가 바로 그 기록의 담당이 된다. 장애가 나는 곳은 **"아직 다 베껴 적지 못한 마지막 몇 줄"** 과 **"누가 담당인지 정하는 위원회(컨트롤러)가 과반을 잃을 때"**, 그리고 **사람이 지운 것을 모든 사본이 똑같이 지울 때**다.
 
 ## 일반 설명
 
-이 문서는 **Kafka가 깨지는** 상황을 다룬다. 사람이 설정·사용을 잘못한 문제는 [자주 겪는 문제](./04-pitfalls.md)에 있다. 리더·팔로워·ISR·HW 개념은 [개요 — 복제 요약](./02-overview.md#5-복제-요약)과 [Kafka 복제 모델](../../../inquiry/distributed-systems/0008-kafka-replication-model-and-control-plane.md)에 있다.
+이 문서는 **Kafka 자체의 장애**를 다룬다. 사람이 설정·사용을 잘못한 문제는 [자주 겪는 문제](./04-pitfalls.md)에 있다. 리더·팔로워·ISR·HW 개념은 [개요 — 복제 요약](./02-overview.md#5-복제-요약)과 [Kafka 복제 모델](../../../inquiry/distributed-systems/0008-kafka-replication-model-and-control-plane.md)에 있다.
 
 ### 1. 장애 유형 한눈에 보기
 
@@ -130,7 +130,7 @@ DR 일반 전략(Pilot Light, Warm Standby 등)은 [고가용성 구성 방식](
 - [Kafka 개요와 기본 사용법](./02-overview.md)
 - [Kafka 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Kafka 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [Redis 장애 대응과 고가용성](../../database/0002-redis/05-failures.md)
+- [Redis 장애 대응과 고가용성](../../database/0002-redis/05-failure-modes.md)
 
 ## 참고 자료
 

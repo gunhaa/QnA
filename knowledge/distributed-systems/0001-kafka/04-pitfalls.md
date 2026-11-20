@@ -13,7 +13,7 @@ model: claude-opus-5-5
 
 ## 일반 설명
 
-이 문서는 **사람이 잘못 써서** 생기는 문제를 다룬다. 브로커·컨트롤러·네트워크가 깨지는 상황은 [장애 대응](./05-failures.md)에 있다.
+이 문서는 **사람이 잘못 써서** 생기는 문제를 다룬다. 브로커·컨트롤러·네트워크 장애는 [장애 대응](./05-failure-modes.md)에 있다.
 
 ### 1. 기본값 함정
 
@@ -98,7 +98,7 @@ Spring Kafka의 폴링 루프 동작은 [Spring Kafka Consumer vs Outbox](../../
 - [Kafka의 역사](./01-history.md)
 - [Kafka 개요와 기본 사용법](./02-overview.md)
 - [Kafka 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Kafka 장애 대응과 고가용성](./05-failures.md)
+- [Kafka 장애 대응과 고가용성](./05-failure-modes.md)
 
 ## 참고 자료
 

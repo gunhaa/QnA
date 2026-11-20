@@ -460,5 +460,5 @@ CAP은 "파티션이 발생했을 때"만 다루므로 불충분합니다. Danie
 - [`inquiry/distributed-systems/0006-kafka-as-a-database-offset-lookup.md`](./0006-kafka-as-a-database-offset-lookup.md) — 세그먼트·sparse index·offset 조회
 - [`inquiry/distributed-systems/0001-kafka-consumer-mechanism.md`](./0001-kafka-consumer-mechanism.md) — 컨슈머 그룹·리밸런싱
 - [`inquiry/distributed-systems/0002-kafka-overview.md`](./0002-kafka-overview.md) — Kafka 기본 구조
-- [Kafka 장애 대응과 고가용성](../../knowledge/distributed-systems/0001-kafka/05-failures.md)
+- [Kafka 장애 대응과 고가용성](../../knowledge/distributed-systems/0001-kafka/05-failure-modes.md)
 - [Kafka 개요 — 복제 요약](../../knowledge/distributed-systems/0001-kafka/02-overview.md#5-복제-요약)

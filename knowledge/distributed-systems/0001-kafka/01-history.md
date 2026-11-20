@@ -93,7 +93,7 @@ KRaft 컨트롤러 쿼럼의 구조는 [개요 — 컨트롤 플레인](./02-ove
 - [Kafka 개요와 기본 사용법](./02-overview.md)
 - [Kafka 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Kafka 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [Kafka 장애 대응과 고가용성](./05-failures.md)
+- [Kafka 장애 대응과 고가용성](./05-failure-modes.md)
 - [Kafka(카프카)가 뭐예요?](../../../inquiry/distributed-systems/0002-kafka-overview.md)
 
 ## 참고 자료

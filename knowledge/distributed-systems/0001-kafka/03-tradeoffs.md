@@ -13,7 +13,7 @@ Kafka는 **아주 긴 컨베이어 벨트를 여러 줄 깔아 둔 공장**이�
 
 ## 일반 설명
 
-이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), Kafka 자체가 깨지는 상황은 [장애 대응](./05-failures.md)에서 다룬다.
+이 문서는 **고르기 전에** 읽는 문서다. 동작 방식은 [개요](./02-overview.md), 고른 뒤 사람이 잘못 쓰는 문제는 [자주 겪는 문제](./04-pitfalls.md), Kafka 자체의 장애는 [장애 대응](./05-failure-modes.md)에서 다룬다.
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -49,7 +49,7 @@ Kafka는 **아주 긴 컨베이어 벨트를 여러 줄 깔아 둔 공장**이�
 |---|---|---|---|
 | 처리량 최우선, 일부 유실 허용(지표·로그) | RF 2~3, min ISR 1 | `acks=1`, `linger.ms` 크게 | 리더 장애 시 미복제분 유실 |
 | **일반 업무 이벤트 (표준)** | **RF 3, `min.insync.replicas=2`**, unclean 선출 끔(기본) | `acks=all`, 멱등(둘 다 3.0+ 기본) | 브로커 1대 장애 무유실·무중단, 2대 장애 시 쓰기 거부 |
-| 리전 장애까지 무유실 | 3개 AZ에 레플리카 분산(`broker.rack`) + 리전 간 복제 | 위와 같음 | 리전 간 복제는 비동기 → RPO > 0 ([장애 대응 — DR](./05-failures.md#6-리전-장애와-dr)) |
+| 리전 장애까지 무유실 | 3개 AZ에 레플리카 분산(`broker.rack`) + 리전 간 복제 | 위와 같음 | 리전 간 복제는 비동기 → RPO > 0 ([장애 대응 — DR](./05-failure-modes.md#6-리전-장애와-dr)) |
 
 `acks=all`만으로는 부족하고 `min.insync.replicas`가 짝이어야 하는 이유는 [Kafka 복제 모델](../../../inquiry/distributed-systems/0008-kafka-replication-model-and-control-plane.md)에 있다.
 
@@ -120,7 +120,7 @@ Kafka는 **아주 긴 컨베이어 벨트를 여러 줄 깔아 둔 공장**이�
 - [Kafka의 역사](./01-history.md)
 - [Kafka 개요와 기본 사용법](./02-overview.md)
 - [Kafka 운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [Kafka 장애 대응과 고가용성](./05-failures.md)
+- [Kafka 장애 대응과 고가용성](./05-failure-modes.md)
 - [고가용성 구성 방식 — replica vs cluster](../../../inquiry/distributed-systems/0009-high-availability-replication-vs-cluster-and-patterns.md)
 
 ## 참고 자료
