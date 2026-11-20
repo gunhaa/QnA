@@ -9,15 +9,13 @@
 
 ## 1. 폴더 구조
 
-루트는 **유형 폴더 4개**로 나누고, 그 아래를 **대주제**로 나눈다. 모든 답변 문서의 경로는 `<유형>/<대주제>/<ID>-<이름>.md`이고, 순서가 있는 묶음만 묶음 폴더가 한 단 더 붙는다.
+루트는 **유형 폴더 3개**로 나누고, 그 아래를 **대주제**로 나눈다. 모든 답변 문서의 경로는 `<유형>/<대주제>/<ID>-<이름>.md`이고, 순서가 있는 묶음만 묶음 폴더가 한 단 더 붙는다.
 
 ```
 inquiry/                          질문 단위 문서 (대부분의 문서)
 └── <대주제>/
     ├── <ID>-<이름>.md
     └── <ID>-<연재>/NN-….md        순서대로 읽는 연재 (예: LLM 아키텍처)
-factual/                          목록·수치·가격·현황 (주기적 재확인 대상)
-└── <대주제>/<ID>-<이름>.md
 knowledge/                        5문서 세트만
 └── <대주제>/<ID>-<대상>/
     └── 01-history.md … 05-failure-modes.md (+ 선택: 06-labs.md)
@@ -28,9 +26,8 @@ source/                           저작물 자체의 분석
 
 ```mermaid
 flowchart LR
-    root["저장소 루트"] --> q["inquiry/"] & f["factual/"] & k["knowledge/"] & s["source/"]
+    root["저장소 루트"] --> q["inquiry/"] & k["knowledge/"] & s["source/"]
     q --> qm["대주제/"] --> qf["ID-이름.md<br/>또는 ID-연재/NN-…"]
-    f --> fm["대주제/"] --> ff["ID-이름.md"]
     k --> km["대주제/"] --> kt["ID-대상/<br/>01-history … 05-failure-modes"]
     s --> sm["대주제/"] --> sw["ID-제목-저자성-연도/<br/>01-overview → 02-…"]
 ```
@@ -38,14 +35,13 @@ flowchart LR
 예:
 - `inquiry/database/0012-mysql-gap-lock-when.md`
 - `inquiry/ai/0003-llm-architecture/02-tokenizer.md`
-- `factual/web/0004-nginx-plus-license-cost-estimate.md`
 - `knowledge/database/0002-redis/01-history.md`
 - `source/distributed-systems/0001-the-log-kreps-2013/01-overview.md`
 
 루트의 `README.md`, `CLAUDE.md`, `ARCHITECTURE.md`는 저장소 안내 문서이고, 루트의 `nginx/`는 로컬 nginx 설정 파일 디렉터리다. `site/`는 `knowledge/`를 GitHub Pages 사이트로 만드는 빌드 도구이고, `.github/workflows/`는 그 배포 워크플로다. 이것들은 모두 이 구조의 대상이 아니다.
 
 유형을 맨 위에 둔 이유:
-- 유형마다 관리 방식이 다르다. inquiry는 쌓기만 하고, factual은 주기적으로 재확인하고, knowledge는 세트를 완성·갱신한다.
+- 유형마다 관리 방식이 다르다. inquiry는 쌓기만 하고, knowledge는 세트를 완성·갱신하고, source는 원전 목록과 함께 갱신한다.
 - 문서 하나를 저장할 때 판단할 것이 **유형과 대주제 두 가지**뿐이다.
 - 저장소가 커지면 유형 폴더 단위로 분리하기 쉽다.
 
@@ -55,12 +51,12 @@ flowchart LR
 
 | 층 | 나누는 기준 | 들어가는 것 | 두지 않는 것 |
 |---|---|---|---|
-| 루트 | 문서 유형 | `inquiry/`, `factual/`, `knowledge/`, `source/` | 답변 파일 |
+| 루트 | 문서 유형 | `inquiry/`, `knowledge/`, `source/` | 답변 파일 |
 | 1. 대주제 | 관심 분야 | 문서, 묶음 폴더 (모두 ID가 붙는다) | 그 외 폴더 |
 | 2. 묶음 | 읽는 순서 | `NN-` 문서 | 폴더 |
 
 - **유형 폴더**: frontmatter `type`과 같아야 한다. 판정은 3절.
-- **대주제**: 넓은 관심 분야. 네 유형 폴더 모두 **같은 대주제 이름**을 쓴다. 그 유형의 문서가 처음 생길 때 만들고, 빈 폴더는 만들지 않는다. 새 대주제는 기존 어디에도 맞지 않을 때만 만든다.
+- **대주제**: 넓은 관심 분야. 세 유형 폴더 모두 **같은 대주제 이름**을 쓴다. 그 유형의 문서가 처음 생길 때 만들고, 빈 폴더는 만들지 않는다. 새 대주제는 기존 어디에도 맞지 않을 때만 만든다.
 - **묶음 폴더**: 순서대로 읽는 문서 묶음만 폴더로 만든다 (5절). 주제별 하위 분류용 폴더는 만들지 않는다.
 - **이름**: 폴더명과 파일명은 kebab-case. ID 뒤의 이름은 질문 내용을 요약해 짓고, 대상 이름을 앞에 둔다 (예: `0010-kafka-consumer-rebalance.md`).
 
@@ -74,9 +70,7 @@ flowchart TD
     src -- 예 --> S["source/"]
     src -- 아니오 --> know{"대상의 5문서 세트<br/>(01-history ~ 05-failure-modes, 선택 06-labs)의 하나인가?"}
     know -- 예 --> K["knowledge/"]
-    know -- 아니오 --> fact{"목록·수치·가격·현황·<br/>개별 사실이 중심인가?"}
-    fact -- 예 --> F["factual/"]
-    fact -- 아니오 --> Q["inquiry/"]
+    know -- 아니오 --> Q["inquiry/"]
 ```
 
 - knowledge는 내용이 아니라 **구조로 판정**한다. 5문서 세트에 속하면 knowledge, 아니면 개념 설명이어도 inquiry다.
