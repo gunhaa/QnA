@@ -13,7 +13,7 @@ model: claude-opus-5-5
 
 ## 일반 설명
 
-> 데드락·스레드 고갈 같은 **장애 상황과 탐지·복구**, 그리고 **여러 서버 사이의 락**은 [장애 대응과 다중 인스턴스 환경](./05-failures.md)에서 다룬다.
+> 데드락·스레드 고갈 같은 **장애 상황과 탐지·복구**, 그리고 **여러 서버 사이의 락**은 [장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)에서 다룬다.
 
 ### 1. 경쟁 조건 (Race Condition)
 
@@ -80,7 +80,7 @@ private volatile boolean stop;
 | `Collections.synchronizedMap` 전체 락 | 모든 연산 직렬화 | `ConcurrentHashMap` |
 | 공정 락(`new ReentrantLock(true)`) | 컨텍스트 스위치 증가로 처리량 크게 감소([수치](./03-tradeoffs.md#2-수치로-보는-비용)) | 기아가 실제 문제일 때만 |
 
-진단: JFR 이벤트 `jdk.JavaMonitorEnter`(synchronized 대기), `jdk.ThreadPark`(j.u.c 락 대기), async-profiler `-e lock` 플레임 그래프. 덤프 비교 등 탐지 방법은 [장애 대응 — 탐지](./05-failures.md#2-탐지).
+진단: JFR 이벤트 `jdk.JavaMonitorEnter`(synchronized 대기), `jdk.ThreadPark`(j.u.c 락 대기), async-profiler `-e lock` 플레임 그래프. 덤프 비교 등 탐지 방법은 [장애 대응 — 탐지](./05-failure-modes.md#2-탐지).
 
 ### 6. Spring·JPA와 섞일 때
 
@@ -95,7 +95,7 @@ public synchronized void decrease(Long id) {   // ✗
     //   → 다음 스레드가 커밋 전 옛 값을 읽어 재고가 덜 줄어듦
 ```
 
-- 해결: 락을 트랜잭션 **바깥**에서 잡거나, 애초에 **DB 수준 동시성 제어**(원자적 UPDATE, `FOR UPDATE`, `@Version`)를 쓴다. 서버가 2대 이상이면 JVM 락은 어차피 무의미하므로 DB 쪽이 기본이다 → [다중 인스턴스 환경의 방법별 구현·주의점](./05-failures.md#5-다중-인스턴스-jvm-락의-한계).
+- 해결: 락을 트랜잭션 **바깥**에서 잡거나, 애초에 **DB 수준 동시성 제어**(원자적 UPDATE, `FOR UPDATE`, `@Version`)를 쓴다. 서버가 2대 이상이면 JVM 락은 어차피 무의미하므로 DB 쪽이 기본이다 → [다중 인스턴스 환경의 방법별 구현·주의점](./05-failure-modes.md#5-다중-인스턴스-jvm-락의-한계).
 
 ### 7. 동시성 컬렉션의 함정
 
@@ -131,7 +131,7 @@ public synchronized void decrease(Long id) {   // ✗
 - [Java 락의 역사](./01-history.md)
 - [Java 락 개요와 기본 사용법](./02-overview.md)
 - [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](./05-failures.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)
 - [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
 - [MySQL 운영 시 자주 겪는 문제 — 락 대기와 데드락](../../database/0001-mysql/04-pitfalls.md)
 

@@ -13,7 +13,7 @@ Java는 청소부(GC)가 있어 편하지만, ① 청소부가 못 치우게 물
 
 ## 일반 설명
 
-> 락·동시성 문제는 [Java 락: 자주 겪는 문제와 해결 방법](../0002-java-lock/04-pitfalls.md), 프로세스가 죽거나 멈추는 장애와 다중 인스턴스 운영은 [장애 대응과 고가용성](./05-failures.md)에서 다룬다.
+> 락·동시성 문제는 [Java 락: 자주 겪는 문제와 해결 방법](../0002-java-lock/04-pitfalls.md), 프로세스가 죽거나 멈추는 장애와 다중 인스턴스 운영은 [장애 대응과 고가용성](./05-failure-modes.md)에서 다룬다.
 
 ### 1. 코드 수준의 흔한 버그
 
@@ -61,7 +61,7 @@ GC 언어에서 누수는 "**도달 가능하지만 다시 쓰지 않는 객체*
 | 실수 | 증상 | 해결 |
 |---|---|---|
 | 기동 직후 바로 트래픽을 받음 | 배포·스케일아웃 직후 지연·타임아웃 급증 (JIT 워밍업 전) | readiness를 워밍업 후 열기. 배포 시간은 늘어난다 |
-| 느린 시작을 liveness로만 감시 | 기동 중에 재시작이 반복됨 | startup 프로브 사용 ([장애 대응 §5](./05-failures.md#5-헬스-체크-kubernetes--spring-boot-actuator)) |
+| 느린 시작을 liveness로만 감시 | 기동 중에 재시작이 반복됨 | startup 프로브 사용 ([장애 대응 §5](./05-failure-modes.md#5-헬스-체크-kubernetes--spring-boot-actuator)) |
 | 쓰지 않는 자동 설정·빈을 모두 로딩 | 시작 시간 증가 | 불필요 자동 설정 제거, Spring Boot 지연 초기화 (대신 첫 요청이 느려짐) |
 | AOT 캐시를 만들 때와 다른 JDK·클래스패스로 실행 | 캐시가 무시되어 단축 효과가 없음 | 같은 JDK·같은 jar로 학습 실행(training run)과 운영 실행 |
 
@@ -100,7 +100,7 @@ AOT 캐시(JDK 24+ `-XX:AOTCache`, 26에서 모든 GC 지원)·GraalVM Native Im
 - [Java의 역사](./01-history.md)
 - [Java 개요와 기본 사용법](./02-overview.md)
 - [Java 트레이드오프와 선택 기준](./03-tradeoffs.md)
-- [Java 애플리케이션 장애 대응과 고가용성](./05-failures.md)
+- [Java 애플리케이션 장애 대응과 고가용성](./05-failure-modes.md)
 - [Java 락: 자주 겪는 문제와 해결 방법](../0002-java-lock/04-pitfalls.md)
 
 ## 참고 자료

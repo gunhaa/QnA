@@ -185,7 +185,7 @@ record Snapshot(List<String> items) {}                   // 불변 객체는 공
 
 ### 4. 선택 가이드
 
-기본은 `synchronized`, 타임아웃·인터럽트·공정성·여러 조건이 필요하면 `ReentrantLock`이다. 상황별 대안 비교·수치·체크리스트는 [트레이드오프 — 대안 비교](./03-tradeoffs.md#3-대안-비교)와 [선택 체크리스트](./03-tradeoffs.md#6-선택-체크리스트)에 있다. **여러 서버(JVM) 사이**는 JVM 락으로 불가 → [다중 인스턴스 환경](./05-failures.md#5-다중-인스턴스-jvm-락의-한계).
+기본은 `synchronized`, 타임아웃·인터럽트·공정성·여러 조건이 필요하면 `ReentrantLock`이다. 상황별 대안 비교·수치·체크리스트는 [트레이드오프 — 대안 비교](./03-tradeoffs.md#3-대안-비교)와 [선택 체크리스트](./03-tradeoffs.md#6-선택-체크리스트)에 있다. **여러 서버(JVM) 사이**는 JVM 락으로 불가 → [다중 인스턴스 환경](./05-failure-modes.md#5-다중-인스턴스-jvm-락의-한계).
 
 ### 5. `synchronized` vs `ReentrantLock`
 
@@ -212,7 +212,7 @@ record Snapshot(List<String> items) {}                   // 불변 객체는 공
 - [Java 락의 역사](./01-history.md)
 - [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](./05-failures.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)
 - [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
 - [Java 개요와 기본 사용법](../0001-java/02-overview.md)
 

@@ -66,7 +66,7 @@ if (ids != null) {
 ### 3. 복구: JVM은 데드락을 풀어 주지 않는다
 
 - 락을 쥔 스레드를 강제로 죽이는 수단이 없다(`Thread.stop()`은 JDK 20부터 `UnsupportedOperationException`).
-- **현실적인 복구 = 증거(덤프) 수집 후 인스턴스 재시작.** 그래서 [다중 인스턴스 + liveness 프로브](../0001-java/05-failures.md)가 전제다.
+- **현실적인 복구 = 증거(덤프) 수집 후 인스턴스 재시작.** 그래서 [다중 인스턴스 + liveness 프로브](../0001-java/05-failure-modes.md)가 전제다.
 - 재시작은 증상 완화일 뿐이다. 덤프로 락 순서를 찾아 코드를 고쳐야 한다.
 
 ### 4. 예방 설계
@@ -125,11 +125,11 @@ JVM 락의 범위는 **한 프로세스**다. 서버를 2대 이상 띄우는 �
 | 락 보유 인스턴스가 죽음 | 락이 영원히 남음 | **TTL/lease**로 자동 만료 |
 | 작업이 TTL보다 오래 걸림 | 만료 후 다른 인스턴스도 획득 → **동시 실행** | 자동 연장(Redisson watchdog), 넉넉한 TTL, 작업 분할 |
 | **긴 GC 정지·프로세스 정지** | 정지 동안 lease 만료 → 깨어난 옛 보유자가 락이 있다고 믿고 쓰기 | **fencing token**: 락마다 단조 증가 번호 발급, 저장소가 더 작은 번호의 쓰기를 거부 |
-| Redis 마스터 장애 조치 | 비동기 복제로 락 키 유실 → 두 보유자 | 정확성이 중요하면 DB·합의 기반(ZooKeeper/etcd) 사용 → [Redis 장애와 HA](../../database/0002-redis/05-failures.md) |
+| Redis 마스터 장애 조치 | 비동기 복제로 락 키 유실 → 두 보유자 | 정확성이 중요하면 DB·합의 기반(ZooKeeper/etcd) 사용 → [Redis 장애와 HA](../../database/0002-redis/05-failure-modes.md) |
 | 네트워크 분리 | 보유자는 락이 있다고 믿지만 lease는 만료 | fencing token, 세션 만료 감지 시 작업 중단 |
 | 락 저장소(Redis/ZK) 전체 장애 | 아무도 락을 못 얻음 | 실패 시 정책 결정: 작업 중단(안전) vs 락 없이 진행(가용성) |
 
-**원칙**: 분산 락은 **"같은 일을 두 번 하지 않게 하는 효율 장치"** 로 쓰고, **정확성은 DB 제약·트랜잭션·멱등성·fencing token**으로 보장한다. 락이 깨져도 데이터가 망가지지 않는 설계가 목표다.
+**원칙**: 분산 락은 **"같은 일을 두 번 하지 않게 하는 효율 장치"** 로 쓰고, **정확성은 DB 제약·트랜잭션·멱등성·fencing token**으로 보장한다. 락이 상호 배제를 보장하지 못해도 데이터가 망가지지 않는 설계가 목표다.
 
 ```java
 // 멱등성 + 유니크 제약: 락이 뚫려도 중복 처리 방지
@@ -160,9 +160,9 @@ public void handle(PaymentEvent e) {
 - [Java 락 개요와 기본 사용법](./02-overview.md)
 - [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [Java 애플리케이션 장애 대응과 고가용성](../0001-java/05-failures.md)
+- [Java 애플리케이션 장애 대응과 고가용성](../0001-java/05-failure-modes.md)
 - [Redis 운영 시 자주 겪는 문제 — 분산 락의 함정](../../database/0002-redis/04-pitfalls.md)
-- [MySQL 장애 대응과 고가용성](../../database/0001-mysql/05-failures.md)
+- [MySQL 장애 대응과 고가용성](../../database/0001-mysql/05-failure-modes.md)
 
 ## 참고 자료
 

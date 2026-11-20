@@ -48,7 +48,7 @@ model: claude-opus-5-5
 
 - 서버가 여러 대(다중 인스턴스, 컨테이너 오토스케일)가 되면서 **JVM 락은 한 프로세스 안에서만 유효**하다는 한계가 실무 문제가 됐다.
 - 대안: DB 락(`SELECT ... FOR UPDATE`, 낙관적 락 `@Version`), Redis(Redisson), ZooKeeper(Curator), etcd, 스케줄러 중복 방지용 ShedLock.
-- 2016년 Martin Kleppmann의 Redlock 비판과 antirez의 반론 이후, "분산 락은 **효율용**이고 정확성은 **fencing token·DB 제약**으로 지킨다"는 원칙이 정착했다 → [분산 락의 장애 시나리오](./05-failures.md#6-분산-락의-장애-시나리오).
+- 2016년 Martin Kleppmann의 Redlock 비판과 antirez의 반론 이후, "분산 락은 **효율용**이고 정확성은 **fencing token·DB 제약**으로 지킨다"는 원칙이 정착했다 → [분산 락의 장애 시나리오](./05-failure-modes.md#6-분산-락의-장애-시나리오).
 
 ### 4. 현재 상태 (2026년 11월)
 
@@ -61,7 +61,7 @@ model: claude-opus-5-5
 - [Java 락 개요와 기본 사용법](./02-overview.md)
 - [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](./05-failures.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)
 - [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
 - [Java의 역사](../0001-java/01-history.md)
 

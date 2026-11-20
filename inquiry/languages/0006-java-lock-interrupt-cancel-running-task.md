@@ -84,7 +84,7 @@ f.cancel(true);   // 실행 중인 스레드에 interrupt()
 
 - [Java 락 — 02-overview](../../knowledge/languages/0002-java-lock/02-overview.md)
 - [Java 락 — 04-pitfalls](../../knowledge/languages/0002-java-lock/04-pitfalls.md)
-- [Java 락 — 05-failures](../../knowledge/languages/0002-java-lock/05-failures.md)
+- [Java 락 — 05-failure-modes](../../knowledge/languages/0002-java-lock/05-failure-modes.md)
 - [AQS와 LockSupport](./0003-java-aqs-locksupport.md)
 - [ArrayBlockingQueue와 Condition 생산자/소비자](./0005-java-arrayblockingqueue-condition-producer-consumer.md)
 

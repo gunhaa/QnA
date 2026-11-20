@@ -13,7 +13,7 @@ model: claude-opus-5-5
 
 ## 일반 설명
 
-> 각 도구가 **어떻게 동작하는지**는 [개요](./02-overview.md), 고른 뒤 **잘못 쓰는 패턴**은 [자주 겪는 문제](./04-pitfalls.md), **깨지는 상황과 분산 락 장애**는 [장애 대응](./05-failures.md)에서 다룬다. 이 문서는 "왜 그렇게 만들었고, 대가는 무엇이고, 언제 고르나"만 다룬다.
+> 각 도구가 **어떻게 동작하는지**는 [개요](./02-overview.md), 고른 뒤 **잘못 쓰는 패턴**은 [자주 겪는 문제](./04-pitfalls.md), **장애 유형과 분산 락 장애**는 [장애 대응](./05-failure-modes.md)에서 다룬다. 이 문서는 "왜 그렇게 만들었고, 대가는 무엇이고, 언제 고르나"만 다룬다.
 
 ### 1. 핵심 설계 선택: 얻은 것과 포기한 것
 
@@ -88,7 +88,7 @@ JDK Javadoc도 "많은 스레드가 쓰는 공정 락은 처리량이 낮다(oft
 | Redis 분산 락 (Redisson, `SET NX PX`) | 다중 인스턴스 | sub-ms 획득, 구현 쉬움 | 비동기 복제 → 장애 조치 시 락 유실 가능 | **효율용**(중복 작업 줄이기) |
 | ZooKeeper / etcd 락 | 다중 인스턴스 | 합의 기반, 세션·lease 만료로 자동 해제, 순번(fencing token) 활용 | 별도 쿼럼 클러스터 운영, 쓰기마다 쿼럼 왕복 | **정확성용** 조정 |
 
-분산 락 구현별 주의점은 [장애 대응 §5](./05-failures.md#5-다중-인스턴스-jvm-락의-한계), 효율/정확성 구분과 장애 시나리오는 [§6](./05-failures.md#6-분산-락의-장애-시나리오)에 자세히 있다.
+분산 락 구현별 주의점은 [장애 대응 §5](./05-failure-modes.md#5-다중-인스턴스-jvm-락의-한계), 효율/정확성 구분과 장애 시나리오는 [§6](./05-failure-modes.md#6-분산-락의-장애-시나리오)에 자세히 있다.
 
 ### 4. 주요 선택지
 
@@ -119,7 +119,7 @@ JDK Javadoc도 "많은 스레드가 쓰는 공정 락은 처리량이 낮다(oft
 |---|---|---|
 | 인스턴스가 정확히 1개이고 앞으로도 그런가? | JVM 락 | 다음 질문 |
 | 보호 대상이 DB 행인가? | DB 원자적 UPDATE·`@Version`·`FOR UPDATE` | 다음 질문 |
-| 락이 깨져 두 번 실행돼도 멱등성으로 괜찮은가? | Redis 락 / ShedLock (효율용) | ZooKeeper·etcd + fencing token |
+| 락이 상호 배제를 보장하지 못해 두 번 실행돼도 멱등성으로 괜찮은가? | Redis 락 / ShedLock (효율용) | ZooKeeper·etcd + fencing token |
 
 ### 5. 쓰지 말아야 할 때
 
@@ -142,15 +142,15 @@ JDK Javadoc도 "많은 스레드가 쓰는 공정 락은 처리량이 낮다(oft
 4. **기능 요구는?** 타임아웃·인터럽트·공정성·다중 조건 중 하나라도 → `ReentrantLock`. 없으면 `synchronized`.
 5. **JDK 버전은?** 21~23 + 가상 스레드 + 락 안 블로킹 → `ReentrantLock`. 24+면 무관.
 6. **읽기 비율과 임계 구역 길이를 측정했나?** 읽기 ≫ 쓰기가 측정으로 확인될 때만 RW 락·`StampedLock`.
-7. **경합이 측정됐나?** JFR `jdk.JavaMonitorEnter`/`jdk.ThreadPark`로 확인([탐지 도구](./05-failures.md#2-탐지)) 후 범위 축소·스트라이핑·`LongAdder`.
-8. **여러 락을 잡나?** 획득 순서를 문서화하고 `tryLock(timeout)` 전략을 정한다 → [장애 대응 §4](./05-failures.md#4-예방-설계).
+7. **경합이 측정됐나?** JFR `jdk.JavaMonitorEnter`/`jdk.ThreadPark`로 확인([탐지 도구](./05-failure-modes.md#2-탐지)) 후 범위 축소·스트라이핑·`LongAdder`.
+8. **여러 락을 잡나?** 획득 순서를 문서화하고 `tryLock(timeout)` 전략을 정한다 → [장애 대응 §4](./05-failure-modes.md#4-예방-설계).
 
 ## 관련 문서
 
 - [Java 락의 역사](./01-history.md)
 - [Java 락 개요와 기본 사용법](./02-overview.md)
 - [Java 락: 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](./05-failures.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)
 - [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
 - [Java 개요와 기본 사용법](../0001-java/02-overview.md)
 

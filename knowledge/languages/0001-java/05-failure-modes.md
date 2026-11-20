@@ -25,7 +25,7 @@ JVM이 한 번 크게 탈이 나면(메모리 바닥, 스레드 다 막힘) **�
 | 컨테이너 **OOMKilled (exit 137)** | 로그 없이 사라짐 | 힙 + 비힙 > 컨테이너 limit → 설정은 [자주 겪는 문제 §3](./04-pitfalls.md#3-컨테이너에서의-메모리-설정) |
 | `StackOverflowError` | 해당 요청 실패 | 무한 재귀, 순환 참조 직렬화(toString/JSON) |
 | 긴 GC 정지 | 타임아웃·헬스체크 실패 | 큰 힙 + 부적절한 GC, 높은 할당률 → 진단은 [자주 겪는 문제 §2](./04-pitfalls.md#2-메모리-누수와-gc-문제) |
-| 스레드 고갈·교착 | 프로세스는 살아 있는데 응답 없음 | 느린 외부 호출, 풀 크기 부족, 데드락 → [락 장애 문서](../0002-java-lock/05-failures.md) |
+| 스레드 고갈·교착 | 프로세스는 살아 있는데 응답 없음 | 느린 외부 호출, 풀 크기 부족, 데드락 → [락 장애 문서](../0002-java-lock/05-failure-modes.md) |
 | JVM 네이티브 크래시 | `hs_err_pid*.log` 남기고 종료 | JNI·네이티브 라이브러리 버그, JVM 버그 |
 | 파일 디스크립터 고갈 | `Too many open files` | 소켓·파일 close 누락 |
 
@@ -73,7 +73,7 @@ java \
 | **무상태** | 세션은 Redis(Spring Session)·JWT, 파일은 S3 등 외부 저장소 |
 | 최소 2~3개, 다른 AZ에 분산 | k8s `topologySpreadConstraints`, PodDisruptionBudget |
 | 인스턴스 하나 잃어도 버티는 용량 | N+1 여유, HPA |
-| 인스턴스 간 공유 자원 경쟁 | JVM 락은 **프로세스 안에서만** 유효 → DB·Redis 분산 락, ShedLock ([락 HA 문서](../0002-java-lock/05-failures.md)) |
+| 인스턴스 간 공유 자원 경쟁 | JVM 락은 **프로세스 안에서만** 유효 → DB·Redis 분산 락, ShedLock ([락 HA 문서](../0002-java-lock/05-failure-modes.md)) |
 
 ### 5. 헬스 체크 (Kubernetes + Spring Boot Actuator)
 
@@ -155,7 +155,7 @@ Micrometer + Prometheus/Grafana, OpenTelemetry로 수집하고, JFR은 장애 �
 - [Java 개요와 기본 사용법](./02-overview.md)
 - [Java 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 개발·운영 시 자주 겪는 문제와 해결 방법](./04-pitfalls.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](../0002-java-lock/05-failures.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](../0002-java-lock/05-failure-modes.md)
 
 ## 참고 자료
 
