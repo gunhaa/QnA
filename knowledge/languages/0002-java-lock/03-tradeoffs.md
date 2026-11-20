@@ -40,6 +40,19 @@ model: claude-opus-5-5
 | 비공정 `ReentrantLock` | 약 0.5µs (545ns) | 5회 중 1회꼴로 스레드가 **완전히 직렬로** 실행되는 기아 관찰 |
 | 공정 `ReentrantLock` | 약 32µs (**약 60배**) | 기아 사라짐. 매 인계마다 대기 스레드를 깨우는 컨텍스트 스위치 비용 |
 
+**왜 60배나 차이 나나** — 락을 넘겨주는 방식이 다르다.
+
+| | 비공정 | 공정 |
+|---|---|---|
+| 획득 조건 | `state`가 0이면 바로 CAS | 큐에 앞선 대기자가 없을 때만 CAS (`hasQueuedPredecessors()`) |
+| 락이 풀린 직후 | **이미 실행 중인 스레드**(방금 푼 스레드 포함)가 바로 다시 잡는다 | 반드시 **큐 맨 앞의 잠든 스레드**에게 넘어간다 |
+| 넘겨주는 비용 | CAS 한 번 (수십 ns), 캐시도 그대로 따뜻함 | `unpark` → OS가 그 스레드를 깨워 CPU에 올릴 때까지 대기 (µs 단위) |
+| 그동안 락 상태 | 거의 쉬지 않음 | 깨어나는 동안 **아무도 못 쓰고 비어 있다** |
+
+- 경합이 계속되면 큐가 비지 않으므로, 공정 락은 **매 획득마다** 잠들기(`park`) → 깨우기(`unpark`) → 스케줄링을 거친다. 락 1회 비용이 사실상 **컨텍스트 스위치 1회 비용**이 된다. 545ns → 32µs의 차이가 이것이다.
+- 비공정 락은 깨어난 스레드가 늦게 도착하면 그 사이 실행 중인 스레드가 먼저 가져간다. 잠들기·깨우기 횟수가 크게 줄어드는 대신, 운 나쁜 스레드는 계속 밀린다(위 표의 기아).
+- 60배는 이 측정(4스레드, 짧은 임계 구역, 계속 경합) 기준이다. 임계 구역이 길거나 경합이 드물면 컨텍스트 스위치 비중이 작아져 차이도 줄어든다. 실제 부하에서는 JMH로 잰다.
+
 JDK Javadoc도 "많은 스레드가 쓰는 공정 락은 처리량이 낮다(often much slower)"고 명시하고, Doug Lea는 공정 락이 **임계 구역이 길거나 획득 간격이 넓을 때만** 어울린다고 본다.
 
 **`AtomicLong` vs `LongAdder`** — Nitsan Wakart, Xeon X5650 2소켓 12코어, JDK 8u5, 증가 1회 평균(ns)
@@ -148,6 +161,7 @@ JDK Javadoc도 "많은 스레드가 쓰는 공정 락은 처리량이 낮다(oft
 - [JDK-8352971: Increase maximum number of hold counts for ReentrantReadWriteLock (JDK 25)](https://bugs.openjdk.org/browse/JDK-8352971)
 - [StampedLock — Java SE 25 API](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/locks/StampedLock.html)
 - [LongAdder — Java SE 25 API](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/atomic/LongAdder.html)
+- [ReentrantLock.java 소스 (jsr166, FairSync·NonfairSync)](https://gee.cs.oswego.edu/dl/jsr166/src/jdk8/java/util/concurrent/locks/ReentrantLock.java)
 - [Marc Brooker — fair vs non-fair ReentrantLock 측정 (2012)](https://brooker.co.za/blog/2012/09/10/locking/)
 - [Nitsan Wakart — JDK8 update on scalable counters](https://psy-lob-saw.blogspot.com/2014/06/jdk8-update-on-scalable-counters.html)
 - [Martin Thompson — Lock-Based vs Lock-Free Concurrent Algorithms](https://mechanical-sympathy.blogspot.com/2013/08/lock-based-vs-lock-free-concurrent.html)
