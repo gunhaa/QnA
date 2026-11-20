@@ -75,7 +75,7 @@ model: claude-opus-5-5
 | 남의 락을 지움(내 작업이 TTL보다 오래 걸림) | 랜덤 토큰 비교 후 삭제, 락 연장(watchdog — Redisson) |
 | GC 정지·장애 조치로 두 클라이언트가 동시에 락 보유 | Redis 락은 **효율용(중복 작업 방지)** 으로만. 정합성이 중요하면 **fencing token**을 DB에서 검사하거나 DB 락/ZooKeeper/etcd 사용. (Redlock의 안전성은 Martin Kleppmann vs antirez 논쟁으로 유명) |
 
-Java에서는 Redisson의 `RLock`이 토큰·연장·재진입을 처리해 준다. GC 정지·네트워크 분리·락 저장소 장애 같은 분산 락 장애 시나리오와 fencing token 설계는 [Java 락 — 분산 락의 장애 시나리오](../../languages/0002-java-lock/05-failure-modes.md#6-분산-락의-장애-시나리오)에서 자세히 다룬다.
+Java에서는 Redisson의 `RLock`이 토큰·연장·재진입을 처리해 준다. GC 정지·네트워크 분리·락 저장소 장애 같은 분산 락 장애 시나리오와 fencing token 설계는 [Java 락 — 분산 락의 장애 시나리오](../../languages/0002-java-lock/05-failure-modes.md#6-분산-락의-장애-시나리오)에서 자세히 다룬다. Redis 락 자체의 동작·선택 기준·함정·장애 유형은 [Redis 락 세트](../0005-redis-lock/02-overview.md)에 정리했다.
 
 ### 8. Cluster 특유의 문제
 
@@ -119,6 +119,7 @@ Java에서는 Redisson의 `RLock`이 토큰·연장·재진입을 처리해 준�
 - [Redis 개요와 기본 사용법](./02-overview.md)
 - [Redis 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Redis 장애 대응과 고가용성](./05-failure-modes.md)
+- [Redis 락 사용 시 흔한 함정과 해결 방법](../0005-redis-lock/04-pitfalls.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경 (분산 락)](../../languages/0002-java-lock/05-failure-modes.md)
 - [Vault로 API 키 verify 이관 검토 (Redis 캐시 계층 비교)](../../../inquiry/security/0003-vault-apikey-split-verify-review.md)
 
