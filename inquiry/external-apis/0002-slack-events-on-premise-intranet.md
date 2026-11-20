@@ -7,7 +7,7 @@ model: claude-opus-5-5
 
 # 사내망에서 Slack 이벤트를 받는 방법
 
-> 기준일: 2026-10-15 · 관련 문서: [Socket Mode vs HTTP](./0003-slack-socket-mode-vs-http-inbound.md), [Slack API 개요](../../factual/external-apis/0004-slack-api-overview.md)
+> 기준일: 2026-10-15 · 관련 문서: [Socket Mode vs HTTP](./0003-slack-socket-mode-vs-http-inbound.md), [Slack API 개요](../../inquiry/external-apis/0007-slack-api-overview.md)
 
 ## 쉬운 설명
 

@@ -74,7 +74,7 @@ LLM 요약 (Map-Reduce: 청크 요약 → 통합 요약, 구조화 JSON 출력)
 - **구조화 출력**: `{summary, decisions[], action_items[{owner, due}], topics[], risks[]}` JSON 스키마를 강제하면 후처리가 쉽다.
 - **긴 회의**: 컨텍스트 한도를 넘으면 시간 구간별 청킹 후 계층 요약.
 - **분석**: 발언 비율, 주제 분포, 액션 아이템 추적은 화자·타임스탬프가 있는 VTT에서 계산한다. 의미 검색이 필요하면 임베딩해 RAG로 구성한다.
-- **결과 게시**: 채널 알림은 Workflows 웹훅, 회의 채팅 게시는 Graph 또는 봇을 쓴다 (관련 내용은 [Teams 오픈 API](../../factual/external-apis/0003-microsoft-teams-open-api.md) 문서 참고).
+- **결과 게시**: 채널 알림은 Workflows 웹훅, 회의 채팅 게시는 Graph 또는 봇을 쓴다 (관련 내용은 [Teams 오픈 API](../../inquiry/external-apis/0006-microsoft-teams-open-api.md) 문서 참고).
 
 ### 7. 선택지 비교
 
