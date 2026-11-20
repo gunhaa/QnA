@@ -62,7 +62,7 @@ model: claude-opus-5-5
 - [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 락: 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)
-- [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
+- [Java AQS와 LockSupport 정리](../../../inquiry/java/0001-java-aqs-locksupport.md)
 - [Java의 역사](../0001-java/01-history.md)
 
 ## 참고 자료

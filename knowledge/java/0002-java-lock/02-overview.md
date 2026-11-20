@@ -41,7 +41,7 @@ Java 메모리 모델(JMM)은 이를 **happens-before** 관계로 정의한다. 
 | `CountDownLatch` / `CyclicBarrier` / `Phaser` | — | ✓ | 스레드 간 대기·합류 |
 | `ConcurrentHashMap`, `BlockingQueue` 등 | ✓ (연산 단위) | ✓ | 동기화된 자료구조 — 직접 락보다 우선 고려 |
 
-`ReentrantLock`·`Semaphore` 등은 내부적으로 **AQS + LockSupport** 위에 만들어져 있다 → [AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
+`ReentrantLock`·`Semaphore` 등은 내부적으로 **AQS + LockSupport** 위에 만들어져 있다 → [AQS와 LockSupport 정리](../../../inquiry/java/0001-java-aqs-locksupport.md)
 
 ### 3. 기본 사용법
 
@@ -133,7 +133,7 @@ Order o1  = queue.poll();                                     // 비어 있으�
 Order o2  = queue.poll(500, TimeUnit.MILLISECONDS);           // 최대 500ms 기다리고 null
 ```
 
-`LinkedBlockingQueue`는 같은 방식으로 동작하지만, 락을 `put`용과 `take`용 둘로 나눠 넣기와 꺼내기가 동시에 진행된다. 실행 결과와 JDK 소스 비교는 [inquiry — ArrayBlockingQueue와 Condition 생산자/소비자](../../../inquiry/languages/0005-java-arrayblockingqueue-condition-producer-consumer.md)에 있다.
+`LinkedBlockingQueue`는 같은 방식으로 동작하지만, 락을 `put`용과 `take`용 둘로 나눠 넣기와 꺼내기가 동시에 진행된다. 실행 결과와 JDK 소스 비교는 [inquiry — ArrayBlockingQueue와 Condition 생산자/소비자](../../../inquiry/java/0003-java-arrayblockingqueue-condition-producer-consumer.md)에 있다.
 
 **`ReadWriteLock` — 읽기 많은 캐시**
 
@@ -213,7 +213,7 @@ record Snapshot(List<String> items) {}                   // 불변 객체는 공
 - [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 락: 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)
-- [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
+- [Java AQS와 LockSupport 정리](../../../inquiry/java/0001-java-aqs-locksupport.md)
 - [Java 개요와 기본 사용법](../0001-java/02-overview.md)
 
 ## 참고 자료

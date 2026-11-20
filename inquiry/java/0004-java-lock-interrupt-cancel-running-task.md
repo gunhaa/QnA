@@ -34,7 +34,7 @@ model: claude-opus-5-5
 | 락을 쥐고 고전 `java.io` 소켓 I/O 중 (플랫폼 스레드) | ✗ 반응 없음 — 다른 스레드가 소켓을 `close()`해야 풀린다 |
 | 락을 쥐고 `java.net` 소켓 I/O 중 (가상 스레드) | ✓ 인터럽트하면 소켓이 닫히고 스레드가 깨어난다 (JEP 444) |
 
-`synchronized`와 `ReentrantLock`의 차이는 [Java 락 — 02-overview](../../knowledge/languages/0002-java-lock/02-overview.md)의 비교표에 있다. 취소가 필요한 경로라면 **기다리는 단계부터** `lockInterruptibly()`나 `tryLock(timeout)`을 써야 한다.
+`synchronized`와 `ReentrantLock`의 차이는 [Java 락 — 02-overview](../../knowledge/java/0002-java-lock/02-overview.md)의 비교표에 있다. 취소가 필요한 경로라면 **기다리는 단계부터** `lockInterruptibly()`나 `tryLock(timeout)`을 써야 한다.
 
 ### 3. 기본 패턴
 
@@ -82,11 +82,11 @@ f.cancel(true);   // 실행 중인 스레드에 interrupt()
 
 ## 관련 문서
 
-- [Java 락 — 02-overview](../../knowledge/languages/0002-java-lock/02-overview.md)
-- [Java 락 — 04-pitfalls](../../knowledge/languages/0002-java-lock/04-pitfalls.md)
-- [Java 락 — 05-failure-modes](../../knowledge/languages/0002-java-lock/05-failure-modes.md)
-- [AQS와 LockSupport](./0003-java-aqs-locksupport.md)
-- [ArrayBlockingQueue와 Condition 생산자/소비자](./0005-java-arrayblockingqueue-condition-producer-consumer.md)
+- [Java 락 — 02-overview](../../knowledge/java/0002-java-lock/02-overview.md)
+- [Java 락 — 04-pitfalls](../../knowledge/java/0002-java-lock/04-pitfalls.md)
+- [Java 락 — 05-failure-modes](../../knowledge/java/0002-java-lock/05-failure-modes.md)
+- [AQS와 LockSupport](./0001-java-aqs-locksupport.md)
+- [ArrayBlockingQueue와 Condition 생산자/소비자](./0003-java-arrayblockingqueue-condition-producer-consumer.md)
 
 ## 출처
 

@@ -70,7 +70,7 @@ JDK Javadoc도 "많은 스레드가 쓰는 공정 락은 처리량이 낮다(oft
 
 **`ReentrantReadWriteLock` vs `StampedLock`** — 읽기 19 : 쓰기 1에서는 `StampedLock` 낙관적 읽기가 크게 앞서지만, 읽기 10 : 쓰기 10에서는 `validate` 실패가 늘어 이점이 줄어든다(Takipi 벤치마크). Martin Thompson은 `ReentrantReadWriteLock`이 기대보다 느리다며 **측정 후에만** 고르라고 권한다. 읽기/쓰기 락이 이득이 되려면 **읽기 비율이 높고 임계 구역이 충분히 길어야** 한다.
 
-**스핀 vs 파킹** — 짧은 임계 구역(수십 ns)에서는 잠깐 도는(spin) 편이 잠들고 깨우는(park/unpark, 컨텍스트 스위치 수 µs) 것보다 싸다. HotSpot `synchronized`는 **적응형 스핀**으로 직전 성공률을 보고 스핀 길이를 정하고, AQS는 큐 맨 앞 노드만 짧게 재시도한 뒤 `LockSupport.park`로 잠든다 → [AQS와 LockSupport](../../../inquiry/languages/0003-java-aqs-locksupport.md). 임계 구역에 I/O가 있으면 스핀은 CPU 낭비일 뿐이다.
+**스핀 vs 파킹** — 짧은 임계 구역(수십 ns)에서는 잠깐 도는(spin) 편이 잠들고 깨우는(park/unpark, 컨텍스트 스위치 수 µs) 것보다 싸다. HotSpot `synchronized`는 **적응형 스핀**으로 직전 성공률을 보고 스핀 길이를 정하고, AQS는 큐 맨 앞 노드만 짧게 재시도한 뒤 `LockSupport.park`로 잠든다 → [AQS와 LockSupport](../../../inquiry/java/0001-java-aqs-locksupport.md). 임계 구역에 I/O가 있으면 스핀은 CPU 낭비일 뿐이다.
 
 ### 3. 대안 비교
 
@@ -151,7 +151,7 @@ JDK Javadoc도 "많은 스레드가 쓰는 공정 락은 처리량이 낮다(oft
 - [Java 락 개요와 기본 사용법](./02-overview.md)
 - [Java 락: 흔한 함정과 해결 방법](./04-pitfalls.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)
-- [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
+- [Java AQS와 LockSupport 정리](../../../inquiry/java/0001-java-aqs-locksupport.md)
 - [Java 개요와 기본 사용법](../0001-java/02-overview.md)
 
 ## 참고 자료

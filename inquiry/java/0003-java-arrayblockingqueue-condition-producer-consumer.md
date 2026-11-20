@@ -15,7 +15,7 @@ model: claude-opus-5-5
 
 ### 1. 문장의 뜻
 
-[Java 락 개요](../../knowledge/languages/0002-java-lock/02-overview.md)의 `Condition` 예제는 **유한 버퍼(bounded buffer)**, 곧 생산자/소비자 큐를 손으로 만든 것이다.
+[Java 락 개요](../../knowledge/java/0002-java-lock/02-overview.md)의 `Condition` 예제는 **유한 버퍼(bounded buffer)**, 곧 생산자/소비자 큐를 손으로 만든 것이다.
 
 - 락 1개 + `Condition` 2개(`notFull`, `notEmpty`)
 - `put`: 가득 차면 `notFull.await()` → 넣고 `notEmpty.signal()`
@@ -125,9 +125,9 @@ public class AbqDemo {
 
 ## 관련 문서
 
-- [Java 락 — 02-overview](../../knowledge/languages/0002-java-lock/02-overview.md)
-- [Java 락 — 03-tradeoffs](../../knowledge/languages/0002-java-lock/03-tradeoffs.md)
-- [AQS와 LockSupport](./0003-java-aqs-locksupport.md)
+- [Java 락 — 02-overview](../../knowledge/java/0002-java-lock/02-overview.md)
+- [Java 락 — 03-tradeoffs](../../knowledge/java/0002-java-lock/03-tradeoffs.md)
+- [AQS와 LockSupport](./0001-java-aqs-locksupport.md)
 
 ## 출처
 

@@ -143,7 +143,7 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 | 테스트 | JUnit 5, AssertJ, Mockito, Testcontainers |
 | 빌드 | Gradle, Maven |
 | 관측 | Micrometer, OpenTelemetry Java agent, JFR |
-| 코드 생성·보조 | Lombok, MapStruct ([Lombok 정리](../../../inquiry/languages/0004-lombok-history-and-features.md)) |
+| 코드 생성·보조 | Lombok, MapStruct ([Lombok 정리](../../../inquiry/java/0002-lombok-history-and-features.md)) |
 
 ### 7. 언제 다른 걸 고려하나
 

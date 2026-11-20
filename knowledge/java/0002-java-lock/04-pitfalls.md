@@ -132,7 +132,7 @@ public synchronized void decrease(Long id) {   // ✗
 - [Java 락 개요와 기본 사용법](./02-overview.md)
 - [Java 락 트레이드오프와 선택 기준](./03-tradeoffs.md)
 - [Java 락 장애 대응과 다중 인스턴스 환경](./05-failure-modes.md)
-- [Java AQS와 LockSupport 정리](../../../inquiry/languages/0003-java-aqs-locksupport.md)
+- [Java AQS와 LockSupport 정리](../../../inquiry/java/0001-java-aqs-locksupport.md)
 - [MySQL 운영 시 흔한 함정 — 락 대기와 데드락](../../database/0001-mysql/04-pitfalls.md)
 
 ## 참고 자료

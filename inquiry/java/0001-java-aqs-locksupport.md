@@ -168,11 +168,11 @@ while (queue.peek() != current || !locked.compareAndSet(false, true)) {
 
 ## 관련 문서
 
-- [Java 락의 역사](../../knowledge/languages/0002-java-lock/01-history.md)
-- [Java 락 개요와 기본 사용법](../../knowledge/languages/0002-java-lock/02-overview.md)
-- [Java 락 트레이드오프와 선택 기준](../../knowledge/languages/0002-java-lock/03-tradeoffs.md)
-- [Java 락: 흔한 함정과 해결 방법](../../knowledge/languages/0002-java-lock/04-pitfalls.md)
-- [Java 락 장애 대응과 다중 인스턴스 환경](../../knowledge/languages/0002-java-lock/05-failure-modes.md)
+- [Java 락의 역사](../../knowledge/java/0002-java-lock/01-history.md)
+- [Java 락 개요와 기본 사용법](../../knowledge/java/0002-java-lock/02-overview.md)
+- [Java 락 트레이드오프와 선택 기준](../../knowledge/java/0002-java-lock/03-tradeoffs.md)
+- [Java 락: 흔한 함정과 해결 방법](../../knowledge/java/0002-java-lock/04-pitfalls.md)
+- [Java 락 장애 대응과 다중 인스턴스 환경](../../knowledge/java/0002-java-lock/05-failure-modes.md)
 
 ## Sources
 
