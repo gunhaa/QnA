@@ -164,6 +164,7 @@ const data = await res.json();
 ## 관련 문서
 
 - [GitHub CODEOWNERS](./0018-github-codeowners.md)
+- [GitHub Pages로 knowledge 사이트 만들기 — 생성기 비교와 템플릿 선택](./0022-github-pages-knowledge-site-generator-and-templates.md)
 - [CORS (Cross-Origin Resource Sharing)](../web/0016-cors-cross-origin-resource-sharing.md)
 
 ## 참고 자료
